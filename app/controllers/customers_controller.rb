@@ -24,28 +24,15 @@ class CustomersController < ApplicationController
       @customers = Customer.where("company_name LIKE ?", search_condition)
     end
     if @customers != nil
-      @hash = Gmaps4rails.build_markers(@customers) do |customer, marker|
-        marker.lat customer.latitude
-        marker.lng customer.longitude
-        marker.infowindow set_customer_name(customer)
-      end
+      set_map_marker(@customers)
     end
   end
-  def set_customer_name(customer)
-    customer_name = "Name: #{customer.first_name} #{customer.last_name}
-                    </br> Address: #{set_address(customer)}"
-  end
 
-  def set_address(customer)
-    address = "#{customer.street1}, #{customer.street2}, #{customer.city}, #{customer.state}, US"
-  end
-  #def search
-  #  @customers = Customer.search params[:search]
-  #end
+
   # GET /customers/1
   # GET /customers/1.json
   def show
-    #@customer = Customer.find params[:id]
+    set_map_marker(@customer)
   end
 
   # GET /customers/new
@@ -55,7 +42,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
-    #@customer = Customer.find params[:id]
+    set_map_marker(@customer)
   end
 
   # POST /customers
@@ -76,7 +63,6 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
-    #@customer = Customer.find params[:id]
     respond_to do |format|
       if @customer.update(customer_params)
         format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
@@ -109,5 +95,22 @@ class CustomersController < ApplicationController
       params.require(:customer).permit(:first_name, :last_name, :email, :street1, :street2, :city, :state, :zip,
                                        :home_phone, :mobile_phone, :work_phone, :work_phone_ext, :fax, :pager,
                                        :misc, :type, :company_id, :lead_source_id, :sales_person_id, :company_name, :title)
+    end
+
+    def set_customer_name(customer)
+      customer_name = "Name: #{customer.first_name} #{customer.last_name}
+                      </br> Address: #{set_address(customer)}"
+    end
+
+    def set_address(customer)
+      address = "#{customer.street1}, #{customer.street2}, #{customer.city}, #{customer.state}, US"
+    end
+
+    def set_map_marker(customers)
+      @hash = Gmaps4rails.build_markers(customers) do |customer, marker|
+        marker.lat customer.latitude
+        marker.lng customer.longitude
+        marker.infowindow set_customer_name(customer)
+      end
     end
 end
