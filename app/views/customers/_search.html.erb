@@ -1,0 +1,8 @@
+<%= form_tag(customers_path, :method => "get") do %>
+    <% [ 'Last Name', 'Phone Number', 'Street Address', 'Company Name' ].each do |basedOn| %>
+        <%= radio_button_tag 'basedOn', basedOn, params[:basedOn].eql?(basedOn) %>
+        <%= basedOn.humanize %>
+    <% end %>
+    <%= text_field_tag(:searchText, params[:searchText]) %>
+    <%= submit_tag("Search") %>
+<% end %>

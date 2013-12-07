@@ -1,0 +1,27 @@
+<h1>Listing lead_sources</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lead_sources.each do |lead_source| %>
+      <tr>
+        <td><%= lead_source.source %></td>
+        <td><%= link_to 'Show', lead_source %></td>
+        <td><%= link_to 'Edit', edit_lead_source_path(lead_source) %></td>
+        <td><%= link_to 'Destroy', lead_source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lead source', new_lead_source_path %>

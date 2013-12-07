@@ -1,0 +1,21 @@
+<%= form_for(@lead_source) do |f| %>
+  <% if @lead_source.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lead_source.errors.count, "error") %> prohibited this lead_source from being saved:</h2>
+
+      <ul>
+      <% @lead_source.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :source %><br>
+    <%= f.text_field :source %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
