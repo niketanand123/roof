@@ -10,7 +10,11 @@ class Customer < ActiveRecord::Base
     validates :last_name,  presence: true, length: { maximum: 50 }
     validates :email, presence: true
 
-    #geocoded_by :street1
+    geocoded_by :set_address
+    after_validation :geocode
 
+    def set_address
+      address = "#{street1}, #{street2}, #{city}, #{state}, US"
+    end
 end
 

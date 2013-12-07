@@ -23,8 +23,22 @@ class CustomersController < ApplicationController
       search_condition = "%" + searchText + "%"
       @customers = Customer.where("company_name LIKE ?", search_condition)
     end
+    if @customers != nil
+      @hash = Gmaps4rails.build_markers(@customers) do |customer, marker|
+        marker.lat customer.latitude
+        marker.lng customer.longitude
+        marker.infowindow set_customer_name(customer)
+      end
+    end
+  end
+  def set_customer_name(customer)
+    customer_name = "Name: #{customer.first_name} #{customer.last_name}
+                    </br> Address: #{set_address(customer)}"
   end
 
+  def set_address(customer)
+    address = "#{customer.street1}, #{customer.street2}, #{customer.city}, #{customer.state}, US"
+  end
   #def search
   #  @customers = Customer.search params[:search]
   #end
