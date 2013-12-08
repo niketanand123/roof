@@ -32,8 +32,8 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
-    set_map_marker(@customer)
     @job_sites = JobSite.where("customer_id = ?",@customer.id)
+    set_map_marker(@customer)
   end
 
   # GET /customers/new
@@ -43,8 +43,8 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
-    set_map_marker(@customer)
     @job_sites = JobSite.where("customer_id = ?",@customer.id)
+    set_map_marker(@customer)
   end
 
   def new_job_site
