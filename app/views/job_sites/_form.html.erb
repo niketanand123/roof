@@ -1,4 +1,21 @@
 <%= form_for([@job_site.customer, @job_site]) do |f| %>
+  <script type="text/javascript">
+    function sameAsBillingAddress(form, street1, street2, city, state, zip){
+        if(form.autoFillAddress.checked == true){
+            form.job_site_street1.value=street1;
+            form.job_site_street2.value=street2;
+            form.job_site_city.value=city;
+            form.job_site_state.value=state;
+            form.job_site_zip.value=zip;
+        }else{
+            form.job_site_street1.value='';
+            form.job_site_street2.value='';
+            form.job_site_city.value='';
+            form.job_site_state.value='';
+            form.job_site_zip.value='';
+        }
+    }
+  </script>
   <% if @job_site.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job_site.errors.count, "error") %> prohibited this job_site from being saved:</h2>
@@ -30,12 +47,16 @@
       <tr>
         <td width="10%">Contact*</td><td width="22%"><%= f.text_field :contact_name%></td>
         <td width="1%"></td>
-        <td width="10%"></td><td width="35%"></td>
+        <td width="10%"></td><td width="35%"><b>Job Site Address</b></td>
       </tr>
       <tr>
         <td width="10%">JobSite Phone</td><td width="22%"><%= f.text_field :phone%></td>
         <td width="1%"></td>
-        <td width="10%"></td><td width="35%"><b>Job Site Address</b></td>
+        <td width="10%"></td>
+        <td width="35%"><input type="checkbox" id="autoFillAddress" name="autoFillAddress"
+                               onclick="sameAsBillingAddress(this.form, '<%= @job_site.customer.street1 %>'
+                                       , '<%= @job_site.customer.street2 %>', '<%= @job_site.customer.city %>'
+                                       , '<%= @job_site.customer.state %>', '<%= @job_site.customer.zip %>')">Same as Billing Address</td>
       </tr>
       <tr>
         <td width="10%">Wk Phone</td><td width="22%"><%= f.text_field :work_phone%> Ext<%= f.text_field :work_phone_ext, :size=>"5"%></td>
