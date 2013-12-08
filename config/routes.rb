@@ -1,4 +1,6 @@
 Roof::Application.routes.draw do
+  resources :job_sites
+
   resources :sales_people
 
   resources :lead_sources
@@ -9,6 +11,9 @@ Roof::Application.routes.draw do
 
   resources :customers
 
+  resources :customers do
+    resources :job_sites
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -9,8 +9,8 @@
       <% end %>
       </ul>
     </div>
-
   <% end %>
+
     <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
       <span style="background-color:#336699; ">
         <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
@@ -111,4 +111,33 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+    <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Job Sites</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+    </div>
+    <div style="background:#ffffff; line-height: 2px; width: 850px;padding-bottom: 10px;">
+      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "850")%>
+    </div>
+    <% if @job_sites!= nil && @job_sites.count >= 1 %>
+        <table width="50%">
+          <thead>
+          <tr>
+            <th>Address</th>
+            <th>City</th>
+          </tr>
+          </thead>
+
+          <% @job_sites.each do |job_site| %>
+              <tr>
+                <td align="center"><%= link_to job_site.street1, edit_customer_job_site_path(@customer.id,job_site.id), :controller => "job_sites"%></td>
+                <td  align="center"><%= job_site.city %></td>
+              </tr>
+          <% end %>
+        </table>
+    <% end %>
+    <%= link_to 'New Job Site', new_customer_job_site_path(@customer.id) %>
+
 <% end %>

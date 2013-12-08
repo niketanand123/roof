@@ -1,0 +1,128 @@
+<%= form_for([@job_site.customer, @job_site]) do |f| %>
+  <% if @job_site.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job_site.errors.count, "error") %> prohibited this job_site from being saved:</h2>
+
+      <ul>
+      <% @job_site.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Job Site Information</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+    </div>
+    <div style="background:#ffffff; line-height: 2px; width: 850px;padding-bottom: 10px;">
+      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "850")%>
+    </div>
+    <table width="70%">
+      <tr>
+        <td width="10%">Company</td><td width="22%"><%= f.text_field :company_name%></td>
+        <td width="1%"></td>
+        <td width="10%"></td><td width="35%"></td>
+      </tr>
+      <tr>
+        <td width="10%">Contact*</td><td width="22%"><%= f.text_field :contact_name%></td>
+        <td width="1%"></td>
+        <td width="10%"></td><td width="35%"></td>
+      </tr>
+      <tr>
+        <td width="10%">JobSite Phone</td><td width="22%"><%= f.text_field :phone%></td>
+        <td width="1%"></td>
+        <td width="10%"></td><td width="35%"><b>Job Site Address</b></td>
+      </tr>
+      <tr>
+        <td width="10%">Wk Phone</td><td width="22%"><%= f.text_field :work_phone%> Ext<%= f.text_field :work_phone_ext, :size=>"5"%></td>
+        <td width="1%"></td>
+        <td width="10%">Street 1</td><td width="35%"><%= f.text_field :street1%></td>
+      </tr>
+      <tr>
+        <td width="10%">Mobile</td><td width="22%"><%= f.text_field :mobile_phone%></td>
+        <td width="1%"></td>
+        <td width="10%">Street 2</td><td width="35%"><%= f.text_field :street2%></td>
+      </tr>
+      <tr>
+        <td width="10%">Fax</td><td width="22%"><%= f.text_field :fax%></td>
+        <td width="1%"></td>
+        <td width="10%">City</td><td width="35%"><%= f.text_field :city%> State<%= f.text_field :state, :size=>"2"%> Zip<%= f.text_field :zip, :size=>"10"%></td>
+      </tr>
+      <tr>
+        <td width="10%">Pager</td><td width="22%"><%= f.text_field :pager%></td>
+        <td colspan="3"></td>
+      </tr>
+      <tr>
+        <td width="10%">Directions</td><td colspan="4"><%= f.text_area :direction, :size => "80x5" %></td>
+      </tr>
+    </table>
+    <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Job Site Questions</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+    </div>
+    <div style="background:#ffffff; line-height: 2px; width: 850px;padding-bottom: 10px;">
+      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "850")%>
+    </div>
+    <table width="60%">
+      <tr>
+        <td width="20%">Easily accessible job site?</td>
+        <td width="25%"><%= f.text_field :easily_accessible, :style=>"width: 220px;"%></td>
+        <td width="1%"></td>
+        <td width="25%">Is customer vacationing? When?</td>
+        <td width="35%"><%= f.text_field :cust_vacating_when, :style=>"width: 220px;"%></td>
+      </tr>
+      <tr>
+        <td width="20%">Parking Considerations?</td>
+        <td colspan="4" width="75%"><%= f.text_field :parking_consideration, :style=>"width: 420px;"%></td>
+      </tr>
+      <tr>
+        <td width="20%">Dumpster Placement-note location</td>
+        <td colspan="4" width="75%"><%= f.text_field :dumpster_loc_note, :style=>"width: 420px;"%></td>
+      </tr>
+      <tr>
+        <td width="20%">Side of garage in use?</td>
+        <td width="22%"><%= f.text_field :side_garage_use, :style=>"width: 220px;"%></td>
+        <td width="1%"></td>
+        <td width="15%">Driveway-dirt, asphalt, concrete? </td>
+        <td width="35%"><%= f.text_field :driveway_dirt_asphalt, :style=>"width: 220px;"%></td>
+      </tr>
+      <tr>
+        <td width="20%">Electrical location?</td>
+        <td colspan="4"><%= f.text_field :electrical_location, :style=>"width: 420px;"%></td>
+      </tr>
+      <tr>
+        <td width="20%">Water and sanitation available?</td>
+        <td colspan="4"><%= f.text_field :water_sanitation_avail, :style=>"width: 420px;"%></td>
+      </tr>
+      <tr>
+        <td width="20%">Animals to restrain?</td>
+        <td width="22%"><%= f.text_field :animals_restrain, :style=>"width: 220px;"%></td>
+        <td width="1%"></td>
+        <td width="15%">Both gutter & downspout color noted?</td>
+        <td width="35%"><%= f.text_field :gutter_color_noted, :style=>"width: 220px;"%></td>
+      </tr>
+      <tr>
+        <td width="20%">Landscape concerns?</td>
+        <td colspan="4"><%= f.text_field :landscape_concerns, :style=>"width: 420px;"%></td>
+      </tr>
+      <tr>
+        <td width="20%">Work number(s) and shift?</td>
+        <td colspan="4"><%= f.text_field :work_number_shift, :style=>"width: 420px;"%></td>
+      </tr>
+      <tr>
+        <td width="20%">Additional Notes</td>
+        <td colspan="4"><%= f.text_area :additional_notes, :size => "80x5" , :style=>"width: 420px;"%></td>
+      </tr>
+    </table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

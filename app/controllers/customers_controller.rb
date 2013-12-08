@@ -33,6 +33,7 @@ class CustomersController < ApplicationController
   # GET /customers/1.json
   def show
     set_map_marker(@customer)
+    @job_sites = JobSite.where("customer_id = ?",@customer.id)
   end
 
   # GET /customers/new
@@ -43,6 +44,12 @@ class CustomersController < ApplicationController
   # GET /customers/1/edit
   def edit
     set_map_marker(@customer)
+    @job_sites = JobSite.where("customer_id = ?",@customer.id)
+  end
+
+  def new_job_site
+    set_map_marker(@customer)
+    @job_sites = JobSite.where("customer_id = ?",@customer.id)
   end
 
   # POST /customers

@@ -1,0 +1,11 @@
+<h1>Editing job site</h1>
+
+<%= render :partial => 'form' %>
+
+<%= link_to 'Show', [@job_site.customer, @job_site] %> |
+<%= link_to 'Back', customer_job_sites_path(@job_site.customer) %>
+<!--
+
+<%= link_to 'Show', @job_site %> |
+<%= link_to 'Back', job_sites_path %>
+-->
