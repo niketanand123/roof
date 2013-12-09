@@ -112,14 +112,21 @@
     <table width="750px">
       <tr>
         <td>
-          <%= f.submit %>
+          <% if @customer!= nil && @customer.id != nil%>
+              <%= button_to "Update Customer", {:controller => :customers, :action => 'update', :id => @customer.id }, :method => :post %>
+          <% else %>
+              <%= button_to "Create Customer", {:controller => :customers, :action => 'create', :id =>@customer.id }, :method => :post %>
+          <% end %>
         </td>
         <td>
-          <%= button_to "Delete Customer", {:controller => :customers, :action => 'destroy', :id => @customer.id }, :method => :delete, :data => { confirm: 'Are you sure you want to delete customer?' } %>
+          <% if @customer!= nil && @customer.id != nil%>
+              <%= button_to "Delete Customer", {:controller => :customers, :action => 'destroy', :id => @customer.id }, :method => :delete, :data => { confirm: 'Are you sure you want to delete customer?' } %>
+          <% end %>
         </td>
       </tr>
     </table>
  <br>
+    <% if @customer!= nil && @customer.id !=nil %>
     <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
       <span style="background-color:#336699; ">
         <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
@@ -141,13 +148,15 @@
 
           <% @job_sites.each do |job_site| %>
               <tr>
-                <td align="center"><%= link_to job_site.street1, edit_customer_job_site_path(@customer.id,job_site.id), :controller => "job_sites"%></td>
+                <td align="center"><%= link_to job_site.street1, job_site, :controller => "job_sites"%></td>
                 <td  align="center"><%= job_site.city %></td>
               </tr>
           <% end %>
         </table>
     <% end %>
     <br>
+
     <%= link_to 'New Job Site', new_customer_job_site_path(@customer.id) %>
+    <% end %>
 
 <% end %>

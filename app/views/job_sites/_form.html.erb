@@ -147,10 +147,16 @@
     <table width="750px">
       <tr>
         <td>
-          <%= f.submit %>
+          <% if @job_site!= nil && @job_site.id != nil%>
+            <%= button_to "Update Job Site", {:controller => :job_sites, :action => 'update', :id => @job_site.id }, :method => :post %>
+          <% else %>
+            <%= button_to "Create Job Site", {:controller => :job_sites, :action => 'create', :customer_id =>@customer.id }, :method => :post %>
+          <% end %>
         </td>
         <td>
-          <%= button_to "Delete Job Site", {:controller => :job_sites, :action => 'destroy', :id => @job_site.id }, :method => :delete, :data => { confirm: 'Are you sure you want to delete job site?' } %>
+          <% if @job_site!= nil && @job_site.id != nil%>
+            <%= button_to "Delete Job Site", {:controller => :job_sites, :action => 'destroy', :id => @job_site.id }, :method => :delete, :data => { confirm: 'Are you sure you want to delete job site?' } %>
+          <% end %>
         </td>
       </tr>
     </table>

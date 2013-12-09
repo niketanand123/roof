@@ -47,7 +47,6 @@ class CustomersController < ApplicationController
   end
 
   def new_job_site
-    set_map_marker(@customer)
     @job_sites = JobSite.where("is_active=1 and customer_id = ?",@customer.id)
   end
 
@@ -101,7 +100,7 @@ class CustomersController < ApplicationController
     def customer_params
       params.require(:customer).permit(:first_name, :last_name, :email, :street1, :street2, :city, :state, :zip,
                                        :home_phone, :mobile_phone, :work_phone, :work_phone_ext, :fax, :pager,
-                                       :misc, :type, :company_id, :lead_source_id, :sales_person_id, :company_name, :title)
+                                       :misc, :type, :company_id, :lead_source_id, :sales_person_id, :company_name, :title) if params[:customer]
     end
 
     def set_customer_name(customer)
