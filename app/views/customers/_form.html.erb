@@ -108,9 +108,18 @@
       </tr>
 
     </table>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <br>
+    <table width="750px">
+      <tr>
+        <td>
+          <%= f.submit %>
+        </td>
+        <td>
+          <%= button_to "Delete Customer", {:controller => :customers, :action => 'destroy', :id => @customer.id }, :method => :delete, :data => { confirm: 'Are you sure you want to delete customer?' } %>
+        </td>
+      </tr>
+    </table>
+ <br>
     <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
       <span style="background-color:#336699; ">
         <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
@@ -138,6 +147,7 @@
           <% end %>
         </table>
     <% end %>
+    <br>
     <%= link_to 'New Job Site', new_customer_job_site_path(@customer.id) %>
 
 <% end %>

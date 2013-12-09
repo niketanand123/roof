@@ -7,21 +7,20 @@ class CustomersController < ApplicationController
     #@customers = Customer.search(params[:basedOn],params[:searchText])
     basedOn = params[:basedOn]
     searchText = params[:searchText]
-    if basedOn == "Last Name"
+    if searchText != nil
       search_condition = "%" + searchText + "%"
-      @customers = Customer.where("last_name LIKE ?", search_condition)
+    end
+    if basedOn == "Last Name"
+      @customers = Customer.where("is_active=1 and last_name LIKE ?", search_condition)
     end
     if basedOn == "Phone Number"
-      search_condition = "%" + searchText + "%"
-      @customers = Customer.where("home_phone LIKE ? OR mobile_phone LIKE ? OR work_phone LIKE ?", search_condition, search_condition, search_condition)
+      @customers = Customer.where("is_active=1 and home_phone LIKE ? OR mobile_phone LIKE ? OR work_phone LIKE ?", search_condition, search_condition, search_condition)
     end
     if basedOn == "Street Address"
-      search_condition = "%" + searchText + "%"
-      @customers = Customer.where("street1 LIKE ? OR street2 LIKE ?", search_condition, search_condition)
+      @customers = Customer.where("is_active=1 and street1 LIKE ? OR street2 LIKE ?", search_condition, search_condition)
     end
     if basedOn == "Company Name"
-      search_condition = "%" + searchText + "%"
-      @customers = Customer.where("company_name LIKE ?", search_condition)
+      @customers = Customer.where("is_active=1 and company_name LIKE ?", search_condition)
     end
     if @customers != nil
       set_map_marker(@customers)
@@ -32,7 +31,7 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
-    @job_sites = JobSite.where("customer_id = ?",@customer.id)
+    @job_sites = JobSite.where("is_active=1 and customer_id = ?",@customer.id)
     set_map_marker(@customer)
   end
 
@@ -43,13 +42,13 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
-    @job_sites = JobSite.where("customer_id = ?",@customer.id)
+    @job_sites = JobSite.where("is_active=1 and customer_id = ?",@customer.id)
     set_map_marker(@customer)
   end
 
   def new_job_site
     set_map_marker(@customer)
-    @job_sites = JobSite.where("customer_id = ?",@customer.id)
+    @job_sites = JobSite.where("is_active=1 and customer_id = ?",@customer.id)
   end
 
   # POST /customers
@@ -84,9 +83,10 @@ class CustomersController < ApplicationController
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
-    @customer.destroy
+    @customer.is_active=0
+    @customer.update(customer_params)
     respond_to do |format|
-      format.html { redirect_to customers_url }
+      format.html { redirect_to customers_url, notice: 'Customer has been deleted successfully.' }
       format.json { head :no_content }
     end
   end

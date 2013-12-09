@@ -142,8 +142,18 @@
         <td colspan="4"><%= f.text_area :additional_notes, :size => "80x5" , :style=>"width: 420px;"%></td>
       </tr>
     </table>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+    <br>
+    <table width="750px">
+      <tr>
+        <td>
+          <%= f.submit %>
+        </td>
+        <td>
+          <%= button_to "Delete Job Site", {:controller => :job_sites, :action => 'destroy', :id => @job_site.id }, :method => :delete, :data => { confirm: 'Are you sure you want to delete job site?' } %>
+        </td>
+      </tr>
+    </table>
+    <br>
 
 <% end %>

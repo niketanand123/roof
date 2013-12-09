@@ -52,18 +52,13 @@ class JobSitesController < ApplicationController
   end
 
   def destroy
-    @job_site.destroy
-    respond_to do |format|
-      format.html { redirect_to job_sites_url }
-      format.json { head :no_content }
-    end
-
-    customer = Post.find(params[:customer_id])
-    @job_site = customer.job_site.find(params[:id])
-    @job_site.destroy
+    customer = Customer.find(params[:customer_id])
+    @job_site = customer.job_sites.find(params[:id])
+    @job_site.is_active=0
+    @job_site.update_attributes(job_site_params)
 
     respond_to do |format|
-      format.html { redirect_to(customer_job_site_url) }
+      format.html { redirect_to([customer],  :notice => 'Job site has been deleted successfully.') }
       format.xml  { head :ok }
     end
   end
