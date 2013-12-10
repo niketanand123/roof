@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SalesPersonTest < ActiveSupport::TestCase
+class EstimateTypeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

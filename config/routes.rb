@@ -1,4 +1,8 @@
 Roof::Application.routes.draw do
+  resources :estimate_types
+
+  resources :employees
+
   resources :product_colors
 
   resources :product_types
@@ -10,8 +14,6 @@ Roof::Application.routes.draw do
   resources :job_statuses
 
   resources :job_sites
-
-  resources :sales_people
 
   resources :lead_sources
 

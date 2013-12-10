@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131210072417) do
+ActiveRecord::Schema.define(version: 20131210080002) do
 
   create_table "company", force: true do |t|
     t.string   "name",       limit: 50
@@ -62,6 +62,27 @@ ActiveRecord::Schema.define(version: 20131210072417) do
   end
 
   add_index "customer_type", ["type"], name: "type_UNIQUE", unique: true, using: :btree
+
+  create_table "employees", force: true do |t|
+    t.string   "first_name", limit: 50
+    t.string   "last_name",  limit: 50
+    t.string   "address",    limit: 100
+    t.string   "city",       limit: 50
+    t.string   "state",      limit: 25
+    t.string   "zip",        limit: 10
+    t.string   "phone",      limit: 15
+    t.boolean  "is_active"
+    t.boolean  "is_admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "estimate_types", force: true do |t|
+    t.string   "estimate_type"
+    t.string   "default_overhead"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "job_site", force: true do |t|
     t.integer  "customer_id",                                                             null: false
@@ -116,7 +137,7 @@ ActiveRecord::Schema.define(version: 20131210072417) do
   add_index "lead_source", ["source"], name: "source_UNIQUE", unique: true, using: :btree
 
   create_table "product_colors", force: true do |t|
-    t.string   "product_color"
+    t.string   "product_color", limit: 50
     t.datetime "created_at"
     t.datetime "updated_at"
   end

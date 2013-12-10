@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Estimate type:</strong>
+  <%= @estimate_type.estimate_type %>
+</p>
+
+<p>
+  <strong>Default overhead:</strong>
+  <%= @estimate_type.default_overhead %>
+</p>
+
+<%= link_to 'Edit', edit_estimate_type_path(@estimate_type) %> |
+<%= link_to 'Back', estimate_types_path %>

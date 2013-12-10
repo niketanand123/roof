@@ -28,18 +28,18 @@ Tabulous.setup do
 
     client_admin_tab do
       text          { 'Client Admin' }
-      link_path     { sales_people_path }
+      link_path     { employees_path }
       visible_when  { true }
       enabled_when  { true }
       active_when   { a_subtab_is_active }
     end
 
-    sales_people_subtab do
-      text          { 'Sales People' }
-      link_path     { sales_people_path }
+    employee_subtab do
+      text          { 'Employee' }
+      link_path     { employees_path }
       visible_when  { true }
       enabled_when  { true }
-      active_when   { in_action('any').of_controller('sales_people') }
+      active_when   { in_action('any').of_controller('employees') }
     end
 
     lead_sources_subtab do
@@ -114,6 +114,13 @@ Tabulous.setup do
       active_when   { in_action('any').of_controller('product_colors') }
     end
 
+    job_estimate_type_subtab do
+      text          { 'Estimate Type' }
+      link_path     { estimate_types_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('estimate_types') }
+    end
   end
 
   customize do

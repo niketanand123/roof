@@ -1,0 +1,2 @@
+module EstimateTypesHelper
+end

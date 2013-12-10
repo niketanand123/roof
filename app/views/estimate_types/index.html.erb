@@ -1,0 +1,29 @@
+<h1>Listing estimate_types</h1>
+
+<table style="width: 500px">
+  <thead>
+    <tr>
+      <th align="left">Estimate type</th>
+      <th align="left">Default overhead</th>
+      <th align="left"></th>
+      <th align="left"></th>
+      <th align="left"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estimate_types.each do |estimate_type| %>
+      <tr>
+        <td><%= estimate_type.estimate_type %></td>
+        <td><%= estimate_type.default_overhead %></td>
+        <td><%= link_to 'Show', estimate_type %></td>
+        <td><%= link_to 'Edit', edit_estimate_type_path(estimate_type) %></td>
+        <td><%= link_to 'Destroy', estimate_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Estimate type', new_estimate_type_path %>

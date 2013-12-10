@@ -1,0 +1,25 @@
+<%= form_for(@estimate_type) do |f| %>
+  <% if @estimate_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estimate_type.errors.count, "error") %> prohibited this estimate_type from being saved:</h2>
+
+      <ul>
+      <% @estimate_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :estimate_type %><br>
+    <%= f.text_field :estimate_type %>
+  </div>
+  <div class="field">
+    <%= f.label :default_overhead %><br>
+    <%= f.text_field :default_overhead %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
