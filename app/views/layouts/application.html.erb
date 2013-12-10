@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Roof</title>
+  <title>King Roof Inc.</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div style="width:auto;">
+  <div style="width:150px; clear: both;float:left;">
+<%=image_tag("banner.png", :height=>"60", :width => "150")%>
+  </div>
+  <div style="width:auto;">
+<%= tabs %>
+<%= subtabs %>
+  </div>
+</div>
 <%= yield %>
 
 </body>
