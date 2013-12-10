@@ -1,0 +1,61 @@
+<h1>Listing job_details</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job start date</th>
+      <th>Job status</th>
+      <th>How many stories</th>
+      <th>Existing roof type</th>
+      <th>New roof type</th>
+      <th>Product type</th>
+      <th>Product color</th>
+      <th>Sales rep</th>
+      <th>Estimate type</th>
+      <th>Contract price</th>
+      <th>Deposit due</th>
+      <th>Deposit method</th>
+      <th>Date completed</th>
+      <th>Job notes</th>
+      <th>Lead sheet note</th>
+      <th>Info taken by</th>
+      <th>Assign to</th>
+      <th>Date taken</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @job_details.each do |job_detail| %>
+      <tr>
+        <td><%= job_detail.job_start_date %></td>
+        <td><%= job_detail.job_status_id %></td>
+        <td><%= job_detail.how_many_stories %></td>
+        <td><%= job_detail.existing_roof_type_id %></td>
+        <td><%= job_detail.new_roof_type %></td>
+        <td><%= job_detail.product_type_id %></td>
+        <td><%= job_detail.product_color_id %></td>
+        <td><%= job_detail.sales_rep_id %></td>
+        <td><%= job_detail.estimate_type_id %></td>
+        <td><%= job_detail.contract_price %></td>
+        <td><%= job_detail.deposit_due %></td>
+        <td><%= job_detail.deposit_method %></td>
+        <td><%= job_detail.date_completed %></td>
+        <td><%= job_detail.job_notes %></td>
+        <td><%= job_detail.lead_sheet_note %></td>
+        <td><%= job_detail.info_taken_by_id %></td>
+        <td><%= job_detail.assign_to %></td>
+        <td><%= job_detail.date_taken %></td>
+        <td><%= link_to 'Show', job_detail %></td>
+        <td><%= link_to 'Edit', edit_job_detail_path(job_detail) %></td>
+        <td><%= link_to 'Destroy', job_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Job detail', new_job_detail_path %>

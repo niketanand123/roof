@@ -1,0 +1,94 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job start date:</strong>
+  <%= @job_detail.job_start_date %>
+</p>
+
+<p>
+  <strong>Job status:</strong>
+  <%= @job_detail.job_status_id %>
+</p>
+
+<p>
+  <strong>How many stories:</strong>
+  <%= @job_detail.how_many_stories %>
+</p>
+
+<p>
+  <strong>Existing roof type:</strong>
+  <%= @job_detail.existing_roof_type_id %>
+</p>
+
+<p>
+  <strong>New roof type:</strong>
+  <%= @job_detail.new_roof_type %>
+</p>
+
+<p>
+  <strong>Product type:</strong>
+  <%= @job_detail.product_type_id %>
+</p>
+
+<p>
+  <strong>Product color:</strong>
+  <%= @job_detail.product_color_id %>
+</p>
+
+<p>
+  <strong>Sales rep:</strong>
+  <%= @job_detail.sales_rep_id %>
+</p>
+
+<p>
+  <strong>Estimate type:</strong>
+  <%= @job_detail.estimate_type_id %>
+</p>
+
+<p>
+  <strong>Contract price:</strong>
+  <%= @job_detail.contract_price %>
+</p>
+
+<p>
+  <strong>Deposit due:</strong>
+  <%= @job_detail.deposit_due %>
+</p>
+
+<p>
+  <strong>Deposit method:</strong>
+  <%= @job_detail.deposit_method %>
+</p>
+
+<p>
+  <strong>Date completed:</strong>
+  <%= @job_detail.date_completed %>
+</p>
+
+<p>
+  <strong>Job notes:</strong>
+  <%= @job_detail.job_notes %>
+</p>
+
+<p>
+  <strong>Lead sheet note:</strong>
+  <%= @job_detail.lead_sheet_note %>
+</p>
+
+<p>
+  <strong>Info taken by:</strong>
+  <%= @job_detail.info_taken_by_id %>
+</p>
+
+<p>
+  <strong>Assign to:</strong>
+  <%= @job_detail.assign_to %>
+</p>
+
+<p>
+  <strong>Date taken:</strong>
+  <%= @job_detail.date_taken %>
+</p>
+
+<%= link_to 'Edit', edit_job_detail_path(@job_detail) %> |
+<%= link_to 'Back', job_details_path %>

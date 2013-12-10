@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job_start_date: 2013-12-10
+  job_status_id: 1
+  how_many_stories: MyString
+  existing_roof_type_id: 1
+  new_roof_type: 1
+  product_type_id: 1
+  product_color_id: 1
+  sales_rep_id: 1
+  estimate_type_id: 1
+  contract_price: MyString
+  deposit_due: MyString
+  deposit_method: MyString
+  date_completed: 2013-12-10
+  job_notes: MyString
+  lead_sheet_note: MyString
+  info_taken_by_id: 1
+  assign_to: 1
+  date_taken: 2013-12-10
+
+two:
+  job_start_date: 2013-12-10
+  job_status_id: 1
+  how_many_stories: MyString
+  existing_roof_type_id: 1
+  new_roof_type: 1
+  product_type_id: 1
+  product_color_id: 1
+  sales_rep_id: 1
+  estimate_type_id: 1
+  contract_price: MyString
+  deposit_due: MyString
+  deposit_method: MyString
+  date_completed: 2013-12-10
+  job_notes: MyString
+  lead_sheet_note: MyString
+  info_taken_by_id: 1
+  assign_to: 1
+  date_taken: 2013-12-10

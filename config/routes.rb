@@ -1,4 +1,6 @@
 Roof::Application.routes.draw do
+  resources :job_details
+
   resources :estimate_types
 
   resources :employees
