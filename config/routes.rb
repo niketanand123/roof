@@ -1,4 +1,14 @@
 Roof::Application.routes.draw do
+  resources :product_colors
+
+  resources :product_types
+
+  resources :roof_types
+
+  resources :service_types
+
+  resources :job_statuses
+
   resources :job_sites
 
   resources :sales_people

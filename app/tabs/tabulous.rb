@@ -26,8 +26,8 @@ Tabulous.setup do
       active_when   { in_action('any').of_controller('job_sites') }
     end
 
-    administration_tab do
-      text          { 'Administration' }
+    client_admin_tab do
+      text          { 'Client Admin' }
       link_path     { sales_people_path }
       visible_when  { true }
       enabled_when  { true }
@@ -66,6 +66,53 @@ Tabulous.setup do
       active_when   { in_action('any').of_controller('companies') }
     end
 
+    job_admin_tab do
+      text          { 'Job Admin' }
+      link_path     { job_statuses_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { a_subtab_is_active }
+    end
+
+    job_status_subtab do
+      text          { 'Job Statuses' }
+      link_path     { job_statuses_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('job_statuses') }
+    end
+
+    job_service_type_subtab do
+      text          { 'Service Types' }
+      link_path     { service_types_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('service_types') }
+    end
+
+    job_roof_type_subtab do
+      text          { 'Roof Types' }
+      link_path     { roof_types_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('roof_types') }
+    end
+
+    job_product_type_subtab do
+      text          { 'Product Types' }
+      link_path     { product_types_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('product_types') }
+    end
+
+    job_product_color_subtab do
+      text          { 'Product Colors' }
+      link_path     { product_colors_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('product_colors') }
+    end
 
   end
 

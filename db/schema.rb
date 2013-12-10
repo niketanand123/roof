@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206070541) do
+ActiveRecord::Schema.define(version: 20131210072417) do
 
   create_table "company", force: true do |t|
     t.string   "name",       limit: 50
@@ -22,14 +22,13 @@ ActiveRecord::Schema.define(version: 20131206070541) do
   add_index "company", ["name"], name: "name_UNIQUE", unique: true, using: :btree
 
   create_table "customer", force: true do |t|
-    t.string   "first_name",      limit: 50,  null: false
-    t.string   "last_name",       limit: 50,  null: false
-    t.string   "email",           limit: 100, null: false
+    t.string   "first_name",      limit: 50,                                       null: false
+    t.string   "last_name",       limit: 50,                                       null: false
+    t.string   "email",           limit: 100,                                      null: false
     t.integer  "type"
     t.integer  "lead_source_id"
-    t.string   "notes",           limit: 200
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                                                       null: false
+    t.datetime "updated_at",                                                       null: false
     t.string   "street1",         limit: 100
     t.string   "street2",         limit: 100
     t.string   "city",            limit: 45
@@ -41,9 +40,14 @@ ActiveRecord::Schema.define(version: 20131206070541) do
     t.string   "work_phone_ext",  limit: 10
     t.string   "fax",             limit: 15
     t.string   "pager",           limit: 15
-    t.string   "misc",            limit: 200
+    t.string   "misc",            limit: 500
     t.integer  "company_id"
     t.integer  "sales_person_id"
+    t.string   "company_name",    limit: 100
+    t.string   "title",           limit: 45
+    t.decimal  "latitude",                    precision: 10, scale: 8
+    t.decimal  "longitude",                   precision: 11, scale: 8
+    t.integer  "is_active",       limit: 1,                            default: 1
   end
 
   add_index "customer", ["company_id"], name: "fk_cust_company_idx", using: :btree
@@ -60,40 +64,45 @@ ActiveRecord::Schema.define(version: 20131206070541) do
   add_index "customer_type", ["type"], name: "type_UNIQUE", unique: true, using: :btree
 
   create_table "job_site", force: true do |t|
-    t.string   "company_name",   limit: 100
-    t.string   "contact_name",   limit: 100, null: false
-    t.string   "phone",          limit: 15
-    t.string   "work_phone",     limit: 15
-    t.string   "work_phone_ext", limit: 10
-    t.string   "mobile_phone",   limit: 15
-    t.string   "fax",            limit: 15
-    t.string   "pager",          limit: 15
-    t.string   "street1",        limit: 100
-    t.string   "street2",        limit: 100
-    t.string   "city",           limit: 15
-    t.string   "state",          limit: 15
-    t.string   "zip",            limit: 10
-    t.string   "direction",      limit: 200
-    t.integer  "question_id"
-    t.datetime "updated_at"
+    t.integer  "customer_id",                                                             null: false
+    t.string   "company_name",           limit: 100
+    t.string   "contact_name",           limit: 100,                                      null: false
+    t.string   "phone",                  limit: 15
+    t.string   "work_phone",             limit: 15
+    t.string   "work_phone_ext",         limit: 10
+    t.string   "mobile_phone",           limit: 15
+    t.string   "fax",                    limit: 15
+    t.string   "pager",                  limit: 15
+    t.string   "street1",                limit: 100
+    t.string   "street2",                limit: 100
+    t.string   "city",                   limit: 15
+    t.string   "state",                  limit: 15
+    t.string   "zip",                    limit: 10
+    t.string   "direction",              limit: 200
+    t.string   "easily_accessible",      limit: 45
+    t.string   "cust_vacating_when",     limit: 45
+    t.string   "parking_consideration",  limit: 45
+    t.string   "dumpster_loc_note",      limit: 45
+    t.string   "side_garage_use",        limit: 45
+    t.string   "driveway_dirt_asphalt",  limit: 45
+    t.string   "electrical_location",    limit: 45
+    t.string   "water_sanitation_avail", limit: 45
+    t.string   "animals_restrain",       limit: 45
+    t.string   "gutter_color_noted",     limit: 45
+    t.string   "landscape_concerns",     limit: 45
+    t.string   "work_number_shift",      limit: 45
+    t.string   "additional_notes",       limit: 200
+    t.integer  "is_active",              limit: 1,                            default: 1
+    t.decimal  "latitude",                           precision: 10, scale: 8
+    t.decimal  "longitude",                          precision: 11, scale: 8
     t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "job_site", ["question_id"], name: "fk_job_site_question_idx", using: :btree
+  add_index "job_site", ["customer_id"], name: "fk_job_customer_idx", using: :btree
 
-  create_table "job_site_question", force: true do |t|
-    t.string   "easily_accessible",     limit: 45
-    t.string   "cust_vacating_when",    limit: 45
-    t.string   "parking_consideration", limit: 45
-    t.string   "dumpster_loc_note",     limit: 45
-    t.string   "side_garage_use",       limit: 45
-    t.string   "driveway_dirt_asphalt", limit: 45
-    t.string   "electrical_location",   limit: 45
-    t.string   "animals_restrain",      limit: 45
-    t.string   "gutter_color_noted",    limit: 45
-    t.string   "landscape_concerns",    limit: 45
-    t.string   "work_number_shift",     limit: 45
-    t.string   "additional_notes",      limit: 200
+  create_table "job_statuses", force: true do |t|
+    t.string   "job_status", limit: 100
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -106,9 +115,20 @@ ActiveRecord::Schema.define(version: 20131206070541) do
 
   add_index "lead_source", ["source"], name: "source_UNIQUE", unique: true, using: :btree
 
-  create_table "sales_people", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
+  create_table "product_colors", force: true do |t|
+    t.string   "product_color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "product_types", force: true do |t|
+    t.string   "product_type", limit: 100
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roof_types", force: true do |t|
+    t.string   "roof_type",  limit: 50
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -116,6 +136,12 @@ ActiveRecord::Schema.define(version: 20131206070541) do
   create_table "sales_person", force: true do |t|
     t.string   "first_name", limit: 45
     t.string   "last_name",  limit: 45
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "service_types", force: true do |t|
+    t.string   "service_type", limit: 100
     t.datetime "created_at"
     t.datetime "updated_at"
   end

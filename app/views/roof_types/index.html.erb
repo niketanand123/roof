@@ -1,0 +1,27 @@
+<h1>Listing roof_types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Roof type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @roof_types.each do |roof_type| %>
+      <tr>
+        <td><%= roof_type.roof_type %></td>
+        <td><%= link_to 'Show', roof_type %></td>
+        <td><%= link_to 'Edit', edit_roof_type_path(roof_type) %></td>
+        <td><%= link_to 'Destroy', roof_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Roof type', new_roof_type_path %>
