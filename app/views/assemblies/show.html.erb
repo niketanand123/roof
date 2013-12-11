@@ -1,0 +1,89 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Master item:</strong>
+  <%= @assembly.master_item %>
+</p>
+
+<p>
+  <strong>Build date:</strong>
+  <%= @assembly.build_date %>
+</p>
+
+<p>
+  <strong>Item description:</strong>
+  <%= @assembly.item_description %>
+</p>
+
+<p>
+  <strong>Warranty description:</strong>
+  <%= @assembly.warranty_description %>
+</p>
+
+<p>
+  <strong>Wo description:</strong>
+  <%= @assembly.wo_description %>
+</p>
+
+<p>
+  <strong>Po description:</strong>
+  <%= @assembly.po_description %>
+</p>
+
+<p>
+  <strong>Is po:</strong>
+  <%= @assembly.is_po %>
+</p>
+
+<p>
+  <strong>Is wo:</strong>
+  <%= @assembly.is_wo %>
+</p>
+
+<p>
+  <strong>Unit of measurement:</strong>
+  <%= @assembly.unit_of_measurement %>
+</p>
+
+<p>
+  <strong>Total material:</strong>
+  <%= @assembly.total_material %>
+</p>
+
+<p>
+  <strong>Tax rate percentage:</strong>
+  <%= @assembly.tax_rate_percentage %>
+</p>
+
+<p>
+  <strong>Total tax:</strong>
+  <%= @assembly.total_tax %>
+</p>
+
+<p>
+  <strong>Total labor:</strong>
+  <%= @assembly.total_labor %>
+</p>
+
+<p>
+  <strong>Total cost:</strong>
+  <%= @assembly.total_cost %>
+</p>
+
+<p>
+  <strong>Markup operator percentage:</strong>
+  <%= @assembly.markup_operator_percentage %>
+</p>
+
+<p>
+  <strong>Markup total amt:</strong>
+  <%= @assembly.markup_total_amt %>
+</p>
+
+<p>
+  <strong>Total price:</strong>
+  <%= @assembly.total_price %>
+</p>
+
+<%= link_to 'Edit', edit_assembly_path(@assembly) %> |
+<%= link_to 'Back', assemblies_path %>

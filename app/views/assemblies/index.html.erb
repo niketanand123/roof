@@ -1,0 +1,59 @@
+<h1>Listing assemblies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Master item</th>
+      <th>Build date</th>
+      <th>Item description</th>
+      <th>Warranty description</th>
+      <th>Wo description</th>
+      <th>Po description</th>
+      <th>Is po</th>
+      <th>Is wo</th>
+      <th>Unit of measurement</th>
+      <th>Total material</th>
+      <th>Tax rate percentage</th>
+      <th>Total tax</th>
+      <th>Total labor</th>
+      <th>Total cost</th>
+      <th>Markup operator percentage</th>
+      <th>Markup total amt</th>
+      <th>Total price</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assemblies.each do |assembly| %>
+      <tr>
+        <td><%= assembly.master_item %></td>
+        <td><%= assembly.build_date %></td>
+        <td><%= assembly.item_description %></td>
+        <td><%= assembly.warranty_description %></td>
+        <td><%= assembly.wo_description %></td>
+        <td><%= assembly.po_description %></td>
+        <td><%= assembly.is_po %></td>
+        <td><%= assembly.is_wo %></td>
+        <td><%= assembly.unit_of_measurement %></td>
+        <td><%= assembly.total_material %></td>
+        <td><%= assembly.tax_rate_percentage %></td>
+        <td><%= assembly.total_tax %></td>
+        <td><%= assembly.total_labor %></td>
+        <td><%= assembly.total_cost %></td>
+        <td><%= assembly.markup_operator_percentage %></td>
+        <td><%= assembly.markup_total_amt %></td>
+        <td><%= assembly.total_price %></td>
+        <td><%= link_to 'Show', assembly %></td>
+        <td><%= link_to 'Edit', edit_assembly_path(assembly) %></td>
+        <td><%= link_to 'Destroy', assembly, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Assembly', new_assembly_path %>

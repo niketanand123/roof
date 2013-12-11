@@ -1,0 +1,41 @@
+<h1>Listing job_estimates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job detail</th>
+      <th>Step</th>
+      <th>Master item</th>
+      <th>Qty</th>
+      <th>Proposal desc</th>
+      <th>Warranty desc</th>
+      <th>Retail price</th>
+      <th>Item extended</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @job_estimates.each do |job_estimate| %>
+      <tr>
+        <td><%= job_estimate.job_detail_id %></td>
+        <td><%= job_estimate.step %></td>
+        <td><%= job_estimate.master_item_id %></td>
+        <td><%= job_estimate.qty %></td>
+        <td><%= job_estimate.proposal_desc %></td>
+        <td><%= job_estimate.warranty_desc %></td>
+        <td><%= job_estimate.retail_price %></td>
+        <td><%= job_estimate.item_extended %></td>
+        <td><%= link_to 'Show', job_estimate %></td>
+        <td><%= link_to 'Edit', edit_job_estimate_path(job_estimate) %></td>
+        <td><%= link_to 'Destroy', job_estimate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Job estimate', new_job_estimate_path %>

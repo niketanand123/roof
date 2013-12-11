@@ -114,6 +114,14 @@ Tabulous.setup do
       active_when   { in_action('any').of_controller('product_colors') }
     end
 
+    job_item_code_subtab do
+      text          { 'Item Codes' }
+      link_path     { item_codes_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('item_codes') }
+    end
+
     job_estimate_type_subtab do
       text          { 'Estimate Type' }
       link_path     { estimate_types_path }

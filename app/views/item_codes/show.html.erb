@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item code:</strong>
+  <%= @item_code.item_code %>
+</p>
+
+<p>
+  <strong>Item name:</strong>
+  <%= @item_code.item_name %>
+</p>
+
+<p>
+  <strong>Uom:</strong>
+  <%= @item_code.uom %>
+</p>
+
+<p>
+  <strong>Item cost:</strong>
+  <%= @item_code.item_cost %>
+</p>
+
+<p>
+  <strong>Material cost:</strong>
+  <%= @item_code.material_cost %>
+</p>
+
+<p>
+  <strong>Material w tax:</strong>
+  <%= @item_code.material_w_tax %>
+</p>
+
+<p>
+  <strong>Labor rate:</strong>
+  <%= @item_code.labor_rate %>
+</p>
+
+<p>
+  <strong>Retail price:</strong>
+  <%= @item_code.retail_price %>
+</p>
+
+<%= link_to 'Edit', edit_item_code_path(@item_code) %> |
+<%= link_to 'Back', item_codes_path %>

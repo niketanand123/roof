@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  master_item: MyString
+  build_date: 2013-12-10
+  item_description: MyString
+  warranty_description: MyString
+  wo_description: MyString
+  po_description: MyString
+  is_po: false
+  is_wo: false
+  unit_of_measurement: MyString
+  total_material: 9.99
+  tax_rate_percentage: 9.99
+  total_tax: 9.99
+  total_labor: 9.99
+  total_cost: 9.99
+  markup_operator_percentage: 9.99
+  markup_total_amt: 9.99
+  total_price: 9.99
+
+two:
+  master_item: MyString
+  build_date: 2013-12-10
+  item_description: MyString
+  warranty_description: MyString
+  wo_description: MyString
+  po_description: MyString
+  is_po: false
+  is_wo: false
+  unit_of_measurement: MyString
+  total_material: 9.99
+  tax_rate_percentage: 9.99
+  total_tax: 9.99
+  total_labor: 9.99
+  total_cost: 9.99
+  markup_operator_percentage: 9.99
+  markup_total_amt: 9.99
+  total_price: 9.99

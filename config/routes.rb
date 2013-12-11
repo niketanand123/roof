@@ -1,4 +1,10 @@
 Roof::Application.routes.draw do
+  resources :job_estimates
+
+  resources :item_codes
+
+  resources :assemblies
+
   resources :job_details
 
   resources :estimate_types

@@ -1,0 +1,85 @@
+<%= form_for(@assembly) do |f| %>
+  <% if @assembly.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assembly.errors.count, "error") %> prohibited this assembly from being saved:</h2>
+
+      <ul>
+      <% @assembly.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :master_item %><br>
+    <%= f.text_field :master_item %>
+  </div>
+  <div class="field">
+    <%= f.label :build_date %><br>
+    <%= f.date_select :build_date %>
+  </div>
+  <div class="field">
+    <%= f.label :item_description %><br>
+    <%= f.text_field :item_description %>
+  </div>
+  <div class="field">
+    <%= f.label :warranty_description %><br>
+    <%= f.text_field :warranty_description %>
+  </div>
+  <div class="field">
+    <%= f.label :wo_description %><br>
+    <%= f.text_field :wo_description %>
+  </div>
+  <div class="field">
+    <%= f.label :po_description %><br>
+    <%= f.text_field :po_description %>
+  </div>
+  <div class="field">
+    <%= f.label :is_po %><br>
+    <%= f.check_box :is_po %>
+  </div>
+  <div class="field">
+    <%= f.label :is_wo %><br>
+    <%= f.check_box :is_wo %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_of_measurement %><br>
+    <%= f.text_field :unit_of_measurement %>
+  </div>
+  <div class="field">
+    <%= f.label :total_material %><br>
+    <%= f.text_field :total_material %>
+  </div>
+  <div class="field">
+    <%= f.label :tax_rate_percentage %><br>
+    <%= f.text_field :tax_rate_percentage %>
+  </div>
+  <div class="field">
+    <%= f.label :total_tax %><br>
+    <%= f.text_field :total_tax %>
+  </div>
+  <div class="field">
+    <%= f.label :total_labor %><br>
+    <%= f.text_field :total_labor %>
+  </div>
+  <div class="field">
+    <%= f.label :total_cost %><br>
+    <%= f.text_field :total_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :markup_operator_percentage %><br>
+    <%= f.text_field :markup_operator_percentage %>
+  </div>
+  <div class="field">
+    <%= f.label :markup_total_amt %><br>
+    <%= f.text_field :markup_total_amt %>
+  </div>
+  <div class="field">
+    <%= f.label :total_price %><br>
+    <%= f.text_field :total_price %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

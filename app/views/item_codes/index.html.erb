@@ -1,0 +1,41 @@
+<h1>Listing item_codes</h1>
+
+<table style="width: 900px">
+  <thead>
+    <tr>
+      <th align="left">Item code</th>
+      <th align="left">Item name</th>
+      <th align="left">Uom</th>
+      <th align="left">Item cost</th>
+      <th align="left">Material cost</th>
+      <th align="left">Material w tax</th>
+      <th align="left">Labor rate</th>
+      <th align="left">Retail price</th>
+      <th align="left"></th>
+      <th align="left"></th>
+      <th align="left"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @item_codes.each do |item_code| %>
+      <tr>
+        <td><%= item_code.item_code %></td>
+        <td><%= item_code.item_name %></td>
+        <td><%= item_code.uom %></td>
+        <td><%= item_code.item_cost %></td>
+        <td><%= item_code.material_cost %></td>
+        <td><%= item_code.material_w_tax %></td>
+        <td><%= item_code.labor_rate %></td>
+        <td><%= item_code.retail_price %></td>
+        <td><%= link_to 'Show', item_code %></td>
+        <td><%= link_to 'Edit', edit_item_code_path(item_code) %></td>
+        <td><%= link_to 'Destroy', item_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item code', new_item_code_path %>

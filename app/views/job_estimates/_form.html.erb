@@ -1,0 +1,49 @@
+<%= form_for(@job_estimate) do |f| %>
+  <% if @job_estimate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job_estimate.errors.count, "error") %> prohibited this job_estimate from being saved:</h2>
+
+      <ul>
+      <% @job_estimate.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :job_detail_id %><br>
+    <%= f.number_field :job_detail_id %>
+  </div>
+  <div class="field">
+    <%= f.label :step %><br>
+    <%= f.number_field :step %>
+  </div>
+  <div class="field">
+    <%= f.label :master_item_id %><br>
+    <%= f.number_field :master_item_id %>
+  </div>
+  <div class="field">
+    <%= f.label :qty %><br>
+    <%= f.number_field :qty %>
+  </div>
+  <div class="field">
+    <%= f.label :proposal_desc %><br>
+    <%= f.text_field :proposal_desc %>
+  </div>
+  <div class="field">
+    <%= f.label :warranty_desc %><br>
+    <%= f.text_field :warranty_desc %>
+  </div>
+  <div class="field">
+    <%= f.label :retail_price %><br>
+    <%= f.text_field :retail_price %>
+  </div>
+  <div class="field">
+    <%= f.label :item_extended %><br>
+    <%= f.text_field :item_extended %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,49 @@
+<%= form_for(@item_code) do |f| %>
+  <% if @item_code.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item_code.errors.count, "error") %> prohibited this item_code from being saved:</h2>
+
+      <ul>
+      <% @item_code.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :item_code %><br>
+    <%= f.text_field :item_code %>
+  </div>
+  <div class="field">
+    <%= f.label :item_name %><br>
+    <%= f.text_field :item_name %>
+  </div>
+  <div class="field">
+    <%= f.label :uom %><br>
+    <%= f.text_field :uom %>
+  </div>
+  <div class="field">
+    <%= f.label :item_cost %><br>
+    <%= f.text_field :item_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :material_cost %><br>
+    <%= f.text_field :material_cost %>
+  </div>
+  <div class="field">
+    <%= f.label :material_w_tax %><br>
+    <%= f.text_field :material_w_tax %>
+  </div>
+  <div class="field">
+    <%= f.label :labor_rate %><br>
+    <%= f.text_field :labor_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :retail_price %><br>
+    <%= f.text_field :retail_price %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
