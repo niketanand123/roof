@@ -33,7 +33,7 @@
     </div>
   <% end %>
     <div style="width:auto;">
-        <div BGCOLOR="#336699" HEIGHT="13" style="width: 750px;clear: both;float:left;" >
+        <div BGCOLOR="#336699" HEIGHT="13" style="width: 60%;clear: both;float:left;" >
           <span style="background-color:#336699; ">
             <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
             <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Job Site Information</span>
@@ -52,50 +52,50 @@
       <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
     </div>
     <div style="width:100%;">
-      <div style="width: 50%;height: 300px;clear: both;float:left;" >
+      <div style="width: 60%;height: 250px;clear: both;float:left;" >
         <table style="border-right:thick double #336699;">
           <tr>
-            <td width="10%">Company</td><td width="22%"><%= f.text_field :company_name%></td>
+            <td width="15%">Company</td><td width="35%"><%= f.text_field :company_name%></td>
             <td width="1%"></td>
-            <td width="5%"></td><td width="35%"></td>
+            <td width="15%"></td><td width="20%"></td>
           </tr>
           <tr>
-            <td width="10%">Contact*</td><td width="22%"><%= f.text_field :contact_name%></td>
-            <td width="1%"></td>
-            <td width="5%"></td><td width="35%"><b>Job Site Address</b></td>
+            <td>Contact*</td><td><%= f.text_field :contact_name%></td>
+            <td></td>
+            <td colspan="2"><b>Job Site Address</b></td>
           </tr>
           <tr>
-            <td width="10%">JobSite Phone</td><td width="22%"><%= f.text_field :phone%></td>
-            <td width="1%"></td>
-            <td width="5%"></td>
-            <td width="35%"><input type="checkbox" id="autoFillAddress" name="autoFillAddress"
+            <td>JobSite Phone</td><td><%= f.text_field :phone%></td>
+            <td></td>
+            <td colspan="2"><input type="checkbox" id="autoFillAddress" name="autoFillAddress"
                                    onclick="sameAsBillingAddress(this.form, '<%= @job_site.customer.street1 %>'
                                            , '<%= @job_site.customer.street2 %>', '<%= @job_site.customer.city %>'
                                            , '<%= @job_site.customer.state %>', '<%= @job_site.customer.zip %>')">Same as Billing Address</td>
           </tr>
           <tr>
-            <td width="10%">Wk Phone</td><td width="27%"><%= f.text_field :work_phone%> Ext<%= f.text_field :work_phone_ext, :size=>"5"%></td>
-            <td width="1%"></td>
-            <td width="7%">Street 1</td><td width="40%"><%= f.text_field :street1%></td>
+            <td>Wk Phone</td><td><%= f.text_field :work_phone%> Ext<%= f.text_field :work_phone_ext, :size=>"5"%></td>
+            <td></td>
+            <td>Street 1</td><td><%= f.text_field :street1%></td>
           </tr>
           <tr>
-            <td width="10%">Mobile</td><td width="22%"><%= f.text_field :mobile_phone%></td>
-            <td width="1%"></td>
-            <td width="5%">Street 2</td><td width="35%"><%= f.text_field :street2%></td>
+            <td>Mobile</td><td><%= f.text_field :mobile_phone%></td>
+            <td></td>
+            <td>Street 2</td><td><%= f.text_field :street2%></td>
           </tr>
           <tr>
-            <td width="10%">Fax</td><td width="22%"><%= f.text_field :fax%></td>
-            <td width="1%"></td>
-            <td width="5%">City</td><td width="35%"><%= f.text_field :city%> State<%= f.text_field :state, :size=>"2"%> Zip<%= f.text_field :zip, :size=>"10"%></td>
+            <td>Fax</td><td><%= f.text_field :fax%></td>
+            <td></td>
+            <td>City</td><td><%= f.text_field :city%></td>
           </tr>
           <tr>
-            <td width="10%">Pager</td><td width="22%"><%= f.text_field :pager%></td>
-            <td colspan="3"></td>
+            <td>Pager</td><td><%= f.text_field :pager%></td>
+            <td></td>
+            <td>State</td><td><%= f.text_field :state, :size=>"2"%> Zip<%= f.text_field :zip, :size=>"10"%></td>
           </tr>
         </table>
       </div>
-      <div  >
-        <table style="width: 50%;height: 300px">
+      <div style="width:auto;height: 250px" >
+        <table>
             <tr>
             <td width="10%">First Name:</td><td width="15%"><%= @job_site.customer.first_name%></td>
             <td width="1%"></td>
