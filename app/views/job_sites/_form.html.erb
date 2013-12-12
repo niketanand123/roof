@@ -32,57 +32,104 @@
       </ul>
     </div>
   <% end %>
+    <div style="width:auto;">
+        <div BGCOLOR="#336699" HEIGHT="13" style="width: 750px;clear: both;float:left;" >
+          <span style="background-color:#336699; ">
+            <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+            <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Job Site Information</span>
+            <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+          </span>
+        </div>
+        <div BGCOLOR="#336699" HEIGHT="13" style="width:auto;" >
+          <span style="background-color:#336699; ">
+            <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+            <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Customer Information</span>
+            <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+          </span>
+        </div>
+    </div>
+    <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
+      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
+    </div>
+    <div style="width:100%;">
+      <div style="width: 50%;height: 300px;clear: both;float:left;" >
+        <table style="border-right:thick double #336699;">
+          <tr>
+            <td width="10%">Company</td><td width="22%"><%= f.text_field :company_name%></td>
+            <td width="1%"></td>
+            <td width="5%"></td><td width="35%"></td>
+          </tr>
+          <tr>
+            <td width="10%">Contact*</td><td width="22%"><%= f.text_field :contact_name%></td>
+            <td width="1%"></td>
+            <td width="5%"></td><td width="35%"><b>Job Site Address</b></td>
+          </tr>
+          <tr>
+            <td width="10%">JobSite Phone</td><td width="22%"><%= f.text_field :phone%></td>
+            <td width="1%"></td>
+            <td width="5%"></td>
+            <td width="35%"><input type="checkbox" id="autoFillAddress" name="autoFillAddress"
+                                   onclick="sameAsBillingAddress(this.form, '<%= @job_site.customer.street1 %>'
+                                           , '<%= @job_site.customer.street2 %>', '<%= @job_site.customer.city %>'
+                                           , '<%= @job_site.customer.state %>', '<%= @job_site.customer.zip %>')">Same as Billing Address</td>
+          </tr>
+          <tr>
+            <td width="10%">Wk Phone</td><td width="27%"><%= f.text_field :work_phone%> Ext<%= f.text_field :work_phone_ext, :size=>"5"%></td>
+            <td width="1%"></td>
+            <td width="7%">Street 1</td><td width="40%"><%= f.text_field :street1%></td>
+          </tr>
+          <tr>
+            <td width="10%">Mobile</td><td width="22%"><%= f.text_field :mobile_phone%></td>
+            <td width="1%"></td>
+            <td width="5%">Street 2</td><td width="35%"><%= f.text_field :street2%></td>
+          </tr>
+          <tr>
+            <td width="10%">Fax</td><td width="22%"><%= f.text_field :fax%></td>
+            <td width="1%"></td>
+            <td width="5%">City</td><td width="35%"><%= f.text_field :city%> State<%= f.text_field :state, :size=>"2"%> Zip<%= f.text_field :zip, :size=>"10"%></td>
+          </tr>
+          <tr>
+            <td width="10%">Pager</td><td width="22%"><%= f.text_field :pager%></td>
+            <td colspan="3"></td>
+          </tr>
+        </table>
+      </div>
+      <div  >
+        <table style="width: 50%;height: 300px">
+            <tr>
+            <td width="10%">First Name:</td><td width="15%"><%= @job_site.customer.first_name%></td>
+            <td width="1%"></td>
+            <td width="10%">Last Name:</td><td width="20%"><%= @job_site.customer.last_name%></td>
+            </tr>
+            <tr>
+            <td>Email:</td><td ><%= @job_site.customer.email%></td>
+            <td></td>
+            <td>Address 1:</td><td><%= @job_site.customer.street1%></td>
+            </tr>
+            <tr>
+            <td>Wk Phone:</td><td><%= @job_site.customer.work_phone%>-<%= @job_site.customer.work_phone_ext%></td>
+            <td></td>
+            <td>Address 2:</td>
+            <td><%= @job_site.customer.street2%></td>
+            </tr>
+            <tr>
+            <td>Mobile:</td><td><%= @job_site.customer.mobile_phone%></td>
+            <td></td>
+            <td>City:</td><td><%= @job_site.customer.city%></td>
+            </tr>
+            <tr>
+            <td>Fax:</td><td><%= @job_site.customer.fax%></td>
+            <td></td>
+            <td>State:</td><td><%= @job_site.customer.state%></td>
+            </tr>
+            <tr>
+            <td colspan="5">Customer Type: <% if @job_site.customer.type=!nil %><%= CustomerType.where("id" =>@job_site.customer.type).pluck("type").first%> <%end %></td>
+            </tr>
 
-    <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
-      <span style="background-color:#336699; ">
-        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
-        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Job Site Information</span>
-        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
-      </span>
-    </div>
-    <div style="background:#ffffff; line-height: 2px; width: 850px;padding-bottom: 10px;">
-      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "850")%>
-    </div>
-    <table width="70%">
-      <tr>
-        <td width="10%">Company</td><td width="22%"><%= f.text_field :company_name%></td>
-        <td width="1%"></td>
-        <td width="10%"></td><td width="35%"></td>
-      </tr>
-      <tr>
-        <td width="10%">Contact*</td><td width="22%"><%= f.text_field :contact_name%></td>
-        <td width="1%"></td>
-        <td width="10%"></td><td width="35%"><b>Job Site Address</b></td>
-      </tr>
-      <tr>
-        <td width="10%">JobSite Phone</td><td width="22%"><%= f.text_field :phone%></td>
-        <td width="1%"></td>
-        <td width="10%"></td>
-        <td width="35%"><input type="checkbox" id="autoFillAddress" name="autoFillAddress"
-                               onclick="sameAsBillingAddress(this.form, '<%= @job_site.customer.street1 %>'
-                                       , '<%= @job_site.customer.street2 %>', '<%= @job_site.customer.city %>'
-                                       , '<%= @job_site.customer.state %>', '<%= @job_site.customer.zip %>')">Same as Billing Address</td>
-      </tr>
-      <tr>
-        <td width="10%">Wk Phone</td><td width="22%"><%= f.text_field :work_phone%> Ext<%= f.text_field :work_phone_ext, :size=>"5"%></td>
-        <td width="1%"></td>
-        <td width="10%">Street 1</td><td width="35%"><%= f.text_field :street1%></td>
-      </tr>
-      <tr>
-        <td width="10%">Mobile</td><td width="22%"><%= f.text_field :mobile_phone%></td>
-        <td width="1%"></td>
-        <td width="10%">Street 2</td><td width="35%"><%= f.text_field :street2%></td>
-      </tr>
-      <tr>
-        <td width="10%">Fax</td><td width="22%"><%= f.text_field :fax%></td>
-        <td width="1%"></td>
-        <td width="10%">City</td><td width="35%"><%= f.text_field :city%> State<%= f.text_field :state, :size=>"2"%> Zip<%= f.text_field :zip, :size=>"10"%></td>
-      </tr>
-      <tr>
-        <td width="10%">Pager</td><td width="22%"><%= f.text_field :pager%></td>
-        <td colspan="3"></td>
-      </tr>
-    </table>
+        </table>
+      </div>
+   </div>
+
    <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
       <span style="background-color:#336699; ">
         <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
@@ -90,82 +137,78 @@
         <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
       </span>
     </div>
-    <div style="background:#ffffff; line-height: 2px; width: 850px;padding-bottom: 10px;">
-      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "850")%>
+    <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
+      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
     </div>
-    <table width="60%">
+    <table width="100%" >
       <tr>
-        <td width="20%">Job Start Date</td>
-        <td width="25%"><%= f.text_field :job_start_date, :id => 'jobStartDate' %></td>
+        <td width="10%">Job Start Date</td>
+        <td width="15%"><%= f.text_field :job_start_date, :id => 'jobStartDate' %></td>
         <td width="1%"></td>
-        <td width="25%">Job Status</td>
-        <td width="35%"><%= f.select(:job_status_id, options_for_select(JobStatus.all.map{|t| [t.job_status, t.id]}, @job_site.job_status_id),:include_blank => "Choose Job Status") %></td>
-      </tr>
-      <tr>
-        <td width="20%">Service Requested</td>
-        <td width="25%"><ul style="list-style-type:none;">
+        <td width="10%">Job Status</td>
+        <td width="15%"><%= f.select(:job_status_id, options_for_select(JobStatus.all.map{|t| [t.job_status, t.id]}, @job_site.job_status_id),:include_blank => "Choose Job Status") %></td>
+        <td width="1%"></td>
+        <td width="10%">Service Requested</td>
+        <td colspan="4">
           <% @service_types.each do |t| %>
-              <li> <%= check_box_tag  "service_types_checkbox[]",t.id, @service_type_ids.include?(t.id) %> <%= t.service_type %>  </li>
+               <%= check_box_tag  "service_types_checkbox[]",t.id, @service_type_ids.include?(t.id) %> <%= t.service_type %>  &nbsp;
           <%end%>
-        </ul></td>
-        <td width="1%"></td>
-        <td width="25%">How Many Stories</td>
-        <td width="35%"><%= f.text_field :how_many_stories %></td>
+        </td>
       </tr>
       <tr>
-        <td width="20%">Existing Roof Type</td>
-        <td width="22%"><%= f.select(:existing_roof_type_id, options_for_select(RoofType.all.map{|t| [t.roof_type, t.id]}, @job_site.existing_roof_type_id),:include_blank => "Choose Existing Roof") %></td>
-        <td width="1%"></td>
-        <td width="15%">New Roof Type</td>
-        <td width="35%"><%= f.select(:new_roof_type_id, options_for_select(RoofType.all.map{|t| [t.roof_type, t.id]}, @job_site.new_roof_type_id),:include_blank => "Choose New Roof") %></td>
+        <td>How Many Stories</td>
+        <td><%= f.text_field :how_many_stories %></td>
+        <td></td>
+        <td>Existing Roof Type</td>
+        <td><%= f.select(:existing_roof_type_id, options_for_select(RoofType.all.map{|t| [t.roof_type, t.id]}, @job_site.existing_roof_type_id),:include_blank => "Choose Existing Roof") %></td>
+        <td></td>
+        <td>New Roof Type</td>
+        <td><%= f.select(:new_roof_type_id, options_for_select(RoofType.all.map{|t| [t.roof_type, t.id]}, @job_site.new_roof_type_id),:include_blank => "Choose New Roof") %></td>
+        <td></td>
+        <td>Product Type</td>
+        <td><%= f.select(:product_type_id, options_for_select(ProductType.all.map{|t| [t.product_type, t.id]}, @job_site.product_type_id),:include_blank => "Choose Product Type") %></td>
       </tr>
       <tr>
-        <td width="20%">Product Type</td>
-        <td width="22%"><%= f.select(:product_type_id, options_for_select(ProductType.all.map{|t| [t.product_type, t.id]}, @job_site.product_type_id),:include_blank => "Choose Product Type") %></td>
-        <td width="1%"></td>
-        <td width="15%">Product Color</td>
-        <td width="35%"><%= f.select(:product_color_id, options_for_select(ProductColor.all.map{|t| [t.product_color, t.id]}, @job_site.product_color_id),:include_blank => "Choose Product Color") %></td>
+        <td>Product Color</td>
+        <td><%= f.select(:product_color_id, options_for_select(ProductColor.all.map{|t| [t.product_color, t.id]}, @job_site.product_color_id),:include_blank => "Choose Product Color") %></td>
+        <td></td>
+        <td>Sales Rep</td>
+        <td><%= f.select(:sales_rep_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.sales_rep_id),:include_blank => "Choose Sales Rep") %></td>
+        <td></td>
+        <td>Estimate Type</td>
+        <td><%= f.select(:estimate_type_id, options_for_select(EstimateType.all.map{|t| [t.estimate_type, t.id]}, @job_site.estimate_type_id),:include_blank => "Choose Estimate Type") %></td>
+        <td></td>
+        <td>Contract Price</td>
+        <td>$<%= f.text_field :contract_price %></td>
       </tr>
       <tr>
-        <td width="20%">Sales Rep</td>
-        <td width="22%"><%= f.select(:sales_rep_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.sales_rep_id),:include_blank => "Choose Sales Rep") %></td>
-        <td width="1%"></td>
-        <td width="15%">Estimate Type</td>
-        <td width="35%"><%= f.select(:estimate_type_id, options_for_select(EstimateType.all.map{|t| [t.estimate_type, t.id]}, @job_site.estimate_type_id),:include_blank => "Choose Estimate Type") %></td>
+        <td>Deposit Due</td>
+        <td>$<%= f.text_field :deposit_due %></td>
+        <td></td>
+        <td>Deposit Method</td>
+        <td><%= f.text_field :deposit_method %></td>
+        <td></td>
+        <td>Date Completed</td>
+        <td><%= f.text_field :date_completed, :id => 'dateCompleted' %></td>
+        <td></td>
+        <td>Info Taken By</td>
+        <td><%= f.select(:info_taken_by_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.info_taken_by_id),:include_blank => "Choose Info Taken By") %></td>
       </tr>
       <tr>
-        <td width="20%">Contract Price</td>
-        <td width="22%">$<%= f.text_field :contract_price %></td>
-        <td width="1%"></td>
-        <td width="15%">Deposit Due</td>
-        <td width="35%">$<%= f.text_field :deposit_due %></td>
+        <td>Assign To</td>
+        <td><%= f.select(:assign_to_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.assign_to_id),:include_blank => "Choose Assign To") %></td>
+        <td></td>
+        <td>Job Notes</td>
+        <td colspan="7"><%= f.text_field :job_notes, :size=>150, :height=>50 %></td>
       </tr>
       <tr>
-        <td width="20%">Deposit Method</td>
-        <td width="22%"><%= f.text_field :deposit_method %></td>
-        <td width="1%"></td>
-        <td width="15%">Date Completed</td>
-        <td width="35%"><%= f.text_field :date_completed, :id => 'dateCompleted' %></td>
+        <td>Date Taken</td>
+        <td><%= f.text_field :date_taken, :id => 'dateTaken'%></td>
+        <td></td>
+        <td>Lead Sheet Note</td>
+        <td colspan="7"><%= f.text_field :lead_sheet_note, :size=>150, :height=>50%></td>
       </tr>
-      <tr>
-        <td width="20%">Info Taken By</td>
-        <td width="22%"><%= f.select(:info_taken_by_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.info_taken_by_id),:include_blank => "Choose Info Taken By") %></td>
-        <td width="1%"></td>
-        <td width="15%">Assign To</td>
-        <td width="35%"><%= f.select(:assign_to_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.assign_to_id),:include_blank => "Choose Assign To") %></td>
-      </tr>
-      <tr>
-        <td width="20%">Job Notes</td>
-        <td colspan="4"><%= f.text_field :job_notes %></td>
-      </tr>
-      <tr>
-        <td width="20%">Lead Sheet Note</td>
-        <td colspan="4"><%= f.text_field :lead_sheet_note %></td>
-      </tr>
-      <tr>
-        <td width="20%">Date Taken</td>
-        <td colspan="4"><%= f.text_field :date_taken, :id => 'dateTaken' %></td>
-      </tr>
+
     </table>
 
     <br>
