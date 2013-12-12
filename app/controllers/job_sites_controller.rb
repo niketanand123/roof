@@ -36,6 +36,7 @@ class JobSitesController < ApplicationController
   def new
     @customer = Customer.find(params[:customer_id])
     @job_site = @customer.job_sites.build
+    @service_types = ServiceType.all
   end
 
   def edit

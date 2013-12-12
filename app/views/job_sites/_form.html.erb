@@ -140,33 +140,33 @@
     <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
       <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
     </div>
-    <table width="100%" >
+    <table width="100%">
       <tr>
-        <td width="10%">Job Start Date</td>
-        <td width="15%"><%= f.text_field :job_start_date, :id => 'jobStartDate' %></td>
-        <td width="1%"></td>
-        <td width="10%">Job Status</td>
-        <td width="15%"><%= f.select(:job_status_id, options_for_select(JobStatus.all.map{|t| [t.job_status, t.id]}, @job_site.job_status_id),:include_blank => "Choose Job Status") %></td>
-        <td width="1%"></td>
-        <td width="10%">Service Requested</td>
+        <td>Job Start Date</td>
+        <td><%= f.text_field :job_start_date, :id => 'jobStartDate' %></td>
+        <td></td>
+        <td>Job Status</td>
+        <td><%= f.select(:job_status_id, options_for_select(JobStatus.all.map{|t| [t.job_status, t.id]}, @job_site.job_status_id),:include_blank => "Choose Job Status") %></td>
+        <td></td>
+        <td>Service Requested</td>
         <td colspan="4">
           <% @service_types.each do |t| %>
-               <%= check_box_tag  "service_types_checkbox[]",t.id, @service_type_ids.include?(t.id) %> <%= t.service_type %>  &nbsp;
+               <%= check_box_tag  "service_types_checkbox[]",t.id, @service_type_ids !=nil && @service_type_ids.include?(t.id) %> <%= t.service_type %>  &nbsp;
           <%end%>
         </td>
       </tr>
       <tr>
-        <td>How Many Stories</td>
-        <td><%= f.text_field :how_many_stories %></td>
-        <td></td>
-        <td>Existing Roof Type</td>
-        <td><%= f.select(:existing_roof_type_id, options_for_select(RoofType.all.map{|t| [t.roof_type, t.id]}, @job_site.existing_roof_type_id),:include_blank => "Choose Existing Roof") %></td>
-        <td></td>
-        <td>New Roof Type</td>
-        <td><%= f.select(:new_roof_type_id, options_for_select(RoofType.all.map{|t| [t.roof_type, t.id]}, @job_site.new_roof_type_id),:include_blank => "Choose New Roof") %></td>
-        <td></td>
-        <td>Product Type</td>
-        <td><%= f.select(:product_type_id, options_for_select(ProductType.all.map{|t| [t.product_type, t.id]}, @job_site.product_type_id),:include_blank => "Choose Product Type") %></td>
+        <td width="15%">How Many Stories</td>
+        <td width="10%"><%= f.text_field :how_many_stories %></td>
+        <td width="1%"></td>
+        <td width="15%">Existing Roof Type</td>
+        <td width="10%"><%= f.select(:existing_roof_type_id, options_for_select(RoofType.all.map{|t| [t.roof_type, t.id]}, @job_site.existing_roof_type_id),:include_blank => "Choose Existing Roof") %></td>
+        <td width="1%"></td>
+        <td width="10%">New Roof Type</td>
+        <td width="10%"><%= f.select(:new_roof_type_id, options_for_select(RoofType.all.map{|t| [t.roof_type, t.id]}, @job_site.new_roof_type_id),:include_blank => "Choose New Roof") %></td>
+        <td width="1%"></td>
+        <td width="10%">Product Type</td>
+        <td width="10%"><%= f.select(:product_type_id, options_for_select(ProductType.all.map{|t| [t.product_type, t.id]}, @job_site.product_type_id),:include_blank => "Choose Product Type") %></td>
       </tr>
       <tr>
         <td>Product Color</td>
