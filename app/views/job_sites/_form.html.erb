@@ -15,6 +15,11 @@
             form.job_site_zip.value='';
         }
     }
+    $(function() {
+        $( "#jobStartDate" ).datepicker({ dateFormat: 'mm/dd/yy'});
+        $( "#dateCompleted" ).datepicker({ dateFormat: 'mm/dd/yy'});
+        $( "#dateTaken" ).datepicker({ dateFormat: 'mm/dd/yy'});
+    });
   </script>
   <% if @job_site.errors.any? %>
     <div id="error_explanation">
@@ -77,14 +82,11 @@
         <td width="10%">Pager</td><td width="22%"><%= f.text_field :pager%></td>
         <td colspan="3"></td>
       </tr>
-      <tr>
-        <td width="10%">Directions</td><td colspan="4"><%= f.text_area :direction, :size => "80x5" %></td>
-      </tr>
     </table>
-   <!-- <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
+   <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
       <span style="background-color:#336699; ">
         <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
-        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Job Site Questions</span>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Job Details</span>
         <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
       </span>
     </div>
@@ -93,55 +95,78 @@
     </div>
     <table width="60%">
       <tr>
-        <td width="20%">Easily accessible job site?</td>
-        <td width="25%"><%= f.text_field :easily_accessible, :style=>"width: 220px;"%></td>
+        <td width="20%">Job Start Date</td>
+        <td width="25%"><%= f.text_field :job_start_date, :id => 'jobStartDate' %></td>
         <td width="1%"></td>
-        <td width="25%">Is customer vacationing? When?</td>
-        <td width="35%"><%= f.text_field :cust_vacating_when, :style=>"width: 220px;"%></td>
+        <td width="25%">Job Status</td>
+        <td width="35%"><%= f.select(:job_status_id, options_for_select(JobStatus.all.map{|t| [t.job_status, t.id]}, @job_site.job_status_id),:include_blank => "Choose Job Status") %></td>
       </tr>
       <tr>
-        <td width="20%">Parking Considerations?</td>
-        <td colspan="4" width="75%"><%= f.text_field :parking_consideration, :style=>"width: 420px;"%></td>
-      </tr>
-      <tr>
-        <td width="20%">Dumpster Placement-note location</td>
-        <td colspan="4" width="75%"><%= f.text_field :dumpster_loc_note, :style=>"width: 420px;"%></td>
-      </tr>
-      <tr>
-        <td width="20%">Side of garage in use?</td>
-        <td width="22%"><%= f.text_field :side_garage_use, :style=>"width: 220px;"%></td>
+        <td width="20%">Service Requested</td>
+        <td width="25%"><ul style="list-style-type:none;">
+          <% @service_types.each do |t| %>
+              <li> <%= check_box_tag  "service_types_checkbox[]",t.id, @service_type_ids.include?(t.id) %> <%= t.service_type %>  </li>
+          <%end%>
+        </ul></td>
         <td width="1%"></td>
-        <td width="15%">Driveway-dirt, asphalt, concrete? </td>
-        <td width="35%"><%= f.text_field :driveway_dirt_asphalt, :style=>"width: 220px;"%></td>
+        <td width="25%">How Many Stories</td>
+        <td width="35%"><%= f.text_field :how_many_stories %></td>
       </tr>
       <tr>
-        <td width="20%">Electrical location?</td>
-        <td colspan="4"><%= f.text_field :electrical_location, :style=>"width: 420px;"%></td>
-      </tr>
-      <tr>
-        <td width="20%">Water and sanitation available?</td>
-        <td colspan="4"><%= f.text_field :water_sanitation_avail, :style=>"width: 420px;"%></td>
-      </tr>
-      <tr>
-        <td width="20%">Animals to restrain?</td>
-        <td width="22%"><%= f.text_field :animals_restrain, :style=>"width: 220px;"%></td>
+        <td width="20%">Existing Roof Type</td>
+        <td width="22%"><%= f.select(:existing_roof_type_id, options_for_select(RoofType.all.map{|t| [t.roof_type, t.id]}, @job_site.existing_roof_type_id),:include_blank => "Choose Existing Roof") %></td>
         <td width="1%"></td>
-        <td width="15%">Both gutter & downspout color noted?</td>
-        <td width="35%"><%= f.text_field :gutter_color_noted, :style=>"width: 220px;"%></td>
+        <td width="15%">New Roof Type</td>
+        <td width="35%"><%= f.select(:new_roof_type_id, options_for_select(RoofType.all.map{|t| [t.roof_type, t.id]}, @job_site.new_roof_type_id),:include_blank => "Choose New Roof") %></td>
       </tr>
       <tr>
-        <td width="20%">Landscape concerns?</td>
-        <td colspan="4"><%= f.text_field :landscape_concerns, :style=>"width: 420px;"%></td>
+        <td width="20%">Product Type</td>
+        <td width="22%"><%= f.select(:product_type_id, options_for_select(ProductType.all.map{|t| [t.product_type, t.id]}, @job_site.product_type_id),:include_blank => "Choose Product Type") %></td>
+        <td width="1%"></td>
+        <td width="15%">Product Color</td>
+        <td width="35%"><%= f.select(:product_color_id, options_for_select(ProductColor.all.map{|t| [t.product_color, t.id]}, @job_site.product_color_id),:include_blank => "Choose Product Color") %></td>
       </tr>
       <tr>
-        <td width="20%">Work number(s) and shift?</td>
-        <td colspan="4"><%= f.text_field :work_number_shift, :style=>"width: 420px;"%></td>
+        <td width="20%">Sales Rep</td>
+        <td width="22%"><%= f.select(:sales_rep_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.sales_rep_id),:include_blank => "Choose Sales Rep") %></td>
+        <td width="1%"></td>
+        <td width="15%">Estimate Type</td>
+        <td width="35%"><%= f.select(:estimate_type_id, options_for_select(EstimateType.all.map{|t| [t.estimate_type, t.id]}, @job_site.estimate_type_id),:include_blank => "Choose Estimate Type") %></td>
       </tr>
       <tr>
-        <td width="20%">Additional Notes</td>
-        <td colspan="4"><%= f.text_area :additional_notes, :size => "80x5" , :style=>"width: 420px;"%></td>
+        <td width="20%">Contract Price</td>
+        <td width="22%">$<%= f.text_field :contract_price %></td>
+        <td width="1%"></td>
+        <td width="15%">Deposit Due</td>
+        <td width="35%">$<%= f.text_field :deposit_due %></td>
       </tr>
-    </table>-->
+      <tr>
+        <td width="20%">Deposit Method</td>
+        <td width="22%"><%= f.text_field :deposit_method %></td>
+        <td width="1%"></td>
+        <td width="15%">Date Completed</td>
+        <td width="35%"><%= f.text_field :date_completed, :id => 'dateCompleted' %></td>
+      </tr>
+      <tr>
+        <td width="20%">Info Taken By</td>
+        <td width="22%"><%= f.select(:info_taken_by_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.info_taken_by_id),:include_blank => "Choose Info Taken By") %></td>
+        <td width="1%"></td>
+        <td width="15%">Assign To</td>
+        <td width="35%"><%= f.select(:assign_to_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.assign_to_id),:include_blank => "Choose Assign To") %></td>
+      </tr>
+      <tr>
+        <td width="20%">Job Notes</td>
+        <td colspan="4"><%= f.text_field :job_notes %></td>
+      </tr>
+      <tr>
+        <td width="20%">Lead Sheet Note</td>
+        <td colspan="4"><%= f.text_field :lead_sheet_note %></td>
+      </tr>
+      <tr>
+        <td width="20%">Date Taken</td>
+        <td colspan="4"><%= f.text_field :date_taken, :id => 'dateTaken' %></td>
+      </tr>
+    </table>
 
     <br>
     <table width="750px">
