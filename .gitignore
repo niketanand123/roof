@@ -16,4 +16,5 @@
 /tmp
 
 # Ignore .elasticbeanstalk from Git
-/.elasticbeanstalk/config
+/.elasticbeanstalk/config
+.elasticbeanstalk/

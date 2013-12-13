@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20131211065014) do
     t.string   "email",           limit: 100,                                      null: false
     t.integer  "type"
     t.integer  "lead_source_id"
-    t.datetime "created_at",                                                       null: false
-    t.datetime "updated_at",                                                       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "street1",         limit: 100
     t.string   "street2",         limit: 100
     t.string   "city",            limit: 45
@@ -119,7 +119,49 @@ ActiveRecord::Schema.define(version: 20131211065014) do
     t.datetime "updated_at"
   end
 
-  create_table "job_details", force: true do |t|
+  create_table "job_estimates", force: true do |t|
+    t.integer  "job_site_id",                                        null: false
+    t.integer  "step"
+    t.integer  "master_item_id"
+    t.integer  "qty"
+    t.string   "proposal_desc",  limit: 100
+    t.string   "warranty_desc",  limit: 100
+    t.decimal  "retail_price",               precision: 5, scale: 2
+    t.string   "item_extended",  limit: 50
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "job_estimates", ["job_site_id"], name: "fk_est_job_detail_id_idx", using: :btree
+  add_index "job_estimates", ["job_site_id"], name: "fk_job_detail_id_idx", using: :btree
+  add_index "job_estimates", ["master_item_id"], name: "fk_master_item_id_idx", using: :btree
+
+  create_table "job_service_types", force: true do |t|
+    t.integer "job_id",          null: false
+    t.integer "service_type_id", null: false
+  end
+
+  add_index "job_service_types", ["job_id"], name: "fk_job_detail_id_idx", using: :btree
+  add_index "job_service_types", ["service_type_id"], name: "fk_serv_type_idx", using: :btree
+
+  create_table "job_site", force: true do |t|
+    t.integer  "customer_id",                                                            null: false
+    t.string   "company_name",          limit: 100
+    t.string   "contact_name",          limit: 100,                                      null: false
+    t.string   "phone",                 limit: 15
+    t.string   "work_phone",            limit: 15
+    t.string   "work_phone_ext",        limit: 10
+    t.string   "mobile_phone",          limit: 15
+    t.string   "fax",                   limit: 15
+    t.string   "pager",                 limit: 15
+    t.string   "street1",               limit: 100
+    t.string   "street2",               limit: 100
+    t.string   "city",                  limit: 15
+    t.string   "state",                 limit: 15
+    t.string   "zip",                   limit: 10
+    t.integer  "is_active",             limit: 1,                            default: 1
+    t.decimal  "latitude",                          precision: 10, scale: 8
+    t.decimal  "longitude",                         precision: 11, scale: 8
     t.date     "job_start_date"
     t.integer  "job_status_id"
     t.string   "how_many_stories"
@@ -142,74 +184,16 @@ ActiveRecord::Schema.define(version: 20131211065014) do
     t.datetime "updated_at"
   end
 
-  add_index "job_details", ["assign_to_id"], name: "fk_assign_to_idx", using: :btree
-  add_index "job_details", ["estimate_type_id"], name: "fk_estimate_type_idx", using: :btree
-  add_index "job_details", ["existing_roof_type_id"], name: "fk_exist_roof_type_idx", using: :btree
-  add_index "job_details", ["info_taken_by_id"], name: "fk_info_taken_by_idx", using: :btree
-  add_index "job_details", ["job_status_id"], name: "fk_status_idx", using: :btree
-  add_index "job_details", ["new_roof_type_id"], name: "fk_new_roof_type_idx", using: :btree
-  add_index "job_details", ["product_color_id"], name: "fk_product_color_idx", using: :btree
-  add_index "job_details", ["product_type_id"], name: "fk_product_type_idx", using: :btree
-  add_index "job_details", ["sales_rep_id"], name: "fk_sales_rep_idx", using: :btree
-
-  create_table "job_estimates", force: true do |t|
-    t.integer  "job_detail_id"
-    t.integer  "step"
-    t.integer  "master_item_id"
-    t.integer  "qty"
-    t.string   "proposal_desc"
-    t.string   "warranty_desc"
-    t.decimal  "retail_price",   precision: 10, scale: 0
-    t.string   "item_extended"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "job_service_types", force: true do |t|
-    t.integer "job_detail_id",   null: false
-    t.integer "service_type_id", null: false
-  end
-
-  add_index "job_service_types", ["job_detail_id"], name: "fk_job_detail_id_idx", using: :btree
-  add_index "job_service_types", ["service_type_id"], name: "fk_serv_type_idx", using: :btree
-
-  create_table "job_site", force: true do |t|
-    t.integer  "customer_id",                                                             null: false
-    t.string   "company_name",           limit: 100
-    t.string   "contact_name",           limit: 100,                                      null: false
-    t.string   "phone",                  limit: 15
-    t.string   "work_phone",             limit: 15
-    t.string   "work_phone_ext",         limit: 10
-    t.string   "mobile_phone",           limit: 15
-    t.string   "fax",                    limit: 15
-    t.string   "pager",                  limit: 15
-    t.string   "street1",                limit: 100
-    t.string   "street2",                limit: 100
-    t.string   "city",                   limit: 15
-    t.string   "state",                  limit: 15
-    t.string   "zip",                    limit: 10
-    t.string   "direction",              limit: 200
-    t.string   "easily_accessible",      limit: 45
-    t.string   "cust_vacating_when",     limit: 45
-    t.string   "parking_consideration",  limit: 45
-    t.string   "dumpster_loc_note",      limit: 45
-    t.string   "side_garage_use",        limit: 45
-    t.string   "driveway_dirt_asphalt",  limit: 45
-    t.string   "electrical_location",    limit: 45
-    t.string   "water_sanitation_avail", limit: 45
-    t.string   "animals_restrain",       limit: 45
-    t.string   "gutter_color_noted",     limit: 45
-    t.string   "landscape_concerns",     limit: 45
-    t.string   "work_number_shift",      limit: 45
-    t.string   "additional_notes",       limit: 200
-    t.integer  "is_active",              limit: 1,                            default: 1
-    t.decimal  "latitude",                           precision: 10, scale: 8
-    t.decimal  "longitude",                          precision: 11, scale: 8
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
+  add_index "job_site", ["assign_to_id"], name: "fk_assign_to_idx", using: :btree
   add_index "job_site", ["customer_id"], name: "fk_job_customer_idx", using: :btree
+  add_index "job_site", ["estimate_type_id"], name: "fk_estimate_type_idx", using: :btree
+  add_index "job_site", ["existing_roof_type_id"], name: "fk_exist_roof_type_idx", using: :btree
+  add_index "job_site", ["info_taken_by_id"], name: "fk_info_taken_by_idx", using: :btree
+  add_index "job_site", ["job_status_id"], name: "fk_status_idx", using: :btree
+  add_index "job_site", ["new_roof_type_id"], name: "fk_new_roof_type_idx", using: :btree
+  add_index "job_site", ["product_color_id"], name: "fk_product_color_idx", using: :btree
+  add_index "job_site", ["product_type_id"], name: "fk_product_type", using: :btree
+  add_index "job_site", ["sales_rep_id"], name: "fk_sales_rep_idx", using: :btree
 
   create_table "job_statuses", force: true do |t|
     t.string   "job_status", limit: 100
