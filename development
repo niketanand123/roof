@@ -1,0 +1,42 @@
+==  CreateJobStatuses: migrating ==============================================
+-- create_table(:job_statuses)
+   -> 0.1400s
+==  CreateJobStatuses: migrated (0.1400s) =====================================
+
+==  CreateServiceTypes: migrating =============================================
+-- create_table(:service_types)
+   -> 0.0090s
+==  CreateServiceTypes: migrated (0.0100s) ====================================
+
+==  CreateRoofTypes: migrating ================================================
+-- create_table(:roof_types)
+   -> 0.0100s
+==  CreateRoofTypes: migrated (0.0100s) =======================================
+
+==  CreateProductTypes: migrating =============================================
+-- create_table(:product_types)
+   -> 0.0090s
+==  CreateProductTypes: migrated (0.0090s) ====================================
+
+==  CreateProductColors: migrating ============================================
+-- create_table(:product_colors)
+   -> 0.0100s
+==  CreateProductColors: migrated (0.0100s) ===================================
+
+==  CreateEmployees: migrating ================================================
+-- create_table(:employees)
+   -> 0.0130s
+==  CreateEmployees: migrated (0.0150s) =======================================
+
+==  CreateEstimateTypes: migrating ============================================
+-- create_table(:estimate_types)
+   -> 0.0200s
+==  CreateEstimateTypes: migrated (0.0200s) ===================================
+
+==  CreateJobDetails: migrating ===============================================
+-- create_table(:job_details)
+   -> 0.0270s
+==  CreateJobDetails: migrated (0.0270s) ======================================
+
+==  CreateAssemblies: migrating ===============================================
+-- create_table(:assemblies)

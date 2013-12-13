@@ -6,9 +6,9 @@ class CustomersController < ApplicationController
   def index
     #@customers = Customer.search(params[:basedOn],params[:searchText])
     basedOn = params[:basedOn]
-    searchText = params[:searchText]
-    if searchText != nil
-      search_condition = "%" + searchText + "%"
+    @searchText = params[:searchText]
+    if @searchText != nil
+      search_condition = "%" + @searchText + "%"
     end
     if basedOn == "Last Name"
       @customers = Customer.where("is_active=1 and last_name LIKE ?", search_condition)

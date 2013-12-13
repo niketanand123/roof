@@ -132,8 +132,7 @@ ActiveRecord::Schema.define(version: 20131211065014) do
     t.datetime "updated_at"
   end
 
-  add_index "job_estimates", ["job_site_id"], name: "fk_est_job_detail_id_idx", using: :btree
-  add_index "job_estimates", ["job_site_id"], name: "fk_job_detail_id_idx", using: :btree
+  add_index "job_estimates", ["job_site_id"], name: "fk_est_job_site_id_idx", using: :btree
   add_index "job_estimates", ["master_item_id"], name: "fk_master_item_id_idx", using: :btree
 
   create_table "job_service_types", force: true do |t|
@@ -141,7 +140,7 @@ ActiveRecord::Schema.define(version: 20131211065014) do
     t.integer "service_type_id", null: false
   end
 
-  add_index "job_service_types", ["job_id"], name: "fk_job_detail_id_idx", using: :btree
+  add_index "job_service_types", ["job_id"], name: "fk_job_site_id_idx", using: :btree
   add_index "job_service_types", ["service_type_id"], name: "fk_serv_type_idx", using: :btree
 
   create_table "job_site", force: true do |t|

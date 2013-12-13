@@ -5,6 +5,12 @@
 
 <%= render :partial => 'search' %>
 
+<% if @searchText != nil %>
+    <b>No Records .....</b>
+    <br/>
+    <br/>
+<%end%>
+
 <% if @customers!= nil && @customers.count >= 1 %>
     <table width="50%">
       <thead>
