@@ -2,6 +2,7 @@ class JobSite < ActiveRecord::Base
     self.table_name = 'job_site'
 
     has_many :job_service_types, :class_name => 'JobServiceType'
+    has_many :job_estimates, :class_name => 'JobEstimate'
     belongs_to :customer, :class_name => 'Customer', :foreign_key => :customer_id
     belongs_to :employee, :class_name => 'Employee', :foreign_key => :assign_to_id
     belongs_to :estimate_type, :class_name => 'EstimateType', :foreign_key => :estimate_type_id

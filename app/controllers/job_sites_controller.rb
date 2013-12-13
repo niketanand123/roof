@@ -6,7 +6,6 @@ class JobSitesController < ApplicationController
     if searchText != nil
       search_condition = "%" + searchText + "%"
     end
-    #'Contact Name', 'Jobsite Phone', 'Street Address', 'Company Name'
     if basedOn == "Contact Name"
       @job_sites = JobSite.where("is_active=1 and contact_name LIKE ?", search_condition)
     end
@@ -25,6 +24,7 @@ class JobSitesController < ApplicationController
   end
 
   def show
+    @customer = Customer.find(params[:customer_id])
     @job_site = JobSite.find(params[:id])
     format_dates
     @service_types = ServiceType.all
@@ -82,7 +82,6 @@ class JobSitesController < ApplicationController
   end
 
   def destroy
-    Customer.find(params[:customer_id])
     @job_site = JobSite.find(params[:id])
     @job_site.is_active=0
     @job_site.update(job_site_params)

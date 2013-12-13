@@ -140,7 +140,7 @@
     <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
       <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
     </div>
-    <table width="100%">
+    <table width="100%" border="0">
       <tr>
         <td>Job Start Date</td>
         <td><%= f.text_field :job_start_date, :id => 'jobStartDate' %></td>
@@ -156,10 +156,10 @@
         </td>
       </tr>
       <tr>
-        <td width="15%">How Many Stories</td>
+        <td width="10%">How Many Stories</td>
         <td width="10%"><%= f.text_field :how_many_stories %></td>
         <td width="1%"></td>
-        <td width="15%">Existing Roof Type</td>
+        <td width="10%">Existing Roof Type</td>
         <td width="10%"><%= f.select(:existing_roof_type_id, options_for_select(RoofType.all.map{|t| [t.roof_type, t.id]}, @job_site.existing_roof_type_id),:include_blank => "Choose Existing Roof") %></td>
         <td width="1%"></td>
         <td width="10%">New Roof Type</td>
@@ -198,21 +198,22 @@
         <td>Assign To</td>
         <td><%= f.select(:assign_to_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.assign_to_id),:include_blank => "Choose Assign To") %></td>
         <td></td>
-        <td>Job Notes</td>
-        <td colspan="7"><%= f.text_field :job_notes, :size=>150, :height=>50 %></td>
-      </tr>
-      <tr>
         <td>Date Taken</td>
-        <td><%= f.text_field :date_taken, :id => 'dateTaken'%></td>
-        <td></td>
-        <td>Lead Sheet Note</td>
-        <td colspan="7"><%= f.text_field :lead_sheet_note, :size=>150, :height=>50%></td>
+        <td colspan="7"><%= f.text_field :date_taken, :id => 'dateTaken'%></td>
       </tr>
-
+    </table>
+    <table width="100%" border="0">
+      <tr>
+        <td width="11%">Lead Sheet Note</td>
+        <td width="40%"><%= f.text_area :lead_sheet_note, :size=>"50x3"%></td>
+        <td width="11%">Job Notes</td>
+        <td width="40%"><%= f.text_area :job_notes, :size=>"50x3" %></td>
+      </tr>
     </table>
 
     <br>
-    <table width="750px">
+
+    <table width="100%">
       <tr>
         <td>
           <% if @job_site!= nil && @job_site.id != nil%>
@@ -223,11 +224,16 @@
         </td>
         <td>
           <% if @job_site!= nil && @job_site.id != nil%>
+              <%= button_to "Job Estimate", customer_job_site_job_estimates_path(:customer_id =>@job_site.customer_id, :job_site_id =>@job_site.id), :method => :get %>
+          <% end %>
+        </td>
+        <td>
+          <% if @job_site!= nil && @job_site.id != nil%>
             <%= button_to "Delete Job Site", {:controller => :job_sites, :action => 'destroy', :id => @job_site.id }, :method => :delete, :data => { confirm: 'Are you sure you want to delete job site?' } %>
           <% end %>
         </td>
       </tr>
     </table>
     <br>
-
+    <%= link_to 'Back',  edit_customer_path(:id=>@customer.id) %> &nbsp;
 <% end %>

@@ -148,7 +148,7 @@
 
           <% @job_sites.each do |job_site| %>
               <tr>
-                <td align="center"><%= link_to job_site.street1, job_site, :controller => "job_sites"%></td>
+                <td align="center"><%= link_to job_site.street1, edit_customer_job_site_path(:id=>job_site.id, :customer_id=>@customer.id), :controller => "job_sites"%></td>
                 <td  align="center"><%= job_site.city %></td>
               </tr>
           <% end %>

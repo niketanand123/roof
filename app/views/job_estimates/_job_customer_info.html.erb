@@ -1,0 +1,94 @@
+<div style="width:auto;">
+  <div BGCOLOR="#336699" HEIGHT="13" style="width: 50%;clear: both;float:left;" >
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Job Site Information</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+  </div>
+  <div BGCOLOR="#336699" HEIGHT="13" style="width:auto;" >
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Customer Information</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+  </div>
+</div>
+<div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
+  <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
+</div>
+<div style="width:100%;">
+  <div style="width: 50%;height: 170px;clear: both;float:left;" >
+    <table style="border-right:thick double #336699;">
+      <tr>
+        <td width="15%">Company:</td><td width="35%"><%= @job_site.company_name%></td>
+        <td width="1%"></td>
+        <td width="15%"></td><td width="20%"></td>
+      </tr>
+      <tr>
+        <td>Contact:</td><td><%= @job_site.contact_name%></td>
+        <td></td>
+        <td colspan="2"><b>Job Site Address</b></td>
+      </tr>
+      <tr>
+        <td>JobSite Phone:</td><td><%= @job_site.phone%></td>
+        <td></td>
+        <td>Street 1:</td><td><%= @job_site.street1%></td>
+      </tr>
+      <tr>
+        <td>Wk Phone</td><td><%= @job_site.work_phone%>-<%= @job_site.work_phone_ext%></td>
+        <td></td>
+        <td>Street 2</td><td><%= @job_site.street2%></td>
+      </tr>
+      <tr>
+        <td>Mobile</td><td><%= @job_site.mobile_phone%></td>
+        <td></td>
+        <td>City</td><td><%= @job_site.city%></td>
+      </tr>
+      <tr>
+        <td>Fax</td><td><%= @job_site.fax%></td>
+        <td></td>
+        <td>State</td><td><%= @job_site.state%> Zip<%= @job_site.zip%></td>
+      </tr>
+      <tr>
+        <td>Pager</td><td><%= @job_site.pager%></td>
+        <td colspan="3"></td>
+      </tr>
+    </table>
+  </div>
+  <div style="width:auto;height: 170px" >
+    <table>
+      <tr>
+        <td width="10%">First Name:</td><td width="15%"><%= @customer.first_name%></td>
+        <td width="1%"></td>
+        <td width="10%">Last Name:</td><td width="20%"><%= @customer.last_name%></td>
+      </tr>
+      <tr>
+        <td>Email:</td><td ><%= @customer.email%></td>
+        <td></td>
+        <td>Address 1:</td><td><%= @customer.street1%></td>
+      </tr>
+      <tr>
+        <td>Wk Phone:</td><td><%= @customer.work_phone%>-<%= @customer.work_phone_ext%></td>
+        <td></td>
+        <td>Address 2:</td>
+        <td><%= @customer.street2%></td>
+      </tr>
+      <tr>
+        <td>Mobile:</td><td><%= @customer.mobile_phone%></td>
+        <td></td>
+        <td>City:</td><td><%= @customer.city%></td>
+      </tr>
+      <tr>
+        <td>Fax:</td><td><%= @customer.fax%></td>
+        <td></td>
+        <td>State:</td><td><%= @customer.state%></td>
+      </tr>
+      <tr>
+        <td colspan="5">Customer Type: <% if @customer.type=!nil %><%= CustomerType.where("id" =>@customer.type).pluck("type").first%> <%end %></td>
+      </tr>
+
+    </table>
+  </div>
+</div>
+

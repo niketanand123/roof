@@ -10,40 +10,39 @@
       </ul>
     </div>
   <% end %>
+    <table width="100%">
+      <tr>
+        <td width="10%">Step</td>
+        <td width="10%"><%= f.text_field :step %></td>
+        <td width="1%"></td>
+        <td width="10%">Master Item</td>
+        <td width="10%"><%= f.select(:master_item_id, options_for_select(ItemCode.all.map{|t| [t.item_name, t.id]}, @job_estimate.master_item_id),:include_blank => "Choose Master Item") %></td>
+        <td width="1%"></td>
+        <td width="10%">Qty</td>
+        <td width="10%"><%= f.text_field :qty %></td>
+        <td width="1%"></td>
+        <td width="10%">Retail Price</td>
+        <td width="10%">$<%= f.text_field :retail_price %></td>
+      </tr>
+      <tr>
+        <td>Item Extended</td>
+        <td colspan="10"><%= f.text_field :item_extended %><%= f.hidden_field :job_site_id %></td>
+      </tr>
+    </table>
+    <table width="100%" border="0">
+      <tr>
+        <td width="11%">Proposal Description</td>
+        <td width="40%"><%= f.text_area :proposal_desc, :size=>"50x3"%></td>
+        <td width="11%">Warranty Description</td>
+        <td width="40%"><%= f.text_area :warranty_desc, :size=>"50x3" %></td>
+      </tr>
+    </table>
 
-  <div class="field">
-    <%= f.label :job_detail_id %><br>
-    <%= f.number_field :job_detail_id %>
-  </div>
-  <div class="field">
-    <%= f.label :step %><br>
-    <%= f.number_field :step %>
-  </div>
-  <div class="field">
-    <%= f.label :master_item_id %><br>
-    <%= f.number_field :master_item_id %>
-  </div>
-  <div class="field">
-    <%= f.label :qty %><br>
-    <%= f.number_field :qty %>
-  </div>
-  <div class="field">
-    <%= f.label :proposal_desc %><br>
-    <%= f.text_field :proposal_desc %>
-  </div>
-  <div class="field">
-    <%= f.label :warranty_desc %><br>
-    <%= f.text_field :warranty_desc %>
-  </div>
-  <div class="field">
-    <%= f.label :retail_price %><br>
-    <%= f.text_field :retail_price %>
-  </div>
-  <div class="field">
-    <%= f.label :item_extended %><br>
-    <%= f.text_field :item_extended %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <% if @job_estimate!= nil && @job_estimate.id != nil%>
+        <%= button_to "Update Job Estimate", customer_job_site_job_estimate_path(:customer_id=>@job_site.customer_id,:id=>@job_estimate.id,:job_site_id => @job_site.id), :method => :put %>
+    <% else %>
+        <%= button_to "Create Job Estimate", customer_job_site_job_estimates_path(:customer_id=>@job_site.customer_id,:id=>@job_estimate.id), :method => :post %>
+    <% end %>
   </div>
 <% end %>

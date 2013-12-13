@@ -26,6 +26,14 @@ Tabulous.setup do
       active_when   { in_action('any').of_controller('job_sites') }
     end
 
+    job_estimate_subtab do
+      text          { 'Job Estimate' }
+      link_path     { job_estimates_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('job_estimates') }
+    end
+
     client_admin_tab do
       text          { 'Client Admin' }
       link_path     { employees_path }
