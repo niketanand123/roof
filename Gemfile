@@ -33,6 +33,8 @@ gem "jquery-rails"
 
 gem "pg"
 
+gem 'rails_12factor', group: :production
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
