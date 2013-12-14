@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job_site_id: 1
+  call_date_time: 2013-12-13 19:15:28
+  call_notes: MyString
+  employee_id: 1
+
+two:
+  job_site_id: 1
+  call_date_time: 2013-12-13 19:15:28
+  call_notes: MyString
+  employee_id: 1

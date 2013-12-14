@@ -1,0 +1,2 @@
+module JobCallNotesHelper
+end

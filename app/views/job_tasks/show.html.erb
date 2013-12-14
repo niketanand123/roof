@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job site:</strong>
+  <%= @job_task.job_site_id %>
+</p>
+
+<p>
+  <strong>Task type:</strong>
+  <%= @job_task.task_type_id %>
+</p>
+
+<p>
+  <strong>Task note:</strong>
+  <%= @job_task.task_note %>
+</p>
+
+<p>
+  <strong>Target date:</strong>
+  <%= @job_task.target_date %>
+</p>
+
+<p>
+  <strong>Entered by:</strong>
+  <%= @job_task.entered_by_id %>
+</p>
+
+<p>
+  <strong>Date completed:</strong>
+  <%= @job_task.date_completed %>
+</p>
+
+<p>
+  <strong>Completed by:</strong>
+  <%= @job_task.completed_by_id %>
+</p>
+
+<%= link_to 'Edit', edit_job_task_path(@job_task) %> |
+<%= link_to 'Back', job_tasks_path %>

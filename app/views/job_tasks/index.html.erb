@@ -1,0 +1,39 @@
+<h1>Listing job_tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job site</th>
+      <th>Task type</th>
+      <th>Task note</th>
+      <th>Target date</th>
+      <th>Entered by</th>
+      <th>Date completed</th>
+      <th>Completed by</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @job_tasks.each do |job_task| %>
+      <tr>
+        <td><%= job_task.job_site_id %></td>
+        <td><%= job_task.task_type_id %></td>
+        <td><%= job_task.task_note %></td>
+        <td><%= job_task.target_date %></td>
+        <td><%= job_task.entered_by_id %></td>
+        <td><%= job_task.date_completed %></td>
+        <td><%= job_task.completed_by_id %></td>
+        <td><%= link_to 'Show', job_task %></td>
+        <td><%= link_to 'Edit', edit_job_task_path(job_task) %></td>
+        <td><%= link_to 'Destroy', job_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Job task', new_job_task_path %>

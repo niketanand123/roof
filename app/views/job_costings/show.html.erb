@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job site:</strong>
+  <%= @job_costing.job_site_id %>
+</p>
+
+<p>
+  <strong>Materials:</strong>
+  <%= @job_costing.materials %>
+</p>
+
+<p>
+  <strong>Labor:</strong>
+  <%= @job_costing.labor %>
+</p>
+
+<p>
+  <strong>Job cost:</strong>
+  <%= @job_costing.job_cost %>
+</p>
+
+<p>
+  <strong>Overhead:</strong>
+  <%= @job_costing.overhead %>
+</p>
+
+<p>
+  <strong>Overhead percentage:</strong>
+  <%= @job_costing.overhead_percentage %>
+</p>
+
+<p>
+  <strong>Net profit:</strong>
+  <%= @job_costing.net_profit %>
+</p>
+
+<%= link_to 'Edit', edit_job_costing_path(@job_costing) %> |
+<%= link_to 'Back', job_costings_path %>

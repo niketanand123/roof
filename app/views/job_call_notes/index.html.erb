@@ -1,0 +1,33 @@
+<h1>Listing job_call_notes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job site</th>
+      <th>Call date time</th>
+      <th>Call notes</th>
+      <th>Employee</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @job_call_notes.each do |job_call_note| %>
+      <tr>
+        <td><%= job_call_note.job_site_id %></td>
+        <td><%= job_call_note.call_date_time %></td>
+        <td><%= job_call_note.call_notes %></td>
+        <td><%= job_call_note.employee_id %></td>
+        <td><%= link_to 'Show', job_call_note %></td>
+        <td><%= link_to 'Edit', edit_job_call_note_path(job_call_note) %></td>
+        <td><%= link_to 'Destroy', job_call_note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Job call note', new_job_call_note_path %>

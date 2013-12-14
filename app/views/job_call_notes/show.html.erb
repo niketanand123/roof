@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job site:</strong>
+  <%= @job_call_note.job_site_id %>
+</p>
+
+<p>
+  <strong>Call date time:</strong>
+  <%= @job_call_note.call_date_time %>
+</p>
+
+<p>
+  <strong>Call notes:</strong>
+  <%= @job_call_note.call_notes %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @job_call_note.employee_id %>
+</p>
+
+<%= link_to 'Edit', edit_job_call_note_path(@job_call_note) %> |
+<%= link_to 'Back', job_call_notes_path %>

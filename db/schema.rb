@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131211065014) do
+ActiveRecord::Schema.define(version: 20131214032040) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "adminpack"
 
   create_table "assemblies", force: true do |t|
     t.string   "master_item",                limit: 50
@@ -43,6 +47,12 @@ ActiveRecord::Schema.define(version: 20131211065014) do
 
   add_index "company", ["name"], name: "name_UNIQUE", unique: true, using: :btree
 
+  create_table "contact_types", force: true do |t|
+    t.string   "contact_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "customer", force: true do |t|
     t.string   "first_name",      limit: 50,                                       null: false
     t.string   "last_name",       limit: 50,                                       null: false
@@ -69,7 +79,7 @@ ActiveRecord::Schema.define(version: 20131211065014) do
     t.string   "title",           limit: 45
     t.decimal  "latitude",                    precision: 10, scale: 8
     t.decimal  "longitude",                   precision: 11, scale: 8
-    t.integer  "is_active",       limit: 1,                            default: 1
+    t.integer  "is_active",       limit: 2,                            default: 1
   end
 
   add_index "customer", ["company_id"], name: "fk_cust_company_idx", using: :btree
@@ -119,6 +129,80 @@ ActiveRecord::Schema.define(version: 20131211065014) do
     t.datetime "updated_at"
   end
 
+  create_table "job_call_notes", force: true do |t|
+    t.integer  "job_site_id"
+    t.datetime "call_date_time"
+    t.string   "call_notes"
+    t.integer  "employee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_change_orders", force: true do |t|
+    t.integer  "job_site_id"
+    t.string   "co_number"
+    t.string   "co_total"
+    t.string   "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_contacts", force: true do |t|
+    t.integer  "job_site_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "contact_type_id"
+    t.string   "contact_phone"
+    t.string   "contact_email"
+    t.string   "contact_notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_costings", force: true do |t|
+    t.integer  "job_site_id"
+    t.string   "materials"
+    t.string   "labor"
+    t.decimal  "job_cost"
+    t.decimal  "overhead"
+    t.integer  "overhead_percentage"
+    t.decimal  "net_profit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_details", force: true do |t|
+    t.date     "job_start_date"
+    t.integer  "job_status_id"
+    t.string   "how_many_stories"
+    t.integer  "existing_roof_type_id"
+    t.integer  "new_roof_type"
+    t.integer  "product_type_id"
+    t.integer  "product_color_id"
+    t.integer  "sales_rep_id"
+    t.integer  "estimate_type_id"
+    t.string   "contract_price"
+    t.string   "deposit_due"
+    t.string   "deposit_method"
+    t.date     "date_completed"
+    t.string   "job_notes"
+    t.string   "lead_sheet_note"
+    t.integer  "info_taken_by_id"
+    t.integer  "assign_to"
+    t.date     "date_taken"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_documents", force: true do |t|
+    t.integer  "job_site_id"
+    t.string   "doc_name"
+    t.string   "doc_desc"
+    t.string   "doc_link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "job_estimates", force: true do |t|
     t.integer  "job_site_id",                                        null: false
     t.integer  "step"
@@ -158,7 +242,7 @@ ActiveRecord::Schema.define(version: 20131211065014) do
     t.string   "city",                  limit: 15
     t.string   "state",                 limit: 15
     t.string   "zip",                   limit: 10
-    t.integer  "is_active",             limit: 1,                            default: 1
+    t.integer  "is_active",             limit: 2,                            default: 1
     t.decimal  "latitude",                          precision: 10, scale: 8
     t.decimal  "longitude",                         precision: 11, scale: 8
     t.date     "job_start_date"
@@ -200,6 +284,18 @@ ActiveRecord::Schema.define(version: 20131211065014) do
     t.datetime "updated_at"
   end
 
+  create_table "job_tasks", force: true do |t|
+    t.integer  "job_site_id"
+    t.integer  "task_type_id"
+    t.string   "task_note"
+    t.date     "target_date"
+    t.integer  "entered_by_id"
+    t.date     "date_completed"
+    t.integer  "completed_by_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "lead_source", force: true do |t|
     t.string   "source",     limit: 50
     t.datetime "created_at"
@@ -228,6 +324,12 @@ ActiveRecord::Schema.define(version: 20131211065014) do
 
   create_table "service_types", force: true do |t|
     t.string   "service_type", limit: 100
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "task_types", force: true do |t|
+    t.string   "task_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

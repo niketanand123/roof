@@ -1,0 +1,33 @@
+<%= form_for(@job_call_note) do |f| %>
+  <% if @job_call_note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job_call_note.errors.count, "error") %> prohibited this job_call_note from being saved:</h2>
+
+      <ul>
+      <% @job_call_note.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :job_site_id %><br>
+    <%= f.number_field :job_site_id %>
+  </div>
+  <div class="field">
+    <%= f.label :call_date_time %><br>
+    <%= f.datetime_select :call_date_time %>
+  </div>
+  <div class="field">
+    <%= f.label :call_notes %><br>
+    <%= f.text_field :call_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :employee_id %><br>
+    <%= f.number_field :employee_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

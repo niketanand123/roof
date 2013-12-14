@@ -1,0 +1,39 @@
+<h1>Listing job_contacts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job site</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Contact type</th>
+      <th>Contact phone</th>
+      <th>Contact email</th>
+      <th>Contact notes</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @job_contacts.each do |job_contact| %>
+      <tr>
+        <td><%= job_contact.job_site_id %></td>
+        <td><%= job_contact.first_name %></td>
+        <td><%= job_contact.last_name %></td>
+        <td><%= job_contact.contact_type_id %></td>
+        <td><%= job_contact.contact_phone %></td>
+        <td><%= job_contact.contact_email %></td>
+        <td><%= job_contact.contact_notes %></td>
+        <td><%= link_to 'Show', job_contact %></td>
+        <td><%= link_to 'Edit', edit_job_contact_path(job_contact) %></td>
+        <td><%= link_to 'Destroy', job_contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Job contact', new_job_contact_path %>

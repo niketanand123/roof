@@ -1,0 +1,45 @@
+<%= form_for(@job_contact) do |f| %>
+  <% if @job_contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job_contact.errors.count, "error") %> prohibited this job_contact from being saved:</h2>
+
+      <ul>
+      <% @job_contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :job_site_id %><br>
+    <%= f.number_field :job_site_id %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_type_id %><br>
+    <%= f.number_field :contact_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_phone %><br>
+    <%= f.text_field :contact_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_email %><br>
+    <%= f.text_field :contact_email %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_notes %><br>
+    <%= f.text_field :contact_notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

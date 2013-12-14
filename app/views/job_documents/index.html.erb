@@ -1,0 +1,33 @@
+<h1>Listing job_documents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job site</th>
+      <th>Doc name</th>
+      <th>Doc desc</th>
+      <th>Doc link</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @job_documents.each do |job_document| %>
+      <tr>
+        <td><%= job_document.job_site_id %></td>
+        <td><%= job_document.doc_name %></td>
+        <td><%= job_document.doc_desc %></td>
+        <td><%= job_document.doc_link %></td>
+        <td><%= link_to 'Show', job_document %></td>
+        <td><%= link_to 'Edit', edit_job_document_path(job_document) %></td>
+        <td><%= link_to 'Destroy', job_document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Job document', new_job_document_path %>

@@ -1,4 +1,20 @@
 Roof::Application.routes.draw do
+  resources :job_costings
+
+  resources :job_documents
+
+  resources :job_contacts
+
+  resources :contact_types
+
+  resources :job_change_orders
+
+  resources :job_tasks
+
+  resources :task_types
+
+  resources :job_call_notes
+
   resources :job_estimates
 
   resources :item_codes
@@ -34,6 +50,36 @@ Roof::Application.routes.draw do
   resources :customers do
     resources :job_sites do
       resources :job_estimates
+    end
+  end
+  resources :customers do
+    resources :job_sites do
+      resources :job_call_notes
+    end
+  end
+  resources :customers do
+    resources :job_sites do
+      resources :job_tasks
+    end
+  end
+  resources :customers do
+    resources :job_sites do
+      resources :job_change_orders
+    end
+  end
+  resources :customers do
+    resources :job_sites do
+      resources :job_contacts
+    end
+  end
+  resources :customers do
+    resources :job_sites do
+      resources :job_documents
+    end
+  end
+  resources :customers do
+    resources :job_sites do
+      resources :job_costings
     end
   end
 

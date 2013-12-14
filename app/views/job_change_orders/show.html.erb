@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job site:</strong>
+  <%= @job_change_order.job_site_id %>
+</p>
+
+<p>
+  <strong>Co number:</strong>
+  <%= @job_change_order.co_number %>
+</p>
+
+<p>
+  <strong>Co total:</strong>
+  <%= @job_change_order.co_total %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @job_change_order.notes %>
+</p>
+
+<%= link_to 'Edit', edit_job_change_order_path(@job_change_order) %> |
+<%= link_to 'Back', job_change_orders_path %>
