@@ -5,7 +5,7 @@
 
 <%= render :partial => 'search' %>
 
-<% if @searchText != nil %>
+<% if @searchText != nil && @customers == nil%>
     <b>No Records .....</b>
     <br/>
     <br/>
