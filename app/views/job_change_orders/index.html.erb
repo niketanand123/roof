@@ -14,6 +14,7 @@
 <table width="100%">
   <thead>
     <tr>
+      <th align="left">Date Created</th>
       <th align="left">C/O No.</th>
       <th align="left">C/O total</th>
       <th align="left">Notes</th>
@@ -25,6 +26,7 @@
   <tbody>
     <% @job_change_orders.each do |job_change_order| %>
       <tr>
+        <td><%= job_change_order.created_at.strftime('%m/%d/%Y')%></td>
         <td><%= job_change_order.co_number %></td>
         <td><%= job_change_order.co_total %></td>
         <td><%= job_change_order.notes %></td>
