@@ -1,7 +1,6 @@
 class JobCallNotesController < ApplicationController
   before_action :set_job_call_note, only: [:show, :edit, :update, :destroy]
 
-  DATE_FORMAT = "%m/%d/%Y %I:%M %p"
   # GET /job_call_notes
   # GET /job_call_notes.json
   def index
@@ -15,7 +14,7 @@ class JobCallNotesController < ApplicationController
   def show
     @job_site = JobSite.find(params[:job_site_id])
     @customer = Customer.find(@job_site.customer_id)
-    format_dates
+    #format_dates
   end
 
   # GET /job_call_notes/new
@@ -29,7 +28,7 @@ class JobCallNotesController < ApplicationController
   def edit
     @job_site = JobSite.find(params[:job_site_id])
     @customer = Customer.find(@job_site.customer_id)
-    format_dates
+    #format_dates
   end
 
   # POST /job_call_notes
@@ -38,7 +37,7 @@ class JobCallNotesController < ApplicationController
     @job_site = JobSite.find(params[:job_site_id])
     @customer = Customer.find(@job_site.customer_id)
     @job_call_note = @job_site.job_call_notes.create(job_call_note_params)
-    format_dates_before_insert_or_update
+    #format_dates_before_insert_or_update
     respond_to do |format|
       if @job_call_note.save
         format.html { redirect_to customer_job_site_job_call_notes_path(:customer_id=>@customer.id,:job_site_id => @job_site.id), notice: 'Job call note was successfully created.' }
@@ -55,7 +54,6 @@ class JobCallNotesController < ApplicationController
   def update
     @job_site = JobSite.find(params[:job_site_id])
     @customer = Customer.find(@job_site.customer_id)
-    format_dates_before_insert_or_update
     respond_to do |format|
       if @job_call_note.update(job_call_note_params)
         format.html { redirect_to customer_job_site_job_call_notes_path(:customer_id=>@customer.id, :id=>@job_call_note.id,:job_site_id=>@job_call_note.job_site_id), notice: 'Job call note was successfully updated.' }
@@ -87,17 +85,6 @@ class JobCallNotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_call_note_params
-      params.require(:job_call_note).permit(:job_site_id, :call_date_time, :call_notes, :employee_id) if params[:job_call_note]
-    end
-    def format_dates_before_insert_or_update
-      @job_call_note.call_date_time =
-          Time.strptime(params[:job_call_note][:call_date_time],DATE_FORMAT)
-    end
-
-    def format_dates
-      if @job_call_note.call_date_time != nil
-        debugger
-        @job_call_note.call_date_time = @job_call_note.call_date_time.strftime(DATE_FORMAT)
-      end
+      params.require(:job_call_note).permit(:job_site_id, :call_date,:call_time, :call_notes, :employee_id) if params[:job_call_note]
     end
 end

@@ -1,32 +1,37 @@
 <%= form_for [@customer, @job_site, @job_call_note] do |f| %>
     <script type="text/javascript">
         $(function() {
-            $( "#callDateTime" ).datepicker({ dateFormat: 'mm/dd/yy'+' '+getCurrentTime()});
+            $( "#callTime" ).datepicker({ dateFormat: 'mm/dd/yy', onSelect: function(selected,evnt) {
+                updateCallTime(selected,getCurrentTime());
+            }});
         });
-
+        function updateCallTime(selected,value){
+            $('#callDate').val(selected);
+            $('#callTime').val(value);
+        }
         function getCurrentTime() {
             var CurrentTime = "";
             try {
                 var CurrentDate = new Date();
                 var CurrentHours = CurrentDate.getHours();
                 var CurrentMinutes = CurrentDate.getMinutes();
-                var CurrentAmPm = "A'M'";
+                var CurrentAmPm = "AM";
                 if (CurrentMinutes < 10) { CurrentMinutes = "0" + CurrentMinutes; }
 
                 if (CurrentHours == 12) {
                     CurrentHours = 12;
-                    CurrentAmPm = " P'M'";
+                    CurrentAmPm = " PM";
                 }
                 else if (CurrentHours == 0) {
                     CurrentHours = 12;
-                    CurrentAmPm = " A'M'";
+                    CurrentAmPm = " AM";
                 }
                 else if (CurrentHours > 12) {
                     CurrentHours = CurrentHours - 12;
-                    CurrentAmPm = " P'M'";
+                    CurrentAmPm = " PM";
                 }
                 else {
-                    CurrentAmPm = " A'M'";
+                    CurrentAmPm = " AM";
                 }
                 CurrentTime = "" + CurrentHours + ":" + CurrentMinutes + CurrentAmPm + "";
             }
@@ -49,10 +54,10 @@
     <table width="50%">
       <tr>
         <td width="20%">Call Date Time</td>
-        <td width="30%"><%= f.text_field :call_date_time, :id => 'callDateTime' %></td>
+        <td width="50%"><%= f.text_field :call_date, :id => 'callDate', :readonly => true %><%= f.text_field :call_time, :id => 'callTime',:size=>'10'%></td>
         <td width="1%"></td>
-        <td width="20%">Employee</td>
-        <td width="30%"><%= f.select(:employee_id, options_for_select(Employee.all.map{|t| ["#{t.first_name} #{t.last_name}", t.id]}, @job_call_note.employee_id),:include_blank => "Choose Employee") %></td>
+        <td width="10%">Employee</td>
+        <td width="20%"><%= f.select(:employee_id, options_for_select(Employee.all.map{|t| ["#{t.first_name} #{t.last_name}", t.id]}, @job_call_note.employee_id),:include_blank => "Choose Employee") %></td>
       </tr>
       <tr>
         <td>Call Notes</td>
