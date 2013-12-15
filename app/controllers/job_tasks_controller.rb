@@ -56,9 +56,6 @@ class JobTasksController < ApplicationController
     @job_site = JobSite.find(params[:job_task][:job_site_id])
     @customer = Customer.find(@job_site.customer_id)
     format_dates_before_insert_or_update
-    #@job_task.target_date = DateTime.strptime(params[:job_task][:target_date],'%m/%d/%Y').strftime("%Y-%m-%d")
-    #@job_task.date_completed = DateTime.strptime(params[:job_task][:date_completed],'%m/%d/%Y').strftime("%Y-%m-%d")
-    #debugger
     respond_to do |format|
       if @job_task.update_attributes(job_task_params)
         format.html { redirect_to customer_job_site_job_tasks_path(:customer_id=>@customer.id, :id=>@job_task.id,:job_site_id=>@job_task.job_site_id), notice: 'Job Task was successfully updated.' }
@@ -77,7 +74,7 @@ class JobTasksController < ApplicationController
     @customer = Customer.find(@job_site.customer_id)
     @job_task.destroy
     respond_to do |format|
-      format.html { redirect_to job_tasks_url }
+      format.html { redirect_to customer_job_site_job_tasks_path(:customer_id=>@customer.id,:job_site_id => @job_site.id), notice: 'Job Task was successfully deleted.' }
       format.json { head :no_content }
     end
   end

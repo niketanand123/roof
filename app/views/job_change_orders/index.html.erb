@@ -1,33 +1,40 @@
-<h1>Listing job_change_orders</h1>
-
-<table>
+<%= render :partial => 'job_customer_info' %>
+<div style="width:100%;">
+  <div BGCOLOR="#336699" HEIGHT="13" >
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Listing Job Change Orders</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+  </div>
+</div>
+<div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
+  <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
+</div>
+<table width="100%">
   <thead>
     <tr>
-      <th>Job site</th>
-      <th>Co number</th>
-      <th>Co total</th>
-      <th>Notes</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th align="left">C/O No.</th>
+      <th align="left">C/O total</th>
+      <th align="left">Notes</th>
+      <th align="left"></th>
+      <th align="left"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @job_change_orders.each do |job_change_order| %>
       <tr>
-        <td><%= job_change_order.job_site_id %></td>
         <td><%= job_change_order.co_number %></td>
         <td><%= job_change_order.co_total %></td>
         <td><%= job_change_order.notes %></td>
-        <td><%= link_to 'Show', job_change_order %></td>
-        <td><%= link_to 'Edit', edit_job_change_order_path(job_change_order) %></td>
-        <td><%= link_to 'Destroy', job_change_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_customer_job_site_job_change_order_path(:customer_id=>@customer.id, :id=>job_change_order.id,:job_site_id=>job_change_order.job_site_id) %></td>
+        <td><%= link_to 'Delete',customer_job_site_job_change_order_path(:id=>job_change_order.id, :customer_id=>@customer.id, :job_site_id=>@job_site.id), method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Job change order', new_job_change_order_path %>
+<%= link_to 'Back',  edit_customer_job_site_path(:id=>@job_site.id, :customer_id=>@customer.id) %> &nbsp;
+<%= link_to 'New Job Change Order', new_customer_job_site_job_change_order_path(:customer_id=>@customer.id, :job_site_id=>@job_site.id) %>

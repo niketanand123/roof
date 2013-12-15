@@ -229,12 +229,17 @@
         </td>
         <td>
           <% if @job_site!= nil && @job_site.id != nil%>
+              <%= button_to "Job Call Note", customer_job_site_job_call_notes_path(:customer_id =>@job_site.customer_id, :job_site_id =>@job_site.id), :method => :get %>
+          <% end %>
+        </td>
+        <td>
+          <% if @job_site!= nil && @job_site.id != nil%>
               <%= button_to "Job Task", customer_job_site_job_tasks_path(:customer_id =>@job_site.customer_id, :job_site_id =>@job_site.id), :method => :get %>
           <% end %>
         </td>
         <td>
           <% if @job_site!= nil && @job_site.id != nil%>
-              <%= button_to "Job Call Note", customer_job_site_job_call_notes_path(:customer_id =>@job_site.customer_id, :job_site_id =>@job_site.id), :method => :get %>
+              <%= button_to "Job Change Order", customer_job_site_job_change_orders_path(:customer_id =>@job_site.customer_id, :job_site_id =>@job_site.id), :method => :get %>
           <% end %>
         </td>
         <td>

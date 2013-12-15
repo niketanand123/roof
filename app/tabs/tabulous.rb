@@ -50,6 +50,14 @@ Tabulous.setup do
       active_when   { in_action('any').of_controller('job_tasks') }
     end
 
+    job_change_order_subtab do
+      text          { 'Job Change Order' }
+      link_path     { job_change_orders_path }
+      visible_when  { false }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('job_change_orders') }
+    end
+
     client_admin_tab do
       text          { 'Client Admin' }
       link_path     { employees_path }

@@ -4,32 +4,41 @@ class JobChangeOrdersController < ApplicationController
   # GET /job_change_orders
   # GET /job_change_orders.json
   def index
-    @job_change_orders = JobChangeOrder.all
+    @customer = Customer.find(params[:customer_id])
+    @job_site = JobSite.find(params[:job_site_id])
+    @job_change_orders = JobChangeOrder.where(:job_site_id =>params[:job_site_id])
   end
 
   # GET /job_change_orders/1
   # GET /job_change_orders/1.json
   def show
+    @job_site = JobSite.find(params[:job_site_id])
+    @customer = Customer.find(@job_site.customer_id)
   end
 
   # GET /job_change_orders/new
   def new
-    @job_change_order = JobChangeOrder.new
+    @job_site = JobSite.find(params[:job_site_id])
+    @customer = Customer.find(@job_site.customer_id)
+    @job_change_order = @job_site.job_change_orders.build(:job_site_id =>@job_site)
   end
 
   # GET /job_change_orders/1/edit
   def edit
+    @job_site = JobSite.find(params[:job_site_id])
+    @customer = Customer.find(@job_site.customer_id)
   end
 
   # POST /job_change_orders
   # POST /job_change_orders.json
   def create
-    @job_change_order = JobChangeOrder.new(job_change_order_params)
-
+    @job_site = JobSite.find(params[:job_change_order][:job_site_id])
+    @customer = Customer.find(@job_site.customer_id)
+    @job_change_order = @job_site.job_change_orders.create(job_change_order_params)
     respond_to do |format|
       if @job_change_order.save
-        format.html { redirect_to @job_change_order, notice: 'Job change order was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @job_change_order }
+        format.html { redirect_to customer_job_site_job_change_orders_path(:customer_id=>@customer.id,:job_site_id => @job_site.id), notice: 'Job Change Order was successfully created.' }
+        format.xml  { render :xml => @job_change_order, :status => :created, :location => [@job_site, @job_change_order] }
       else
         format.html { render action: 'new' }
         format.json { render json: @job_change_order.errors, status: :unprocessable_entity }
@@ -40,9 +49,12 @@ class JobChangeOrdersController < ApplicationController
   # PATCH/PUT /job_change_orders/1
   # PATCH/PUT /job_change_orders/1.json
   def update
+    @job_site = JobSite.find(params[:job_change_order][:job_site_id])
+    @customer = Customer.find(@job_site.customer_id)
+
     respond_to do |format|
-      if @job_change_order.update(job_change_order_params)
-        format.html { redirect_to @job_change_order, notice: 'Job change order was successfully updated.' }
+      if @job_change_order.update_attributes(job_change_order_params)
+        format.html { redirect_to customer_job_site_job_change_orders_path(:customer_id=>@customer.id, :id=>@job_change_order.id,:job_site_id=>@job_change_order.job_site_id), notice: 'Job Change Order was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -54,9 +66,11 @@ class JobChangeOrdersController < ApplicationController
   # DELETE /job_change_orders/1
   # DELETE /job_change_orders/1.json
   def destroy
+    @job_site = JobSite.find(params[:job_site_id])
+    @customer = Customer.find(@job_site.customer_id)
     @job_change_order.destroy
     respond_to do |format|
-      format.html { redirect_to job_change_orders_url }
+      format.html { redirect_to customer_job_site_job_change_orders_path(:customer_id=>@customer.id,:job_site_id => @job_site.id), notice: 'Job Change Order was successfully deleted.'  }
       format.json { head :no_content }
     end
   end
