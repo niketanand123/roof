@@ -55,7 +55,7 @@ class JobEstimatesController < ApplicationController
     @job_site = JobSite.find(params[:job_estimate][:job_site_id])
     @customer = Customer.find(@job_site.customer_id)
     respond_to do |format|
-      if @job_estimate.update(job_estimate_params)
+      if @job_estimate.update_attributes(job_estimate_params)
         format.html { redirect_to customer_job_site_job_estimates_path(:customer_id=>@customer.id, :id=>@job_estimate.id,:job_site_id=>@job_estimate.job_site_id), notice: 'Job estimate was successfully updated.' }
         format.json { head :no_content }
       else
@@ -72,7 +72,7 @@ class JobEstimatesController < ApplicationController
     @customer = Customer.find(@job_site.customer_id)
     @job_estimate.destroy
     respond_to do |format|
-      format.html { redirect_to customer_job_site_job_estimates_path(:customer_id=>@customer.id,:job_site_id => @job_site.id) }
+      format.html { redirect_to customer_job_site_job_estimates_path(:customer_id=>@customer.id,:job_site_id => @job_site.id), notice: 'Job estimate was successfully deleted.' }
       format.json { head :no_content }
     end
   end

@@ -1,4 +1,40 @@
-<%= form_for(@job_call_note) do |f| %>
+<%= form_for [@customer, @job_site, @job_call_note] do |f| %>
+    <script type="text/javascript">
+        $(function() {
+            $( "#callDateTime" ).datepicker({ dateFormat: 'mm/dd/yy'+' '+getCurrentTime()});
+        });
+
+        function getCurrentTime() {
+            var CurrentTime = "";
+            try {
+                var CurrentDate = new Date();
+                var CurrentHours = CurrentDate.getHours();
+                var CurrentMinutes = CurrentDate.getMinutes();
+                var CurrentAmPm = "A'M'";
+                if (CurrentMinutes < 10) { CurrentMinutes = "0" + CurrentMinutes; }
+
+                if (CurrentHours == 12) {
+                    CurrentHours = 12;
+                    CurrentAmPm = " P'M'";
+                }
+                else if (CurrentHours == 0) {
+                    CurrentHours = 12;
+                    CurrentAmPm = " A'M'";
+                }
+                else if (CurrentHours > 12) {
+                    CurrentHours = CurrentHours - 12;
+                    CurrentAmPm = " P'M'";
+                }
+                else {
+                    CurrentAmPm = " A'M'";
+                }
+                CurrentTime = "" + CurrentHours + ":" + CurrentMinutes + CurrentAmPm + "";
+            }
+            catch (ex) {
+            }
+            return CurrentTime;
+        }
+    </script>
   <% if @job_call_note.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job_call_note.errors.count, "error") %> prohibited this job_call_note from being saved:</h2>
@@ -10,24 +46,25 @@
       </ul>
     </div>
   <% end %>
+    <table width="50%">
+      <tr>
+        <td width="20%">Call Date Time</td>
+        <td width="30%"><%= f.text_field :call_date_time, :id => 'callDateTime' %></td>
+        <td width="1%"></td>
+        <td width="20%">Employee</td>
+        <td width="30%"><%= f.select(:employee_id, options_for_select(Employee.all.map{|t| ["#{t.first_name} #{t.last_name}", t.id]}, @job_call_note.employee_id),:include_blank => "Choose Employee") %></td>
+      </tr>
+      <tr>
+        <td>Call Notes</td>
+        <td colspan="4"><%= f.text_area :call_notes, :size=>"60x3" %><%= f.hidden_field :job_site_id %></td>
+      </tr>
+    </table>
 
-  <div class="field">
-    <%= f.label :job_site_id %><br>
-    <%= f.number_field :job_site_id %>
-  </div>
-  <div class="field">
-    <%= f.label :call_date_time %><br>
-    <%= f.datetime_select :call_date_time %>
-  </div>
-  <div class="field">
-    <%= f.label :call_notes %><br>
-    <%= f.text_field :call_notes %>
-  </div>
-  <div class="field">
-    <%= f.label :employee_id %><br>
-    <%= f.number_field :employee_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <% if @job_call_note!= nil && @job_call_note.id != nil%>
+          <%= button_to "Update Job Call Note", customer_job_site_job_call_note_path(:customer_id=>@job_site.customer_id,:id=>@job_call_note.id,:job_site_id => @job_site.id), :method => :put %>
+      <% else %>
+          <%= button_to "Create Job Call Note", customer_job_site_job_call_notes_path(:customer_id=>@job_site.customer_id,:job_site_id=>@job_site.id), :method => :post %>
+      <% end %>
+    </div>
 <% end %>

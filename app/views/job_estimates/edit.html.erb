@@ -13,5 +13,4 @@
 </div>
 <%= render 'form' %>
 
-<%= link_to 'Show', @job_estimate %> |
-<%= link_to 'Back', job_estimates_path %>
+<%= link_to 'Back', customer_job_site_job_estimates_path(:customer_id =>@job_site.customer_id, :job_site_id =>@job_site.id) %>

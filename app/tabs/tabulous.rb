@@ -29,9 +29,17 @@ Tabulous.setup do
     job_estimate_subtab do
       text          { 'Job Estimate' }
       link_path     { job_estimates_path }
-      visible_when  { true }
+      visible_when  { false }
       enabled_when  { true }
       active_when   { in_action('any').of_controller('job_estimates') }
+    end
+
+    job_call_note_subtab do
+      text          { 'Job Call Notes' }
+      link_path     { job_call_notes_path }
+      visible_when  { false }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('job_call_notes') }
     end
 
     client_admin_tab do
