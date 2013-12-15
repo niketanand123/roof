@@ -42,6 +42,14 @@ Tabulous.setup do
       active_when   { in_action('any').of_controller('job_call_notes') }
     end
 
+    job_task_subtab do
+      text          { 'Job Tasks' }
+      link_path     { job_tasks_path }
+      visible_when  { false }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('job_tasks') }
+    end
+
     client_admin_tab do
       text          { 'Client Admin' }
       link_path     { employees_path }
@@ -144,6 +152,14 @@ Tabulous.setup do
       visible_when  { true }
       enabled_when  { true }
       active_when   { in_action('any').of_controller('estimate_types') }
+    end
+
+    job_task_type_subtab do
+      text          { 'Task Type' }
+      link_path     { task_types_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('task_types') }
     end
   end
 

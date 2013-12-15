@@ -1,4 +1,10 @@
-<%= form_for(@job_task) do |f| %>
+<%= form_for [@customer, @job_site, @job_task] do |f| %>
+    <script type="text/javascript">
+        $(function() {
+            $( "#targetDate" ).datepicker({ dateFormat: 'mm/dd/yy'});
+            $( "#dateCompleted" ).datepicker({ dateFormat: 'mm/dd/yy'});
+        });
+    </script>
   <% if @job_task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job_task.errors.count, "error") %> prohibited this job_task from being saved:</h2>
@@ -10,36 +16,35 @@
       </ul>
     </div>
   <% end %>
+    <table width="50%">
+      <tr>
+        <td width="10%">Task Type</td>
+        <td width="20%"><%= f.select(:task_type_id, options_for_select(TaskType.all.map{|t| [t.task_type, t.id]}, @job_task.task_type_id),:include_blank => "Choose Task Type") %></td>
+        <td width="1%"></td>
+        <td width="10%">Task Note</td>
+        <td width="60%"><%= f.text_area :task_note, :size=>"60x3" %><%= f.hidden_field :job_site_id %></td>
+      </tr>
+      <tr>
+        <td>Target Date</td>
+        <td><%= f.text_field :unformatted_target_date, :id => 'targetDate' %></td>
+        <td></td>
+        <td>Entered By</td>
+        <td><%= f.select(:entered_by_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_task.entered_by_id),:include_blank => "Choose Entered By") %></td>
+      </tr>
+      <tr>
+        <td>Date Completed</td>
+        <td><%= f.text_field :unformatted_date_completed, :id => 'dateCompleted' %></td>
+        <td></td>
+        <td>Completed By</td>
+        <td><%= f.select(:completed_by_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_task.completed_by_id),:include_blank => "Choose Completed By") %></td>
+      </tr>
+    </table>
 
-  <div class="field">
-    <%= f.label :job_site_id %><br>
-    <%= f.number_field :job_site_id %>
-  </div>
-  <div class="field">
-    <%= f.label :task_type_id %><br>
-    <%= f.number_field :task_type_id %>
-  </div>
-  <div class="field">
-    <%= f.label :task_note %><br>
-    <%= f.text_field :task_note %>
-  </div>
-  <div class="field">
-    <%= f.label :target_date %><br>
-    <%= f.date_select :target_date %>
-  </div>
-  <div class="field">
-    <%= f.label :entered_by_id %><br>
-    <%= f.number_field :entered_by_id %>
-  </div>
-  <div class="field">
-    <%= f.label :date_completed %><br>
-    <%= f.date_select :date_completed %>
-  </div>
-  <div class="field">
-    <%= f.label :completed_by_id %><br>
-    <%= f.number_field :completed_by_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <% if @job_task!= nil && @job_task.id != nil%>
+          <%= button_to "Update Job Task", customer_job_site_job_task_path(:customer_id=>@job_site.customer_id,:id=>@job_task.id,:job_site_id => @job_site.id), :method => :put %>
+      <% else %>
+          <%= button_to "Create Job Task", customer_job_site_job_tasks_path(:customer_id=>@job_site.customer_id,:job_site_id=>@job_site.id), :method => :post %>
+      <% end %>
+    </div>
 <% end %>
