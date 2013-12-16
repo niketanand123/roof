@@ -66,6 +66,14 @@ Tabulous.setup do
       active_when   { in_action('any').of_controller('job_contacts') }
     end
 
+    job_document_subtab do
+      text          { 'Job Document' }
+      link_path     { job_documents_path }
+      visible_when  { false }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('job_documents') }
+    end
+
     client_admin_tab do
       text          { 'Client Admin' }
       link_path     { employees_path }

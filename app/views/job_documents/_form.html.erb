@@ -1,4 +1,4 @@
-<%= form_for(@job_document) do |f| %>
+<%= form_for [@customer, @job_site, @job_document] do |f| %>
   <% if @job_document.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job_document.errors.count, "error") %> prohibited this job_document from being saved:</h2>
@@ -10,24 +10,26 @@
       </ul>
     </div>
   <% end %>
+    <table width="50%">
+      <tr>
+        <td width="20%">Document Name</td>
+        <td width="80%"><%= f.text_field :doc_name %></td>
+      </tr>
+      <tr>
+        <td>Document Description</td>
+        <td><%= f.text_area :doc_desc, :size=>"60x3" %><%= f.hidden_field :job_site_id %></td>
+      </tr>
+      <tr>
+        <td>Document Link</td>
+        <td><%= f.text_field :doc_link %></td>
+      </tr>
+    </table>
 
-  <div class="field">
-    <%= f.label :job_site_id %><br>
-    <%= f.number_field :job_site_id %>
-  </div>
-  <div class="field">
-    <%= f.label :doc_name %><br>
-    <%= f.text_field :doc_name %>
-  </div>
-  <div class="field">
-    <%= f.label :doc_desc %><br>
-    <%= f.text_field :doc_desc %>
-  </div>
-  <div class="field">
-    <%= f.label :doc_link %><br>
-    <%= f.text_field :doc_link %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <% if @job_document!= nil && @job_document.id != nil%>
+          <%= button_to "Update Job Document", customer_job_site_job_document_path(:customer_id=>@job_site.customer_id,:id=>@job_document.id,:job_site_id => @job_site.id), :method => :put %>
+      <% else %>
+          <%= button_to "Create Job Document", customer_job_site_job_documents_path(:customer_id=>@job_site.customer_id,:job_site_id=>@job_site.id), :method => :post %>
+      <% end %>
+    </div>
 <% end %>
