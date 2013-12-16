@@ -11,9 +11,13 @@ class JobTask < ActiveRecord::Base
   def format_date
     if self.unformatted_target_date !=nil && self.unformatted_target_date !=""
       self.target_date = Date.strptime(self.unformatted_target_date, "%m/%d/%Y").to_time()
+    else
+      self.target_date = nil;
     end
     if self.unformatted_date_completed !=nil && self.unformatted_date_completed != ""
       self.date_completed = Date.strptime(self.unformatted_date_completed, "%m/%d/%Y").to_time()
+    else
+      self.date_completed = nil;
     end
   end
 end

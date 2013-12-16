@@ -99,16 +99,13 @@ class JobTasksController < ApplicationController
       if(@job_task.target_date !=nil)
         @job_task.unformatted_target_date = @job_task.target_date.strftime("%m/%d/%Y")
       end
-      #if(@job_task.created_at !=nil)
-      #  @job_task.created_at = @job_task.created_at.strftime("%m/%d/%Y")
-      #end
       if(@job_task.date_completed !=nil)
         @job_task.unformatted_date_completed = @job_task.date_completed.strftime("%m/%d/%Y")
       end
     end
 
     def format_dates_before_insert_or_update
-      @job_task.target_date = get_date(params[:job_task][:target_date])
-      @job_task.date_completed = get_date(params[:job_task][:date_completed])
+      @job_task.unformatted_target_date = params[:job_task][:unformatted_target_date]
+      @job_task.unformatted_date_completed = params[:job_task][:unformatted_date_completed]
     end
 end

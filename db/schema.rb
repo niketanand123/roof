@@ -131,12 +131,12 @@ ActiveRecord::Schema.define(version: 20131214032040) do
 
   create_table "job_call_notes", force: true do |t|
     t.integer  "job_site_id"
-    t.string     "call_date"
-    t.string   "call_time"
     t.string   "call_notes"
     t.integer  "employee_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "call_time",   limit: 10
+    t.date     "call_date"
   end
 
   create_table "job_change_orders", force: true do |t|
@@ -168,29 +168,6 @@ ActiveRecord::Schema.define(version: 20131214032040) do
     t.decimal  "overhead"
     t.integer  "overhead_percentage"
     t.decimal  "net_profit"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "job_details", force: true do |t|
-    t.date     "job_start_date"
-    t.integer  "job_status_id"
-    t.string   "how_many_stories"
-    t.integer  "existing_roof_type_id"
-    t.integer  "new_roof_type"
-    t.integer  "product_type_id"
-    t.integer  "product_color_id"
-    t.integer  "sales_rep_id"
-    t.integer  "estimate_type_id"
-    t.string   "contract_price"
-    t.string   "deposit_due"
-    t.string   "deposit_method"
-    t.date     "date_completed"
-    t.string   "job_notes"
-    t.string   "lead_sheet_note"
-    t.integer  "info_taken_by_id"
-    t.integer  "assign_to"
-    t.date     "date_taken"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
