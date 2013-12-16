@@ -1,4 +1,4 @@
-<%= form_for(@job_contact) do |f| %>
+<%= form_for [@customer, @job_site, @job_contact] do |f| %>
   <% if @job_contact.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job_contact.errors.count, "error") %> prohibited this job_contact from being saved:</h2>
@@ -10,36 +10,35 @@
       </ul>
     </div>
   <% end %>
+    <table width="50%">
+      <tr>
+        <td width="20%">First Name</td>
+        <td width="50%"><%= f.text_field :first_name %></td>
+        <td width="1%"></td>
+        <td width="10%">Last Name</td>
+        <td width="20%"><%= f.text_field :last_name %></td>
+      </tr>
+      <tr>
+        <td>Contact Type</td>
+        <td><%= f.select(:contact_type_id, options_for_select(ContactType.all.map{|t| [t.contact_type, t.id]}, @job_contact.contact_type_id),:include_blank => "Choose Contact Type") %></td>
+        <td></td>
+        <td>Contact Phone</td>
+        <td><%= f.text_field :contact_phone %></td>
+      </tr>
+      <tr>
+        <td>Contact Email</td>
+        <td><%= f.text_field :contact_email %></td>
+        <td></td>
+        <td>Call Notes</td>
+        <td><%= f.text_area :contact_notes, :size=>"60x3" %><%= f.hidden_field :job_site_id %></td>
+      </tr>
+    </table>
 
-  <div class="field">
-    <%= f.label :job_site_id %><br>
-    <%= f.number_field :job_site_id %>
-  </div>
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_type_id %><br>
-    <%= f.number_field :contact_type_id %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_phone %><br>
-    <%= f.text_field :contact_phone %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_email %><br>
-    <%= f.text_field :contact_email %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_notes %><br>
-    <%= f.text_field :contact_notes %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <% if @job_contact!= nil && @job_contact.id != nil%>
+          <%= button_to "Update Job Contact", customer_job_site_job_contact_path(:customer_id=>@job_site.customer_id,:id=>@job_contact.id,:job_site_id => @job_site.id), :method => :put %>
+      <% else %>
+          <%= button_to "Create Job Contact", customer_job_site_job_contacts_path(:customer_id=>@job_site.customer_id,:job_site_id=>@job_site.id), :method => :post %>
+      <% end %>
+    </div>
 <% end %>

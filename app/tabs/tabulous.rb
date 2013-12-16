@@ -58,6 +58,14 @@ Tabulous.setup do
       active_when   { in_action('any').of_controller('job_change_orders') }
     end
 
+    job_contact_subtab do
+      text          { 'Job Contact' }
+      link_path     { job_contacts_path }
+      visible_when  { false }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('job_contacts') }
+    end
+
     client_admin_tab do
       text          { 'Client Admin' }
       link_path     { employees_path }
@@ -89,7 +97,13 @@ Tabulous.setup do
       enabled_when  { true }
       active_when   { in_action('any').of_controller('customer_types') }
     end
-
+    contact_types_subtab do
+      text          { 'Contact Types' }
+      link_path     { contact_types_path }
+      visible_when  { true }
+      enabled_when  { true }
+      active_when   { in_action('any').of_controller('contact_types') }
+    end
     companies_subtab do
       text          { 'Companies' }
       link_path     { companies_path }

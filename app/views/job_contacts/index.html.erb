@@ -1,39 +1,49 @@
-<h1>Listing job_contacts</h1>
+<%= render :partial => 'job_customer_info' %>
+<div style="width:100%;">
+  <div BGCOLOR="#336699" HEIGHT="13" >
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Listing Job Contacts</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+  </div>
+</div>
+<div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
+  <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
+</div>
 
-<table>
+<table width="100%">
   <thead>
     <tr>
-      <th>Job site</th>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Contact type</th>
-      <th>Contact phone</th>
-      <th>Contact email</th>
-      <th>Contact notes</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th align="left">First name</th>
+      <th align="left">Last name</th>
+      <th align="left">Contact type</th>
+      <th align="left">Contact phone</th>
+      <th align="left">Contact email</th>
+      <th align="left">Contact notes</th>
+      <th align="left"></th>
+      <th align="left"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @job_contacts.each do |job_contact| %>
       <tr>
-        <td><%= job_contact.job_site_id %></td>
         <td><%= job_contact.first_name %></td>
         <td><%= job_contact.last_name %></td>
-        <td><%= job_contact.contact_type_id %></td>
+        <td><%= ContactType.where(:id=>job_contact.contact_type_id).pluck(:contact_type).first %></td>
         <td><%= job_contact.contact_phone %></td>
         <td><%= job_contact.contact_email %></td>
         <td><%= job_contact.contact_notes %></td>
-        <td><%= link_to 'Show', job_contact %></td>
-        <td><%= link_to 'Edit', edit_job_contact_path(job_contact) %></td>
-        <td><%= link_to 'Destroy', job_contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_customer_job_site_job_contact_path(:customer_id=>@customer.id, :id=>job_contact.id,:job_site_id=>job_contact.job_site_id) %></td>
+        <td><%= link_to 'Delete',customer_job_site_job_contact_path(:id=>job_contact.id, :customer_id=>@customer.id, :job_site_id=>@job_site.id), method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Job contact', new_job_contact_path %>
+<br>
+<%= link_to 'Back',  edit_customer_job_site_path(:id=>@job_site.id, :customer_id=>@customer.id) %> &nbsp;
+<%= link_to 'New Job Contact', new_customer_job_site_job_contact_path(:customer_id=>@customer.id, :job_site_id=>@job_site.id) %>

@@ -6,6 +6,7 @@ class JobSite < ActiveRecord::Base
     has_many :job_call_notes, :class_name => 'JobCallNote'
     has_many :job_tasks, :class_name => 'JobTask'
     has_many :job_change_orders, :class_name => 'JobChangeOrder'
+    has_many :job_contacts, :class_name => 'JobContact'
     belongs_to :customer, :class_name => 'Customer', :foreign_key => :customer_id
     belongs_to :employee, :class_name => 'Employee', :foreign_key => :assign_to_id
     belongs_to :estimate_type, :class_name => 'EstimateType', :foreign_key => :estimate_type_id
