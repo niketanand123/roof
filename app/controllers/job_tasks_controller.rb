@@ -42,8 +42,8 @@ class JobTasksController < ApplicationController
       if @job_task.save
         format.html { redirect_to customer_job_site_job_tasks_path(:customer_id=>@customer.id,:job_site_id => @job_site.id), notice: 'Job Task was successfully created.' }
         format.xml  { render :xml => @job_task, :status => :created, :location => [@job_site, @job_task] }
-
       else
+        format_dates
         format.html { render action: 'new' }
         format.json { render json: @job_task.errors, status: :unprocessable_entity }
       end
@@ -61,6 +61,7 @@ class JobTasksController < ApplicationController
         format.html { redirect_to customer_job_site_job_tasks_path(:customer_id=>@customer.id, :id=>@job_task.id,:job_site_id=>@job_task.job_site_id), notice: 'Job Task was successfully updated.' }
         format.json { head :no_content }
       else
+        format_dates
         format.html { render action: 'edit' }
         format.json { render json: @job_task.errors, status: :unprocessable_entity }
       end

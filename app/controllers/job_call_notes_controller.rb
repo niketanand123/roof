@@ -43,6 +43,7 @@ class JobCallNotesController < ApplicationController
         format.html { redirect_to customer_job_site_job_call_notes_path(:customer_id=>@customer.id,:job_site_id => @job_site.id), notice: 'Job call note was successfully created.' }
         format.xml  { render :xml => @job_call_note, :status => :created, :location => [@job_site, @job_call_note] }
       else
+        format_dates
         format.html { render action: 'new' }
         format.json { render json: @job_call_note.errors, status: :unprocessable_entity }
       end
@@ -60,6 +61,7 @@ class JobCallNotesController < ApplicationController
         format.html { redirect_to customer_job_site_job_call_notes_path(:customer_id=>@customer.id, :id=>@job_call_note.id,:job_site_id=>@job_call_note.job_site_id), notice: 'Job call note was successfully updated.' }
         format.json { head :no_content }
       else
+        format_dates
         format.html { render action: 'edit' }
         format.json { render json: @job_call_note.errors, status: :unprocessable_entity }
       end
