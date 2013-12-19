@@ -150,8 +150,10 @@
         <td></td>
         <td>Service Requested</td>
         <td colspan="4">
-          <% @service_types.each do |t| %>
-               <%= check_box_tag  "service_types_checkbox[]",t.id, @service_type_ids !=nil && @service_type_ids.include?(t.id) %> <%= t.service_type %>  &nbsp;
+          <% if @service_types != nil %>
+              <% @service_types.each do |t| %>
+                   <%= check_box_tag  "service_types_checkbox[]",t.id, @service_type_ids !=nil && @service_type_ids.include?(t.id) %> <%= t.service_type %>  &nbsp;
+              <%end%>
           <%end%>
         </td>
       </tr>

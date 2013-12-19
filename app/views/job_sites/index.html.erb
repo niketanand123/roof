@@ -5,10 +5,18 @@
 
 <%= render :partial => 'search' %>
 
+
+<% if @searchText != nil && (@job_sites == nil || @job_sites.count == 0)%>
+    <b>No Records .....</b>
+    <br/>
+    <br/>
+<%end%>
+
 <% if @job_sites!= nil && @job_sites.count >= 1 %>
     <table width="50%">
       <thead>
       <tr>
+        <th align="left">Contact Name</th>
         <th align="left">Address</th>
         <th align="left">City</th>
       </tr>
@@ -17,7 +25,8 @@
       <tbody>
       <% @job_sites.each do |job_site| %>
           <tr>
-            <td><%= link_to job_site.street1, job_site %></td>
+            <td><%= link_to job_site.contact_name, edit_customer_job_site_path(:id=>job_site.id, :customer_id=>job_site.customer_id) %></td>
+            <td><%= job_site.street1%></td>
             <td><%= job_site.city %></td>
           </tr>
       <% end %>

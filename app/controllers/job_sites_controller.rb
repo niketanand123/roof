@@ -2,9 +2,9 @@ class JobSitesController < ApplicationController
   #before_action :set_job_site, only: [:show, :edit, :update, :destroy]
   def index
     basedOn = params[:basedOn]
-    searchText = params[:searchText]
-    if searchText != nil
-      search_condition = "%" + searchText + "%"
+    @searchText = params[:searchText]
+    if @searchText != nil
+      search_condition = "%" + @searchText + "%"
     end
     if basedOn == "Contact Name"
       @job_sites = JobSite.where("is_active=1 and contact_name LIKE ?", search_condition)
@@ -59,6 +59,7 @@ class JobSitesController < ApplicationController
         format.html { redirect_to([@customer], :notice => 'Job site was successfully created.') }
         format.xml  { render :xml => @job_site, :status => :created, :location => [@customer, @job_site] }
       else
+        format_dates
         format.html { render :action => "new" }
         format.xml  { render :xml => @job_site.errors, :status => :unprocessable_entity }
       end
@@ -75,6 +76,7 @@ class JobSitesController < ApplicationController
         format.html { redirect_to([@customer], :notice => 'Job site was successfully updated.') }
         format.xml  { head :ok }
       else
+        format_dates
         format.html { render :action => "edit" }
         format.xml  { render :xml => @job_site.errors, :status => :unprocessable_entity }
       end
