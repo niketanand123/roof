@@ -30,7 +30,7 @@
         <td><%= item_code.retail_price %></td>
         <td><%= link_to 'Show', item_code %></td>
         <td><%= link_to 'Edit', edit_item_code_path(item_code) %></td>
-        <td><%= link_to 'Destroy', item_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', item_code, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -48,7 +48,7 @@
         <td><%= assembly.total_price %></td>
         <td><%= link_to 'Show', assembly %></td>
         <td><%= link_to 'Edit', edit_assembly_path(assembly) %></td>
-        <td><%= link_to 'Destroy', assembly, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', assembly, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>
     <% end %>
   </tbody>

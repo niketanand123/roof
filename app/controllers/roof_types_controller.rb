@@ -54,10 +54,14 @@ class RoofTypesController < ApplicationController
   # DELETE /roof_types/1
   # DELETE /roof_types/1.json
   def destroy
-    @roof_type.destroy
     respond_to do |format|
-      format.html { redirect_to roof_types_url }
-      format.json { head :no_content }
+      if @roof_type.destroy
+        format.html { redirect_to roof_types_url, notice: 'Roof Type was successfully deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to roof_types_url, notice: "An Error Occurred! #{@roof_type.errors[:base].to_s}"}
+        format.json { head :ok }
+      end
     end
   end
 

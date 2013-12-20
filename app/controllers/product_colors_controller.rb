@@ -54,10 +54,14 @@ class ProductColorsController < ApplicationController
   # DELETE /product_colors/1
   # DELETE /product_colors/1.json
   def destroy
-    @product_color.destroy
     respond_to do |format|
-      format.html { redirect_to product_colors_url }
-      format.json { head :no_content }
+      if @product_color.destroy
+        format.html { redirect_to product_colors_url, notice: 'Product Color was successfully deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to product_colors_url, notice: "An Error Occurred! #{@product_color.errors[:base].to_s}"}
+        format.json { head :ok }
+      end
     end
   end
 

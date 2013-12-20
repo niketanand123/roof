@@ -54,10 +54,14 @@ class CustomerTypesController < ApplicationController
   # DELETE /customer_types/1
   # DELETE /customer_types/1.json
   def destroy
-    @customer_type.destroy
     respond_to do |format|
-      format.html { redirect_to customer_types_url }
-      format.json { head :no_content }
+      if @customer_type.destroy
+        format.html { redirect_to customer_types_url, notice: 'Customer Type was successfully deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to customer_types_url, notice: "An Error Occurred! #{@customer_type.errors[:base].to_s}"}
+        format.json { head :ok }
+      end
     end
   end
 

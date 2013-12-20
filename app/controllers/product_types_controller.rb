@@ -54,10 +54,14 @@ class ProductTypesController < ApplicationController
   # DELETE /product_types/1
   # DELETE /product_types/1.json
   def destroy
-    @product_type.destroy
     respond_to do |format|
-      format.html { redirect_to product_types_url }
-      format.json { head :no_content }
+      if @product_type.destroy
+        format.html { redirect_to product_types_url, notice: 'Product Type was successfully deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to product_types_url, notice: "An Error Occurred! #{@product_type.errors[:base].to_s}"}
+        format.json { head :ok }
+      end
     end
   end
 

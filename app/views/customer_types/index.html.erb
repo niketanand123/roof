@@ -16,7 +16,7 @@
         <td><%= customer_type.type %></td>
         <td><%= link_to 'Show', customer_type %></td>
         <td><%= link_to 'Edit', edit_customer_type_path(customer_type) %></td>
-        <td><%= link_to 'Destroy', customer_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', customer_type, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -28,7 +28,7 @@
         <td><%= job_costing.net_profit %></td>
         <td><%= link_to 'Show', job_costing %></td>
         <td><%= link_to 'Edit', edit_job_costing_path(job_costing) %></td>
-        <td><%= link_to 'Destroy', job_costing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', job_costing, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>
     <% end %>
   </tbody>

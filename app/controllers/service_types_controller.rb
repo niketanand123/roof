@@ -54,10 +54,14 @@ class ServiceTypesController < ApplicationController
   # DELETE /service_types/1
   # DELETE /service_types/1.json
   def destroy
-    @service_type.destroy
     respond_to do |format|
-      format.html { redirect_to service_types_url }
-      format.json { head :no_content }
+      if @service_type.destroy
+        format.html { redirect_to service_types_url, notice: 'Service Type was successfully deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to service_types_url, notice: "An Error Occurred! #{@service_type.errors[:base].to_s}"}
+        format.json { head :ok }
+      end
     end
   end
 

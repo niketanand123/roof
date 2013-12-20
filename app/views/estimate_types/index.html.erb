@@ -18,7 +18,7 @@
         <td><%= estimate_type.default_overhead %></td>
         <td><%= link_to 'Show', estimate_type %></td>
         <td><%= link_to 'Edit', edit_estimate_type_path(estimate_type) %></td>
-        <td><%= link_to 'Destroy', estimate_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', estimate_type, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>
     <% end %>
   </tbody>

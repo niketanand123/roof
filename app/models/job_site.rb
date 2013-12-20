@@ -2,12 +2,12 @@ class JobSite < ActiveRecord::Base
     self.table_name = 'job_site'
 
     has_many :job_service_types, :class_name => 'JobServiceType'
-    has_many :job_estimates, :class_name => 'JobEstimate'
-    has_many :job_call_notes, :class_name => 'JobCallNote'
-    has_many :job_tasks, :class_name => 'JobTask'
-    has_many :job_change_orders, :class_name => 'JobChangeOrder'
-    has_many :job_contacts, :class_name => 'JobContact'
-    has_many :job_documents, :class_name => 'JobDocument'
+    has_many :job_estimates, :class_name => 'JobEstimate', :dependent => :destroy
+    has_many :job_call_notes, :class_name => 'JobCallNote', :dependent => :destroy
+    has_many :job_tasks, :class_name => 'JobTask', :dependent => :destroy
+    has_many :job_change_orders, :class_name => 'JobChangeOrder', :dependent => :destroy
+    has_many :job_contacts, :class_name => 'JobContact', :dependent => :destroy
+    has_many :job_documents, :class_name => 'JobDocument', :dependent => :destroy
     belongs_to :customer, :class_name => 'Customer', :foreign_key => :customer_id
     belongs_to :employee, :class_name => 'Employee', :foreign_key => :assign_to_id
     belongs_to :estimate_type, :class_name => 'EstimateType', :foreign_key => :estimate_type_id

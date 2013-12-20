@@ -54,10 +54,14 @@ class JobStatusesController < ApplicationController
   # DELETE /job_statuses/1
   # DELETE /job_statuses/1.json
   def destroy
-    @job_status.destroy
     respond_to do |format|
-      format.html { redirect_to job_statuses_url }
-      format.json { head :no_content }
+      if @job_status.destroy
+        format.html { redirect_to job_statuses_url, notice: 'Job Status was successfully deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to job_statuses_url, notice: "An Error Occurred! #{@job_status.errors[:base].to_s}"}
+        format.json { head :ok }
+      end
     end
   end
 

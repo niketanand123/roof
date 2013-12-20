@@ -54,10 +54,14 @@ class TaskTypesController < ApplicationController
   # DELETE /task_types/1
   # DELETE /task_types/1.json
   def destroy
-    @task_type.destroy
     respond_to do |format|
-      format.html { redirect_to task_types_url }
-      format.json { head :no_content }
+      if @task_type.destroy
+        format.html { redirect_to task_types_url, notice: 'Task Type was successfully deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to task_types_url, notice: "An Error Occurred! #{@task_type.errors[:base].to_s}"}
+        format.json { head :ok }
+      end
     end
   end
 

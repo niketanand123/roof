@@ -16,7 +16,7 @@
         <td><%= lead_source.source %></td>
         <td><%= link_to 'Show', lead_source %></td>
         <td><%= link_to 'Edit', edit_lead_source_path(lead_source) %></td>
-        <td><%= link_to 'Destroy', lead_source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', lead_source, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>
     <% end %>
   </tbody>

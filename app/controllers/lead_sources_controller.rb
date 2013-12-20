@@ -54,10 +54,14 @@ class LeadSourcesController < ApplicationController
   # DELETE /lead_sources/1
   # DELETE /lead_sources/1.json
   def destroy
-    @lead_source.destroy
     respond_to do |format|
-      format.html { redirect_to lead_sources_url }
-      format.json { head :no_content }
+      if @lead_source.destroy
+        format.html { redirect_to lead_sources_url, notice: 'Lead Source was successfully deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to lead_sources_url, notice: "An Error Occurred! #{@lead_source.errors[:base].to_s}"}
+        format.json { head :ok }
+      end
     end
   end
 
