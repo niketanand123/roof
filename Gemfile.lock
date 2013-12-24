@@ -5,6 +5,14 @@ GIT
   specs:
     mysql2 (0.3.11)
 
+GIT
+  remote: git://github.com/rails/pjax_rails.git
+  revision: 5a8d58a556325ae47129cfc931966f1f5102036d
+  specs:
+    pjax_rails (0.4.0)
+      jquery-rails
+      railties (>= 3.2, < 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -141,6 +149,7 @@ DEPENDENCIES
   jquery-rails
   mysql2!
   pg
+  pjax_rails!
   rails (= 4.0.2)
   rails_12factor
   sass-rails (~> 4.0.0)
