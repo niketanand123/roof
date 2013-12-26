@@ -6,8 +6,6 @@ gem 'rails', '4.0.2'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2', github: 'brianmario/mysql2', tag: '0.3.11'
 
-gem 'pjax_rails', github: 'rails/pjax_rails'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
