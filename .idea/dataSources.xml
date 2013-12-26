@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2543415927">
+    <data-source source="LOCAL" name="Rails roof: development" uuid="1f1cc9ab-2f78-4f32-bd95-0035a792b187">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:postgres</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfc4dfc3dfc1dfcfdfde</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails roof: test" uuid="1ce10ee9-e177-40f6-8717-57cf318a9d6f">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1/roof</jdbc-url>
+      <user-name>root</user-name>
+      <user-password>dfc4dfc3dfc1dfcfdfde</user-password>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+
