@@ -47,6 +47,8 @@ Roof::Application.routes.draw do
 
   resources :customers
 
+  resources :unit_of_measurements
+
   resources :customers do
     resources :job_sites do
       resources :job_estimates
