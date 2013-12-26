@@ -22,18 +22,19 @@
 </div>
 <div id="menu">
   <ul class="menu" style="width: 100%">
+    <li><a href="/" class="parent"><span>Home</span></a></li>
     <li><a href="#" class="parent"><span>Company</span></a>
       <div><ul>
         <li><a href="#"><span>Company Details</span></a></li>
         <li><a href="#"><span>Employee</span></a></li>
-        <li><a href="#"><span>Default Language</span></a></li>
-        <li><a href="#"><span>Sales Goals</span></a></li>
+        <li><a href="#"><span>Setting</span></a></li>
       </ul></div>
     </li>
-    <li><a href="#" class="parent"><span>Customers</span></a>
+    <li><a href="#" class="parent"><span>Clients</span></a>
       <div><ul>
         <li><a href="/customers/new"><span>Add New</span></a></li>
         <li><a href="/customers_search"><span>Search</span></a></li>
+        <li><a href="/job_sites"><span>Job Search</span></a></li>
       </ul></div>
     </li>
     <li><a href="#" class="parent"><span>Sales</span></a>
@@ -44,7 +45,7 @@
         <li><a href="#"><span>Photos</span></a></li>
       </ul></div>
     </li>
-    <li><a href="#" class="parent"><span>Task</span></a></li>
+    <li><a href="#" class="parent"><span>Task Viewer</span></a></li>
     <li><a href="#" class="parent"><span>Production</span></a>
       <div><ul>
         <li><a href="#"><span>Jobs</span></a></li>
@@ -55,7 +56,6 @@
         <li><a href="#"><span>Inspections</span></a></li>
       </ul></div>
     </li>
-    <li><a href="#" class="parent"><span>Vendors</span></a></li>
     <li><a href="#" class="parent"><span>Reports</span></a>
       <div><ul>
         <li><a href="#"><span>Sales Rep</span></a></li>
@@ -65,7 +65,8 @@
         <li><a href="#"><span>Sales Cat.</span></a></li>
       </ul></div>
     </li>
-    <li><a href="#" class="parent"><span>List</span></a>
+    <li><a href="#" class="parent"><span>Vendors</span></a></li>
+    <li><a href="#" class="parent"><span>Admin</span></a>
       <div><ul>
         <li><a href="#"><span>Items L&M</span></a></li>
         <li><a href="#"><span>Category</span></a></li>
@@ -78,14 +79,12 @@
         <li><a href="#"><span>Compensation</span></a></li>
       </ul></div>
     </li>
-    <li><a href="#" class="parent"><span>CRM</span></a></li>
+    <li><a href="#" class="parent"><span>Log Out</span></a></li>
 
   </ul>
 </div>
 <div id="copyright"><a href="http://apycom.com/"></a></div>
-<div data-pjax-container>
 <p id="notice" style="font-weight: bold; font-size: 12; color: blue"><%= notice %></p>
 <%= yield %>
-</div>
 </body>
 </html>
