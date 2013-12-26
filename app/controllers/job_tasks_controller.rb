@@ -3,6 +3,10 @@ class JobTasksController < ApplicationController
 
   # GET /job_tasks
   # GET /job_tasks.json
+  def index_all
+    @job_tasks = JobTask.order("id desc").all
+  end
+
   def index
     @customer = Customer.find(params[:customer_id])
     @job_site = JobSite.find(params[:job_site_id])

@@ -3,7 +3,7 @@ class JobTask < ActiveRecord::Base
   belongs_to :employee, :class_name => 'Employee', :foreign_key => :entered_by_id
   belongs_to :employee, :class_name => 'Employee', :foreign_key => :created_by_id
   belongs_to :task_type, :class_name => 'TaskType', :foreign_key => :task_type_id
-  has_many :job_site, :class_name => 'JobSite'
+
   before_save    :format_date
   attr_accessor  :unformatted_target_date
   attr_accessor  :unformatted_date_completed

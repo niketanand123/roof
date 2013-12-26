@@ -92,6 +92,7 @@ Roof::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   get 'customers_search' => 'customers#index'
+  get 'task_viewer' => 'job_tasks#index_all'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
