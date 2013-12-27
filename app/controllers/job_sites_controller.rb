@@ -99,7 +99,7 @@ class JobSitesController < ApplicationController
     end
 
     def job_site_params
-      params.require(:job_site).permit(:company_name, :contact_name, :phone, :work_phone, :work_phone_ext, :mobile_phone, :fax, :pager, :street1, :street2,
+      params.require(:job_site).permit(:company_name, :contact_name, :phone, :work_phone, :work_phone_ext, :mobile_phone, :fax, :website, :street1, :street2,
                                        :city, :state, :zip, :direction, :easily_accessible, :cust_vacating_when, :parking_consideration,
                                        :dumpster_loc_note, :side_garage_use, :driveway_dirt_asphalt, :electrical_location,
                                        :water_sanitation_avail, :animals_restrain, :gutter_color_noted, :landscape_concerns,

@@ -70,7 +70,7 @@ CREATE TABLE `customer` (
   `work_phone` varchar(15) DEFAULT NULL,
   `work_phone_ext` varchar(10) DEFAULT NULL,
   `fax` varchar(15) DEFAULT NULL,
-  `pager` varchar(15) DEFAULT NULL,
+  `website` varchar(100) DEFAULT NULL,
   `misc` varchar(500) DEFAULT NULL,
   `company_id` int(11) DEFAULT NULL,
   `sales_person_id` int(11) DEFAULT NULL,
@@ -94,7 +94,7 @@ CREATE TABLE `customer` (
 --
 
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` (`id`,`first_name`,`last_name`,`email`,`type`,`lead_source_id`,`created_at`,`updated_at`,`street1`,`street2`,`city`,`state`,`zip`,`home_phone`,`mobile_phone`,`work_phone`,`work_phone_ext`,`fax`,`pager`,`misc`,`company_id`,`sales_person_id`,`company_name`,`title`,`latitude`,`longitude`) VALUES 
+INSERT INTO `customer` (`id`,`first_name`,`last_name`,`email`,`type`,`lead_source_id`,`created_at`,`updated_at`,`street1`,`street2`,`city`,`state`,`zip`,`home_phone`,`mobile_phone`,`work_phone`,`work_phone_ext`,`fax`,`website`,`misc`,`company_id`,`sales_person_id`,`company_name`,`title`,`latitude`,`longitude`) VALUES
  (1,'Niket','Anand','niketanand@gmail.com',2,2,'2013-12-06 05:38:40','2013-12-06 23:16:58','ss','www','Bothell','WA','98021','3333','5555','2222','111','6666','8888','dssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',3,2,'sss','ddd',NULL,NULL),
  (2,'aaa','bbb','niketanandw@gmail.com',NULL,NULL,'2013-12-06 05:41:40','2013-12-06 07:50:54','3916 212th PL SE','www','Bothell','Washington','98021','ssss','ssssss','sss','ss','6666','8888','ssss',NULL,NULL,NULL,NULL,NULL,NULL),
  (3,'xxxx','ssss','a@b.com',NULL,NULL,'2013-12-06 05:45:16','2013-12-06 05:45:16',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -145,7 +145,7 @@ CREATE TABLE `job_site` (
   `work_phone_ext` varchar(10) DEFAULT NULL,
   `mobile_phone` varchar(15) DEFAULT NULL,
   `fax` varchar(15) DEFAULT NULL,
-  `pager` varchar(15) DEFAULT NULL,
+  `website` varchar(100) DEFAULT NULL,
   `street1` varchar(100) DEFAULT NULL,
   `street2` varchar(100) DEFAULT NULL,
   `city` varchar(15) DEFAULT NULL,

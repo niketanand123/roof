@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20131226150655) do
     t.string   "work_phone",      limit: 15
     t.string   "work_phone_ext",  limit: 10
     t.string   "fax",             limit: 15
-    t.string   "pager",           limit: 15
+    t.string   "website",           limit: 100
     t.string   "misc",            limit: 500
     t.integer  "company_id"
     t.integer  "sales_person_id"
@@ -214,7 +214,7 @@ ActiveRecord::Schema.define(version: 20131226150655) do
     t.string   "work_phone_ext",        limit: 10
     t.string   "mobile_phone",          limit: 15
     t.string   "fax",                   limit: 15
-    t.string   "pager",                 limit: 15
+    t.string   "website",                 limit: 100
     t.string   "street1",               limit: 100
     t.string   "street2",               limit: 100
     t.string   "city",                  limit: 15

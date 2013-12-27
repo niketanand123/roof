@@ -6,9 +6,51 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>-->
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+
+      (function($){ //create closure so we can safely use $ as alias for jQuery
+
+          $(document).ready(function(){
+
+              // initialise plugin
+              var example = $('#example').superclick({
+                  //add options here if required
+              });
+
+              // buttons to demonstrate Superclick's public methods
+              $('.destroy').on('click', function(){
+                  example.superclick('destroy');
+                  return false;
+              });
+
+              $('.init').on('click', function(){
+                  example.superclick();
+                  return false;
+              });
+
+              $('.open').on('click', function(){
+                  example.children('li:first').superclick('show');
+                  return false;
+              });
+
+              $('.close').on('click', function(){
+                  example.children('li:first').superclick('hide');
+                  return false;
+              });
+
+              $('.closeall').on('click', function(){
+                  example.superclick('reset');
+                  return false;
+              });
+          });
+
+      })(jQuery);
+
+
+  </script>
 </head>
 <body style="margin: 0px">
 <table width="100%">
@@ -19,80 +61,77 @@
   </tr>
 </table>
 
-</div>
-<div id="menu">
-  <ul class="menu" style="width: 100%">
-    <li><a href="/" class="parent"><span>Home</span></a></li>
-    <li><a href="#" class="parent"><span>Company</span></a>
-      <div><ul>
-        <li><a href="/companies"><span>Company Details</span></a></li>
-        <li><a href="/employees"><span>Employee</span></a></li>
-        <li><a href="#"><span>Setting</span></a></li>
-      </ul></div>
-    </li>
-    <li><a href="#" class="parent"><span>Clients</span></a>
-      <div><ul>
-        <li><a href="/customers/new"><span>Add New</span></a></li>
-        <li><a href="/customers_search"><span>Search</span></a></li>
-        <li><a href="/job_sites"><span>Job Search</span></a></li>
-      </ul></div>
-    </li>
-    <li><a href="#" class="parent"><span>Sales</span></a>
-      <div><ul>
-        <li><a href="#"><span>Sales Event</span></a></li>
-        <li><a href="#"><span>Estimates</span></a></li>
-        <li><a href="#"><span>Proposals</span></a></li>
-        <li><a href="#"><span>Photos</span></a></li>
-      </ul></div>
-    </li>
-    <li><a href="/task_viewer" class="parent"><span>Task Viewer</span></a></li>
-    <li><a href="#" class="parent"><span>Production</span></a>
-      <div><ul>
-        <li><a href="#"><span>Jobs</span></a></li>
-        <li><a href="#"><span>WIP</span></a></li>
-        <li><a href="#"><span>PO</span></a></li>
-        <li><a href="#"><span>WO</span></a></li>
-        <li><a href="#"><span>Invoice</span></a></li>
-        <li><a href="#"><span>Inspections</span></a></li>
-      </ul></div>
-    </li>
-    <li><a href="#" class="parent"><span>Reports</span></a>
-      <div><ul>
-        <li><a href="#"><span>Sales Rep</span></a></li>
-        <li><a href="#"><span>Sales Zip</span></a></li>
-        <li><a href="#"><span>Sales Terr</span></a></li>
-        <li><a href="#"><span>Sales Color</span></a></li>
-        <li><a href="#"><span>Sales Cat.</span></a></li>
-      </ul></div>
-    </li>
-    <li><a href="#" class="parent"><span>Vendors</span></a></li>
-    <li><a href="#" class="parent"><span>Admin</span></a>
-      <div><ul>
-        <li><a href="#"><span>Items L&M</span></a></li>
-        <li><a href="#"><span>Category</span></a></li>
-        <li><a href="/product_colors"><span>Colors</span></a></li>
-        <li><a href="/unit_of_measurements"><span>Unit Measure</span></a></li>
-        <li><a href="#"><span>Pitch</span></a></li>
-        <li><a href="#"><span>Division</span></a></li>
-        <li><a href="/job_statuses"><span>Status</span></a></li>
-        <li><a href="#"><span>Territory</span></a></li>
-        <li><a href="#"><span>Compensation</span></a></li>
-        <li><a href="/lead_sources"><span>Lead Sources</span></a></li>
-        <li><a href="/customer_types"><span>Customer Types</span></a></li>
-        <li><a href="/contact_types"><span>Contact Types</span></a></li>
-        <li><a href="/service_types"><span>Service Types</span></a></li>
-        <li><a href="/roof_types"><span>Roof Types</span></a></li>
-        <li><a href="/product_types"><span>Product Types</span></a></li>
-        <li><a href="/estimate_types"><span>Estimate Types</span></a></li>
-        <li><a href="/task_types"><span>Task Types</span></a></li>
-        <li><a href="/item_codes"><span>Item Codes</span></a></li>
-      </ul></div>
-    </li>
-    <li><a href="#" class="parent"><span>Log Out</span></a></li>
+<div style="color: white;font-weight: bold">
+<ul class="sf-menu" id="example" style="width: 100%">
+  <li><a href="/"><span style="color: white;font-weight: bold">Home</span></a></li>
+  <li class="current"><a href="#"><span style="color: white;font-weight: bold">Administration</span></a>
+    <ul>
+      <li><a href="/companies">Company Details</a></li>
+      <li><a href="/employees">Employee</a></li>
+      <li><a href="#">Setting</a></li>
+    </ul>
+  </li>
+  <li class="current"><a href="#"><span style="color: white;font-weight: bold">Search</span></a>
+    <ul>
+      <li><a href="/customers_search">Customer Search</a></li>
+      <li><a href="/job_sites">Job Search</a></li>
+    </ul>
+  </li>
+  <li class="current"><a href="#"><span style="color: white;font-weight: bold">Sales</span></a>
+    <ul>
+      <li><a href="#">Sales Event</a></li>
+      <li><a href="#">Estimates</a></li>
+      <li><a href="#">Proposals</a></li>
+      <li><a href="#">Photos</a></li>
+    </ul>
+  </li>
+  <li><a href="/task_viewer"><span style="color: white;font-weight: bold">Task Viewer</span></a></li>
+  <li class="current"><a href="#"><span style="color: white;font-weight: bold">Production</span></a>
+    <ul>
+      <li><a href="#">Jobs</a></li>
+      <li><a href="#">WIP</a></li>
+      <li><a href="#">PO</a></li>
+      <li><a href="#">WO</a></li>
+      <li><a href="#">Invoice</a></li>
+      <li><a href="#">Inspections</a></li>
+    </ul>
+  </li>
+  <li class="current"><a href="#"><span style="color: white;font-weight: bold">Reports</span></a>
+    <ul>
+      <li><a href="#">Sales Rep</a></li>
+      <li><a href="#">Sales Zip</a></li>
+      <li><a href="#">Sales Terr</a></li>
+      <li><a href="#">Sales Color</a></li>
+      <li><a href="#">Sales Cat.</a></li>
+    </ul>
+  </li>
+  <li><a href="#"><span style="color: white;font-weight: bold">Vendors</span></a></li>
+  <li class="current"><a href="#"><span style="color: white;font-weight: bold">Admin</span></a>
+    <ul>
+      <li><a href="#">Items L&M</a></li>
+      <li><a href="#">Category</a></li>
+      <li><a href="/product_colors">Colors</a></li>
+      <li><a href="/unit_of_measurements">Unit Measure</a></li>
+      <li><a href="#">Pitch</a></li>
+      <li><a href="#">Division</a></li>
+      <li><a href="/job_statuses">Status</a></li>
+      <li><a href="#">Territory</a></li>
+      <li><a href="#">Compensation</a></li>
+      <li><a href="/lead_sources">Lead Sources</a></li>
+      <li><a href="/customer_types">Customer Types</a></li>
+      <li><a href="/contact_types">Contact Types</a></li>
+      <li><a href="/service_types">Service Types</a></li>
+      <li><a href="/roof_types">Roof Types</a></li>
+      <li><a href="/product_types">Product Types</a></li>
+      <li><a href="/estimate_types">Estimate Types</a></li>
+      <li><a href="/task_types">Task Types</a></li>
+      <li><a href="/item_codes">Item Codes</a></li>
+    </ul>
+  </li>
+  <li><a href="#"><span style="color: white;font-weight: bold">Log Out</span></a></li>
 
-  </ul>
+</ul>
 </div>
-<div id="copyright"><a href="http://apycom.com/"></a></div>
 <p id="notice" style="font-weight: bold; font-size: 12; color: blue"><%= notice %></p>
 <%= yield %>
 </body>

@@ -176,7 +176,7 @@ CREATE TABLE customer (
     work_phone character varying(15),
     work_phone_ext character varying(10),
     fax character varying(15),
-    pager character varying(15),
+    website character varying(100),
     misc character varying(500),
     company_id integer,
     sales_person_id integer,
@@ -702,7 +702,7 @@ CREATE TABLE job_site (
     work_phone_ext character varying(10),
     mobile_phone character varying(15),
     fax character varying(15),
-    pager character varying(15),
+    website character varying(100),
     street1 character varying(100),
     street2 character varying(100),
     city character varying(15),
@@ -1347,7 +1347,7 @@ SELECT pg_catalog.setval('contact_types_id_seq', 2, true);
 -- Data for Name: customer; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY customer (id, first_name, last_name, email, type, lead_source_id, created_at, updated_at, street1, street2, city, state, zip, home_phone, mobile_phone, work_phone, work_phone_ext, fax, pager, misc, company_id, sales_person_id, company_name, title, latitude, longitude, is_active) FROM stdin;
+COPY customer (id, first_name, last_name, email, type, lead_source_id, created_at, updated_at, street1, street2, city, state, zip, home_phone, mobile_phone, work_phone, work_phone_ext, fax, website, misc, company_id, sales_person_id, company_name, title, latitude, longitude, is_active) FROM stdin;
 1	Niket	Anand	niketanand@gmail.com	1	1	2013-12-13 19:27:58.397181	2013-12-16 02:45:45.466135	3916 212th PL SE	www	Bothell	WA	98021	4253192176	4253192176	4253192176					\N	2	SIQ	Dev	47.76232040	-122.20540350	1
 \.
 
@@ -1591,7 +1591,7 @@ SELECT pg_catalog.setval('job_service_types_id_seq', 3, true);
 -- Data for Name: job_site; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY job_site (id, customer_id, company_name, contact_name, phone, work_phone, work_phone_ext, mobile_phone, fax, pager, street1, street2, city, state, zip, is_active, latitude, longitude, job_start_date, job_status_id, how_many_stories, existing_roof_type_id, new_roof_type_id, product_type_id, product_color_id, sales_rep_id, estimate_type_id, contract_price, deposit_due, deposit_method, date_completed, job_notes, lead_sheet_note, info_taken_by_id, assign_to_id, date_taken, created_at, updated_at) FROM stdin;
+COPY job_site (id, customer_id, company_name, contact_name, phone, work_phone, work_phone_ext, mobile_phone, fax, website, street1, street2, city, state, zip, is_active, latitude, longitude, job_start_date, job_status_id, how_many_stories, existing_roof_type_id, new_roof_type_id, product_type_id, product_color_id, sales_rep_id, estimate_type_id, contract_price, deposit_due, deposit_method, date_completed, job_notes, lead_sheet_note, info_taken_by_id, assign_to_id, date_taken, created_at, updated_at) FROM stdin;
 1	1	REI	Rei	33322	111	22	333	44	22	3916 212th PL SE	www	Bothell	WA	98021	1	47.76232040	-122.20540350	2013-12-26	1	2	1	1	2	2	1	\N		33		2013-12-30	3	eeee	1	1	2013-12-30	2013-12-13 19:35:32.508155	2013-12-15 13:58:03.187462
 \.
 
