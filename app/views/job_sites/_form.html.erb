@@ -146,7 +146,7 @@
         <td><%= f.text_field :job_start_date, :id => 'jobStartDate' %></td>
         <td></td>
         <td>Job Status</td>
-        <td><%= f.select(:job_status_id, options_for_select(JobStatus.all.map{|t| [t.job_status, t.id]}, @job_site.job_status_id),:include_blank => "Choose Job Status") %></td>
+        <td><%= f.select(:job_status_id, options_for_select(JobStatus.all.map{|t| [t.status, t.id]}, @job_site.job_status_id),:include_blank => "Choose Job Status") %></td>
         <td></td>
         <td>Service Requested</td>
         <td colspan="4">

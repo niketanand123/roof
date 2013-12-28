@@ -52,6 +52,7 @@ class JobSitesController < ApplicationController
   def create
     @customer = Customer.find(params[:customer_id])
     @job_site = @customer.job_sites.create(job_site_params)
+    update_customer_status
     format_dates_before_insert_or_update
     respond_to do |format|
       if @job_site.save
@@ -69,6 +70,8 @@ class JobSitesController < ApplicationController
   def update
     @customer = Customer.find(params[:customer_id])
     @job_site = JobSite.find(params[:id])
+
+    update_customer_status
     format_dates_before_insert_or_update
     respond_to do |format|
       if @job_site.update_attributes(job_site_params)
@@ -80,6 +83,30 @@ class JobSitesController < ApplicationController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @job_site.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+
+  def update_customer_status
+    job_status_id = params[:job_site][:job_status_id]
+    if job_status_id != nil && job_status_id.length > 0
+      @job_status = JobStatus.find(job_status_id)
+      @is_closed = false
+      if @job_status.is_job_closed
+        @is_closed = true
+        @job_site.is_closed = true
+      else
+        @job_site.is_closed = false
+        @job_sites = JobSite.where("is_active=1 and customer_id = ? and id != ? and is_closed = true",@customer.id, @job_site.id)
+        if @job_sites.size > 0
+          @is_closed = true
+        end
+      end
+      if @is_closed
+        @customer.status = "Existing"
+      else
+        @customer.status = "Lead"
+      end
+      @customer.update_attribute("status", @customer.status)
     end
   end
 

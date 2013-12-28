@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  job_status: MyString
+  status: MyString
+  is_job_closed: false
 
 two:
-  job_status: MyString
+  status: MyString
+  is_job_closed: false

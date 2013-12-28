@@ -18,7 +18,7 @@ class JobStatusesControllerTest < ActionController::TestCase
 
   test "should create job_status" do
     assert_difference('JobStatus.count') do
-      post :create, job_status: { job_status: @job_status.job_status }
+      post :create, job_status: { is_job_closed: @job_status.is_job_closed, status: @job_status.status }
     end
 
     assert_redirected_to job_status_path(assigns(:job_status))
@@ -35,7 +35,7 @@ class JobStatusesControllerTest < ActionController::TestCase
   end
 
   test "should update job_status" do
-    patch :update, id: @job_status, job_status: { job_status: @job_status.job_status }
+    patch :update, id: @job_status, job_status: { is_job_closed: @job_status.is_job_closed, status: @job_status.status }
     assert_redirected_to job_status_path(assigns(:job_status))
   end
 

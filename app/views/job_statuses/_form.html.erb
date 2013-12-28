@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :job_status %><br>
-    <%= f.text_field :job_status %>
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :is_job_closed %>
+    <%= f.check_box :is_job_closed %>
   </div>
   <div class="actions">
     <%= f.submit %>

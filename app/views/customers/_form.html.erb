@@ -142,6 +142,7 @@
             <th align="left">Contact Name</th>
             <th align="left">Address</th>
             <th align="left">City</th>
+            <th align="left">Status</th>
           </tr>
           </thead>
 
@@ -150,6 +151,7 @@
                 <td><%= link_to job_site.contact_name, edit_customer_job_site_path(:id=>job_site.id, :customer_id=>@customer.id), :controller => "job_sites"%></td>
                 <td><%= job_site.street1%></td>
                 <td><%= job_site.city %></td>
+                <td><%= JobStatus.where(:id=>job_site.job_status_id).pluck(:status).first%></td>
               </tr>
           <% end %>
         </table>

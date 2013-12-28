@@ -1,7 +1,13 @@
+<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Job status:</strong>
-  <%= @job_status.job_status %>
+  <strong>Status:</strong>
+  <%= @job_status.status %>
+</p>
+
+<p>
+  <strong>Is job closed:</strong>
+  <%= @job_status.is_job_closed %>
 </p>
 
 <%= link_to 'Edit', edit_job_status_path(@job_status) %> |

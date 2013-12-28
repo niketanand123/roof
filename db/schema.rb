@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 20131226150655) do
   end
 
   create_table "customer", force: true do |t|
-    t.string   "first_name",      limit: 50,                                       null: false
-    t.string   "last_name",       limit: 50,                                       null: false
-    t.string   "email",           limit: 100,                                      null: false
+    t.string   "first_name",      limit: 50,                                            null: false
+    t.string   "last_name",       limit: 50,                                            null: false
+    t.string   "email",           limit: 100,                                           null: false
     t.integer  "type"
     t.integer  "lead_source_id"
     t.datetime "created_at"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20131226150655) do
     t.string   "work_phone",      limit: 15
     t.string   "work_phone_ext",  limit: 10
     t.string   "fax",             limit: 15
-    t.string   "website",           limit: 100
+    t.string   "website",         limit: 100
     t.string   "misc",            limit: 500
     t.integer  "company_id"
     t.integer  "sales_person_id"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20131226150655) do
     t.decimal  "latitude",                    precision: 10, scale: 8
     t.decimal  "longitude",                   precision: 11, scale: 8
     t.integer  "is_active",       limit: 2,                            default: 1
+    t.string   "status",          limit: 50,                           default: "Lead"
   end
 
   add_index "customer", ["company_id"], name: "fk_cust_company_idx", using: :btree
@@ -206,15 +207,15 @@ ActiveRecord::Schema.define(version: 20131226150655) do
   add_index "job_service_types", ["service_type_id"], name: "fk_serv_type_idx", using: :btree
 
   create_table "job_site", force: true do |t|
-    t.integer  "customer_id",                                                            null: false
+    t.integer  "customer_id",                                                                null: false
     t.string   "company_name",          limit: 100
-    t.string   "contact_name",          limit: 100,                                      null: false
+    t.string   "contact_name",          limit: 100,                                          null: false
     t.string   "phone",                 limit: 15
     t.string   "work_phone",            limit: 15
     t.string   "work_phone_ext",        limit: 10
     t.string   "mobile_phone",          limit: 15
     t.string   "fax",                   limit: 15
-    t.string   "website",                 limit: 100
+    t.string   "website",               limit: 100
     t.string   "street1",               limit: 100
     t.string   "street2",               limit: 100
     t.string   "city",                  limit: 15
@@ -243,6 +244,7 @@ ActiveRecord::Schema.define(version: 20131226150655) do
     t.date     "date_taken"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_closed",                                                  default: false
   end
 
   add_index "job_site", ["assign_to_id"], name: "fk_assign_to_idx", using: :btree
@@ -257,9 +259,10 @@ ActiveRecord::Schema.define(version: 20131226150655) do
   add_index "job_site", ["sales_rep_id"], name: "fk_sales_rep_idx", using: :btree
 
   create_table "job_statuses", force: true do |t|
-    t.string   "job_status", limit: 100
+    t.string   "status",        limit: 100
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_job_closed",             default: false
   end
 
   create_table "job_tasks", force: true do |t|

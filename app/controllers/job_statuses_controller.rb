@@ -28,7 +28,7 @@ class JobStatusesController < ApplicationController
 
     respond_to do |format|
       if @job_status.save
-        format.html { redirect_to @job_status, notice: 'Job status was successfully created.' }
+        format.html { redirect_to job_statuses_url, notice: 'Job status was successfully created.' }
         format.json { render action: 'show', status: :created, location: @job_status }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class JobStatusesController < ApplicationController
   def update
     respond_to do |format|
       if @job_status.update(job_status_params)
-        format.html { redirect_to @job_status, notice: 'Job status was successfully updated.' }
+        format.html { redirect_to job_statuses_url, notice: 'Job status was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -73,6 +73,6 @@ class JobStatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_status_params
-      params.require(:job_status).permit(:job_status)
+      params.require(:job_status).permit(:status, :is_job_closed)
     end
 end
