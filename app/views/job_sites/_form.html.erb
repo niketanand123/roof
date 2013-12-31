@@ -140,7 +140,7 @@
         <td>Appointment Date</td>
         <td><%= f.text_field :job_start_date, :id => 'jobStartDate' %></td>
         <td></td>
-        <td>Job Status</td>
+        <td>Lead Status</td>
         <td><%= f.select(:job_status_id, options_for_select(JobStatus.all.map{|t| [t.status, t.id]}, @job_site.job_status_id),:include_blank => "Choose Job Status") %></td>
         <td></td>
         <td>Service Requested</td>
@@ -192,11 +192,8 @@
         <td><%= f.select(:info_taken_by_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.info_taken_by_id),:include_blank => "Choose Info Taken By") %></td>
       </tr>
       <tr>
-        <td>Assign To</td>
-        <td><%= f.select(:assign_to_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.assign_to_id),:include_blank => "Choose Assign To") %></td>
-        <td></td>
         <td>Date Taken</td>
-        <td colspan="7"><%= f.text_field :date_taken, :id => 'dateTaken'%></td>
+        <td colspan="10"><%= f.text_field :date_taken, :id => 'dateTaken'%></td>
       </tr>
     </table>
     <table width="100%" border="0">
