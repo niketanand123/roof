@@ -39,14 +39,14 @@
     </div>
     <table width="80%">
       <tr>
-        <td width="10%">Master Item Code</td>
+        <td width="20%">Master Item Code*</td>
         <td width="20%"><%= f.text_field :master_item %></td>
         <td width="10%">Unit of Measure <%= f.select(:uom_id, options_for_select(UnitOfMeasurement.all.map{|t| [t.unit, t.id]}, @assembly.uom_id),:include_blank => "Choose UOM") %></td>
         <td width="20%">Item Price: <%= @assembly.total_price %></td>
         <td width="20%">Build Date <%= f.text_field :unformatted_build_date, :id => 'buildDate' %></td>
         </tr>
       <tr>
-        <td>Item Description</td>
+        <td>Item Description*</td>
         <td colspan="5"><%= f.text_field :item_description, :size=>"120"%></td>
       </tr>
       <tr>
