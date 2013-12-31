@@ -150,7 +150,9 @@
     <% end %>
     <div class="actions">
       <% if @assembly!= nil && @assembly.id != nil%>
-          <%= link_to 'Add Assembly Item', new_assembly_assembly_item_path(:assembly_id=>@assembly.id) %>
+          <br/>
+          <br/>
+          <span style="font-weight: bold"><%= link_to 'Add Assembly Item', new_assembly_assembly_item_path(:assembly_id=>@assembly.id) %></span>
           <br/>
           <br/>
           <%= button_to "Update Assembly", assembly_path(:id=>@assembly.id), :method => :put %>

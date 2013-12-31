@@ -38,7 +38,7 @@ class AssembliesController < ApplicationController
     format_dates_before_insert_or_update
     respond_to do |format|
       if @assembly.save
-        format.html { redirect_to assemblies_path, notice: 'Assembly was successfully created.' }
+        format.html { redirect_to edit_assembly_path(:id=>@assembly.id), notice: 'Assembly was successfully created.' }
       else
         format.html { render action: 'new' }
         format.json { render json: @assembly.errors, status: :unprocessable_entity }
