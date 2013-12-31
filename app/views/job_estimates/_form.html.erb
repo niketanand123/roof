@@ -16,7 +16,7 @@
         <td width="10%"><%= f.text_field :step %></td>
         <td width="1%"></td>
         <td width="10%">Master Item</td>
-        <td width="10%"><%= f.select(:master_item_id, options_for_select(ItemCode.all.map{|t| [t.item_name, t.id]}, @job_estimate.master_item_id),:include_blank => "Choose Master Item") %></td>
+        <td width="10%"><%= f.select(:master_item_id, options_for_select(Assembly.all.map{|t| [t.item_description, t.id]}, @job_estimate.master_item_id),:include_blank => "Choose Master Item") %></td>
         <td width="1%"></td>
         <td width="10%">Qty</td>
         <td width="10%"><%= f.text_field :qty %></td>

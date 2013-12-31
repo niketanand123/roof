@@ -14,7 +14,6 @@ class JobEstimatesController < ApplicationController
   def show
     @job_site = JobSite.find(params[:job_site_id])
     @customer = Customer.find(@job_site.customer_id)
-    #@job_estimate = JobEstimate.find(params[:id])
   end
 
   # GET /job_estimates/new
@@ -28,7 +27,6 @@ class JobEstimatesController < ApplicationController
   def edit
     @job_site = JobSite.find(params[:job_site_id])
     @customer = Customer.find(@job_site.customer_id)
-    #@job_estimate = JobEstimate.find(params[:id])
   end
 
   # POST /job_estimates
