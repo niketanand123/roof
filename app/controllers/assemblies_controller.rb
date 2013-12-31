@@ -21,14 +21,14 @@ class AssembliesController < ApplicationController
   def edit
     format_dates
     @assembly_items = AssemblyItem.where("assembly_id=?", @assembly.id)
-    @assembly.total_material = AssemblyItem.sum(:material_cost)
-    @assembly.total_tax = AssemblyItem.sum(:material_tax_cost)
-    @assembly.tax_rate_percentage = AssemblyItem.average(:material_tax_percentage)
-    @assembly.total_labor = AssemblyItem.sum(:labor_cost)
-    @assembly.total_cost = AssemblyItem.sum(:total_cost)
-    @assembly.markup_operator_percentage = AssemblyItem.average(:markup_operator_percentage)
-    @assembly.markup_total_amt = AssemblyItem.sum(:markup_operator_cost)
-    @assembly.total_price = AssemblyItem.sum(:item_price)
+    @assembly.total_material = AssemblyItem.sum(:material_cost, :conditions => {:assembly_id=>@assembly.id})
+    @assembly.total_tax = AssemblyItem.sum(:material_tax_cost, :conditions => {:assembly_id=>@assembly.id})
+    @assembly.tax_rate_percentage = AssemblyItem.average(:material_tax_percentage, :conditions => {:assembly_id=>@assembly.id})
+    @assembly.total_labor = AssemblyItem.sum(:labor_cost, :conditions => {:assembly_id=>@assembly.id})
+    @assembly.total_cost = AssemblyItem.sum(:total_cost, :conditions => {:assembly_id=>@assembly.id})
+    @assembly.markup_operator_percentage = AssemblyItem.average(:markup_operator_percentage, :conditions => {:assembly_id=>@assembly.id})
+    @assembly.markup_total_amt = AssemblyItem.sum(:markup_operator_cost, :conditions => {:assembly_id=>@assembly.id})
+    @assembly.total_price = AssemblyItem.sum(:item_price, :conditions => {:assembly_id=>@assembly.id})
   end
 
   # POST /assemblies

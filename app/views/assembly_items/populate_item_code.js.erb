@@ -32,12 +32,9 @@ $("#assembly_item_total_cost").val('<%= @total_cost %>');
 <% if @markup_opt_percentage != nil%>
 <%@markup_opt_percent = @markup_opt_percentage%>
 <%else%>
-<%@markup_opt_percent = 40%>
+<%@markup_opt_percent = 0.6%>
 <%end%>
 $("#assembly_item_markup_operator_percentage").val('<%= @markup_opt_percent %>');
-<% @markup_operator_cost = number_with_precision((@total_cost.to_f) * @markup_opt_percent.to_f / 100, :precision => 2) || 0%>
-$("#markup_operator_cost_id").html('<%= @markup_operator_cost %>');
-$("#assembly_item_markup_operator_cost").val('<%= @markup_operator_cost %>');
-<% @total_price = number_with_precision(@total_cost.to_f + @markup_operator_cost.to_f, :precision => 2) || 0%>
+<% @total_price = number_with_precision(@total_cost.to_f / @markup_opt_percent.to_f, :precision => 2) || 0%>
 $("#total_price_id").html('<%= @total_price %>');
 $("#assembly_item_item_price").val('<%= @total_price %>');

@@ -12,13 +12,13 @@
         $.fn.recalculateTotalBasedOnItemPercentageUsedWithAjax = function() {
             var that = this;
             this.blur(function() {
-                $.get("/populate_item_code", {item_percentage_used: that.val(), id:$("#assembly_item_item_code_id").val()}, null, "script");
+                $.get("/populate_item_code", {item_percentage_used: that.val(), sales_tax:$("#assembly_item_material_tax_percentage").val(), markup_op_percentage:$("#assembly_item_markup_operator_percentage").val(), id:$("#assembly_item_item_code_id").val()}, null, "script");
             });
         }
         $.fn.recalculateTotalBasedOnSalesTaxWithAjax = function() {
             var that = this;
             this.blur(function() {
-                $.get("/populate_item_code", {sales_tax: that.val(), item_percentage_used: $("#assembly_item_percentage_used").val(), id:$("#assembly_item_item_code_id").val()}, null, "script");
+                $.get("/populate_item_code", {sales_tax: that.val(), item_percentage_used: $("#assembly_item_percentage_used").val(), markup_op_percentage:$("#assembly_item_markup_operator_percentage").val(), id:$("#assembly_item_item_code_id").val()}, null, "script");
             });
         }
         $.fn.recalculateTotalBasedOnMarkupOpPercentageWithAjax = function() {
@@ -161,8 +161,8 @@
             <td>$<span id="total_cost_id"><%= @assembly_item.total_cost %></span><%= f.hidden_field :total_cost %></td>
           </tr>
           <tr class="borderLine">
-            <td>Markup Op. <%= f.text_field :markup_operator_percentage, :size=>"3"%>%</td>
-            <td>$<span id="markup_operator_cost_id"><%= @assembly_item.markup_operator_cost %></span><%= f.hidden_field :markup_operator_cost %></td>
+            <td>Operator</td>
+            <td><%= f.text_field :markup_operator_percentage, :size=>"3"%></td>
           </tr>
           <tr>
             <td>Total Price</td>
