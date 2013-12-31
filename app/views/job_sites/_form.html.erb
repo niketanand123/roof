@@ -55,7 +55,7 @@
       <div style="width: 60%;height: 250px;clear: both;float:left;" >
         <table style="border-right:thick double #336699;">
           <tr>
-            <td width="15%">Company</td><td width="35%"><%= f.text_field :company_name%></td>
+            <td width="15%">Company</td><td width="35%"><%= f.select(:company_id, options_for_select(Company.all.map{|t| [t.name, t.id]}, @job_site.company_id),:include_blank => "Choose Company") %></td>
             <td width="1%"></td>
             <td width="15%"></td><td width="20%"></td>
           </tr>
