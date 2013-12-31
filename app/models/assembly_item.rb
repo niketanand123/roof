@@ -1,5 +1,7 @@
-class Assembly < ActiveRecord::Base
-  has_many :assembly_items, :class_name => 'AssemblyItem', :dependent => :destroy
+class AssemblyItem < ActiveRecord::Base
+  belongs_to :assembly, :class_name => 'Assembly', :foreign_key => :assembly_id
+  has_one :item_code, :class_name => 'ItemCode', :foreign_key => :item_code_id
+
   before_save    :format_date
   attr_accessor  :unformatted_build_date
 

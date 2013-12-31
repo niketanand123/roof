@@ -28,8 +28,7 @@ class ItemCodesController < ApplicationController
 
     respond_to do |format|
       if @item_code.save
-        format.html { redirect_to @item_code, notice: 'Item code was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @item_code }
+        format.html { redirect_to item_codes_path, notice: 'Item code was successfully created.' }
       else
         format.html { render action: 'new' }
         format.json { render json: @item_code.errors, status: :unprocessable_entity }
@@ -42,7 +41,7 @@ class ItemCodesController < ApplicationController
   def update
     respond_to do |format|
       if @item_code.update(item_code_params)
-        format.html { redirect_to @item_code, notice: 'Item code was successfully updated.' }
+        format.html { redirect_to item_codes_path, notice: 'Item code was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -73,6 +72,6 @@ class ItemCodesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_code_params
-      params.require(:item_code).permit(:item_code, :item_name, :uom, :item_cost, :material_cost, :material_w_tax, :labor_rate, :retail_price)
+      params.require(:item_code).permit(:item_code, :item_name, :uom_id, :material_cost, :labor_rate)
     end
 end

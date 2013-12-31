@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item code:</strong>
+  <%= @assembly_item.item_code_id %>
+</p>
+
+<p>
+  <strong>Labor cost:</strong>
+  <%= @assembly_item.labor_cost %>
+</p>
+
+<p>
+  <strong>Material cost:</strong>
+  <%= @assembly_item.material_cost %>
+</p>
+
+<p>
+  <strong>Percentage used:</strong>
+  <%= @assembly_item.percentage_used %>
+</p>
+
+<p>
+  <strong>Material cost ext:</strong>
+  <%= @assembly_item.material_cost_ext %>
+</p>
+
+<%= link_to 'Edit', edit_assembly_item_path(@assembly_item) %> |
+<%= link_to 'Back', assembly_items_path %>

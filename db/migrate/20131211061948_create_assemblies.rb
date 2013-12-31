@@ -6,7 +6,7 @@ class CreateAssemblies < ActiveRecord::Migration
       t.string :item_description
       t.string :warranty_description
       t.string :wo_description
-      t.string :po_description
+      t.string :proposal_description
       t.boolean :is_po
       t.boolean :is_wo
       t.string :unit_of_measurement

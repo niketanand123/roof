@@ -12,36 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :item_code %><br>
-    <%= f.text_field :item_code %>
+    <%= f.label :item_code %>: <%= f.text_field :item_code %>
   </div>
   <div class="field">
-    <%= f.label :item_name %><br>
-    <%= f.text_field :item_name %>
+    <%= f.label :item_name %>: <%= f.text_field :item_name %>
   </div>
   <div class="field">
-    <%= f.label :uom %><br>
-    <%= f.text_field :uom %>
+    Unit of Measurement: <%= f.select(:uom_id, options_for_select(UnitOfMeasurement.all.map{|t| [t.unit, t.id]}, @item_code.uom_id),:include_blank => "Choose UOM") %>
   </div>
   <div class="field">
-    <%= f.label :item_cost %><br>
-    <%= f.text_field :item_cost %>
+    <%= f.label :material_cost %>: $<%= f.text_field :material_cost %>
   </div>
   <div class="field">
-    <%= f.label :material_cost %><br>
-    <%= f.text_field :material_cost %>
-  </div>
-  <div class="field">
-    <%= f.label :material_w_tax %><br>
-    <%= f.text_field :material_w_tax %>
-  </div>
-  <div class="field">
-    <%= f.label :labor_rate %><br>
-    <%= f.text_field :labor_rate %>
-  </div>
-  <div class="field">
-    <%= f.label :retail_price %><br>
-    <%= f.text_field :retail_price %>
+    <%= f.label :labor_rate %>: $<%= f.text_field :labor_rate %>
   </div>
   <div class="actions">
     <%= f.submit %>

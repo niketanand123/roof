@@ -1,0 +1,43 @@
+$("#uom_id").html('<%= UnitOfMeasurement.where(:id=>@item_code.uom_id).pluck(:unit).first %>');
+$("#labor_cost_id").html('<%= @item_code.labor_rate %>');
+$("#assembly_item_labor_cost").val('<%= @item_code.labor_rate %>');
+$("#material_cost_id").html('<%= @item_code.material_cost %>');
+$("#assembly_item_material_cost").val('<%= @item_code.material_cost %>');
+$("#total_labor_cost_id").html('<%= @item_code.labor_rate %>');
+$("#item_name_id").html('<%= @item_code.item_name %>');
+<% if @percentage_used != nil%>
+    <%@item_percentage_used = @percentage_used%>
+<%else%>
+    <%@item_percentage_used = 100%>
+<%end%>
+$("#assembly_item_percentage_used").val('<%= @item_percentage_used %>');
+
+<% @material_cost_ext = number_with_precision(@item_code.material_cost * @item_percentage_used.to_f / 100, :precision => 2) || 0 %>
+$("#assembly_item_material_cost_ext").val('<%= @material_cost_ext  %>');
+$("#total_material_cost_id").html('<%= @material_cost_ext %>');
+
+<% if @material_sales_tax != nil%>
+<%@mat_sales_tax = @material_sales_tax%>
+<%else%>
+<%@mat_sales_tax = 6%>
+<%end%>
+$("#assembly_item_material_tax_percentage").val('<%= @mat_sales_tax %>');
+<% @material_tax_cost = number_with_precision(@material_cost_ext.to_f * @mat_sales_tax.to_f / 100, :precision => 2) || 0 %>
+
+$("#assembly_item_material_tax_cost").val('<%= @material_tax_cost %>');
+<% @total_cost = number_with_precision(@item_code.labor_rate + @material_cost_ext.to_f + @material_tax_cost.to_f, :precision => 2) || 0%>
+$("#total_cost_id").html('<%= @total_cost %>');
+$("#assembly_item_total_cost").val('<%= @total_cost %>');
+
+<% if @markup_opt_percentage != nil%>
+<%@markup_opt_percent = @markup_opt_percentage%>
+<%else%>
+<%@markup_opt_percent = 40%>
+<%end%>
+$("#assembly_item_markup_operator_percentage").val('<%= @markup_opt_percent %>');
+<% @markup_operator_cost = number_with_precision((@total_cost.to_f) * @markup_opt_percent.to_f / 100, :precision => 2) || 0%>
+$("#markup_operator_cost_id").html('<%= @markup_operator_cost %>');
+$("#assembly_item_markup_operator_cost").val('<%= @markup_operator_cost %>');
+<% @total_price = number_with_precision(@total_cost.to_f + @markup_operator_cost.to_f, :precision => 2) || 0%>
+$("#total_price_id").html('<%= @total_price %>');
+$("#assembly_item_item_price").val('<%= @total_price %>');

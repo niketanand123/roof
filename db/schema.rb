@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131226150655) do
+ActiveRecord::Schema.define(version: 20131229015100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,20 +23,38 @@ ActiveRecord::Schema.define(version: 20131226150655) do
     t.string   "item_description",           limit: 100
     t.string   "warranty_description"
     t.string   "wo_description"
-    t.string   "po_description"
-    t.boolean  "is_po"
-    t.boolean  "is_wo"
-    t.string   "unit_of_measurement"
-    t.decimal  "total_material",                         precision: 5, scale: 2
-    t.decimal  "tax_rate_percentage",                    precision: 5, scale: 2
-    t.decimal  "total_tax",                              precision: 5, scale: 2
-    t.decimal  "total_labor",                            precision: 5, scale: 2
-    t.decimal  "total_cost",                             precision: 5, scale: 2
-    t.decimal  "markup_operator_percentage",             precision: 5, scale: 2
-    t.decimal  "markup_total_amt",                       precision: 5, scale: 2
-    t.decimal  "total_price",                            precision: 5, scale: 2
+    t.string   "proposal_description"
+    t.float    "total_material"
+    t.float    "tax_rate_percentage"
+    t.float    "total_tax"
+    t.float    "total_labor"
+    t.float    "total_cost"
+    t.float    "markup_operator_percentage"
+    t.float    "markup_total_amt"
+    t.float    "total_price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "uom_id",                     limit: 2
+  end
+
+  create_table "assembly_items", force: true do |t|
+    t.integer  "item_code_id"
+    t.float    "labor_cost"
+    t.float    "material_cost"
+    t.float    "percentage_used"
+    t.float    "material_cost_ext"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "assembly_id"
+    t.float    "item_price"
+    t.date     "build_date"
+    t.float    "markup_operator_percentage"
+    t.boolean  "is_po"
+    t.boolean  "is_wo"
+    t.float    "material_tax_percentage"
+    t.float    "material_tax_cost"
+    t.float    "total_cost"
+    t.float    "markup_operator_cost"
   end
 
   create_table "company", force: true do |t|
@@ -118,16 +136,13 @@ ActiveRecord::Schema.define(version: 20131226150655) do
   end
 
   create_table "item_codes", force: true do |t|
-    t.string   "item_code",      limit: 20
-    t.string   "item_name",      limit: 100
-    t.string   "uom",            limit: 100
-    t.decimal  "item_cost",                  precision: 5, scale: 2
-    t.decimal  "material_cost",              precision: 5, scale: 2
-    t.decimal  "material_w_tax",             precision: 5, scale: 2
-    t.decimal  "labor_rate",                 precision: 5, scale: 2
-    t.decimal  "retail_price",               precision: 5, scale: 2
+    t.string   "item_code",     limit: 20
+    t.string   "item_name",     limit: 100
+    t.decimal  "material_cost",             precision: 5, scale: 2
+    t.decimal  "labor_rate",                precision: 5, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "uom_id",        limit: 2
   end
 
   create_table "job_call_notes", force: true do |t|

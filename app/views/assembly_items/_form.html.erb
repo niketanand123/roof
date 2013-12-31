@@ -1,0 +1,187 @@
+<%= form_for [@assembly, @assembly_item] do |f| %>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $( "#buildDate" ).datepicker({ dateFormat: 'mm/dd/yy'});
+        });
+        $.fn.populateItemCodeValuesWithAjax = function() {
+            var that = this;
+            this.change(function() {
+                $.get("/populate_item_code", {id: that.val()}, null, "script");
+            });
+        }
+        $.fn.recalculateTotalBasedOnItemPercentageUsedWithAjax = function() {
+            var that = this;
+            this.blur(function() {
+                $.get("/populate_item_code", {item_percentage_used: that.val(), id:$("#assembly_item_item_code_id").val()}, null, "script");
+            });
+        }
+        $.fn.recalculateTotalBasedOnSalesTaxWithAjax = function() {
+            var that = this;
+            this.blur(function() {
+                $.get("/populate_item_code", {sales_tax: that.val(), item_percentage_used: $("#assembly_item_percentage_used").val(), id:$("#assembly_item_item_code_id").val()}, null, "script");
+            });
+        }
+        $.fn.recalculateTotalBasedOnMarkupOpPercentageWithAjax = function() {
+            var that = this;
+            this.blur(function() {
+                $.get("/populate_item_code", {markup_op_percentage:that.val(),sales_tax: $("#assembly_item_material_tax_percentage").val(), item_percentage_used: $("#assembly_item_percentage_used").val(), id:$("#assembly_item_item_code_id").val()}, null, "script");
+            });
+        }
+    </script>
+    <style type="text/css">
+        table{
+            border-collapse: collapse;
+        }
+        .borderLine td{
+            border-bottom: 2px solid black;
+        }
+        .borderThinLine td{
+            border-bottom: 1px solid black;
+        }
+    </style>
+  <% if @assembly_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assembly_item.errors.count, "error") %> prohibited this assembly_item from being saved:</h2>
+
+      <ul>
+      <% @assembly_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Master Item Information</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+    </div>
+    <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
+      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
+    </div>
+    <table width="80%" >
+      <tr>
+        <td width="10%">Master Item Code: <%= @assembly.master_item %></td>
+        <td width="10%">Build Date: <%= @assembly.build_date.strftime("%m/%d/%Y") %></td>
+        <td width="10%">Unit of Measure: <%= UnitOfMeasurement.where(:id=>@assembly.uom_id).pluck(:unit).first %></td>
+      </tr>
+      <tr>
+        <td colspan="3">Item Description: <%= @assembly.item_description%></td>
+      </tr>
+    </table>
+    <br/>
+    <br/>
+    <div style="width:auto;">
+      <div BGCOLOR="#336699" HEIGHT="13" style="width: 70%;clear: both;float:left;" >
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Assembly Item</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+      </div>
+      <div BGCOLOR="#336699" HEIGHT="13" style="width:auto;" >
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Total Price</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+      </div>
+    </div>
+    <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
+      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
+    </div>
+    <div style="width:100%;">
+      <div style="width: 70%;height: 200px;clear: both;float:left;" >
+        <table >
+            <tr>
+              <td width="10%">Item:
+                <%= f.select :item_code_id, options_for_select(ItemCode.all.map{|t| [t.item_code, t.id]},
+                                                                @assembly_item.item_code_id), :include_blank => "Choose Item" %>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $("#assembly_item_item_code_id").populateItemCodeValuesWithAjax();
+                    });
+                </script>
+              </td>
+              <td width="10%">Unit of Measure: <span id="uom_id"><% if @item_code != nil%><%= UnitOfMeasurement.where(:id=>@item_code.uom_id).pluck(:unit).first%><%end%></span></td>
+              <td width="10%">Item Price: $<%= f.text_field :item_price %></td>
+              <td width="10%">Build Date: <%= f.text_field :unformatted_build_date, :id => 'buildDate' %></td>
+            </tr>
+        </table>
+        <br/>
+        <table >
+          <tr>
+            <td colspan="4">Description: <span id="item_name_id"><% if @item_code != nil%><%= @item_code.item_name %><%end%></span></td>
+          </tr>
+        </table>
+        <br/>
+        <br/>
+        <table width="100%">
+          <tr class="borderLine">
+            <td colspan="2">Labor Cost</td>
+            <td colspan="2">Material Cost</td>
+            <td colspan="2">%Used</td>
+            <td colspan="2">Material Cost Extended</td>
+            <td>PO</td>
+            <td>WO</td>
+          </tr>
+          <tr>
+            <td colspan="2">$<span id="labor_cost_id"><% if @item_code != nil%><%= @item_code.labor_rate %><%end%></span> <%= f.hidden_field :labor_cost %></td>
+            <td colspan="2">$<span id="material_cost_id"><% if @item_code != nil%><%= @item_code.material_cost %><%end%> </span><%= f.hidden_field :material_cost %></td>
+            <td colspan="2"><%= f.text_field :percentage_used, :size=>"5" %></td>
+            <td colspan="2">$<%= f.text_field :material_cost_ext %></td>
+            <td><%= f.check_box :is_po %></td>
+            <td><%= f.check_box :is_wo %></td>
+          </tr>
+        </table>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#assembly_item_percentage_used").recalculateTotalBasedOnItemPercentageUsedWithAjax();
+            });
+        </script>
+      </div>
+      <div style="width:auto;height: 200px" >
+        <table style="border-left:thick double #336699;">
+          <tr>
+            <td width="30%">Total Labor</td>
+            <td width="30%">$<span id="total_labor_cost_id"><% if @item_code != nil%><%= @item_code.labor_rate %><%end%></span></td>
+          </tr>
+          <tr>
+            <td>Total Material</td>
+            <td>$<span id="total_material_cost_id"><% if @item_code != nil%><%= @assembly_item.material_cost_ext %><%end%></span></td>
+          </tr>
+          <tr class="borderThinLine">
+            <td>Sales Tax <%= f.text_field :material_tax_percentage, :size=>"3"%>%</td>
+            <td>$<%= f.text_field :material_tax_cost, :size=>"5" %></td>
+          </tr>
+          <tr>
+            <td>Total Cost</td>
+            <td>$<span id="total_cost_id"><%= @assembly_item.total_cost %></span><%= f.hidden_field :total_cost %></td>
+          </tr>
+          <tr class="borderLine">
+            <td>Markup Op. <%= f.text_field :markup_operator_percentage, :size=>"3"%>%</td>
+            <td>$<span id="markup_operator_cost_id"><%= @assembly_item.markup_operator_cost %></span><%= f.hidden_field :markup_operator_cost %></td>
+          </tr>
+          <tr>
+            <td>Total Price</td>
+            <td>$<span id="total_price_id"><%= @assembly_item.item_price %></span></td>
+          </tr>
+        </table>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#assembly_item_material_tax_percentage").recalculateTotalBasedOnSalesTaxWithAjax();
+                $("#assembly_item_markup_operator_percentage").recalculateTotalBasedOnMarkupOpPercentageWithAjax();
+            });
+        </script>
+      </div>
+    </div>
+    <div class="actions">
+      <% if @assembly_item!= nil && @assembly_item.id != nil%>
+          <%= button_to "Update Assembly Item", assembly_assembly_items_path(:assembly_id=>@assembly.id, :id=>@assembly_item.id), :method => :put %>
+      <% else %>
+          <%= button_to "Create Assembly Item", assembly_assembly_items_path(:assembly_id=>@assembly.id), :method => :post %>
+      <% end %>
+    </div>
+<% end %>

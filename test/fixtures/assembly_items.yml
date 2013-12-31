@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_code_id: 1
+  labor_cost: 1.5
+  material_cost: 1.5
+  percentage_used: 9.99
+  material_cost_ext: 1.5
+
+two:
+  item_code_id: 1
+  labor_cost: 1.5
+  material_cost: 1.5
+  percentage_used: 9.99
+  material_cost_ext: 1.5

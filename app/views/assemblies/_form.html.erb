@@ -1,4 +1,20 @@
 <%= form_for(@assembly) do |f| %>
+    <script type="text/javascript">
+        $(function() {
+            $( "#buildDate" ).datepicker({ dateFormat: 'mm/dd/yy'});
+        });
+    </script>
+    <style type="text/css">
+        table{
+            border-collapse: collapse;
+        }
+        .borderLine td{
+            border-bottom: 2px solid black;
+        }
+        .borderThinLine td{
+            border-bottom: 1px solid black;
+        }
+    </style>
   <% if @assembly.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@assembly.errors.count, "error") %> prohibited this assembly from being saved:</h2>
@@ -11,75 +27,136 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :master_item %><br>
-    <%= f.text_field :master_item %>
-  </div>
-  <div class="field">
-    <%= f.label :build_date %><br>
-    <%= f.date_select :build_date %>
-  </div>
-  <div class="field">
-    <%= f.label :item_description %><br>
-    <%= f.text_field :item_description %>
-  </div>
-  <div class="field">
-    <%= f.label :warranty_description %><br>
-    <%= f.text_field :warranty_description %>
-  </div>
-  <div class="field">
-    <%= f.label :wo_description %><br>
-    <%= f.text_field :wo_description %>
-  </div>
-  <div class="field">
-    <%= f.label :po_description %><br>
-    <%= f.text_field :po_description %>
-  </div>
-  <div class="field">
-    <%= f.label :is_po %><br>
-    <%= f.check_box :is_po %>
-  </div>
-  <div class="field">
-    <%= f.label :is_wo %><br>
-    <%= f.check_box :is_wo %>
-  </div>
-  <div class="field">
-    <%= f.label :unit_of_measurement %><br>
-    <%= f.text_field :unit_of_measurement %>
-  </div>
-  <div class="field">
-    <%= f.label :total_material %><br>
-    <%= f.text_field :total_material %>
-  </div>
-  <div class="field">
-    <%= f.label :tax_rate_percentage %><br>
-    <%= f.text_field :tax_rate_percentage %>
-  </div>
-  <div class="field">
-    <%= f.label :total_tax %><br>
-    <%= f.text_field :total_tax %>
-  </div>
-  <div class="field">
-    <%= f.label :total_labor %><br>
-    <%= f.text_field :total_labor %>
-  </div>
-  <div class="field">
-    <%= f.label :total_cost %><br>
-    <%= f.text_field :total_cost %>
-  </div>
-  <div class="field">
-    <%= f.label :markup_operator_percentage %><br>
-    <%= f.text_field :markup_operator_percentage %>
-  </div>
-  <div class="field">
-    <%= f.label :markup_total_amt %><br>
-    <%= f.text_field :markup_total_amt %>
-  </div>
-  <div class="field">
-    <%= f.label :total_price %><br>
-    <%= f.text_field :total_price %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Master Item Information</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+    </div>
+    <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
+      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
+    </div>
+    <table width="80%">
+      <tr>
+        <td width="10%">Master Item Code</td>
+        <td width="20%"><%= f.text_field :master_item %></td>
+        <td width="10%">Unit of Measure <%= f.select(:uom_id, options_for_select(UnitOfMeasurement.all.map{|t| [t.unit, t.id]}, @assembly.uom_id),:include_blank => "Choose UOM") %></td>
+        <td width="20%">Item Price: <%= @assembly.total_price %></td>
+        <td width="20%">Build Date <%= f.text_field :unformatted_build_date, :id => 'buildDate' %></td>
+        </tr>
+      <tr>
+        <td>Item Description</td>
+        <td colspan="5"><%= f.text_field :item_description, :size=>"120"%></td>
+      </tr>
+      <tr>
+        <td>Proposal Description</td>
+        <td colspan="5"><%= f.text_field :proposal_description, :size=>"120"%></td>
+      </tr>
+      <tr>
+        <td>Warranty Description</td>
+        <td colspan="5"><%= f.text_field :warranty_description, :size=>"120"%></td>
+      </tr>
+      <tr>
+        <td>WO Description</td>
+        <td colspan="5"><%= f.text_field :wo_description, :size=>"120"%></td>
+      </tr>
+    </table>
+    <% if @assembly_items!=nil && @assembly_items.size > 0%>
+    <div style="width:auto;">
+      <div BGCOLOR="#336699" HEIGHT="13" style="width: 70%;clear: both;float:left;" >
+          <span style="background-color:#336699; ">
+            <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+            <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Assembly Details</span>
+            <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+          </span>
+      </div>
+      <div BGCOLOR="#336699" HEIGHT="13" style="width:auto;" >
+          <span style="background-color:#336699; ">
+            <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+            <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Total Price</span>
+            <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+          </span>
+      </div>
+    </div>
+    <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
+      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
+    </div>
+    <div style="width:100%;">
+      <div style="width: 70%;height: 200px;clear: both;float:left;" >
+        <table width="100%">
+          <thead>
+          <tr>
+            <th align="left">Item</th>
+            <th align="left">Labor Cost</th>
+            <th align="left">Material Cost</th>
+            <th align="left">%Used</th>
+            <th align="left">Material Cost Extended</th>
+            <th align="left">PO</th>
+            <th align="left">WO</th>
+            <th align="left"></th>
+            <th align="left"></th>
+            <th align="left"></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% @assembly_items.each do |assembly_item| %>
+              <tr>
+                <td><%= ItemCode.where(:id=>assembly_item.item_code_id).pluck(:item_name).first%></td>
+                <td>$<%= assembly_item.labor_cost %></td>
+                <td>$<%= assembly_item.material_cost %></td>
+                <td><%= assembly_item.percentage_used %>%</td>
+                <td>$<%= assembly_item.material_cost_ext %></td>
+                <td><%if assembly_item.is_po != nil %><%if assembly_item.is_po %> Y <%else%> N <%end%><%end%></td>
+                <td><%if assembly_item.is_wo != nil %><%if assembly_item.is_wo %> Y <%else%> N <%end%><%end%></td>
+                <td><%= link_to 'Edit', edit_assembly_assembly_item_path(:assembly_id=>@assembly.id, :id=>assembly_item.id) %></td>
+                <td><%= link_to 'Delete',assembly_assembly_item_path(:assembly_id=>@assembly.id, :id=>assembly_item.id), method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div style="width:auto;height: 200px" >
+        <table style="border-left:thick double #336699;">
+          <tr>
+            <td width="15%">Total Material</td>
+            <td width="20%">$<%= @assembly.total_material %></td>
+          </tr>
+          <tr>
+            <td>Sales Tax <%= f.text_field :tax_rate_percentage, :size=>"3", :readonly=>true%>%</td>
+            <td>$<%= @assembly.total_tax %></td>
+          </tr>
+          <tr class="borderThinLine">
+            <td>Total Labor</td>
+            <td>$<%= @assembly.total_labor %></td>
+          </tr>
+          <tr>
+            <td>Total Cost</td>
+            <td>$<%= @assembly.total_cost %></td>
+          </tr>
+          <tr class="borderLine">
+            <td>Markup Op. <%= f.text_field :markup_operator_percentage, :size=>"3", :readonly=>true%>%</td>
+            <td>$<%= @assembly.markup_total_amt %></td>
+          </tr>
+          <tr>
+            <td>Total Price</td>
+            <td>$<%= @assembly.total_price %></td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+    <% end %>
+    <div class="actions">
+      <% if @assembly!= nil && @assembly.id != nil%>
+          <%= link_to 'Add Assembly Item', new_assembly_assembly_item_path(:assembly_id=>@assembly.id) %>
+          <br/>
+          <br/>
+          <%= button_to "Update Assembly", assembly_path(:id=>@assembly.id), :method => :put %>
+      <% else %>
+          <%= button_to "Create Assembly", assemblies_path, :method => :post %>
+      <% end %>
+    </div>
+
 <% end %>

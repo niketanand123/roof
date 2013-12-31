@@ -1,0 +1,35 @@
+<h1>Listing assembly_items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item code</th>
+      <th>Labor cost</th>
+      <th>Material cost</th>
+      <th>Percentage used</th>
+      <th>Material cost ext</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assembly_items.each do |assembly_item| %>
+      <tr>
+        <td><%= assembly_item.item_code_id %></td>
+        <td><%= assembly_item.labor_cost %></td>
+        <td><%= assembly_item.material_cost %></td>
+        <td><%= assembly_item.percentage_used %></td>
+        <td><%= assembly_item.material_cost_ext %></td>
+        <td><%= link_to 'Show', assembly_item %></td>
+        <td><%= link_to 'Edit', edit_assembly_item_path(assembly_item) %></td>
+        <td><%= link_to 'Destroy', assembly_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Assembly item', new_assembly_item_path %>

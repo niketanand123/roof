@@ -31,7 +31,7 @@ CREATE TABLE assemblies (
     item_description character varying(100),
     warranty_description character varying(255),
     wo_description character varying(255),
-    po_description character varying(255),
+    proposal_description character varying(255),
     is_po boolean,
     is_wo boolean,
     unit_of_measurement character varying(255),
@@ -1288,7 +1288,7 @@ ALTER TABLE ONLY task_types ALTER COLUMN id SET DEFAULT nextval('task_types_id_s
 -- Data for Name: assemblies; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY assemblies (id, master_item, build_date, item_description, warranty_description, wo_description, po_description, is_po, is_wo, unit_of_measurement, total_material, tax_rate_percentage, total_tax, total_labor, total_cost, markup_operator_percentage, markup_total_amt, total_price, created_at, updated_at) FROM stdin;
+COPY assemblies (id, master_item, build_date, item_description, warranty_description, wo_description, proposal_description, is_po, is_wo, unit_of_measurement, total_material, tax_rate_percentage, total_tax, total_labor, total_cost, markup_operator_percentage, markup_total_amt, total_price, created_at, updated_at) FROM stdin;
 \.
 
 

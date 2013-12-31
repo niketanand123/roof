@@ -1,4 +1,6 @@
 Roof::Application.routes.draw do
+  resources :assembly_items
+
   resources :job_costings
 
   resources :job_documents
@@ -88,6 +90,9 @@ Roof::Application.routes.draw do
   resources :job_sites do
     resources :job_estimates
   end
+  resources :assemblies do
+    resources :assembly_items
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -95,6 +100,7 @@ Roof::Application.routes.draw do
   root 'welcome#index'
   get 'customers_search' => 'customers#index'
   get 'task_viewer' => 'job_tasks#index_all'
+  get 'populate_item_code' => 'assembly_items#populate_item_code'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

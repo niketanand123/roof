@@ -6,12 +6,8 @@
       <th align="left">Item code</th>
       <th align="left">Item name</th>
       <th align="left">Uom</th>
-      <th align="left">Item cost</th>
       <th align="left">Material cost</th>
-      <th align="left">Material w tax</th>
       <th align="left">Labor rate</th>
-      <th align="left">Retail price</th>
-      <th align="left"></th>
       <th align="left"></th>
       <th align="left"></th>
     </tr>
@@ -22,13 +18,9 @@
       <tr>
         <td><%= item_code.item_code %></td>
         <td><%= item_code.item_name %></td>
-        <td><%= item_code.uom %></td>
-        <td><%= item_code.item_cost %></td>
-        <td><%= item_code.material_cost %></td>
-        <td><%= item_code.material_w_tax %></td>
-        <td><%= item_code.labor_rate %></td>
-        <td><%= item_code.retail_price %></td>
-        <td><%= link_to 'Show', item_code %></td>
+        <td><%= UnitOfMeasurement.where(:id=>item_code.uom_id).pluck(:unit).first %></td>
+        <td>$<%= item_code.material_cost %></td>
+        <td>$<%= item_code.labor_rate %></td>
         <td><%= link_to 'Edit', edit_item_code_path(item_code) %></td>
         <td><%= link_to 'Delete', item_code, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>
