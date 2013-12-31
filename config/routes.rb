@@ -1,4 +1,6 @@
 Roof::Application.routes.draw do
+  resources :vendors
+
   resources :assembly_items
 
   resources :job_costings

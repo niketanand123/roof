@@ -1,0 +1,54 @@
+<div style="width:100%;">
+  <div BGCOLOR="#336699" HEIGHT="13" >
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Listing Vendors</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+  </div>
+</div>
+<div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
+  <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
+</div>
+<table width="100%">
+  <thead>
+    <tr>
+      <th align="left">Vendor Name</th>
+      <th align="left">Address</th>
+      <th align="left">City</th>
+      <th align="left">State</th>
+      <th align="left">Zip</th>
+      <th align="left">General Manager</th>
+      <th align="left">GM phone</th>
+      <th align="left">Sales rep</th>
+      <th align="left">Sales rep phone</th>
+      <th align="left">Email</th>
+      <th align="left">Website</th>
+      <th align="left"></th>
+      <th align="left"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vendors.each do |vendor| %>
+      <tr>
+        <td><%= link_to vendor.name, edit_vendor_path(vendor) %></td>
+        <td><%= vendor.address1 %></td>
+        <td><%= vendor.city1 %></td>
+        <td><%= vendor.state1 %></td>
+        <td><%= vendor.zip1 %></td>
+        <td><%= vendor.gm_name %></td>
+        <td><%= vendor.gm_phone %></td>
+        <td><%= Employee.where(:id=>vendor.sales_rep_id).pluck(:first_name).first %> <%= Employee.where(:id=>vendor.sales_rep_id).pluck(:last_name).first %></td>
+        <td><%= vendor.sales_rep_phone %></td>
+        <td><%= vendor.email %></td>
+        <td><%= vendor.website %></td>
+        <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
+        <td><%= link_to 'Delete', vendor, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Vendor', new_vendor_path %>

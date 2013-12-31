@@ -64,10 +64,12 @@ class AssembliesController < ApplicationController
   # DELETE /assemblies/1
   # DELETE /assemblies/1.json
   def destroy
-    @assembly.destroy
-    respond_to do |format|
-      format.html { redirect_to assemblies_url }
+    if @assembly.destroy
+      format.html { redirect_to assemblies_url, notice: 'Assembly was successfully deleted.' }
       format.json { head :no_content }
+    else
+      format.html { redirect_to assemblies_url, notice: "An Error Occurred! #{@assembly.errors[:base].to_s}"}
+      format.json { head :ok }
     end
   end
 

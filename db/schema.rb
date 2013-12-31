@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131229015100) do
+ActiveRecord::Schema.define(version: 20131231210642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,8 +138,8 @@ ActiveRecord::Schema.define(version: 20131229015100) do
   create_table "item_codes", force: true do |t|
     t.string   "item_code",     limit: 20
     t.string   "item_name",     limit: 100
-    t.decimal  "material_cost",             precision: 5, scale: 2
-    t.decimal  "labor_rate",                precision: 5, scale: 2
+    t.float    "material_cost",             default: 0.0
+    t.float    "labor_rate",                default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "uom_id",        limit: 2
@@ -223,7 +223,6 @@ ActiveRecord::Schema.define(version: 20131229015100) do
 
   create_table "job_site", force: true do |t|
     t.integer  "customer_id",                                                                null: false
-    t.string   "company_name",          limit: 100
     t.string   "contact_name",          limit: 100,                                          null: false
     t.string   "phone",                 limit: 15
     t.string   "work_phone",            limit: 15
@@ -332,6 +331,26 @@ ActiveRecord::Schema.define(version: 20131229015100) do
 
   create_table "unit_of_measurements", force: true do |t|
     t.string   "unit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vendors", force: true do |t|
+    t.string   "name"
+    t.string   "address1"
+    t.string   "city1"
+    t.string   "state1"
+    t.string   "zip1"
+    t.string   "address2"
+    t.string   "city2"
+    t.string   "state2"
+    t.string   "zip2"
+    t.string   "gm_name"
+    t.string   "gm_phone"
+    t.integer  "sales_rep_id"
+    t.string   "sales_rep_phone"
+    t.string   "email"
+    t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

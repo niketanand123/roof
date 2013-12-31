@@ -9,7 +9,7 @@ class JobSite < ActiveRecord::Base
     has_many :job_contacts, :class_name => 'JobContact', :dependent => :destroy
     has_many :job_documents, :class_name => 'JobDocument', :dependent => :destroy
     belongs_to :customer, :class_name => 'Customer', :foreign_key => :customer_id
-    belongs_to :employee, :class_name => 'Employee', :foreign_key => :assign_to_id
+    #belongs_to :employee, :class_name => 'Employee', :foreign_key => :assign_to_id
     belongs_to :estimate_type, :class_name => 'EstimateType', :foreign_key => :estimate_type_id
     belongs_to :roof_type, :class_name => 'RoofType', :foreign_key => :existing_roof_type_id
     belongs_to :employee, :class_name => 'Employee', :foreign_key => :info_taken_by_id

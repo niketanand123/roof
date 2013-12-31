@@ -1,0 +1,63 @@
+<%= form_for(@vendor) do |f| %>
+  <% if @vendor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vendor.errors.count, "error") %> prohibited this vendor from being saved:</h2>
+
+      <ul>
+      <% @vendor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Vendor Information</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+    </div>
+    <div style="background:#ffffff; line-height: 2px; width: 850px;padding-bottom: 10px;">
+      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "850")%>
+    </div>
+    <table width="70%">
+      <tr>
+        <td width="15%">Vendor Name</td><td width="22%"><%= f.text_field :name %></td>
+        <td width="1%"></td>
+        <td width="10%"><b>Address 1</b></td><td width="20%"></td>
+      </tr>
+      <tr>
+        <td>General Manager</td><td><%= f.text_field :gm_name %></td>
+        <td></td>
+        <td>Address</td><td><%= f.text_field :address1, :size=>"50" %></td>
+      </tr>
+      <tr>
+        <td>GM Phone</td><td><%= f.text_field :gm_phone %></td>
+        <td></td>
+        <td colspan="2">City: <%= f.text_field :city1 %> State: <%= f.text_field :state1, :size=>"2" %> Zip:<%= f.text_field :zip1, :size=>"10" %></td>
+      </tr>
+      <tr>
+        <td>Sales Rep</td><td><%= f.select(:sales_rep_id, options_for_select(Employee.all.map{|s| [s.first_name+' '+s.last_name, s.id]}, @vendor.sales_rep_id), :include_blank => "Choose Sales Person") %></td>
+        <td></td>
+        <td><b>Address 2</b></td><td></td>
+      </tr>
+      <tr>
+        <td>Sales Rep Phone</td><td><%= f.text_field :sales_rep_phone %></td>
+        <td></td>
+        <td>Address</td><td><%= f.text_field :address2, :size=>"50" %></td>
+      </tr>
+      <tr>
+        <td>Email</td><td><%= f.text_field :email %></td>
+        <td></td>
+        <td colspan="2">City: <%= f.text_field :city2 %> State: <%= f.text_field :state2, :size=>"2" %> Zip:<%= f.text_field :zip2, :size=>"10" %></td>
+      </tr>
+      <tr>
+        <td>Website</td>
+        <td colspan="4"><%= f.text_field :website, :size=>"100" %></td>
+      </tr>
+    </table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
