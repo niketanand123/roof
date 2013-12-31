@@ -23,7 +23,7 @@
     </div>
     <table width="70%">
       <tr>
-        <td width="10%">Company</td><td width="22%"><%= f.text_field :company_name%></td>
+        <td width="10%">Company Name</td><td width="22%"><%= f.select(:company_id, options_for_select(Company.all.map{|t| [t.name, t.id]}, @customer.company_id),:include_blank => "Choose Company") %></td>
         <td width="1%"></td>
         <td width="10%"></td><td width="35%"></td>
       </tr>
@@ -88,21 +88,19 @@
           <%= f.select(:type, options_for_select(CustomerType.all.map{|t| [t.type, t.id]}, @customer.type),:include_blank => "Choose Customer Type") %>
         </td>
         <td width="1%"></td>
-        <td width="15%">Company Association</td>
+        <td width="15%">Lead Source</td>
         <td width="35%">
-          <%= f.select(:company_id, options_for_select(Company.all.map{|c| [c.name, c.id]}, @customer.company_id), :include_blank => "Choose Company") %>
+          <%= f.select(:lead_source_id, options_for_select(LeadSource.all.map{|l| [l.source, l.id]}, @customer.lead_source_id), :include_blank => "Choose Source") %>
         </td>
       </tr>
       <tr>
-        <td width="10%">Lead Source</td>
-        <td width="22%">
-          <%= f.select(:lead_source_id, options_for_select(LeadSource.all.map{|l| [l.source, l.id]}, @customer.lead_source_id), :include_blank => "Choose Source") %>
-        </td>
-        <td width="1%"></td>
-        <td width="15%">Sales Person</td>
-        <td width="35%">
+        <td>Sales Person</td>
+        <td>
           <%= f.select(:sales_person_id, options_for_select(Employee.all.map{|s| [s.first_name+' '+s.last_name, s.id]}, @customer.sales_person_id), :include_blank => "Choose Sales Person") %>
         </td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
 
     </table>
