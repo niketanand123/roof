@@ -21,7 +21,7 @@ class AssembliesController < ApplicationController
   def edit
     format_dates
     @assembly_items = AssemblyItem.where("assembly_id=?", @assembly.id)
-    @assembly.total_material = AssemblyItem.sum(:material_cost, :conditions => {:assembly_id=>@assembly.id})
+    @assembly.total_material = AssemblyItem.sum(:material_cost_ext, :conditions => {:assembly_id=>@assembly.id})
     @assembly.total_tax = AssemblyItem.sum(:material_tax_cost, :conditions => {:assembly_id=>@assembly.id})
     @assembly.tax_rate_percentage = AssemblyItem.average(:material_tax_percentage, :conditions => {:assembly_id=>@assembly.id})
     @assembly.total_labor = AssemblyItem.sum(:labor_cost, :conditions => {:assembly_id=>@assembly.id})
