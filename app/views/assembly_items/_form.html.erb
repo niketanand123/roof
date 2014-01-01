@@ -97,7 +97,7 @@
         <table >
             <tr>
               <td width="10%">Item:
-                <%= f.select :item_code_id, options_for_select(ItemCode.all.map{|t| [t.item_code, t.id]},
+                <%= f.select :item_code_id, options_for_select(ItemCode.order("item_code").all.map{|t| [t.item_code, t.id]},
                                                                 @assembly_item.item_code_id), :include_blank => "Choose Item" %>
                 <script type="text/javascript">
                     $(document).ready(function(){
