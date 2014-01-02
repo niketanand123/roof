@@ -74,6 +74,8 @@ class LeadSheet
       pdf.add_text(150, 310, total_service_type, 12)
     end
 
+    pdf.add_text(45, 120, job_site.lead_sheet_note, 12)
+
     pdf.move_to(30, 50).line_to(580, 50).line_to(580, 10).line_to(30, 10).line_to(30, 50).stroke
     pdf.move_to(250, 50).line_to(250, 10).stroke
     pdf.move_to(450, 50).line_to(450, 10).stroke
@@ -101,7 +103,6 @@ class LeadSheet
       assigned_to = job_site.date_taken.strftime("%m/%d/%Y")
       pdf.add_text(520, 30, assigned_to, 12)
     end
-
 
     pdf.render
   end

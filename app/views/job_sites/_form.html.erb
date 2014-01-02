@@ -254,7 +254,7 @@
       </tr>
     </table>
     <br/>
-    <%= link_to 'Lead Sheet PDF',  lead_sheet_path(:id=>@job_site.id) %>
+    <%= link_to 'Lead Sheet PDF',  lead_sheet_path(:id=>@job_site.id, :format=>"pdf") %>
     <br/>
     <%= link_to 'Back',  edit_customer_path(:id=>@customer.id) %> &nbsp;
 <% end %>
