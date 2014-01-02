@@ -14,7 +14,6 @@ class LeadSheet
 
     pdf.image "#{Rails.root}/app/assets/images/banner.jpg", :resize => 0.5 if Rails.env.development?
     pdf.image "#{Rails.root}/public/assets/banner-649d828f81646be3eb1f2a3e8ddc008c.jpg", :resize => 0.5 if Rails.env.production?
-    #pdf.image "../../assets/images/banner.jpg", :resize => 0.5 #if Rails.env.production?
 
 
     pdf.add_text(250, 720, "LEAD SHEET", size=20 )

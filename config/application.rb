@@ -21,5 +21,7 @@ module Roof
     # config.i18n.default_locale = :de
     config.time_zone = 'Central Time (US & Canada)'
     config.autoload_paths += %W(#{Rails.root}/lib)
+    config.assets.enabled = true
+    config.assets.paths << "#{Rails.root}/app/assets/images"
   end
 end
