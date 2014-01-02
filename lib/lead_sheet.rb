@@ -5,13 +5,13 @@ class LeadSheet
 
     pdf = PDF::Writer.new
     pdf.select_font "Times-Roman"
-    pdf.image "#{Rails.root}/app/assets/images/banner.jpg", :resize => 0.5
-    #pdf.text "LEAD SHEET" , :font_size => 20, :justification => :center, :leading => -10
+
+    pdf.image "#{Rails.root}/app/assets/images/banner.jpg", :resize => 0.5 if Rails.env.development?
+    pdf.image "#{ActionController::Base.helpers.asset_path('banner.jpg')}", :resize => 0.5 if Rails.env.production?
+
     pdf.add_text(250, 720, "LEAD SHEET", size=20 )
-    #pdf.line(pdf.absolute_left_margin, pdf.y + 2,
-    #         pdf.absolute_right_margin, pdf.y + 2).stroke
-    #pdf.top_margin = pdf.y + 20
     pdf.move_pointer(15)
+
     pdf.add_text(50, 670, "ESTIMATE REQUESTED BY", size=13 )
     pdf.move_to(220, 675).line_to(320, 675).line_to(320, 520).line_to(30, 520).line_to(30, 675).line_to(45,675).stroke
     pdf.add_text(45, 640, "Requested By ", size=12 )
