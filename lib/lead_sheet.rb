@@ -7,7 +7,8 @@ class LeadSheet
     pdf.select_font "Times-Roman"
 
     pdf.image "#{Rails.root}/app/assets/images/banner.jpg", :resize => 0.5 if Rails.env.development?
-    pdf.image "#{ActionController::Base.helpers.image_path('banner.jpg')}", :resize => 0.5 if Rails.env.production?
+    #pdf.image "#{ActionController::Base.helpers.image_path('banner.jpg')}", :resize => 0.5 if Rails.env.production?
+    pdf.image "#{request.protocol}#{request.host_with_port}#{asset_path("banner.png")}", :resize => 0.5 if Rails.env.production?
 
     pdf.add_text(250, 720, "LEAD SHEET", size=20 )
     pdf.move_pointer(15)
