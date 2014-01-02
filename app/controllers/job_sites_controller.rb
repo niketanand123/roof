@@ -49,6 +49,18 @@ class JobSitesController < ApplicationController
     set_map_marker(@job_site)
   end
 
+  def lead_sheet
+    @job_site = JobSite.find(params[:id])
+    @customer = Customer.find(@job_site.customer_id)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        send_data LeadSheet.draw(@customer, @job_site), :filename => 'lead_sheet.pdf', :type => 'application/pdf', :disposition => 'inline'
+      end
+    end
+
+  end
+
   def create
     @customer = Customer.find(params[:customer_id])
     @job_site = @customer.job_sites.create(job_site_params)

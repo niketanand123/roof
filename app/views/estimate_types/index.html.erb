@@ -1,11 +1,10 @@
-<h1>Listing estimate_types</h1>
+<h1>Listing Estimate types</h1>
 
 <table style="width: 500px">
   <thead>
     <tr>
       <th align="left">Estimate type</th>
       <th align="left">Default overhead</th>
-      <th align="left"></th>
       <th align="left"></th>
       <th align="left"></th>
     </tr>
@@ -16,7 +15,6 @@
       <tr>
         <td><%= estimate_type.estimate_type %></td>
         <td><%= estimate_type.default_overhead %></td>
-        <td><%= link_to 'Show', estimate_type %></td>
         <td><%= link_to 'Edit', edit_estimate_type_path(estimate_type) %></td>
         <td><%= link_to 'Delete', estimate_type, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>

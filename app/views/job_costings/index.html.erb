@@ -1,4 +1,4 @@
-<h1>Listing job_costings</h1>
+<h1>Listing Job costings</h1>
 
 <table>
   <thead>
@@ -10,7 +10,6 @@
       <th>Overhead</th>
       <th>Overhead percentage</th>
       <th>Net profit</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -26,7 +25,6 @@
         <td><%= job_costing.overhead %></td>
         <td><%= job_costing.overhead_percentage %></td>
         <td><%= job_costing.net_profit %></td>
-        <td><%= link_to 'Show', job_costing %></td>
         <td><%= link_to 'Edit', edit_job_costing_path(job_costing) %></td>
         <td><%= link_to 'Delete', job_costing, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>

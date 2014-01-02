@@ -27,11 +27,11 @@ gem 'geocoder'
 
 gem 'gmaps4rails'
 
-gem 'tabulous'
-
 gem "jquery-rails"
 
 gem "pg"
+
+gem "pdf-writer", :git => 'git://github.com/metaskills/pdf-writer.git'
 
 gem 'rails_12factor', group: :production
 

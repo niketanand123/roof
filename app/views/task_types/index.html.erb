@@ -1,4 +1,4 @@
-<h1>Listing task_types</h1>
+<h1>Listing Task types</h1>
 
 <table>
   <thead>
@@ -14,7 +14,6 @@
     <% @task_types.each do |task_type| %>
       <tr>
         <td><%= task_type.task_type %></td>
-        <td><%= link_to 'Show', task_type %></td>
         <td><%= link_to 'Edit', edit_task_type_path(task_type) %></td>
         <td><%= link_to 'Delete', task_type, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>

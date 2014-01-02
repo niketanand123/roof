@@ -14,7 +14,6 @@
       <th align="left">Is admin</th>
       <th align="left"></th>
       <th align="left"></th>
-      <th align="left"></th>
     </tr>
   </thead>
 
@@ -30,7 +29,6 @@
         <td><%= employee.phone %></td>
         <td><%= employee.is_active %></td>
         <td><%= employee.is_admin %></td>
-        <td><%= link_to 'Show', employee %></td>
         <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
         <td><%= link_to 'Delete', employee, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>

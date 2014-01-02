@@ -6,7 +6,6 @@
       <th>Unit</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -14,7 +13,6 @@
     <% @unit_of_measurements.each do |unit_of_measurement| %>
       <tr>
         <td><%= unit_of_measurement.unit %></td>
-        <td><%= link_to 'Show', unit_of_measurement %></td>
         <td><%= link_to 'Edit', edit_unit_of_measurement_path(unit_of_measurement) %></td>
         <td><%= link_to 'Delete', unit_of_measurement, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>

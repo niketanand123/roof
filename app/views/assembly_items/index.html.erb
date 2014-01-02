@@ -1,4 +1,4 @@
-<h1>Listing assembly_items</h1>
+<h1>Listing Assembly items</h1>
 
 <table>
   <thead>
@@ -8,7 +8,6 @@
       <th>Material cost</th>
       <th>Percentage used</th>
       <th>Material cost ext</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -22,9 +21,8 @@
         <td><%= assembly_item.material_cost %></td>
         <td><%= assembly_item.percentage_used %></td>
         <td><%= assembly_item.material_cost_ext %></td>
-        <td><%= link_to 'Show', assembly_item %></td>
         <td><%= link_to 'Edit', edit_assembly_item_path(assembly_item) %></td>
-        <td><%= link_to 'Destroy', assembly_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', assembly_item, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>
     <% end %>
   </tbody>

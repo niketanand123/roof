@@ -103,6 +103,7 @@ Roof::Application.routes.draw do
   get 'customers_search' => 'customers#index'
   get 'task_viewer' => 'job_tasks#index_all'
   get 'populate_item_code' => 'assembly_items#populate_item_code'
+  get 'lead_sheet' => 'job_sites#lead_sheet'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

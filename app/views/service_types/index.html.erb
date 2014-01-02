@@ -1,10 +1,9 @@
-<h1>Listing service_types</h1>
+<h1>Listing Service types</h1>
 
 <table>
   <thead>
     <tr>
       <th>Service type</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -14,7 +13,6 @@
     <% @service_types.each do |service_type| %>
       <tr>
         <td><%= service_type.service_type %></td>
-        <td><%= link_to 'Show', service_type %></td>
         <td><%= link_to 'Edit', edit_service_type_path(service_type) %></td>
         <td><%= link_to 'Delete', service_type, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>

@@ -1,10 +1,9 @@
-<h1>Listing contact_types</h1>
+<h1>Listing Contact types</h1>
 
 <table>
   <thead>
     <tr>
       <th>Contact type</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -14,7 +13,6 @@
     <% @contact_types.each do |contact_type| %>
       <tr>
         <td><%= contact_type.contact_type %></td>
-        <td><%= link_to 'Show', contact_type %></td>
         <td><%= link_to 'Edit', edit_contact_type_path(contact_type) %></td>
         <td><%= link_to 'Delete', contact_type, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>

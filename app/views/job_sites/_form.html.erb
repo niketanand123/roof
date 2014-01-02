@@ -253,6 +253,8 @@
         </td>
       </tr>
     </table>
-    <br>
+    <br/>
+    <%= link_to 'Lead Sheet PDF',  lead_sheet_path(:id=>@job_site.id) %>
+    <br/>
     <%= link_to 'Back',  edit_customer_path(:id=>@customer.id) %> &nbsp;
 <% end %>
