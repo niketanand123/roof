@@ -55,7 +55,7 @@ class JobSitesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        send_data LeadSheet.draw(@customer, @job_site), :filename => 'lead_sheet_'+@job_site.id.to_s+'.pdf', :type => 'application/pdf' , :disposition => 'inline'
+        send_data LeadSheet.draw(@customer, @job_site), :filename => 'lead_sheet_'+@job_site.id.to_s+'.pdf', :type => 'application/pdf' #, :disposition => 'inline'
       end
     end
 
