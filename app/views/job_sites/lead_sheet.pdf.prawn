@@ -42,7 +42,7 @@ stateCityZip = @job_site.city+", " + @job_site.state + ", "+ @job_site.zip
 pdf.draw_text stateCityZip, :at => [370, 550], :size => 11
 
 pdf.draw_text "Cell", :at => [310, 520], :size => 12, :style => :bold
-pdf.draw_text @job_site.mobile_phone, :at => [100, 520], :size => 11
+pdf.draw_text @job_site.mobile_phone, :at => [370, 520], :size => 11
 
 pdf.draw_text "REFERRAL INFORMATION", :at => [40, 400], :size => 13
 pdf.stroke do
@@ -80,8 +80,13 @@ job_service_types = JobServiceType.where("job_id" =>@job_site.id)
 
 if(job_service_types != nil && job_service_types.size > 0)
     total_service_type = ""
+    count = 0
     job_service_types.each do |job_service_type|
-        total_service_type = total_service_type + ServiceType.find(job_service_type.service_type_id).service_type + " "
+        count = count + 1
+        total_service_type = total_service_type + ServiceType.find(job_service_type.service_type_id).service_type
+        if count != job_service_types.size
+            total_service_type = total_service_type + ", "
+        end
     end
     pdf.draw_text total_service_type, :at => [130, 240], :size => 11
 end
