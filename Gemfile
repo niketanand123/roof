@@ -31,7 +31,9 @@ gem "jquery-rails"
 
 gem "pg"
 
-gem "pdf-writer", :git => 'git://github.com/metaskills/pdf-writer.git'
+#gem "pdf-writer", :git => 'git://github.com/galkahana/PDF-Writer.git'
+gem "prawn"
+gem 'prawnto'
 
 gem 'rails_12factor', group: :production
 

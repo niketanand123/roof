@@ -52,12 +52,12 @@ class JobSitesController < ApplicationController
   def lead_sheet
     @job_site = JobSite.find(params[:id])
     @customer = Customer.find(@job_site.customer_id)
-    respond_to do |format|
-      format.html
-      format.pdf do
-        send_data LeadSheet.draw(@customer, @job_site), :filename => 'lead_sheet_'+@job_site.id.to_s+'.pdf', :type => 'application/pdf' #, :disposition => 'inline'
-      end
-    end
+    #respond_to do |format|
+    #  format.html
+    #  format.pdf do
+    #    send_data LeadSheet.draw(@customer, @job_site), :filename => 'lead_sheet_'+@job_site.id.to_s+'.pdf', :type => 'application/pdf' #, :disposition => 'inline'
+    #  end
+    #end
 
   end
 
