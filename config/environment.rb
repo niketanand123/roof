@@ -1,6 +1,6 @@
 # Load the Rails application.
 require File.expand_path('../application', __FILE__)
-require 'pdf/writer'
+#require 'pdf/writer'
 Mime::Type.register 'application/pdf', :pdf
 # Initialize the Rails application.
 Roof::Application.initialize!
