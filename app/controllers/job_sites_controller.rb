@@ -138,7 +138,7 @@ class JobSitesController < ApplicationController
                                        :work_number_shift, :additional_notes, :job_status_id, :how_many_stories,
                                        :existing_roof_type_id, :new_roof_type_id, :product_type_id, :product_color_id, :sales_rep_id,
                                        :estimate_type_id, :contract_price, :deposit_due, :deposit_method, :job_notes,
-                                       :lead_sheet_note, :info_taken_by_id, :assign_to_id) if params[:job_site]
+                                       :lead_sheet_note, :info_taken_by_id) if params[:job_site]
     end
 
     def set_job_site_info(job_site)

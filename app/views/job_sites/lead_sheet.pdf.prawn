@@ -106,8 +106,8 @@ if(@job_site.info_taken_by_id != nil)
 end
 
 pdf.draw_text "Assigned To:", :at => [220, 30], :size => 12, :style => :bold
-if(@job_site.assign_to_id != nil)
-    employee = Employee.find(@job_site.assign_to_id)
+if(@job_site.sales_rep_id != nil)
+    employee = Employee.find(@job_site.sales_rep_id)
     first_name = employee.first_name
     last_name = employee.last_name
     assign_to = first_name +" "+last_name
