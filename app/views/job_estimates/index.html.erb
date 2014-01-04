@@ -30,7 +30,7 @@
     <% @job_estimates.each do |job_estimate| %>
       <tr>
         <td><%= job_estimate.step %></td>
-        <td><%= Assembly.where(:id=>job_estimate.master_item_id).pluck(:item_description).first %></td>
+        <td><%= link_to Assembly.where(:id=>job_estimate.master_item_id).pluck(:item_description).first , edit_customer_job_site_job_estimate_path(:customer_id=>@customer.id, :id=>job_estimate.id,:job_site_id=>job_estimate.job_site_id)%></td>
         <td><%= job_estimate.qty %></td>
         <td><%= job_estimate.proposal_desc %></td>
         <td><%= job_estimate.warranty_desc %></td>
