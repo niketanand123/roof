@@ -81,7 +81,7 @@ end
 y_axis = y_axis-40
 pdf.draw_text "Payments:", :at => [10, y_axis], :size => 11
 pdf.draw_text "Deposit Due:", :at => [110, y_axis], :size => 11
-if @job_site.deposit_due != nil
+if @job_site.deposit_due != nil && @job_site.deposit_due != ""
     pdf.draw_text "$"+@job_site.deposit_due.to_s, :at => [180, y_axis], :size => 11
 end
 pdf.draw_text "Deposit Method:", :at => [220, y_axis], :size => 11
