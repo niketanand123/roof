@@ -181,10 +181,10 @@ class AssemblyItemsController < ApplicationController
       markup_operator_percentage = number_with_precision(markup_percentage / total_items_size, :precision => 2)
 
     end
-
+    assembly_build_date = assembly.build_date.strftime("%m/%d/%Y") unless assembly.build_date.nil?
     assembly.update_attributes(:total_material=>material_cost, :tax_rate_percentage=>tax_rate_percentage, :total_tax=>sales_tax,
                                 :total_material_cost=>total_material_cost, :total_labor=>labor_cost, :total_cost=>total_cost,
-                                :markup_operator_percentage=>markup_operator_percentage,  :total_price=>total_price)
+                                :markup_operator_percentage=>markup_operator_percentage,  :total_price=>total_price, :unformatted_build_date=>assembly_build_date)
 
   end
 end
