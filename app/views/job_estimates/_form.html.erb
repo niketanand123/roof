@@ -1,4 +1,18 @@
 <%= form_for(@job_estimate) do |f| %>
+    <script type="text/javascript">
+        $.fn.populateEstimateValuesWithAjax = function() {
+            var that = this;
+            this.change(function() {
+                $.get("/populate_estimate", {master_item_id: that.val()}, null, "script");
+            });
+        }
+        $.fn.adjustExtPriceWithAjax = function() {
+            var that = this;
+            this.blur(function() {
+                $.get("/populate_estimate", {qty: that.val(), master_item_id: $("#job_estimate_master_item_id").val()}, null, "script");
+            });
+        }
+    </script>
   <% if @job_estimate.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job_estimate.errors.count, "error") %> prohibited this job_estimate from being saved:</h2>
@@ -12,28 +26,32 @@
   <% end %>
     <table width="100%">
       <tr>
-        <td width="10%">Step</td>
-        <td width="10%"><%= f.text_field :step %></td>
-        <td width="1%"></td>
         <td width="10%">Master Item</td>
         <td width="10%"><%= f.select(:master_item_id, options_for_select(Assembly.all.map{|t| [t.item_description, t.id]}, @job_estimate.master_item_id),:include_blank => "Choose Master Item") %></td>
         <td width="1%"></td>
-        <td width="10%">Qty</td>
-        <td width="10%"><%= f.text_field :qty %></td>
+        <td width="20%">Qty: <%= f.text_field :qty %></td>
         <td width="1%"></td>
-        <td width="10%">Retail Price</td>
-        <td width="10%">$<%= f.text_field :retail_price %></td>
+        <td width="20%">Retail Price: $<%= f.text_field :retail_price %></td>
+        <td width="1%"></td>
+        <td width="20%">Item Extended: <%= f.text_field :item_extended %><%= f.hidden_field :job_site_id %></td>
+        <td width="10%"></td>
       </tr>
       <tr>
-        <td>Item Extended</td>
-        <td colspan="10"><%= f.text_field :item_extended %><%= f.hidden_field :job_site_id %></td>
+        <td>Step</td>
+        <td colspan="8"><%= f.text_field :step %></td>
       </tr>
     </table>
-    <table width="100%" border="0">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#job_estimate_master_item_id").populateEstimateValuesWithAjax();
+            $("#job_estimate_qty").adjustExtPriceWithAjax();
+        });
+    </script>
+    <table width="100%">
       <tr>
-        <td width="11%">Proposal Description</td>
+        <td width="10%">Proposal Description</td>
         <td width="40%"><%= f.text_area :proposal_desc, :size=>"50x3"%></td>
-        <td width="11%">Warranty Description</td>
+        <td width="10%">Warranty Description</td>
         <td width="40%"><%= f.text_area :warranty_desc, :size=>"50x3" %></td>
       </tr>
     </table>

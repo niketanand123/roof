@@ -9,6 +9,22 @@ class JobEstimatesController < ApplicationController
     @job_estimates = JobEstimate.where(:job_site_id =>params[:job_site_id])
   end
 
+
+  def populate_estimate
+    if params[:master_item_id].present?
+      @assembly = Assembly.find(params[:master_item_id])
+    else
+      @assembly = nil
+    end
+    if params[:qty].present?
+      @qty = params[:qty]
+    else
+      @qty = 1
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
   # GET /job_estimates/1
   # GET /job_estimates/1.json
   def show

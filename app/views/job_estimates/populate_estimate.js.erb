@@ -1,0 +1,9 @@
+$("#job_estimate_retail_price").val('<%= @assembly.total_price %>');
+$("#job_estimate_proposal_desc").val('<%= @assembly.proposal_description %>');
+$("#job_estimate_warranty_desc").val('<%= @assembly.warranty_description %>');
+$("#job_estimate_qty").val('<%= @qty %>');
+
+<% @total_price = number_with_precision(@assembly.total_price * @qty.to_i, :precision => 2)
+
+ %>
+$("#job_estimate_item_extended").val('<%= @total_price %>');
