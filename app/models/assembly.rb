@@ -15,7 +15,7 @@ class Assembly < ActiveRecord::Base
   end
 
   def format_date
-    if self.unformatted_build_date !=nil && self.unformatted_build_date !=""
+    if self.unformatted_build_date != nil && self.unformatted_build_date != ""
       self.build_date = Date.strptime(self.unformatted_build_date, "%m/%d/%Y").to_time()
     else
       self.build_date = nil
