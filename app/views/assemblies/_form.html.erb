@@ -37,12 +37,12 @@
     <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
       <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
     </div>
-    <table width="80%">
+    <table width="100%">
       <tr>
-        <td width="20%">Master Item Code*</td>
+        <td width="10%">Master Item Code*</td>
         <td width="20%"><%= f.text_field :master_item %></td>
-        <td width="10%">Unit of Measure <%= f.select(:uom_id, options_for_select(UnitOfMeasurement.all.map{|t| [t.unit, t.id]}, @assembly.uom_id),:include_blank => "Choose UOM") %></td>
-        <td width="20%">Item Price: <%= @assembly.total_price %></td>
+        <td width="10%">Item Price: $<%= @assembly.total_price %></td>
+        <td width="20%">Unit of Measure <%= f.select(:uom_id, options_for_select(UnitOfMeasurement.all.map{|t| [t.unit, t.id]}, @assembly.uom_id),:include_blank => "Choose UOM") %></td>
         <td width="20%">Build Date <%= f.text_field :unformatted_build_date, :id => 'buildDate' %></td>
         </tr>
       <tr>
@@ -88,10 +88,7 @@
           <thead>
           <tr>
             <th align="left">Item</th>
-            <th align="left">Labor Cost</th>
-            <th align="left">Material Cost</th>
-            <th align="left">%Used</th>
-            <th align="left">Material Cost Extended</th>
+            <th align="left">Item Price</th>
             <th align="left">PO</th>
             <th align="left">WO</th>
             <th align="left"></th>
@@ -103,11 +100,8 @@
           <tbody>
           <% @assembly_items.each do |assembly_item| %>
               <tr>
-                <td><%= ItemCode.where(:id=>assembly_item.item_code_id).pluck(:item_name).first%></td>
-                <td>$<%= assembly_item.labor_cost %></td>
-                <td>$<%= assembly_item.material_cost %></td>
-                <td><%= assembly_item.percentage_used %>%</td>
-                <td>$<%= assembly_item.material_cost_ext %></td>
+                <td><%= link_to ItemCode.where(:id=>assembly_item.item_code_id).pluck(:item_name).first, edit_assembly_assembly_item_path(:assembly_id=>@assembly.id, :id=>assembly_item.id)%></td>
+                <td>$<%= assembly_item.item_price %></td>
                 <td><%if assembly_item.is_po != nil %><%if assembly_item.is_po %> Y <%else%> N <%end%><%end%></td>
                 <td><%if assembly_item.is_wo != nil %><%if assembly_item.is_wo %> Y <%else%> N <%end%><%end%></td>
                 <td><%= link_to 'Edit', edit_assembly_assembly_item_path(:assembly_id=>@assembly.id, :id=>assembly_item.id) %></td>

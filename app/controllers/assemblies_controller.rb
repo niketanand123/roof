@@ -21,14 +21,13 @@ class AssembliesController < ApplicationController
   def edit
     format_dates
     @assembly_items = AssemblyItem.where("assembly_id=?", @assembly.id)
-    @assembly.total_material = AssemblyItem.sum(:material_cost_ext, :conditions => {:assembly_id=>@assembly.id})
-    @assembly.total_tax = AssemblyItem.sum(:material_tax_cost, :conditions => {:assembly_id=>@assembly.id})
-    @assembly.tax_rate_percentage = AssemblyItem.average(:material_tax_percentage, :conditions => {:assembly_id=>@assembly.id})
-    @assembly.total_labor = AssemblyItem.sum(:labor_cost, :conditions => {:assembly_id=>@assembly.id})
-    @assembly.total_cost = AssemblyItem.sum(:total_cost, :conditions => {:assembly_id=>@assembly.id})
-    @assembly.markup_operator_percentage = AssemblyItem.average(:markup_operator_percentage, :conditions => {:assembly_id=>@assembly.id})
-    @assembly.markup_total_amt = AssemblyItem.sum(:markup_operator_cost, :conditions => {:assembly_id=>@assembly.id})
-    @assembly.total_price = AssemblyItem.sum(:item_price, :conditions => {:assembly_id=>@assembly.id})
+    #@assembly.total_material = AssemblyItem.sum(:material_cost_ext, :conditions => {:assembly_id=>@assembly.id})
+    #@assembly.total_tax = AssemblyItem.sum(:material_tax_cost, :conditions => {:assembly_id=>@assembly.id})
+    #@assembly.tax_rate_percentage = AssemblyItem.average(:material_tax_percentage, :conditions => {:assembly_id=>@assembly.id})
+    #@assembly.total_labor = AssemblyItem.sum(:labor_cost, :conditions => {:assembly_id=>@assembly.id})
+    #@assembly.total_cost = AssemblyItem.sum(:total_cost, :conditions => {:assembly_id=>@assembly.id})
+    #@assembly.markup_operator_percentage = AssemblyItem.average(:markup_operator_percentage, :conditions => {:assembly_id=>@assembly.id})
+    #@assembly.total_price = AssemblyItem.sum(:item_price, :conditions => {:assembly_id=>@assembly.id})
   end
 
   # POST /assemblies
@@ -81,7 +80,7 @@ class AssembliesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assembly_params
-      params.require(:assembly).permit(:master_item, :unformatted_build_date, :item_description, :warranty_description, :wo_description, :proposal_description, :is_po, :is_wo, :uom_id, :total_material, :tax_rate_percentage, :total_tax, :total_labor, :total_cost, :markup_operator_percentage, :markup_total_amt, :total_price)
+      params.require(:assembly).permit(:master_item, :unformatted_build_date, :item_description, :warranty_description, :wo_description, :proposal_description, :is_po, :is_wo, :uom_id, :total_material, :tax_rate_percentage, :total_tax, :total_labor, :total_cost, :markup_operator_percentage, :total_price)
     end
   def format_dates
     if(@assembly.build_date !=nil)

@@ -2,6 +2,24 @@
 
 one:
   name: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  main_phone: MyString
+  fax_number: MyString
+  main_email: MyString
+  website: MyString
+  license: MyString
 
 two:
   name: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  main_phone: MyString
+  fax_number: MyString
+  main_email: MyString
+  website: MyString
+  license: MyString

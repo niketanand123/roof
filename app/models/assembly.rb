@@ -1,6 +1,6 @@
 class Assembly < ActiveRecord::Base
   has_many :assembly_items, :class_name => 'AssemblyItem', :dependent => :destroy
-  has_many :job_estimates, :class_name => 'JobEstimate', :dependent => :destroy
+  has_many :job_estimates, :class_name => 'JobEstimate', :foreign_key => 'master_item_id'
   validates_presence_of :master_item
   validates_presence_of :item_description
   before_save    :format_date

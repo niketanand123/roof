@@ -17,9 +17,9 @@
     <% @assemblies.each do |assembly| %>
       <tr>
         <td><%= link_to assembly.master_item, edit_assembly_path(assembly) %></td>
-        <td><%= assembly.total_price %></td>
+        <td>$<%= assembly.total_price %></td>
         <td><%= assembly.item_description %></td>
-        <td><%= assembly.build_date.strftime("%m/%d/%Y") %></td>
+        <td><%= assembly.build_date.strftime("%m/%d/%Y") unless assembly.build_date.nil?  %></td>
         <td><%= UnitOfMeasurement.where(:id=>assembly.uom_id).pluck(:unit).first%></td>
         <td><%= link_to 'Edit', edit_assembly_path(assembly) %></td>
         <td><%= link_to 'Delete', assembly, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>

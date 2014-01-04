@@ -1,9 +1,18 @@
-<h1>Listing companies</h1>
+<h1>Listing Companies</h1>
 
-<table>
+<table width="100%">
   <thead>
     <tr>
-      <th>Name</th>
+      <th align="left">Name</th>
+      <th align="left">Address</th>
+      <th align="left">City</th>
+      <th align="left">State</th>
+      <th align="left">Zip</th>
+      <th align="left">Main phone</th>
+      <th align="left">Fax number</th>
+      <th align="left">Main email</th>
+      <th align="left">Website</th>
+      <th align="left">License</th>
       <th></th>
       <th></th>
     </tr>
@@ -13,8 +22,17 @@
     <% @companies.each do |company| %>
       <tr>
         <td><%= company.name %></td>
+        <td><%= company.address %></td>
+        <td><%= company.city %></td>
+        <td><%= company.state %></td>
+        <td><%= company.zip %></td>
+        <td><%= company.main_phone %></td>
+        <td><%= company.fax_number %></td>
+        <td><%= company.main_email %></td>
+        <td><%= company.website %></td>
+        <td><%= company.license %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Delete', company, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
+        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

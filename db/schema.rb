@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131231210642) do
+ActiveRecord::Schema.define(version: 20140103194746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20131231210642) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "uom_id",                     limit: 2
+    t.float    "total_material_cost"
   end
 
   create_table "assembly_items", force: true do |t|
@@ -55,6 +56,22 @@ ActiveRecord::Schema.define(version: 20131231210642) do
     t.float    "material_tax_cost"
     t.float    "total_cost"
     t.float    "markup_operator_cost"
+    t.float    "total_material_cost"
+  end
+
+  create_table "companies", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "main_phone"
+    t.string   "fax_number"
+    t.string   "main_email"
+    t.string   "website"
+    t.string   "license"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "company", force: true do |t|
@@ -139,7 +156,6 @@ ActiveRecord::Schema.define(version: 20131231210642) do
     t.string   "item_code",     limit: 20
     t.string   "item_name",     limit: 100
     t.float    "material_cost",             default: 0.0
-    t.float    "labor_rate",                default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "uom_id",        limit: 2
@@ -254,14 +270,12 @@ ActiveRecord::Schema.define(version: 20131231210642) do
     t.string   "job_notes"
     t.string   "lead_sheet_note"
     t.integer  "info_taken_by_id"
-    t.integer  "assign_to_id"
     t.date     "date_taken"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_closed",                                                  default: false
   end
 
-  add_index "job_site", ["assign_to_id"], name: "fk_assign_to_idx", using: :btree
   add_index "job_site", ["customer_id"], name: "fk_job_customer_idx", using: :btree
   add_index "job_site", ["estimate_type_id"], name: "fk_estimate_type_idx", using: :btree
   add_index "job_site", ["existing_roof_type_id"], name: "fk_exist_roof_type_idx", using: :btree

@@ -12,19 +12,25 @@
         $.fn.recalculateTotalBasedOnItemPercentageUsedWithAjax = function() {
             var that = this;
             this.blur(function() {
-                $.get("/populate_item_code", {item_percentage_used: that.val(), sales_tax:$("#assembly_item_material_tax_percentage").val(), markup_op_percentage:$("#assembly_item_markup_operator_percentage").val(), id:$("#assembly_item_item_code_id").val()}, null, "script");
+                $.get("/populate_item_code", {item_percentage_used: that.val(), sales_tax:$("#assembly_item_material_tax_cost").val(), markup_op_percentage:$("#assembly_item_markup_operator_percentage").val(), id:$("#assembly_item_item_code_id").val(), labor_cost:$("#assembly_item_labor_cost").val()}, null, "script");
             });
         }
         $.fn.recalculateTotalBasedOnSalesTaxWithAjax = function() {
             var that = this;
             this.blur(function() {
-                $.get("/populate_item_code", {sales_tax: that.val(), item_percentage_used: $("#assembly_item_percentage_used").val(), markup_op_percentage:$("#assembly_item_markup_operator_percentage").val(), id:$("#assembly_item_item_code_id").val()}, null, "script");
+                $.get("/populate_item_code", {sales_tax: that.val(), item_percentage_used: $("#assembly_item_percentage_used").val(), markup_op_percentage:$("#assembly_item_markup_operator_percentage").val(), id:$("#assembly_item_item_code_id").val(), labor_cost:$("#assembly_item_labor_cost").val()}, null, "script");
             });
         }
         $.fn.recalculateTotalBasedOnMarkupOpPercentageWithAjax = function() {
             var that = this;
             this.blur(function() {
-                $.get("/populate_item_code", {markup_op_percentage:that.val(),sales_tax: $("#assembly_item_material_tax_percentage").val(), item_percentage_used: $("#assembly_item_percentage_used").val(), id:$("#assembly_item_item_code_id").val()}, null, "script");
+                $.get("/populate_item_code", {markup_op_percentage:that.val(),sales_tax: $("#assembly_item_material_tax_cost").val(), item_percentage_used: $("#assembly_item_percentage_used").val(), id:$("#assembly_item_item_code_id").val(), labor_cost:$("#assembly_item_labor_cost").val()}, null, "script");
+            });
+        }
+        $.fn.recalculateTotalBasedOnLaborCostWithAjax = function() {
+            var that = this;
+            this.blur(function() {
+                $.get("/populate_item_code", {labor_cost:that.val(), markup_op_percentage:$("#assembly_item_markup_operator_percentage").val(),sales_tax: $("#assembly_item_material_tax_cost").val(), item_percentage_used: $("#assembly_item_percentage_used").val(), id:$("#assembly_item_item_code_id").val()}, null, "script");
             });
         }
     </script>
@@ -61,30 +67,86 @@
     <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
       <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
     </div>
-    <table width="80%" >
+    <table width="100%" >
       <tr>
-        <td width="10%">Master Item Code: <%= @assembly.master_item %></td>
-        <td width="10%">Build Date: <%= @assembly.build_date.strftime("%m/%d/%Y") %></td>
-        <td width="10%">Unit of Measure: <%= UnitOfMeasurement.where(:id=>@assembly.uom_id).pluck(:unit).first %></td>
-      </tr>
-      <tr>
-        <td colspan="3">Item Description: <%= @assembly.item_description%></td>
+        <td width="20%">Master Item Code: <%= @assembly.master_item %></td>
+        <td width="40%">Item Description: <%= @assembly.item_description%></td>
+        <td width="20%">Unit of Measure: <%= UnitOfMeasurement.where(:id=>@assembly.uom_id).pluck(:unit).first %></td>
+        <td width="20%">Build Date: <%= @assembly.build_date.strftime("%m/%d/%Y") unless @assembly.build_date.nil? %></td>
       </tr>
     </table>
     <br/>
-    <br/>
-    <div style="width:auto;">
-      <div BGCOLOR="#336699" HEIGHT="13" style="width: 70%;clear: both;float:left;" >
-      <span style="background-color:#336699; ">
-        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
-        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Assembly Item</span>
-        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
-      </span>
-      </div>
-      <div BGCOLOR="#336699" HEIGHT="13" style="width:auto;" >
+    <div BGCOLOR="#336699" HEIGHT="13" style="width:auto;" >
       <span style="background-color:#336699; ">
         <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
         <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Total Price</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+    </div>
+    <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
+      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
+    </div>
+      <table>
+        <tr>
+          <td width="25%">Material</td>
+          <td width="30%">$<span id="material_cost_ext_id"><%= @assembly_item.material_cost_ext %></span></td>
+          <td width="20%"></td>
+          <td width="20%"></td>
+          <td width="10%"></td>
+        </tr>
+        <tr class="borderThinLine">
+          <td>Sales Tax <%= f.text_field :material_tax_percentage, :size=>"3", :readonly=>true%>%</td>
+          <td>$<%= f.text_field :material_tax_cost, :size=>"5" %></td>
+          <td colspan="3">MU Operator</td>
+        </tr>
+        <tr>
+          <td>Total Material</td>
+          <td>$<span id="total_material_cost_id"><%= @assembly_item.total_material_cost %></span><%= f.hidden_field :total_material_cost %></td>
+          <td><span id="mu_material_opt_percentage_id"></span></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="borderThinLine">
+          <td>Total Labor</td>
+          <td>$<span id="total_labor_cost_id"><%= @assembly_item.labor_cost %></span></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Total Cost</td>
+          <td>$<span id="total_cost_id"><%= @assembly_item.total_cost %></span><%= f.hidden_field :total_cost %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="borderLine">
+          <td>Operator</td>
+          <td><%= f.text_field :markup_operator_percentage, :size=>"3"%></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Total Price</td>
+          <td>$<span id="total_price_id"><%= @assembly_item.item_price %></span></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+      <script type="text/javascript">
+          $(document).ready(function(){
+              $("#assembly_item_material_tax_cost").recalculateTotalBasedOnSalesTaxWithAjax();
+              $("#assembly_item_markup_operator_percentage").recalculateTotalBasedOnMarkupOpPercentageWithAjax();
+          });
+      </script>
+    <br/>
+    <div style="width:auto;">
+      <div BGCOLOR="#336699" HEIGHT="13" style="width: 100%;clear: both;float:left;" >
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Assembly Item</span>
         <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
       </span>
       </div>
@@ -92,8 +154,6 @@
     <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
       <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
     </div>
-    <div style="width:100%;">
-      <div style="width: 70%;height: 200px;clear: both;float:left;" >
         <table >
             <tr>
               <td width="10%">Item:
@@ -117,7 +177,6 @@
           </tr>
         </table>
         <br/>
-        <br/>
         <table width="100%">
           <tr class="borderLine">
             <td colspan="2">Labor Cost</td>
@@ -128,7 +187,7 @@
             <td>WO</td>
           </tr>
           <tr>
-            <td colspan="2">$<span id="labor_cost_id"><% if @item_code != nil%><%= @item_code.labor_rate %><%end%></span> <%= f.hidden_field :labor_cost %></td>
+            <td colspan="2">$<%= f.text_field :labor_cost %></td>
             <td colspan="2">$<span id="material_cost_id"><% if @item_code != nil%><%= @item_code.material_cost %><%end%> </span><%= f.hidden_field :material_cost %></td>
             <td colspan="2"><%= f.text_field :percentage_used, :size=>"5" %></td>
             <td colspan="2">$<%= f.text_field :material_cost_ext %></td>
@@ -139,44 +198,10 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 $("#assembly_item_percentage_used").recalculateTotalBasedOnItemPercentageUsedWithAjax();
+                $("#assembly_item_labor_cost").recalculateTotalBasedOnLaborCostWithAjax();
             });
         </script>
-      </div>
-      <div style="width:auto;height: 200px" >
-        <table style="border-left:thick double #336699;">
-          <tr>
-            <td width="30%">Total Labor</td>
-            <td width="30%">$<span id="total_labor_cost_id"><% if @item_code != nil%><%= @item_code.labor_rate %><%end%></span></td>
-          </tr>
-          <tr>
-            <td>Total Material</td>
-            <td>$<span id="total_material_cost_id"><% if @item_code != nil%><%= @assembly_item.material_cost_ext %><%end%></span></td>
-          </tr>
-          <tr class="borderThinLine">
-            <td>Sales Tax <%= f.text_field :material_tax_percentage, :size=>"3"%>%</td>
-            <td>$<%= f.text_field :material_tax_cost, :size=>"5" %></td>
-          </tr>
-          <tr>
-            <td>Total Cost</td>
-            <td>$<span id="total_cost_id"><%= @assembly_item.total_cost %></span><%= f.hidden_field :total_cost %></td>
-          </tr>
-          <tr class="borderLine">
-            <td>Operator</td>
-            <td><%= f.text_field :markup_operator_percentage, :size=>"3"%></td>
-          </tr>
-          <tr>
-            <td>Total Price</td>
-            <td>$<span id="total_price_id"><%= @assembly_item.item_price %></span></td>
-          </tr>
-        </table>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $("#assembly_item_material_tax_percentage").recalculateTotalBasedOnSalesTaxWithAjax();
-                $("#assembly_item_markup_operator_percentage").recalculateTotalBasedOnMarkupOpPercentageWithAjax();
-            });
-        </script>
-      </div>
-    </div>
+    <br/>
     <div class="actions">
       <% if @assembly_item!= nil && @assembly_item.id != nil%>
           <%= button_to "Update Assembly Item", assembly_assembly_items_path(:assembly_id=>@assembly.id, :id=>@assembly_item.id), :method => :put %>
