@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20140103194746) do
     t.float    "total_labor"
     t.float    "total_cost"
     t.float    "markup_operator_percentage"
-    t.float    "markup_total_amt"
     t.float    "total_price"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -55,7 +54,6 @@ ActiveRecord::Schema.define(version: 20140103194746) do
     t.float    "material_tax_percentage"
     t.float    "material_tax_cost"
     t.float    "total_cost"
-    t.float    "markup_operator_cost"
     t.float    "total_material_cost"
   end
 
@@ -73,14 +71,6 @@ ActiveRecord::Schema.define(version: 20140103194746) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "company", force: true do |t|
-    t.string   "name",       limit: 50
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "company", ["name"], name: "name_UNIQUE", unique: true, using: :btree
 
   create_table "contact_types", force: true do |t|
     t.string   "contact_type"
