@@ -7,23 +7,24 @@ class CustomersController < ApplicationController
     #@customers = Customer.search(params[:basedOn],params[:searchText])
     basedOn = params[:basedOn]
     @searchText = params[:searchText]
-    if @searchText != nil
+    if !@searchText.nil? && !@searchText.empty?
       search_condition = "%" + @searchText + "%"
-    end
-    if basedOn == "Last Name"
-      @customers = Customer.where("is_active=1 and last_name LIKE ?", search_condition)
-    end
-    if basedOn == "Phone Number"
-      @customers = Customer.where("is_active=1 and home_phone LIKE ? OR mobile_phone LIKE ? OR work_phone LIKE ?", search_condition, search_condition, search_condition)
-    end
-    if basedOn == "Street Address"
-      @customers = Customer.where("is_active=1 and street1 LIKE ? OR street2 LIKE ?", search_condition, search_condition)
-    end
-    if basedOn == "Company Name"
-      @customers = Customer.where("is_active=1 and company_name LIKE ?", search_condition)
-    end
-    if @customers != nil
-      set_map_marker(@customers)
+
+      if basedOn == "Last Name"
+        @customers = Customer.where("is_active=1 and last_name LIKE ?", search_condition)
+      end
+      if basedOn == "Phone Number"
+        @customers = Customer.where("is_active=1 and home_phone LIKE ? OR mobile_phone LIKE ? OR work_phone LIKE ?", search_condition, search_condition, search_condition)
+      end
+      if basedOn == "Street Address"
+        @customers = Customer.where("is_active=1 and street1 LIKE ? OR street2 LIKE ?", search_condition, search_condition)
+      end
+      if basedOn == "Company Name"
+        @customers = Customer.where("is_active=1 and company_name LIKE ?", search_condition)
+      end
+      if @customers != nil
+        set_map_marker(@customers)
+      end
     end
   end
 
