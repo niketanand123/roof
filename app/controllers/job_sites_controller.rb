@@ -10,13 +10,18 @@ class JobSitesController < ApplicationController
       @job_sites = JobSite.where("is_active=1 and contact_name LIKE ?", search_condition)
     end
     if basedOn == "Jobsite Phone"
-      @job_sites = JobSite.where("is_active=1 and phone LIKE ? OR mobile_phone LIKE ? OR work_phone LIKE ?", search_condition, search_condition, search_condition)
+      @job_sites = JobSite.where("is_active=1 and (phone LIKE ? OR mobile_phone LIKE ? OR work_phone LIKE ?)", search_condition, search_condition, search_condition)
     end
     if basedOn == "Street Address"
-      @job_sites = JobSite.where("is_active=1 and street1 LIKE ? OR street2 LIKE ?", search_condition, search_condition)
+      @job_sites = JobSite.where("is_active=1 and (street1 LIKE ? OR street2 LIKE ?)", search_condition, search_condition)
     end
     if basedOn == "Company Name"
-      @job_sites = JobSite.where("is_active=1 and company_name LIKE ?", search_condition)
+      where_clause = "customer.is_active=1 and customer.company_id = companies.id and job_site.customer_id = customer.id and companies.name LIKE ?"
+      if @searchText == nil || @searchText.empty? || @searchText == ""
+        @job_sites = JobSite.where("is_active=1")
+      else
+        @job_sites = JobSite.joins(:customer).joins(:company).where(where_clause, search_condition)
+      end
     end
     if @job_sites != nil
       set_map_marker(@job_sites)

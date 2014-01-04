@@ -19,7 +19,12 @@ class CustomersController < ApplicationController
         @customers = Customer.where("is_active=1 and (street1 LIKE ? OR street2 LIKE ?)", search_condition, search_condition)
       end
       if basedOn == "Company Name"
-        @customers = Customer.joins(:company).where("customer.is_active=1 and companies.name LIKE ?", search_condition)
+        where_clause = "customer.is_active=1 and (customer.company_id = companies.id and companies.name LIKE ?)"
+        if @searchText == nil || @searchText.empty?
+          @customers = Customer.where("is_active=1")
+        else
+          @customers = Customer.joins(:company).where(where_clause, search_condition)
+        end
       end
       if @customers != nil
         set_map_marker(@customers)
