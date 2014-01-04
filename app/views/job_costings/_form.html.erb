@@ -1,4 +1,4 @@
-<%= form_for(@job_costing) do |f| %>
+<%= form_for [@customer, @job_site, @job_costing] do |f| %>
   <% if @job_costing.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job_costing.errors.count, "error") %> prohibited this job_costing from being saved:</h2>

@@ -1,4 +1,4 @@
-<%= form_for(@job_estimate) do |f| %>
+<%= form_for [@customer, @job_site, @job_estimate] do |f| %>
     <script type="text/javascript">
         $.fn.populateEstimateValuesWithAjax = function() {
             var that = this;
