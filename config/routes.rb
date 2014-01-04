@@ -107,6 +107,7 @@ Roof::Application.routes.draw do
 
   get 'lead_sheet' => 'job_sites#lead_sheet'
   get 'estimate' => 'job_sites#estimate'
+  get 'proposal' => 'job_sites#proposal'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

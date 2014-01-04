@@ -254,7 +254,9 @@
       </tr>
     </table>
     <br/>
-    <%= link_to 'Printable Lead Sheet(PDF)',  lead_sheet_path(:id=>@job_site.id, :format=>"pdf") %> &nbsp; &nbsp; <%= link_to 'Printable Estimate(PDF)',  estimate_path(:id=>@job_site.id, :format=>"pdf") %>
+    <%= link_to 'Printable Lead Sheet(PDF)',  lead_sheet_path(:id=>@job_site.id, :format=>"pdf") %>
+    &nbsp; &nbsp; <%= link_to 'Printable Estimate(PDF)',  estimate_path(:id=>@job_site.id, :format=>"pdf") %>
+    &nbsp; &nbsp; <%= link_to 'Printable Proposal(PDF)',  proposal_path(:id=>@job_site.id, :format=>"pdf") %>
     <br/>
     <%= link_to 'Back',  edit_customer_path(:id=>@customer.id) %> &nbsp;
 <% end %>
