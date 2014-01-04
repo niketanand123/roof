@@ -1,6 +1,6 @@
 <%= form_tag(customers_path, :method => "get") do %>
     <% [ 'Last Name', 'Phone Number', 'Street Address', 'Company Name' ].each do |basedOn| %>
-        <%= radio_button_tag 'basedOn', basedOn, params[:basedOn].eql?(basedOn) %>
+        <%= radio_button_tag 'basedOn', basedOn, params[:basedOn].eql?(basedOn), :checked => (basedOn == "Last Name")%>
         <%= basedOn.humanize %>
     <% end %>
     <%= text_field_tag(:searchText, params[:searchText]) %>

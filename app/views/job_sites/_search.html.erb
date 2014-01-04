@@ -1,6 +1,6 @@
 <%= form_tag(job_sites_path, :method => "get") do %>
     <% [ 'Contact Name', 'Jobsite Phone', 'Street Address', 'Company Name' ].each do |basedOn| %>
-        <%= radio_button_tag 'basedOn', basedOn, params[:basedOn].eql?(basedOn) %>
+        <%= radio_button_tag 'basedOn', basedOn, params[:basedOn].eql?(basedOn), :checked => (basedOn == "Contact Name") %>
         <%= basedOn.humanize %>
     <% end %>
     <%= text_field_tag(:searchText, params[:searchText]) %>
