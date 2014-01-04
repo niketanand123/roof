@@ -6,7 +6,7 @@ class JobEstimatesController < ApplicationController
   def index
     @customer = Customer.find(params[:customer_id])
     @job_site = JobSite.find(params[:job_site_id])
-    @job_estimates = JobEstimate.where(:job_site_id =>params[:job_site_id])
+    @job_estimates = JobEstimate.order("step asc").where(:job_site_id =>params[:job_site_id])
   end
 
 

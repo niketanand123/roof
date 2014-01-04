@@ -54,6 +54,12 @@ class JobSitesController < ApplicationController
     @customer = Customer.find(@job_site.customer_id)
   end
 
+  def estimate
+    @job_site = JobSite.find(params[:id])
+    @customer = Customer.find(@job_site.customer_id)
+    @job_estimates = JobEstimate.order("step asc").where(:job_site_id =>@job_site.id)
+  end
+
   def create
     @customer = Customer.find(params[:customer_id])
     @job_site = @customer.job_sites.create(job_site_params)
