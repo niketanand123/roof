@@ -8,7 +8,7 @@ class CreateJobEstimates < ActiveRecord::Migration
       t.string :proposal_desc
       t.string :warranty_desc
       t.decimal :retail_price
-      t.string :item_extended
+      t.decimal :item_extended
 
       t.timestamps
     end

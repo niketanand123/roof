@@ -210,8 +210,8 @@ ActiveRecord::Schema.define(version: 20140103194746) do
     t.integer  "qty"
     t.string   "proposal_desc",  limit: 100
     t.string   "warranty_desc",  limit: 100
-    t.decimal  "retail_price",               precision: 5, scale: 2
-    t.string   "item_extended",  limit: 50
+    t.decimal  "retail_price",    precision: 5, scale: 2
+    t.decimal   "item_extended",  precision: 5, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
