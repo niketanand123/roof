@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140103194746) do
+ActiveRecord::Schema.define(version: 20140105071907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 20140103194746) do
     t.float    "total_material_cost"
   end
 
+  create_table "assets", force: true do |t|
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+    t.integer  "job_site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "companies", force: true do |t|
     t.string   "name"
     t.string   "address"
@@ -100,7 +110,6 @@ ActiveRecord::Schema.define(version: 20140103194746) do
     t.string   "misc",            limit: 500
     t.integer  "company_id"
     t.integer  "sales_person_id"
-    t.string   "company_name",    limit: 100
     t.string   "title",           limit: 45
     t.decimal  "latitude",                    precision: 10, scale: 8
     t.decimal  "longitude",                   precision: 11, scale: 8
@@ -204,16 +213,16 @@ ActiveRecord::Schema.define(version: 20140103194746) do
   end
 
   create_table "job_estimates", force: true do |t|
-    t.integer  "job_site_id",                                        null: false
+    t.integer  "job_site_id",                null: false
     t.integer  "step"
     t.integer  "master_item_id"
     t.integer  "qty"
-    t.string   "proposal_desc",  limit: 100
-    t.string   "warranty_desc",  limit: 100
-    t.decimal  "retail_price",    precision: 5, scale: 2
-    t.decimal   "item_extended",  precision: 5, scale: 2
+    t.string   "proposal_desc",  limit: 330
+    t.string   "warranty_desc",  limit: 330
+    t.float    "retail_price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "item_extended"
   end
 
   add_index "job_estimates", ["job_site_id"], name: "fk_est_job_site_id_idx", using: :btree

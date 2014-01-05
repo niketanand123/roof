@@ -42,6 +42,8 @@ class JobSitesController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @job_site = @customer.job_sites.build
     @service_types = ServiceType.all
+    #@job_photo = @job_site.job_photos.build
+    @job_site.assets.build
   end
 
   def edit
@@ -52,6 +54,8 @@ class JobSitesController < ApplicationController
     @job_service_types = JobServiceType.where("job_id" =>@job_site.id)
     @service_type_ids = @job_service_types.collect{|p| p.service_type_id}
     set_map_marker(@job_site)
+    @job_site.assets.build
+    #@job_photo = @job_site.job_photos.build
   end
 
   def lead_sheet
@@ -146,16 +150,19 @@ class JobSitesController < ApplicationController
     def set_job_site
       @job_site = JobSite.find(params[:id])
     end
-
+  #:assets_attributes =>[{:id=>[:asset]}],    {:assets_attributes => [{:id => [:asset=>[]]}]}
+  #params.permit(:name, {:emails => []}, :friends => [ :name, { :family => [ :name ], :hobbies => [] }])
+  #:asset,{:assets_attributes => [{:asset => []},{:id =>[{:asset =>[]}]}]},
     def job_site_params
-      params.require(:job_site).permit(:contact_name, :phone, :work_phone, :work_phone_ext, :mobile_phone, :fax, :website, :street1, :street2,
-                                       :city, :state, :zip, :direction, :easily_accessible, :cust_vacating_when, :parking_consideration,
-                                       :dumpster_loc_note, :side_garage_use, :driveway_dirt_asphalt, :electrical_location,
-                                       :water_sanitation_avail, :animals_restrain, :gutter_color_noted, :landscape_concerns,
-                                       :work_number_shift, :additional_notes, :job_status_id, :how_many_stories,
-                                       :existing_roof_type_id, :new_roof_type_id, :product_type_id, :product_color_id, :sales_rep_id,
-                                       :estimate_type_id, :contract_price, :deposit_due, :deposit_method, :job_notes,
-                                       :lead_sheet_note, :info_taken_by_id) if params[:job_site]
+      #params.require(:job_site).permit({:assets_attributes => [{:id =>[]}]},{:assets_attributes => [{:asset => []}]}, :contact_name, :phone, :work_phone, :work_phone_ext, :mobile_phone, :fax, :website, :street1, :street2,
+      #                                 :city, :state, :zip, :direction, :easily_accessible, :cust_vacating_when, :parking_consideration,
+      #                                 :dumpster_loc_note, :side_garage_use, :driveway_dirt_asphalt, :electrical_location,
+      #                                 :water_sanitation_avail, :animals_restrain, :gutter_color_noted, :landscape_concerns,
+      #                                 :work_number_shift, :additional_notes, :job_status_id, :how_many_stories,
+      #                                 :existing_roof_type_id, :new_roof_type_id, :product_type_id, :product_color_id, :sales_rep_id,
+      #                                 :estimate_type_id, :contract_price, :deposit_due, :deposit_method, :job_notes,
+      #                                 :lead_sheet_note, :info_taken_by_id) if params[:job_site]
+      params.require(:job_site).permit!
     end
 
     def set_job_site_info(job_site)

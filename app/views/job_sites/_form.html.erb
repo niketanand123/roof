@@ -1,4 +1,4 @@
-<%= form_for([@job_site.customer, @job_site]) do |f| %>
+<%= form_for([@job_site.customer, @job_site], :html => {:multipart => true}) do |f| %>
   <script type="text/javascript">
     function sameAsBillingAddress(form, street1, street2, city, state, zip){
         if(form.autoFillAddress.checked == true){
@@ -32,6 +32,7 @@
       </ul>
     </div>
   <% end %>
+
     <div style="width:auto;">
         <div BGCOLOR="#336699" HEIGHT="13" style="width: 60%;clear: both;float:left;" >
           <span style="background-color:#336699; ">
@@ -52,7 +53,7 @@
       <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
     </div>
     <div style="width:100%;">
-      <div style="width: 60%;height: 250px;clear: both;float:left;" >
+      <div style="width: 60%;height: 210px;clear: both;float:left;" >
         <table style="border-right:thick double #336699;" width="100%">
           <tr>
             <td>Contact*</td><td><%= f.text_field :contact_name%></td>
@@ -89,7 +90,7 @@
           </tr>
         </table>
       </div>
-      <div style="width:auto;height: 250px" >
+      <div style="width:auto;height: 210px" >
         <table>
             <tr>
             <td width="10%">First Name:</td><td width="15%"><%= @job_site.customer.first_name%></td>
@@ -207,13 +208,43 @@
 
     <br>
 
+    <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
+      <span style="background-color:#336699; ">
+        <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Upload Job Photos</span>
+        <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
+      </span>
+    </div>
+    <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
+      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
+    </div>
+    <%= f.fields_for :assets do |asset_fields|%>
+        <p>
+          <% if asset_fields.object.new_record? %>
+              <%= asset_fields.file_field :asset %>
+          <% end %>
+        </p>
+    <% end %>
+    <div style="float: left;position:relative;">
+        <%= f.fields_for :assets do |asset| %>
+            <% unless asset.object.new_record? %>
+              <div  style="float: left; width: 180px;">
+                  <%= link_to( image_tag(asset.object.asset.url(:thumb)), asset.object.asset.url(:original) ) %>
+                  <%= asset.check_box :_destroy %> Delete
+                </div>
+            <% end %>
+        <% end %>
+      </div>
+    <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
+      <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
+    </div>
     <table width="100%">
       <tr>
         <td>
           <% if @job_site!= nil && @job_site.id != nil%>
-            <%= button_to "Update Job Site", {:controller => :job_sites, :action => 'update', :id => @job_site.id }, :method => :post %>
+              <%= button_to "Update Job Site", {:controller => :job_sites, :action => 'update', :id => @job_site.id }, :method => :post %>
           <% else %>
-            <%= button_to "Create Job Site", {:controller => :job_sites, :action => 'create', :customer_id =>@customer.id }, :method => :post %>
+              <%= button_to "Create Job Site", {:controller => :job_sites, :action => 'create', :customer_id =>@customer.id }, :method => :post %>
           <% end %>
         </td>
         <td>
@@ -248,12 +279,13 @@
         </td>
         <td>
           <% if @job_site!= nil && @job_site.id != nil%>
-            <%= button_to "Delete Job Site", {:controller => :job_sites, :action => 'destroy', :id => @job_site.id }, :method => :delete, :data => { confirm: 'Are you sure you want to delete job site?' } %>
+              <%= button_to "Delete Job Site", {:controller => :job_sites, :action => 'destroy', :id => @job_site.id }, :method => :delete, :data => { confirm: 'Are you sure you want to delete job site?' } %>
           <% end %>
         </td>
       </tr>
     </table>
     <br/>
+
     <%= link_to 'Printable Lead Sheet(PDF)',  lead_sheet_path(:id=>@job_site.id, :format=>"pdf") %>
     &nbsp; &nbsp; <%= link_to 'Printable Estimate(PDF)',  estimate_path(:id=>@job_site.id, :format=>"pdf") %>
     &nbsp; &nbsp; <%= link_to 'Printable Proposal(PDF)',  proposal_path(:id=>@job_site.id, :format=>"pdf") %>
