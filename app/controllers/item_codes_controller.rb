@@ -4,7 +4,7 @@ class ItemCodesController < ApplicationController
   # GET /item_codes
   # GET /item_codes.json
   def index
-    @item_codes = ItemCode.all
+    @item_codes = ItemCode.order("item_code asc").all
   end
 
   # GET /item_codes/1
