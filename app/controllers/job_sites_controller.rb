@@ -158,7 +158,7 @@ class JobSitesController < ApplicationController
       #                                 :existing_roof_type_id, :new_roof_type_id, :product_type_id, :product_color_id, :sales_rep_id,
       #                                 :estimate_type_id, :contract_price, :deposit_due, :deposit_method, :job_notes,
       #                                 :lead_sheet_note, :info_taken_by_id) if params[:job_site]
-      params.require(:job_site).permit!
+      params.require(:job_site).permit! if params[:job_site]
     end
 
     def set_job_site_info(job_site)
