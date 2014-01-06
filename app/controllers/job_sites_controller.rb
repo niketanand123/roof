@@ -7,16 +7,16 @@ class JobSitesController < ApplicationController
       search_condition = "%" + @searchText + "%"
     end
     if basedOn == "Contact Name"
-      @job_sites = JobSite.where("is_active=1 and contact_name LIKE ?", search_condition)
+      @job_sites = JobSite.where("is_active=1 and contact_name ILIKE ?", search_condition)
     end
     if basedOn == "Jobsite Phone"
-      @job_sites = JobSite.where("is_active=1 and (phone LIKE ? OR mobile_phone LIKE ? OR work_phone LIKE ?)", search_condition, search_condition, search_condition)
+      @job_sites = JobSite.where("is_active=1 and (phone ILIKE ? OR mobile_phone ILIKE ? OR work_phone ILIKE ?)", search_condition, search_condition, search_condition)
     end
     if basedOn == "Street Address"
-      @job_sites = JobSite.where("is_active=1 and (street1 LIKE ? OR street2 LIKE ?)", search_condition, search_condition)
+      @job_sites = JobSite.where("is_active=1 and (street1 ILIKE ? OR street2 ILIKE ?)", search_condition, search_condition)
     end
     if basedOn == "Company Name"
-      where_clause = "customer.is_active=1 and customer.company_id = companies.id and job_site.customer_id = customer.id and companies.name LIKE ?"
+      where_clause = "customer.is_active=1 and customer.company_id = companies.id and job_site.customer_id = customer.id and companies.name ILIKE ?"
       if @searchText == nil || @searchText.empty? || @searchText == ""
         @job_sites = JobSite.where("is_active=1")
       else

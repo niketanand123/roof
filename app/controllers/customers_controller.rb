@@ -10,16 +10,16 @@ class CustomersController < ApplicationController
     if @searchText != nil
       search_condition = "%" + @searchText + "%"
       if basedOn == "Last Name"
-        @customers = Customer.where("is_active=1 and last_name LIKE ?", search_condition)
+        @customers = Customer.where("is_active=1 and last_name ILIKE ?", search_condition)
       end
       if basedOn == "Phone Number"
-        @customers = Customer.where("is_active=1 and (home_phone LIKE ? OR mobile_phone LIKE ? OR work_phone LIKE ?)", search_condition, search_condition, search_condition)
+        @customers = Customer.where("is_active=1 and (home_phone ILIKE ? OR mobile_phone ILIKE ? OR work_phone ILIKE ?)", search_condition, search_condition, search_condition)
       end
       if basedOn == "Street Address"
-        @customers = Customer.where("is_active=1 and (street1 LIKE ? OR street2 LIKE ?)", search_condition, search_condition)
+        @customers = Customer.where("is_active=1 and (street1 ILIKE ? OR street2 ILIKE ?)", search_condition, search_condition)
       end
       if basedOn == "Company Name"
-        where_clause = "customer.is_active=1 and (customer.company_id = companies.id and companies.name LIKE ?)"
+        where_clause = "customer.is_active=1 and (customer.company_id = companies.id and companies.name ILIKE ?)"
         if @searchText == nil || @searchText.empty?
           @customers = Customer.where("is_active=1")
         else
