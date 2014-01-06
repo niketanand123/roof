@@ -55,10 +55,9 @@ class JobSitesController < ApplicationController
     @service_type_ids = @job_service_types.collect{|p| p.service_type_id}
     set_map_marker(@job_site)
     @job_site.assets.build
-    #@job_photo = @job_site.job_photos.build
   end
 
-  def lead_sheet
+  def job_lead_sheet
     @job_site = JobSite.find(params[:id])
     @customer = Customer.find(@job_site.customer_id)
   end
@@ -97,8 +96,8 @@ class JobSitesController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @job_site = JobSite.find(params[:id])
 
-    update_customer_status
     format_dates_before_insert_or_update
+    update_customer_status
     respond_to do |format|
       if @job_site.update_attributes(job_site_params)
         job_service_type_update
@@ -178,20 +177,20 @@ class JobSitesController < ApplicationController
 
     def format_dates
       if(@job_site.job_start_date !=nil)
-        @job_site.job_start_date = @job_site.job_start_date.strftime("%m/%d/%Y")
+        @job_site.unformatted_appointment_date = @job_site.job_start_date.strftime("%m/%d/%Y")
       end
       if(@job_site.date_taken !=nil)
-        @job_site.date_taken = @job_site.date_taken.strftime("%m/%d/%Y")
+        @job_site.unformatted_date_taken = @job_site.date_taken.strftime("%m/%d/%Y")
       end
       if(@job_site.date_completed !=nil)
-        @job_site.date_completed = @job_site.date_completed.strftime("%m/%d/%Y")
+        @job_site.unformatted_date_completed = @job_site.date_completed.strftime("%m/%d/%Y")
       end
     end
 
     def format_dates_before_insert_or_update
-      @job_site.job_start_date = get_date(params[:job_site][:job_start_date])
-      @job_site.date_completed = get_date(params[:job_site][:date_completed])
-      @job_site.date_taken = get_date(params[:job_site][:date_taken])
+      @job_site.unformatted_appointment_date = get_date(params[:job_site][:unformatted_appointment_date])
+      @job_site.unformatted_date_completed = get_date(params[:job_site][:unformatted_date_completed])
+      @job_site.unformatted_date_taken = get_date(params[:job_site][:unformatted_date_taken])
     end
 
     def set_address(job_site)

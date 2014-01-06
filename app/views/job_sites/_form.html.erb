@@ -139,7 +139,7 @@
     <table width="100%" border="0">
       <tr>
         <td>Appointment Date</td>
-        <td><%= f.text_field :job_start_date, :id => 'jobStartDate' %></td>
+        <td><%= f.text_field :unformatted_appointment_date, :id => 'jobStartDate' %></td>
         <td></td>
         <td>Lead Status</td>
         <td><%= f.select(:job_status_id, options_for_select(JobStatus.all.map{|t| [t.status, t.id]}, @job_site.job_status_id),:include_blank => "Choose Job Status") %></td>
@@ -187,14 +187,14 @@
         <td><%= f.text_field :deposit_method %></td>
         <td></td>
         <td>Date Completed</td>
-        <td><%= f.text_field :date_completed, :id => 'dateCompleted' %></td>
+        <td><%= f.text_field :unformatted_date_completed, :id => 'dateCompleted' %></td>
         <td></td>
         <td>Info Taken By</td>
         <td><%= f.select(:info_taken_by_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.info_taken_by_id),:include_blank => "Choose Info Taken By") %></td>
       </tr>
       <tr>
         <td>Date Taken</td>
-        <td colspan="10"><%= f.text_field :date_taken, :id => 'dateTaken'%></td>
+        <td colspan="10"><%= f.text_field :unformatted_date_taken, :id => 'dateTaken'%></td>
       </tr>
     </table>
     <table width="100%" border="0">
@@ -286,7 +286,7 @@
     </table>
     <br/>
 
-    <%= link_to 'Printable Lead Sheet(PDF)',  lead_sheet_path(:id=>@job_site.id, :format=>"pdf") %>
+    <%= link_to 'Printable Lead Sheet(PDF)',  job_lead_sheet_path(:id=>@job_site.id, :format=>"pdf") %>
     &nbsp; &nbsp; <%= link_to 'Printable Estimate(PDF)',  estimate_path(:id=>@job_site.id, :format=>"pdf") %>
     &nbsp; &nbsp; <%= link_to 'Printable Proposal(PDF)',  proposal_path(:id=>@job_site.id, :format=>"pdf") %>
     <br/>
