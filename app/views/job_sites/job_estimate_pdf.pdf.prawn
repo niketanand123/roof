@@ -91,7 +91,9 @@ if (@job_estimates.size > 0)
     total_price = 0.0
     y = y - 30
     @job_estimates.each do |job_estimate|
-        pdf.draw_text Assembly.where(:id=>job_estimate.master_item_id).pluck(:item_description).first, :at => [x+5, y], :size => 11
+        desc = Assembly.where(:id=>job_estimate.master_item_id).pluck(:item_description).first
+        pdf.text_box(desc, :at => [x+2,y+10], :width => 350, :height => 100, :size => 11,
+:overflow => :shrink_to_fit)
         pdf.draw_text job_estimate.qty, :at => [x1, y], :size => 11
         pdf.draw_text "$"+job_estimate.retail_price.to_s, :at => [x2, y], :size => 11
         pdf.draw_text "$"+job_estimate.item_extended.to_s, :at => [x3+10, y], :size => 11
