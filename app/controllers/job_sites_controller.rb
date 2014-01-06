@@ -62,13 +62,13 @@ class JobSitesController < ApplicationController
     @customer = Customer.find(@job_site.customer_id)
   end
 
-  def estimate
+  def job_estimate_pdf
     @job_site = JobSite.find(params[:id])
     @customer = Customer.find(@job_site.customer_id)
     @job_estimates = JobEstimate.order("step asc").where(:job_site_id =>@job_site.id)
   end
 
-  def proposal
+  def job_proposal
     @job_site = JobSite.find(params[:id])
     @customer = Customer.find(@job_site.customer_id)
     @job_estimates = JobEstimate.order("step asc").where(:job_site_id =>@job_site.id)
@@ -149,9 +149,6 @@ class JobSitesController < ApplicationController
     def set_job_site
       @job_site = JobSite.find(params[:id])
     end
-  #:assets_attributes =>[{:id=>[:asset]}],    {:assets_attributes => [{:id => [:asset=>[]]}]}
-  #params.permit(:name, {:emails => []}, :friends => [ :name, { :family => [ :name ], :hobbies => [] }])
-  #:asset,{:assets_attributes => [{:asset => []},{:id =>[{:asset =>[]}]}]},
     def job_site_params
       #params.require(:job_site).permit({:assets_attributes => [{:id =>[]}]},{:assets_attributes => [{:asset => []}]}, :contact_name, :phone, :work_phone, :work_phone_ext, :mobile_phone, :fax, :website, :street1, :street2,
       #                                 :city, :state, :zip, :direction, :easily_accessible, :cust_vacating_when, :parking_consideration,

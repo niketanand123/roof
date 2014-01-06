@@ -207,7 +207,9 @@ pdf.stroke do
         first_name = employee.first_name
         last_name = employee.last_name
         info_taken_by = first_name +" "+last_name
-        pdf.draw_text info_taken_by, :at => [x1+85, y1], :size => 11
+        pdf.bounding_box([x1+85,y1+8], :width => 100, :height => 30) do
+            pdf.text "<u>"+info_taken_by+"</u>", :size => 11, :inline_format => true
+        end
     end
 
     x=x+180
@@ -220,7 +222,9 @@ pdf.stroke do
         first_name = employee.first_name
         last_name = employee.last_name
         assign_to = first_name +" "+last_name
-        pdf.draw_text assign_to, :at => [x1+80, y1], :size => 11
+        pdf.bounding_box([x1+80,y1+8], :width => 100, :height => 30) do
+            pdf.text "<u>"+assign_to+"</u>", :size => 11, :inline_format => true
+        end
     end
 
     x=x+180
@@ -230,6 +234,9 @@ pdf.stroke do
     pdf.draw_text "Date Taken:", :at => [x1, y1], :size => 12, :style => :bold
     if(@job_site.date_taken != nil)
         date_taken = @job_site.date_taken.strftime("%m/%d/%Y")
-        pdf.draw_text date_taken, :at => [x1+70, y1], :size => 11
+
+        pdf.bounding_box([x1+70,y1+8], :width => 100, :height => 30) do
+            pdf.text "<u>"+date_taken+"</u>", :size => 11, :inline_format => true
+        end
     end
 end

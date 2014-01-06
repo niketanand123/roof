@@ -3,7 +3,7 @@
   <div BGCOLOR="#336699" HEIGHT="13" >
       <span style="background-color:#336699; ">
         <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
-        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Listing Job Estimates</span>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Job Estimate</span>
         <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
       </span>
   </div>
@@ -45,4 +45,4 @@
 
 <br>
 <%= link_to 'Back',  edit_customer_job_site_path(:id=>@job_site.id, :customer_id=>@customer.id) %> &nbsp;
-<%= link_to 'New Job estimate', new_customer_job_site_job_estimate_path(:customer_id=>@customer.id, :job_site_id=>@job_site.id) %>
+<%= link_to 'Add Item', new_customer_job_site_job_estimate_path(:customer_id=>@customer.id, :job_site_id=>@job_site.id) %>
