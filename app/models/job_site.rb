@@ -21,6 +21,13 @@ class JobSite < ActiveRecord::Base
     belongs_to :employee, :class_name => 'Employee', :foreign_key => :sales_rep_id
 
     validates_presence_of :contact_name
+    validates :street1,  presence: true, length: { maximum: 100 }
+    validates :zip,  presence: true, length: { maximum: 20 }
+    validates_format_of :zip, :with =>  /^\d{5}(-\d{4})?$/, :message => "should be 12345 or 12345-1234",:multiline => true
+    validates :how_many_stories, numericality: true
+    validates :contract_price, numericality: true
+    validates :deposit_due, numericality: true
+
     geocoded_by :set_address
     after_validation :geocode
 

@@ -10,6 +10,14 @@ class Customer < ActiveRecord::Base
 
     validates :first_name,  presence: true, length: { maximum: 50 }
     validates :last_name,  presence: true, length: { maximum: 50 }
+    validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+    validates :street1,  presence: true, length: { maximum: 255 }
+    validates :zip,  presence: true, length: { maximum: 20 }
+    validates_format_of :zip, :with =>  /^\d{5}(-\d{4})?$/, :message => "should be 12345 or 12345-1234",:multiline => true
+    validates :home_phone, :phone_number => {:ten_digits => true, :seven_digits => true, :allow_blank => true, :message => "Phone number must be either seven or ten digits in length, or blank."}
+    validates :mobile_phone, :phone_number => {:ten_digits => true, :seven_digits => true, :allow_blank => true, :message => "Phone number must be either seven or ten digits in length, or blank."}
+    validates :work_phone, :phone_number => {:ten_digits => true, :seven_digits => true, :allow_blank => true, :message => "Phone number must be either seven or ten digits in length, or blank."}
+    validates :fax, :phone_number => {:ten_digits => true, :seven_digits => true, :allow_blank => true, :message => "Fax number must be either seven or ten digits in length, or blank."}
 
     geocoded_by :set_address
     after_validation :geocode

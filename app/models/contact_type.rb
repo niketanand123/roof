@@ -1,6 +1,7 @@
 class ContactType < ActiveRecord::Base
   has_many :job_contacts, :class_name => 'JobContact', foreign_key: :contact_type_id
   before_destroy :without_dependency
+  validates :contact_type,  presence: true, length: { maximum: 255 }
 
   def without_dependency
     if self.job_contacts.size() > 0

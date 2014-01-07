@@ -1,7 +1,7 @@
 class ServiceType < ActiveRecord::Base
     has_many :job_service_types, :class_name => 'JobServiceType', foreign_key: :service_type_id
     before_destroy :without_dependency
-
+    validates_presence_of :service_type
     def without_dependency
       if self.job_service_types.size() > 0
         self.errors.add :base, "The Service type cannot be deleted because it has job site associated to it"

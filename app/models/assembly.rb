@@ -6,6 +6,9 @@ class Assembly < ActiveRecord::Base
   before_save    :format_date
   attr_accessor  :unformatted_build_date
   before_destroy :without_dependency
+  validates :master_item,  presence: true, length: { maximum: 50 }
+  validates :item_description,  presence: true, length: { maximum: 300 }
+
 
   def without_dependency
     if self.job_estimates.size() > 0
