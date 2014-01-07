@@ -19,6 +19,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1/edit
   def edit
+    @company.main_phone = @company.main_phone.format_phone
   end
 
   # POST /companies

@@ -26,7 +26,7 @@
         <td><%= company.city %></td>
         <td><%= company.state %></td>
         <td><%= company.zip %></td>
-        <td><%= company.main_phone %></td>
+        <td><%= number_to_phone(company.main_phone) %></td>
         <td><%= company.fax_number %></td>
         <td><%= company.main_email %></td>
         <td><%= company.website %></td>

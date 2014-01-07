@@ -36,6 +36,9 @@ class JobSitesController < ApplicationController
     @job_service_types = JobServiceType.where("job_id" =>@job_site.id)
     @service_type_ids = @job_service_types.collect{|p| p.service_type_id}
     set_map_marker(@job_site)
+    @job_site.phone = @job_site.phone.format_phone
+    @job_site.work_phone = @job_site.work_phone.format_phone
+    @job_site.mobile_phone = @job_site.mobile_phone.format_phone
   end
 
   def new
@@ -55,6 +58,9 @@ class JobSitesController < ApplicationController
     @service_type_ids = @job_service_types.collect{|p| p.service_type_id}
     set_map_marker(@job_site)
     @job_site.assets.build
+    @job_site.phone = @job_site.phone.format_phone
+    @job_site.work_phone = @job_site.work_phone.format_phone
+    @job_site.mobile_phone = @job_site.mobile_phone.format_phone
   end
 
   def job_lead_sheet

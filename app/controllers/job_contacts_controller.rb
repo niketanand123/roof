@@ -14,6 +14,7 @@ class JobContactsController < ApplicationController
   def show
     @job_site = JobSite.find(params[:job_site_id])
     @customer = Customer.find(@job_site.customer_id)
+    @job_contact.contact_phone = @job_contact.contact_phone.format_phone
   end
 
   # GET /job_contacts/new
@@ -27,6 +28,7 @@ class JobContactsController < ApplicationController
   def edit
     @job_site = JobSite.find(params[:job_site_id])
     @customer = Customer.find(@job_site.customer_id)
+    @job_contact.contact_phone = @job_contact.contact_phone.format_phone
   end
 
   # POST /job_contacts

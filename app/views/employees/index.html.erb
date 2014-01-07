@@ -26,7 +26,7 @@
         <td><%= employee.city %></td>
         <td><%= employee.state %></td>
         <td><%= employee.zip %></td>
-        <td><%= employee.phone %></td>
+        <td><%= number_to_phone(employee.phone) %></td>
         <td><%= employee.is_active %></td>
         <td><%= employee.is_admin %></td>
         <td><%= link_to 'Edit', edit_employee_path(employee) %></td>

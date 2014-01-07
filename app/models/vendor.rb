@@ -9,6 +9,12 @@ class Vendor < ActiveRecord::Base
   validates :gm_phone, :phone_number => {:ten_digits => true, :seven_digits => true, :allow_blank => true, :message => "Phone number must be either seven or digits in length, or blank."}
   validates :sales_rep_phone, :phone_number => {:ten_digits => true, :seven_digits => true, :allow_blank => true, :message => "Phone number must be either seven or digits in length, or blank."}
 
+
+  before_save    :format_phone
+  def format_phone
+    self.gm_phone = self.gm_phone.convert_to_phone
+    self.sales_rep_phone = self.sales_rep_phone.convert_to_phone
+  end
   #before_destroy :without_dependency
   #
   #def without_dependency

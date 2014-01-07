@@ -103,13 +103,13 @@
             <td>Address 1:</td><td><%= @job_site.customer.street1%></td>
             </tr>
             <tr>
-            <td>Wk Phone:</td><td><%= @job_site.customer.work_phone%>-<%= @job_site.customer.work_phone_ext%></td>
+            <td>Wk Phone:</td><td><%= number_to_phone(@job_site.customer.work_phone, extension:@job_site.customer.work_phone_ext)%></td>
             <td></td>
             <td>Address 2:</td>
             <td><%= @job_site.customer.street2%></td>
             </tr>
             <tr>
-            <td>Mobile:</td><td><%= @job_site.customer.mobile_phone%></td>
+            <td>Mobile:</td><td><%= number_to_phone(@job_site.customer.mobile_phone)%></td>
             <td></td>
             <td>City:</td><td><%= @job_site.customer.city%></td>
             </tr>

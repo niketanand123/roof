@@ -6,5 +6,9 @@ class JobContact < ActiveRecord::Base
   validates :last_name,  presence: true, length: { maximum: 50 }
   validates :contact_phone, :phone_number => {:ten_digits => true, :seven_digits => true, :allow_blank => true, :message => "Phone number must be either seven or ten digits in length, or blank."}
   validates_format_of :contact_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  before_save    :format_phone
 
+  def format_phone
+    self.contact_phone = self.contact_phone.convert_to_phone
+  end
 end

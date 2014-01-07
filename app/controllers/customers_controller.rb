@@ -38,6 +38,9 @@ class CustomersController < ApplicationController
   def show
     @job_sites = JobSite.where("is_active=1 and customer_id = ?",@customer.id)
     set_map_marker(@customer)
+    @customer.home_phone = @customer.home_phone.format_phone
+    @customer.work_phone = @customer.work_phone.format_phone
+    @customer.mobile_phone = @customer.mobile_phone.format_phone
   end
 
   # GET /customers/new
@@ -49,6 +52,9 @@ class CustomersController < ApplicationController
   def edit
     @job_sites = JobSite.where("is_active=1 and customer_id = ?",@customer.id)
     set_map_marker(@customer)
+    @customer.home_phone = @customer.home_phone.format_phone
+    @customer.work_phone = @customer.work_phone.format_phone
+    @customer.mobile_phone = @customer.mobile_phone.format_phone
   end
 
   def new_job_site

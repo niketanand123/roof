@@ -10,6 +10,8 @@ class VendorsController < ApplicationController
   # GET /vendors/1
   # GET /vendors/1.json
   def show
+    @vendor.gm_phone=@vendor.gm_phone.format_phone
+    @vendor.sales_rep_phone=@vendor.sales_rep_phone.format_phone
   end
 
   # GET /vendors/new
@@ -19,6 +21,8 @@ class VendorsController < ApplicationController
 
   # GET /vendors/1/edit
   def edit
+    @vendor.gm_phone=@vendor.gm_phone.format_phone
+    @vendor.sales_rep_phone=@vendor.sales_rep_phone.format_phone
   end
 
   # POST /vendors

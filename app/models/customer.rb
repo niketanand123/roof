@@ -21,7 +21,13 @@ class Customer < ActiveRecord::Base
 
     geocoded_by :set_address
     after_validation :geocode
+    before_save    :format_phone
 
+    def format_phone
+      self.home_phone = self.home_phone.convert_to_phone
+      self.work_phone = self.work_phone.convert_to_phone
+      self.mobile_phone = self.mobile_phone.convert_to_phone
+    end
     def set_address
       address = "#{street1}, #{street2}, #{city}, #{state}, US"
     end

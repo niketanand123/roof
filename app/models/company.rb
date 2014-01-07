@@ -7,4 +7,9 @@ class Company < ActiveRecord::Base
   validates :main_phone, :phone_number => {:ten_digits => true, :seven_digits => true, :allow_blank => true, :message => "Phone number must be either seven or ten digits in length, or blank."}
   validates :fax_number, :phone_number => {:ten_digits => true, :seven_digits => true, :allow_blank => true, :message => "Fax number must be either seven or ten digits in length, or blank."}
   validates_format_of :main_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  before_save    :format_phone
+
+  def format_phone
+    self.main_phone = self.main_phone.convert_to_phone
+  end
 end

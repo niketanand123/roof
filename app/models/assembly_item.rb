@@ -5,6 +5,7 @@ class AssemblyItem < ActiveRecord::Base
   before_save    :format_date
   attr_accessor  :unformatted_build_date
 
+  validates_presence_of :item_code_id
   validates :labor_cost, numericality: true
   validates :percentage_used, numericality: true
   validates :material_cost_ext, numericality: true

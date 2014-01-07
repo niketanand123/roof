@@ -26,17 +26,17 @@
         <td colspan="2"><b>Job Site Address</b></td>
       </tr>
       <tr>
-        <td>JobSite Phone:</td><td><%= @job_site.phone%></td>
+        <td>JobSite Phone:</td><td><%= number_to_phone(@job_site.phone)%></td>
         <td></td>
         <td>Street 1:</td><td><%= @job_site.street1%></td>
       </tr>
       <tr>
-        <td>Wk Phone</td><td><%= @job_site.work_phone%>-<%= @job_site.work_phone_ext%></td>
+        <td>Wk Phone</td><td><%= number_to_phone(@job_site.work_phone, extension: @job_site.work_phone_ext)%></td>
         <td></td>
         <td>Street 2</td><td><%= @job_site.street2%></td>
       </tr>
       <tr>
-        <td>Mobile</td><td><%= @job_site.mobile_phone%></td>
+        <td>Mobile</td><td><%= number_to_phone(@job_site.mobile_phone)%></td>
         <td></td>
         <td>City</td><td><%= @job_site.city%></td>
       </tr>
@@ -64,13 +64,13 @@
         <td>Address 1:</td><td><%= @customer.street1%></td>
       </tr>
       <tr>
-        <td>Wk Phone:</td><td><%= @customer.work_phone%>-<%= @customer.work_phone_ext%></td>
+        <td>Wk Phone:</td><td><%= number_to_phone(@customer.work_phone,extension: @customer.work_phone_ext)%></td>
         <td></td>
         <td>Address 2:</td>
         <td><%= @customer.street2%></td>
       </tr>
       <tr>
-        <td>Mobile:</td><td><%= @customer.mobile_phone%></td>
+        <td>Mobile:</td><td><%= number_to_phone(@customer.mobile_phone)%></td>
         <td></td>
         <td>City:</td><td><%= @customer.city%></td>
       </tr>

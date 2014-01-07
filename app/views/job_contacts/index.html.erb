@@ -32,7 +32,7 @@
         <td><%= job_contact.first_name %></td>
         <td><%= job_contact.last_name %></td>
         <td><%= ContactType.where(:id=>job_contact.contact_type_id).pluck(:contact_type).first %></td>
-        <td><%= job_contact.contact_phone %></td>
+        <td><%= number_to_phone(job_contact.contact_phone) %></td>
         <td><%= job_contact.contact_email %></td>
         <td><%= job_contact.contact_notes %></td>
         <td><%= link_to 'Edit', edit_customer_job_site_job_contact_path(:customer_id=>@customer.id, :id=>job_contact.id,:job_site_id=>job_contact.job_site_id) %></td>

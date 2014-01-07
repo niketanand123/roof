@@ -10,6 +10,7 @@ class EmployeesController < ApplicationController
   # GET /employees/1
   # GET /employees/1.json
   def show
+    @employee.phone = @employee.phone.format_phone
   end
 
   # GET /employees/new
@@ -19,6 +20,7 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1/edit
   def edit
+    @employee.phone = @employee.phone.format_phone
   end
 
   # POST /employees

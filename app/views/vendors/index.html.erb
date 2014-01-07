@@ -38,9 +38,9 @@
         <td><%= vendor.state1 %></td>
         <td><%= vendor.zip1 %></td>
         <td><%= vendor.gm_name %></td>
-        <td><%= vendor.gm_phone %></td>
+        <td><%= number_to_phone(vendor.gm_phone) %></td>
         <td><%= Employee.where(:id=>vendor.sales_rep_id).pluck(:first_name).first %> <%= Employee.where(:id=>vendor.sales_rep_id).pluck(:last_name).first %></td>
-        <td><%= vendor.sales_rep_phone %></td>
+        <td><%= number_to_phone(vendor.sales_rep_phone) %></td>
         <td><%= vendor.email %></td>
         <td><%= vendor.website %></td>
         <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>

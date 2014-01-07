@@ -24,9 +24,9 @@ class JobSite < ActiveRecord::Base
     validates :street1,  presence: true, length: { maximum: 100 }
     validates :zip,  presence: true, length: { maximum: 20 }
     validates_format_of :zip, :with =>  /^\d{5}(-\d{4})?$/, :message => "should be 12345 or 12345-1234",:multiline => true
-    validates :how_many_stories, numericality: true
-    validates :contract_price, numericality: true
-    validates :deposit_due, numericality: true
+    validates :how_many_stories, numericality: true, :allow_blank => true
+    validates :contract_price, numericality: true, :allow_blank => true
+    validates :deposit_due, numericality: true, :allow_blank => true
 
     geocoded_by :set_address
     after_validation :geocode
@@ -36,8 +36,9 @@ class JobSite < ActiveRecord::Base
     end
     attr_accessor  :unformatted_appointment_date, :unformatted_date_completed, :unformatted_date_taken
 
-    before_save    :format_date
-    def format_date
+    before_save    :format_date_phone
+
+    def format_date_phone
       if self.unformatted_appointment_date !=nil && self.unformatted_appointment_date !=""
         self.job_start_date = Date.strptime(self.unformatted_appointment_date, "%m/%d/%Y").to_time()
       else
@@ -53,6 +54,9 @@ class JobSite < ActiveRecord::Base
       else
         self.date_taken = nil
       end
+      self.phone = self.phone.convert_to_phone
+      self.work_phone = self.work_phone.convert_to_phone
+      self.mobile_phone = self.mobile_phone.convert_to_phone
     end
 
 end

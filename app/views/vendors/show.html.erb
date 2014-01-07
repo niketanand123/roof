@@ -50,7 +50,7 @@
 
 <p>
   <strong>Gm phone:</strong>
-  <%= @vendor.gm_phone %>
+  <%= number_to_phone(@vendor.gm_phone) %>
 </p>
 
 <p>
@@ -60,7 +60,7 @@
 
 <p>
   <strong>Sales rep phone:</strong>
-  <%= @vendor.sales_rep_phone %>
+  <%= number_to_phone(@vendor.sales_rep_phone) %>
 </p>
 
 <p>

@@ -20,8 +20,6 @@ gem 'paperclip'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'debugger'
-
 gem 'geocoder'
 
 gem 'gmaps4rails'
