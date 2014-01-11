@@ -101,6 +101,7 @@
   <li class="current"><a href="#"><span style="color: white;font-weight: bold">Admin</span></a>
     <ul>
       <li><a href="/assemblies">Assemblies</a></li>
+      <li><a href="/item_codes">Items</a></li>
       <li><a href="/product_colors">Colors</a></li>
       <li><a href="/unit_of_measurements">Unit Measure</a></li>
       <li><a href="/job_statuses">Status</a></li>
@@ -112,7 +113,6 @@
       <li><a href="/estimate_types">Estimate Types</a></li>
       <li><a href="/job_estimate_statuses">Estimate Statuses</a></li>
       <li><a href="/task_types">Task Types</a></li>
-      <li><a href="/item_codes">Item Codes</a></li>
       <% @sales_taxes = SalesTax.all
          if @sales_taxes.any?
            @is_new = false

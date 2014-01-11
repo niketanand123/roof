@@ -126,7 +126,9 @@
             <td>State:</td><td><%= @job_site.customer.state%></td>
             </tr>
             <tr>
-            <td colspan="5">Customer Type: <% if @job_site.customer.type=!nil %><%= CustomerType.where("id" =>@job_site.customer.type).pluck("type").first%> <%end %></td>
+            <td colspan="2">Customer Type: <% if @job_site.customer.type=!nil %><%= CustomerType.where("id" =>@job_site.customer.type).pluck("type").first%> <%end %></td>
+            <td></td>
+            <td>Zip:</td><td><%= @customer.zip%></td>
             </tr>
 
         </table>

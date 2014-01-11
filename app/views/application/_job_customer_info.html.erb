@@ -80,7 +80,9 @@
         <td>State:</td><td><%= @customer.state%></td>
       </tr>
       <tr>
-        <td colspan="5">Customer Type: <% if @customer.type=!nil %><%= CustomerType.where("id" =>@customer.type).pluck("type").first%> <%end %></td>
+        <td colspan="2">Customer Type: <% if @customer.type=!nil %><%= CustomerType.where("id" =>@customer.type).pluck("type").first%> <%end %></td>
+        <td></td>
+        <td>Zip:</td><td><%= @customer.zip%></td>
       </tr>
 
     </table>

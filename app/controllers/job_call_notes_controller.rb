@@ -22,6 +22,8 @@ class JobCallNotesController < ApplicationController
     @job_site = JobSite.find(params[:job_site_id])
     @customer = Customer.find(@job_site.customer_id)
     @job_call_note = @job_site.job_call_notes.build(:job_site_id =>@job_site)
+    @job_call_note.unformatted_call_date = Time.now.strftime("%m/%d/%Y")
+    @job_call_note.call_time = Time.now.strftime("%H:%M")
   end
 
   # GET /job_call_notes/1/edit

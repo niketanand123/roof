@@ -20,7 +20,7 @@ class JobSitesController < ApplicationController
       if @searchText == nil || @searchText.empty? || @searchText == ""
         @job_sites = JobSite.where("is_active=1")
       else
-        @job_sites = JobSite.joins(:customer).joins(:company).where(where_clause, search_condition)
+        @job_sites = JobSite.joins(:customer).joins("left join companies on companies.id = customer.company_id").where(where_clause, search_condition)
       end
     end
     if @job_sites != nil
