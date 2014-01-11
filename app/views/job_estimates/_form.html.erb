@@ -8,7 +8,9 @@
         }
         $(document).ready(function() {
             $('.nav-toggle').click(function(){
-                event.preventDefault();
+//                $("#showItemId").bind('submit', function (event) {
+//                    event.preventDefault();
+//                });
                 //get collapse content selector
                 var collapse_content_selector = $(this).attr('href');
 
@@ -79,7 +81,7 @@
     <% end %>
 </br>
     <% if @not_added_job_estimate_items !=nil && @not_added_job_estimate_items.any? %>
-        <button href="#collapse1" class="nav-toggle">Show Items To Add</button>
+        <button id="showItemId" type="button" href="#collapse1" class="nav-toggle">Show Items To Add</button>
         <div id="collapse1" style="display:none">
         <table width="100%">
           <tr>
