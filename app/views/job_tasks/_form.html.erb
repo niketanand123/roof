@@ -16,7 +16,7 @@
       </ul>
     </div>
   <% end %>
-    <table width="50%">
+    <table width="80%">
       <tr>
         <td width="10%">Task Type</td>
         <td width="20%"><%= f.select(:task_type_id, options_for_select(TaskType.all.map{|t| [t.task_type, t.id]}, @job_task.task_type_id),:include_blank => "Choose Task Type") %></td>
