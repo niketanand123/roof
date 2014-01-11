@@ -139,7 +139,11 @@ class JobEstimatesController < ApplicationController
                                          :job_site_id, :item_to_delete_id) if params[:job_estimate]
   end
   def insert_estimate_items (job_estimate_id)
-    total_price = @job_estimate.total_item_price
+    if @job_estimate.total_item_price.nil?
+      total_price = 0
+    else
+      total_price = @job_estimate.total_item_price
+    end
     if params[:selected_assemblies_checkbox] != nil
       params[:selected_assemblies_checkbox].each do |assembly_id|
         @assembly = Assembly.find(assembly_id)
@@ -154,7 +158,7 @@ class JobEstimatesController < ApplicationController
     @items = JobEstimateItem.where(:job_estimate_id => @job_estimate.id)
     total_price = 0
     @items.each do |item|
-      total_price = total_price+ item.item_extended
+      total_price = total_price + item.item_extended
     end
     @job_estimate.update(:total_item_price=>total_price)
   end
