@@ -1,0 +1,62 @@
+<%= form_for [@customer, @job_site, @job_estimate_item] do |f| %>
+    <script type="text/javascript">
+        $.fn.populateEstimateValuesWithAjax = function() {
+            var that = this;
+            this.change(function() {
+                $.get("/populate_estimate", {master_item_id: that.val()}, null, "script");
+            });
+        }
+        $.fn.adjustExtPriceWithAjax = function() {
+            var that = this;
+            this.blur(function() {
+                $.get("/populate_estimate", {qty: that.val(), master_item_id: $("#job_estimate_master_item_id").val()}, null, "script");
+            });
+        }
+    </script>
+  <% if @job_estimate_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job_estimate_item.errors.count, "error") %> prohibited this job_estimate from being saved:</h2>
+
+      <ul>
+      <% @job_estimate_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <table width="100%">
+      <tr>
+        <td width="10%">Master Item</td>
+        <td width="30%"><%= f.select(:master_item_id, options_for_select(Assembly.all.map{|t| [t.item_description, t.id]}, @job_estimate_item.master_item_id),:include_blank => "Choose Master Item") %></td>
+        <td width="10%">Qty: <%= f.text_field :qty, :size=>5 %></td>
+        <td width="20%">Retail Price: $<%= f.text_field :retail_price %></td>
+        <td width="30%">Item Extended: <%= f.text_field :item_extended %><%= f.hidden_field :job_site_id %></td>
+      </tr>
+      <tr>
+        <td>Step</td>
+        <td colspan="8"><%= f.text_field :step %></td>
+      </tr>
+    </table>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#job_estimate_master_item_id").populateEstimateValuesWithAjax();
+            $("#job_estimate_qty").adjustExtPriceWithAjax();
+        });
+    </script>
+    <table width="100%">
+      <tr>
+        <td width="10%">Proposal Description</td>
+        <td width="40%"><%= f.text_area :proposal_desc, :size=>"50x3"%></td>
+        <td width="10%">Warranty Description</td>
+        <td width="40%"><%= f.text_area :warranty_desc, :size=>"50x3" %></td>
+      </tr>
+    </table>
+
+  <div class="actions">
+    <% if @job_estimate_item!= nil && @job_estimate_item.id != nil%>
+        <%= button_to "Update Item", customer_job_site_job_estimate_path(:customer_id=>@job_site.customer_id,:id=>@job_estimate_item.id,:job_site_id => @job_site.id), :method => :put %>
+    <% else %>
+        <%= button_to "Create Item", customer_job_site_job_estimates_path(:customer_id=>@job_site.customer_id,:job_site_id=>@job_site.id), :method => :post %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,7 +1,7 @@
-class CreateJobEstimates < ActiveRecord::Migration
+class CreateJobEstimateItems < ActiveRecord::Migration
   def change
-    create_table :job_estimates do |t|
-      t.integer :job_detail_id
+    create_table :job_estimate_items do |t|
+      t.integer :job_estimate_id
       t.integer :step
       t.integer :master_item_id
       t.integer :qty

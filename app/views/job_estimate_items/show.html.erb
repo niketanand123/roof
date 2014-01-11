@@ -1,0 +1,42 @@
+<p>
+  <strong>Job detail:</strong>
+  <%= @job_estimate_item.job_site_id %>
+</p>
+
+<p>
+  <strong>Step:</strong>
+  <%= @job_estimate_item.step %>
+</p>
+
+<p>
+  <strong>Master item:</strong>
+  <%= @job_estimate_item.master_item_id %>
+</p>
+
+<p>
+  <strong>Qty:</strong>
+  <%= @job_estimate_item.qty %>
+</p>
+
+<p>
+  <strong>Proposal desc:</strong>
+  <%= @job_estimate_item.proposal_desc %>
+</p>
+
+<p>
+  <strong>Warranty desc:</strong>
+  <%= @job_estimate_item.warranty_desc %>
+</p>
+
+<p>
+  <strong>Retail price:</strong>
+  <%= @job_estimate_item.retail_price %>
+</p>
+
+<p>
+  <strong>Item extended:</strong>
+  <%= @job_estimate_item.item_extended %>
+</p>
+
+<%= link_to 'Edit', edit_job_site_job_estimate_path(:id=>@job_estimate_item.id,:job_site_id=>@job_estimate_item.job_site_id) %> |
+<%= link_to 'Back', job_site_job_estimates_path(:job_site_id=>@job_estimate_item.job_site_id) %>

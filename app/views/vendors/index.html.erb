@@ -31,7 +31,7 @@
 
   <tbody>
     <% @vendors.each do |vendor| %>
-      <tr>
+      <tr class="<%= cycle('oddrow', 'evenrow') %>">
         <td><%= link_to vendor.name, edit_vendor_path(vendor) %></td>
         <td><%= vendor.address1 %></td>
         <td><%= vendor.city1 %></td>

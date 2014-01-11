@@ -605,7 +605,7 @@ ALTER SEQUENCE job_documents_id_seq OWNED BY job_documents.id;
 
 --
 -- TOC entry 182 (class 1259 OID 16730)
--- Name: job_estimates; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: JobEstimateItems; Type: TABLE; Schema: public; Owner: postgres; Tablespace:
 --
 
 CREATE TABLE job_estimates (
@@ -1548,7 +1548,7 @@ SELECT pg_catalog.setval('job_documents_id_seq', 2, true);
 --
 -- TOC entry 2199 (class 0 OID 16730)
 -- Dependencies: 182
--- Data for Name: job_estimates; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: JobEstimateItems; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY job_estimates (id, job_site_id, step, master_item_id, qty, proposal_desc, warranty_desc, retail_price, item_extended, created_at, updated_at) FROM stdin;

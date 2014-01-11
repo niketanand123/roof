@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140105071907) do
+ActiveRecord::Schema.define(version: 20140108060658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140105071907) do
   create_table "assemblies", force: true do |t|
     t.string   "master_item",                limit: 50
     t.date     "build_date"
-    t.string   "item_description",           limit: 100
+    t.string   "item_description",           limit: 300
     t.string   "warranty_description"
     t.string   "wo_description"
     t.string   "proposal_description"
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20140105071907) do
     t.string   "street2",         limit: 100
     t.string   "city",            limit: 45
     t.string   "state",           limit: 30
-    t.string   "zip",             limit: 10
+    t.string   "zip",             limit: 20
     t.string   "home_phone",      limit: 15
     t.string   "mobile_phone",    limit: 15
     t.string   "work_phone",      limit: 15
@@ -212,7 +212,7 @@ ActiveRecord::Schema.define(version: 20140105071907) do
     t.datetime "updated_at"
   end
 
-  create_table "job_estimates", force: true do |t|
+  create_table "job_estimate_items", force: true do |t|
     t.integer  "job_site_id",                null: false
     t.integer  "step"
     t.integer  "master_item_id"
@@ -225,8 +225,24 @@ ActiveRecord::Schema.define(version: 20140105071907) do
     t.float    "item_extended"
   end
 
-  add_index "job_estimates", ["job_site_id"], name: "fk_est_job_site_id_idx", using: :btree
-  add_index "job_estimates", ["master_item_id"], name: "fk_master_item_id_idx", using: :btree
+  add_index "job_estimate_items", ["job_site_id"], name: "fk_est_job_site_id_idx", using: :btree
+  add_index "job_estimate_items", ["master_item_id"], name: "fk_master_item_id_idx", using: :btree
+
+  create_table "job_estimate_statuses", force: true do |t|
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_estimates", force: true do |t|
+    t.string   "name"
+    t.decimal  "total_item_price"
+    t.decimal  "price_adjustment"
+    t.string   "reason_desc"
+    t.integer  "estimate_status_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "job_service_types", force: true do |t|
     t.integer "job_id",          null: false
@@ -247,9 +263,9 @@ ActiveRecord::Schema.define(version: 20140105071907) do
     t.string   "website",               limit: 100
     t.string   "street1",               limit: 100
     t.string   "street2",               limit: 100
-    t.string   "city",                  limit: 15
-    t.string   "state",                 limit: 15
-    t.string   "zip",                   limit: 10
+    t.string   "city",                  limit: 50
+    t.string   "state",                 limit: 50
+    t.string   "zip",                   limit: 20
     t.integer  "is_active",             limit: 2,                            default: 1
     t.decimal  "latitude",                          precision: 10, scale: 8
     t.decimal  "longitude",                         precision: 11, scale: 8

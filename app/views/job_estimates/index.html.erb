@@ -3,7 +3,7 @@
   <div BGCOLOR="#336699" HEIGHT="13" >
       <span style="background-color:#336699; ">
         <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
-        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Job Estimate</span>
+        <span style="font-family: verdana, arial, helvetica; color: #ffffff; font-weight:bold ;font-size: 12px">Listing Job Estimates</span>
         <%=image_tag("tab-rdark.gif", :height=>"14", :width => "10")%>
       </span>
   </div>
@@ -13,36 +13,30 @@
 </div>
 <table width="100%">
   <thead>
-    <tr>
-      <th align="left">Step</th>
-      <th align="left">Master item</th>
-      <th align="left">Qty</th>
-      <th align="left">Proposal desc</th>
-      <th align="left">Warranty desc</th>
-      <th align="left">Retail price</th>
-      <th align="left">Item extended</th>
-      <th align="left"></th>
-      <th align="left"></th>
-    </tr>
+  <tr>
+    <th align="left">Estimate Name</th>
+    <th align="left">Total item price</th>
+    <th align="left">Price adjustment</th>
+    <th align="left">Estimate status</th>
+    <th align="left"></th>
+    <th align="left"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @job_estimates.each do |job_estimate| %>
-      <tr>
-        <td><%= job_estimate.step %></td>
-        <td><%= link_to Assembly.where(:id=>job_estimate.master_item_id).pluck(:item_description).first , edit_customer_job_site_job_estimate_path(:customer_id=>@customer.id, :id=>job_estimate.id,:job_site_id=>job_estimate.job_site_id)%></td>
-        <td><%= job_estimate.qty %></td>
-        <td><%= job_estimate.proposal_desc %></td>
-        <td><%= job_estimate.warranty_desc %></td>
-        <td>$<%= job_estimate.retail_price %></td>
-        <td><%= job_estimate.item_extended %></td>
+  <% @job_estimates.each do |job_estimate| %>
+      <tr class="<%= cycle('oddrow', 'evenrow') %>">
+        <td><%= link_to job_estimate.name, edit_customer_job_site_job_estimate_path(:customer_id=>@customer.id, :id=>job_estimate.id,:job_site_id=>job_estimate.job_site_id) %></td>
+        <td><%= number_to_currency(job_estimate.total_item_price)%></td>
+        <td><%= number_to_currency(job_estimate.price_adjustment)%></td>
+        <td><%= JobEstimateStatus.find(job_estimate.estimate_status_id).status unless job_estimate.estimate_status_id.nil?  %></td>
         <td><%= link_to 'Edit', edit_customer_job_site_job_estimate_path(:customer_id=>@customer.id, :id=>job_estimate.id,:job_site_id=>job_estimate.job_site_id) %></td>
         <td><%= link_to 'Delete', customer_job_site_job_estimate_path(:id=>job_estimate.id, :customer_id=>@customer.id, :job_site_id=>@job_site.id), method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
 <br>
 <%= link_to 'Back',  edit_customer_job_site_path(:id=>@job_site.id, :customer_id=>@customer.id) %> &nbsp;
-<%= link_to 'Add Item', new_customer_job_site_job_estimate_path(:customer_id=>@customer.id, :job_site_id=>@job_site.id) %>
+<%= link_to 'Add Job Estimate', new_customer_job_site_job_estimate_path(:customer_id=>@customer.id, :job_site_id=>@job_site.id) %>

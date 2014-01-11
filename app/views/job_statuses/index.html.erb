@@ -12,7 +12,7 @@
 
   <tbody>
     <% @job_statuses.each do |job_status| %>
-      <tr>
+      <tr class="<%= cycle('oddrow', 'evenrow') %>">
         <td><%= job_status.status %></td>
         <td><%= job_status.is_job_closed %></td>
         <td><%= link_to 'Edit', edit_job_status_path(job_status) %></td>

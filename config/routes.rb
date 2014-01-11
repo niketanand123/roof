@@ -1,4 +1,8 @@
 Roof::Application.routes.draw do
+  resources :job_estimates
+
+  resources :job_estimate_statuses
+
   resources :vendors
 
   resources :assembly_items
@@ -19,7 +23,7 @@ Roof::Application.routes.draw do
 
   resources :job_call_notes
 
-  resources :job_estimates
+  resources :job_estimate_items
 
   resources :item_codes
 
@@ -58,6 +62,11 @@ Roof::Application.routes.draw do
       resources :job_estimates
     end
   end
+
+  resources :job_estimates do
+    resources :job_estimate_items
+  end
+
   resources :customers do
     resources :job_sites do
       resources :job_call_notes
@@ -95,6 +104,9 @@ Roof::Application.routes.draw do
   resources :assemblies do
     resources :assembly_items
   end
+  resources :job_estimates do
+    resources :job_estimate_items
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -103,11 +115,14 @@ Roof::Application.routes.draw do
   get 'customers_search' => 'customers#index'
   get 'task_viewer' => 'job_tasks#index_all'
   get 'populate_item_code' => 'assembly_items#populate_item_code'
-  get 'populate_estimate' => 'job_estimates#populate_estimate'
+  get 'populate_estimate' => 'job_estimate_items#populate_estimate'
 
   get 'job_lead_sheet' => 'job_sites#job_lead_sheet'
   get 'job_estimate_pdf' => 'job_sites#job_estimate_pdf'
   get 'job_proposal' => 'job_sites#job_proposal'
+  get 'delete_estimate_item' => 'job_estimates#delete_estimate_item'
+  get 'update_estimate_item' => 'job_estimates#update_estimate_item'
+  post 'add_items' => 'job_estimates#add_items'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -12,3 +12,10 @@
  *= require_self
  *= require_tree .
  */
+table tr.oddrow {
+    background-color: #CEE3F6;
+}
+
+table tr.evenrow {
+    background-color: #FFFFFF;
+}

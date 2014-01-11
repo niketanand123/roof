@@ -1,42 +1,29 @@
+<p id="notice"><%= notice %></p>
+
 <p>
-  <strong>Job detail:</strong>
-  <%= @job_estimate.job_site_id %>
+  <strong>Name:</strong>
+  <%= @job_estimate.name %>
 </p>
 
 <p>
-  <strong>Step:</strong>
-  <%= @job_estimate.step %>
+  <strong>Total item price:</strong>
+  <%= @job_estimate.total_item_price %>
 </p>
 
 <p>
-  <strong>Master item:</strong>
-  <%= @job_estimate.master_item_id %>
+  <strong>Price adjustment:</strong>
+  <%= @job_estimate.price_adjustment %>
 </p>
 
 <p>
-  <strong>Qty:</strong>
-  <%= @job_estimate.qty %>
+  <strong>Reason desc:</strong>
+  <%= @job_estimate.reason_desc %>
 </p>
 
 <p>
-  <strong>Proposal desc:</strong>
-  <%= @job_estimate.proposal_desc %>
+  <strong>Estimate status:</strong>
+  <%= @job_estimate.estimate_status_id %>
 </p>
 
-<p>
-  <strong>Warranty desc:</strong>
-  <%= @job_estimate.warranty_desc %>
-</p>
-
-<p>
-  <strong>Retail price:</strong>
-  <%= @job_estimate.retail_price %>
-</p>
-
-<p>
-  <strong>Item extended:</strong>
-  <%= @job_estimate.item_extended %>
-</p>
-
-<%= link_to 'Edit', edit_job_site_job_estimate_path(:id=>@job_estimate.id,:job_site_id=>@job_estimate.job_site_id) %> |
-<%= link_to 'Back', job_site_job_estimates_path(:job_site_id=>@job_estimate.job_site_id) %>
+<%= link_to 'Edit', edit_job_estimate_path(@job_estimate) %> |
+<%= link_to 'Back', job_estimates_path %>

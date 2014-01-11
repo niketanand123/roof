@@ -17,7 +17,7 @@
 
   <tbody>
     <% @job_costings.each do |job_costing| %>
-      <tr>
+      <tr class="<%= cycle('oddrow', 'evenrow') %>">
         <td><%= job_costing.job_site_id %></td>
         <td><%= job_costing.materials %></td>
         <td><%= job_costing.labor %></td>

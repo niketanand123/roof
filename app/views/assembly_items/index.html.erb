@@ -15,7 +15,7 @@
 
   <tbody>
     <% @assembly_items.each do |assembly_item| %>
-      <tr>
+      <tr class="<%= cycle('oddrow', 'evenrow') %>">
         <td><%= assembly_item.item_code_id %></td>
         <td><%= assembly_item.labor_cost %></td>
         <td><%= assembly_item.material_cost %></td>

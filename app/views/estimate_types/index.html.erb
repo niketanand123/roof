@@ -12,7 +12,7 @@
 
   <tbody>
     <% @estimate_types.each do |estimate_type| %>
-      <tr>
+      <tr class="<%= cycle('oddrow', 'evenrow') %>">
         <td><%= estimate_type.estimate_type %></td>
         <td><%= estimate_type.default_overhead %></td>
         <td><%= link_to 'Edit', edit_estimate_type_path(estimate_type) %></td>

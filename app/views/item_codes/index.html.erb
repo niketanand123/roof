@@ -14,7 +14,7 @@
 
   <tbody>
     <% @item_codes.each do |item_code| %>
-      <tr>
+      <tr class="<%= cycle('oddrow', 'evenrow') %>">
         <td><%= item_code.item_code %></td>
         <td><%= item_code.item_name %></td>
         <td><%= UnitOfMeasurement.where(:id=>item_code.uom_id).pluck(:unit).first %></td>

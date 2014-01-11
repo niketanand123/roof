@@ -119,7 +119,7 @@ CREATE SEQUENCE job_estimates_id_seq
     NO MAXVALUE
     NO MINVALUE
     CACHE 1;
--- Structure for table job_estimates (OID = 16730):
+-- Structure for table JobEstimateItems (OID = 16730):
 CREATE TABLE job_estimates (
     id integer DEFAULT nextval('job_estimates_id_seq'::regclass) NOT NULL,
     job_site_id integer NOT NULL,

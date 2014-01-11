@@ -1,62 +1,121 @@
 <%= form_for [@customer, @job_site, @job_estimate] do |f| %>
     <script type="text/javascript">
-        $.fn.populateEstimateValuesWithAjax = function() {
-            var that = this;
-            this.change(function() {
-                $.get("/populate_estimate", {master_item_id: that.val()}, null, "script");
-            });
-        }
-        $.fn.adjustExtPriceWithAjax = function() {
+        $.fn.updateItemExtendedWithAjax = function(item_extended_id, job_estimate_item_id, assembly_price) {
             var that = this;
             this.blur(function() {
-                $.get("/populate_estimate", {qty: that.val(), master_item_id: $("#job_estimate_master_item_id").val()}, null, "script");
+                $.get("/update_estimate_item", {qty: that.val(), id: job_estimate_item_id}, null, "script");
             });
         }
-    </script>
-  <% if @job_estimate.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@job_estimate.errors.count, "error") %> prohibited this job_estimate from being saved:</h2>
+        $(document).ready(function() {
+            $('.nav-toggle').click(function(){
+                event.preventDefault();
+                //get collapse content selector
+                var collapse_content_selector = $(this).attr('href');
 
-      <ul>
-      <% @job_estimate.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-    <table width="100%">
-      <tr>
-        <td width="10%">Master Item</td>
-        <td width="30%"><%= f.select(:master_item_id, options_for_select(Assembly.all.map{|t| [t.item_description, t.id]}, @job_estimate.master_item_id),:include_blank => "Choose Master Item") %></td>
-        <td width="10%">Qty: <%= f.text_field :qty, :size=>5 %></td>
-        <td width="20%">Retail Price: $<%= f.text_field :retail_price %></td>
-        <td width="30%">Item Extended: <%= f.text_field :item_extended %><%= f.hidden_field :job_site_id %></td>
-      </tr>
-      <tr>
-        <td>Step</td>
-        <td colspan="8"><%= f.text_field :step %></td>
-      </tr>
-    </table>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#job_estimate_master_item_id").populateEstimateValuesWithAjax();
-            $("#job_estimate_qty").adjustExtPriceWithAjax();
+                //make the collapse content to be shown or hide
+                var toggle_switch = $(this);
+                $(collapse_content_selector).toggle(function(){
+                    if($(this).css('display')=='none'){
+                        //change the button label to be 'Show'
+                        toggle_switch.html('Show Items to Add');
+                    }else{
+                        //change the button label to be 'Hide'
+                        toggle_switch.html('Hide Items');
+                    }
+                });
+            });
+
         });
     </script>
+    <% if @job_estimate.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@job_estimate.errors.count, "error") %> prohibited this job_estimate from being saved:</h2>
+
+          <ul>
+            <% @job_estimate.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
     <table width="100%">
       <tr>
-        <td width="10%">Proposal Description</td>
-        <td width="40%"><%= f.text_area :proposal_desc, :size=>"50x3"%></td>
-        <td width="10%">Warranty Description</td>
-        <td width="40%"><%= f.text_area :warranty_desc, :size=>"50x3" %></td>
+        <td width="10%">Estimate Name: <%= f.text_field :name, :readonly=>true, :size=>50 %></td>
+        <td width="10%">Status: <%= f.select(:estimate_status_id, options_for_select(JobEstimateStatus.all.map{|t| [t.status, t.id]}, @job_estimate.estimate_status_id),:include_blank => "Choose Status") %></td>
       </tr>
     </table>
-
-  <div class="actions">
-    <% if @job_estimate!= nil && @job_estimate.id != nil%>
-        <%= button_to "Update Item", customer_job_site_job_estimate_path(:customer_id=>@job_site.customer_id,:id=>@job_estimate.id,:job_site_id => @job_site.id), :method => :put %>
-    <% else %>
-        <%= button_to "Create Item", customer_job_site_job_estimates_path(:customer_id=>@job_site.customer_id,:job_site_id=>@job_site.id), :method => :post %>
+    </br>
+    <% if @items !=nil &&  @items.any? %>
+    <table width="100%">
+      <tr>
+        <th align="left"></th>
+        <th align="left">Materials</th>
+        <th align="left">Units</th>
+        <th align="left">Item Price</th>
+        <th align="left">Qty</th>
+        <th align="left">Total</th>
+      </tr>
+      <% @items.each do |job_estimate_item| %>
+          <% assembly = Assembly.find(job_estimate_item.master_item_id)
+             item_qty_id = "item_qty_"+job_estimate_item.id.to_s
+             delete_item_id = "delete_item_"+job_estimate_item.id.to_s
+             item_extended_id = "item_extended_"+job_estimate_item.id.to_s
+          %>
+          <tr  class="<%= cycle('oddrow', 'evenrow') %>">
+            <td width="10%"><%= link_to "Delete", delete_estimate_item_path(:id=>@job_estimate.id,:job_site_id=>@job_site.id,:estimate_item_id => job_estimate_item.id), :method=>:get %></td>
+            <td width="10%"><%= assembly.item_description%></td>
+            <td width="10%"><%= UnitOfMeasurement.find(assembly.uom_id).unit%></td>
+            <td width="10%"><%= number_to_currency(job_estimate_item.retail_price)%></td>
+            <td width="10%"><%= text_field_tag "qty",job_estimate_item.qty, :id => item_qty_id %></td>
+            <td width="10%"><span id="<%= item_extended_id %>"><%= number_to_currency(job_estimate_item.item_extended) %></span></td>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $("#<%= item_qty_id %>").updateItemExtendedWithAjax("<%= item_extended_id %>",<%= job_estimate_item.id %>, <%= assembly.total_price %>);
+                });
+            </script>
+          </tr>
+      <% end %>
+    </table>
     <% end %>
-  </div>
+</br>
+    <% if @not_added_job_estimate_items !=nil && @not_added_job_estimate_items.any? %>
+        <button href="#collapse1" class="nav-toggle">Show Items To Add</button>
+        <div id="collapse1" style="display:none">
+        <table width="100%">
+          <tr>
+            <th align="left">Add</th>
+            <th align="left">Description</th>
+            <th align="left">Unit</th>
+            <th align="left">Price</th>
+          </tr>
+          <% @not_added_job_estimate_items.each do |assembly| %>
+              <tr class="<%= cycle('oddrow', 'evenrow') %>">
+                <td width="10%"><%= check_box_tag  "selected_assemblies_checkbox[]",assembly.id %> </td>
+                <td width="10%"><%= assembly.item_description%></td>
+                <td width="10%"><%= UnitOfMeasurement.find(assembly.uom_id).unit%></td>
+                <td width="10%"><%= number_to_currency(assembly.total_price)%></td>
+              </tr>
+          <% end %>
+        </table>
+        <%= f.submit "Add Item" %>
+        </div>
+     <% end %>
+    </br>
+    <table width="100%">
+      <tr>
+        <td width="20%">Total Items: <%= number_to_currency(@job_estimate.total_item_price) %></td>
+        <td width="60%"></td>
+      </tr>
+      <tr>
+        <td>Price Adjustment: $<%= f.text_field :price_adjustment, :size=>20 %></td>
+        <td>Reason: <%= f.text_field :reason_desc, :size=> 100 %></td>
+      </tr>
+    </table>
+    <div class="actions">
+      <% if @job_estimate!= nil && @job_estimate.id != nil%>
+          <%= f.submit "Update Item" %>
+      <% else %>
+          <%= f.submit "Create Item" %>
+      <% end %>
+    </div>
 <% end %>

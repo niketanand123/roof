@@ -28,7 +28,7 @@
 
   <tbody>
     <% @job_contacts.each do |job_contact| %>
-      <tr>
+      <tr class="<%= cycle('oddrow', 'evenrow') %>">
         <td><%= job_contact.first_name %></td>
         <td><%= job_contact.last_name %></td>
         <td><%= ContactType.where(:id=>job_contact.contact_type_id).pluck(:contact_type).first %></td>

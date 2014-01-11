@@ -29,7 +29,7 @@
 
   <tbody>
     <% @job_tasks.each do |job_task| %>
-      <tr>
+      <tr class="<%= cycle('oddrow', 'evenrow') %>">
         <td><%= job_task.created_at.strftime('%m/%d/%Y')%></td>
         <td><%= TaskType.where(:id=>job_task.task_type_id).pluck(:task_type).first %></td>
         <td><%= job_task.task_note %></td>

@@ -145,7 +145,7 @@
           </thead>
 
           <% @job_sites.each do |job_site| %>
-              <tr>
+              <tr class="<%= cycle('oddrow', 'evenrow') %>">
                 <td><%= link_to job_site.contact_name, edit_customer_job_site_path(:id=>job_site.id, :customer_id=>@customer.id), :controller => "job_sites"%></td>
                 <td><%= job_site.street1%></td>
                 <td><%= job_site.city %></td>

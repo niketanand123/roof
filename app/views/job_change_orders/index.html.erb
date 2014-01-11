@@ -25,7 +25,7 @@
 
   <tbody>
     <% @job_change_orders.each do |job_change_order| %>
-      <tr>
+      <tr class="<%= cycle('oddrow', 'evenrow') %>">
         <td><%= job_change_order.created_at.strftime('%m/%d/%Y')%></td>
         <td><%= job_change_order.co_number %></td>
         <td><%= job_change_order.co_total %></td>

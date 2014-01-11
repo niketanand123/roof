@@ -24,7 +24,7 @@
 
       <tbody>
       <% @customers.each do |customer| %>
-          <tr>
+          <tr class="<%= cycle('oddrow', 'evenrow') %>">
             <td><%= link_to customer.first_name, customer %></td>
             <td><%= customer.last_name %></td>
             <td><%= customer.email %></td>

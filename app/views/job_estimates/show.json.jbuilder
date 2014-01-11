@@ -1,1 +1,1 @@
-json.extract! @job_estimate, :id, :job_detail_id, :step, :master_item_id, :qty, :proposal_desc, :warranty_desc, :retail_price, :item_extended, :created_at, :updated_at
+json.extract! @job_estimate, :id, :name, :total_item_price, :price_adjustment, :reason_desc, :estimate_status_id, :created_at, :updated_at

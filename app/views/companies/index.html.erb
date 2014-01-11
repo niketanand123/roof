@@ -20,7 +20,7 @@
 
   <tbody>
     <% @companies.each do |company| %>
-      <tr>
+      <tr class="<%= cycle('oddrow', 'evenrow') %>">
         <td><%= company.name %></td>
         <td><%= company.address %></td>
         <td><%= company.city %></td>

@@ -34,7 +34,7 @@
 
   <tbody>
     <% @job_documents.each do |job_document| %>
-      <tr>
+      <tr class="<%= cycle('oddrow', 'evenrow') %>">
         <td><%= job_document.doc_name %></td>
         <td><%= job_document.doc_desc %></td>
         <td><%= job_document.doc_link %></td>

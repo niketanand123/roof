@@ -18,7 +18,7 @@ class JobEstimatesControllerTest < ActionController::TestCase
 
   test "should create job_estimate" do
     assert_difference('JobEstimate.count') do
-      post :create, job_estimate: { item_extended: @job_estimate.item_extended, job_detail_id: @job_estimate.job_detail_id, master_item_id: @job_estimate.master_item_id, proposal_desc: @job_estimate.proposal_desc, qty: @job_estimate.qty, retail_price: @job_estimate.retail_price, step: @job_estimate.step, warranty_desc: @job_estimate.warranty_desc }
+      post :create, job_estimate: { estimate_status_id: @job_estimate.estimate_status_id, name: @job_estimate.name, price_adjustment: @job_estimate.price_adjustment, reason_desc: @job_estimate.reason_desc, total_item_price: @job_estimate.total_item_price }
     end
 
     assert_redirected_to job_estimate_path(assigns(:job_estimate))
@@ -35,7 +35,7 @@ class JobEstimatesControllerTest < ActionController::TestCase
   end
 
   test "should update job_estimate" do
-    patch :update, id: @job_estimate, job_estimate: { item_extended: @job_estimate.item_extended, job_detail_id: @job_estimate.job_detail_id, master_item_id: @job_estimate.master_item_id, proposal_desc: @job_estimate.proposal_desc, qty: @job_estimate.qty, retail_price: @job_estimate.retail_price, step: @job_estimate.step, warranty_desc: @job_estimate.warranty_desc }
+    patch :update, id: @job_estimate, job_estimate: { estimate_status_id: @job_estimate.estimate_status_id, name: @job_estimate.name, price_adjustment: @job_estimate.price_adjustment, reason_desc: @job_estimate.reason_desc, total_item_price: @job_estimate.total_item_price }
     assert_redirected_to job_estimate_path(assigns(:job_estimate))
   end
 

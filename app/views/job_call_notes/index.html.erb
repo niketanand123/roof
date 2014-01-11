@@ -24,7 +24,7 @@
 
   <tbody>
     <% @job_call_notes.each do |job_call_note| %>
-      <tr>
+      <tr class="<%= cycle('oddrow', 'evenrow') %>">
         <td><%= job_call_note.call_date%> <%= job_call_note.call_time%></td>
         <td><%= job_call_note.call_notes %></td>
         <td><%= Employee.where(:id=>job_call_note.employee_id).pluck(:first_name).first %> <%= Employee.where(:id=>job_call_note.employee_id).pluck(:last_name).first %></td>
