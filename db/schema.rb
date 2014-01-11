@@ -213,19 +213,18 @@ ActiveRecord::Schema.define(version: 20140108060658) do
   end
 
   create_table "job_estimate_items", force: true do |t|
-    t.integer  "job_site_id",                null: false
+    t.integer  "job_estimate_id",             null: false
     t.integer  "step"
     t.integer  "master_item_id"
     t.integer  "qty"
-    t.string   "proposal_desc",  limit: 330
-    t.string   "warranty_desc",  limit: 330
+    t.string   "proposal_desc",   limit: 330
+    t.string   "warranty_desc",   limit: 330
     t.float    "retail_price"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "item_extended"
   end
 
-  add_index "job_estimate_items", ["job_site_id"], name: "fk_est_job_site_id_idx", using: :btree
   add_index "job_estimate_items", ["master_item_id"], name: "fk_master_item_id_idx", using: :btree
 
   create_table "job_estimate_statuses", force: true do |t|
@@ -242,6 +241,7 @@ ActiveRecord::Schema.define(version: 20140108060658) do
     t.integer  "estimate_status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "job_site_id"
   end
 
   create_table "job_service_types", force: true do |t|
