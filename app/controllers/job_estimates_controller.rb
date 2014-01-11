@@ -106,7 +106,7 @@ class JobEstimatesController < ApplicationController
     update_job_estimate_total_price
     respond_to do |format|
       if @job_estimate.update_attributes(job_estimate_params)
-        format.html { redirect_to customer_job_site_job_estimates_path(:customer_id=>@customer.id, :id=>@job_estimate.id,:job_site_id=>@job_estimate.job_site_id), notice: 'Job estimate was successfully updated.' }
+        format.html { redirect_to edit_customer_job_site_job_estimate_path(:customer_id=>@customer.id,:job_site_id => @job_site.id,:id =>@job_estimate.id), notice: 'Job estimate was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
