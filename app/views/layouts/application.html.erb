@@ -112,6 +112,15 @@
       <li><a href="/job_estimate_statuses">Estimate Statuses</a></li>
       <li><a href="/task_types">Task Types</a></li>
       <li><a href="/item_codes">Item Codes</a></li>
+      <% @sales_taxes = SalesTax.all
+         if @sales_taxes.any?
+           @is_new = false
+           @sales_tax = @sales_taxes.first
+         else
+           @is_new = true
+         end
+      %>
+      <li><a href="<%if @is_new %>/sales_taxes/new<%else%>/sales_taxes/<%= @sales_tax.id unless @sales_tax.nil? %>/edit<%end%>">Sales Tax</a></li>
       <li><a href="/lead_sources">Lead Sources</a></li>
       <li><a href="#">Category</a></li>
       <li><a href="#">Pitch</a></li>

@@ -39,11 +39,11 @@ class AssemblyItemsController < ApplicationController
     else
       @percentage_used = 100
     end
-    if params[:sales_tax].present?
-      @material_sales_tax = params[:sales_tax]
-    else
-      @material_sales_tax = 0
-    end
+    #if params[:sales_tax].present?
+    #  @material_sales_tax = params[:sales_tax]
+    #else
+    #  @material_sales_tax = 0
+    #end
     if params[:markup_op_percentage].present?
       @markup_opt_percentage = params[:markup_op_percentage]
     else
@@ -134,17 +134,21 @@ class AssemblyItemsController < ApplicationController
   def update_assembly(assembly, assembly_item, is_delete)
     assembly_items = AssemblyItem.where("assembly_id = ? and id != ?", assembly.id, assembly_item.id)
     material_cost = 0
-    sales_tax_percentage = 0
     sales_tax = 0
     total_material_cost = 0
     labor_cost = 0
     total_cost = 0
     markup_percentage = 0
     total_price = 0
+    sales_taxes = SalesTax.all
+    tax_rate_percentage = 6.00
+    if sales_taxes.any?
+      tax_rate_percentage = sales_taxes.first.sales_tax
+    end
 
     assembly_items.each do |item|
       material_cost = material_cost + item.material_cost unless item.material_cost.nil?
-      sales_tax_percentage = sales_tax_percentage + item.material_tax_percentage unless item.material_tax_percentage.nil?
+      #sales_tax_percentage = sales_tax_percentage + item.material_tax_percentage unless item.material_tax_percentage.nil?
       sales_tax = sales_tax + item.material_tax_cost unless item.material_tax_cost.nil?
       total_material_cost = total_material_cost + item.total_material_cost unless item.total_material_cost.nil?
       labor_cost = labor_cost + item.labor_cost unless item.labor_cost.nil?
@@ -154,7 +158,7 @@ class AssemblyItemsController < ApplicationController
     end
     if is_delete
       material_cost = material_cost - assembly_item.material_cost unless assembly_item.material_cost.nil?
-      sales_tax_percentage = sales_tax_percentage - assembly_item.material_tax_percentage unless assembly_item.material_tax_percentage.nil?
+      #sales_tax_percentage = sales_tax_percentage - assembly_item.material_tax_percentage unless assembly_item.material_tax_percentage.nil?
       sales_tax = sales_tax - assembly_item.material_tax_cost unless assembly_item.material_tax_cost.nil?
       total_material_cost = total_material_cost - assembly_item.material_cost unless assembly_item.material_cost.nil?
       labor_cost = labor_cost - assembly_item.labor_cost unless assembly_item.labor_cost.nil?
@@ -165,11 +169,11 @@ class AssemblyItemsController < ApplicationController
       if assembly_items.size > 1
         total_items_size = assembly_items.size - 1
       end
-      tax_rate_percentage = number_with_precision(sales_tax_percentage / total_items_size, :precision => 2)
+      #tax_rate_percentage = number_with_precision(sales_tax_percentage / total_items_size, :precision => 2)
       markup_operator_percentage = number_with_precision(markup_percentage / total_items_size, :precision => 2)
     else
       material_cost = material_cost + assembly_item.material_cost unless assembly_item.material_cost.nil?
-      sales_tax_percentage = sales_tax_percentage + assembly_item.material_tax_percentage unless assembly_item.material_tax_percentage.nil?
+      #sales_tax_percentage = sales_tax_percentage + assembly_item.material_tax_percentage unless assembly_item.material_tax_percentage.nil?
       sales_tax = sales_tax + assembly_item.material_tax_cost unless assembly_item.material_tax_cost.nil?
       total_material_cost = total_material_cost + assembly_item.material_cost unless assembly_item.material_cost.nil?
       labor_cost = labor_cost + assembly_item.labor_cost unless assembly_item.labor_cost.nil?
@@ -177,7 +181,8 @@ class AssemblyItemsController < ApplicationController
       markup_percentage = markup_percentage + assembly_item.markup_operator_percentage unless assembly_item.markup_operator_percentage.nil?
       total_price = total_price + assembly_item.item_price unless assembly_item.item_price.nil?
       total_items_size = assembly_items.size + 1
-      tax_rate_percentage = number_with_precision(sales_tax_percentage / total_items_size, :precision => 2)
+
+
       markup_operator_percentage = number_with_precision(markup_percentage / total_items_size, :precision => 2)
 
     end

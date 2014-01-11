@@ -22,7 +22,12 @@ $("#material_cost_ext_id").html('<%= @material_cost_ext %>');
         @mat_sales_tax_percentage = 0
     end
 else
-    @mat_sales_tax_percentage = 6
+    taxes = SalesTax.all
+    tax = 6
+    if taxes.any?
+        tax = taxes.first.sales_tax
+    end
+    @mat_sales_tax_percentage = tax
     @material_sales_tax = number_with_precision(@material_cost_ext.to_f * @mat_sales_tax_percentage.to_f / 100, :precision => 2) || 0
 end %>
 $("#assembly_item_material_tax_cost").val('<%= @material_sales_tax %>');
@@ -43,7 +48,7 @@ $("#assembly_item_total_cost").val('<%= @total_cost %>');
 end%>
 $("#assembly_item_markup_operator_percentage").val('<%= @markup_opt_percent %>');
 <% if @markup_opt_percent.to_f > 0
-    @total_price = number_with_precision(@total_cost.to_f / @markup_opt_percent.to_f, :precision => 2) || 0
+    @total_price = number_with_precision(@total_cost.to_f / (100-@markup_opt_percent.to_f), :precision => 2) || 0
    else
     @total_price = @total_cost
  end%>

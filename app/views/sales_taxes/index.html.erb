@@ -1,0 +1,27 @@
+<h1>Listing sales_taxes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sales tax</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sales_taxes.each do |sales_tax| %>
+      <tr>
+        <td><%= sales_tax.sales_tax %></td>
+        <td><%= link_to 'Show', sales_tax %></td>
+        <td><%= link_to 'Edit', edit_sales_tax_path(sales_tax) %></td>
+        <td><%= link_to 'Destroy', sales_tax, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sales tax', new_sales_tax_path %>

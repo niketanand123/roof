@@ -1,4 +1,6 @@
 Roof::Application.routes.draw do
+  resources :sales_taxes
+
   resources :job_estimates
 
   resources :job_estimate_statuses
@@ -116,6 +118,7 @@ Roof::Application.routes.draw do
   get 'task_viewer' => 'job_tasks#index_all'
   get 'populate_item_code' => 'assembly_items#populate_item_code'
   get 'populate_estimate' => 'job_estimate_items#populate_estimate'
+  get 'populate_company' => 'customers#populate_company'
 
   get 'job_lead_sheet' => 'job_sites#job_lead_sheet'
   get 'job_estimate_pdf' => 'job_sites#job_estimate_pdf'

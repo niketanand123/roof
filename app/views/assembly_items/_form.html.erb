@@ -12,25 +12,25 @@
         $.fn.recalculateTotalBasedOnItemPercentageUsedWithAjax = function() {
             var that = this;
             this.blur(function() {
-                $.get("/populate_item_code", {item_percentage_used: that.val(), sales_tax:$("#assembly_item_material_tax_cost").val(), markup_op_percentage:$("#assembly_item_markup_operator_percentage").val(), id:$("#assembly_item_item_code_id").val(), labor_cost:$("#assembly_item_labor_cost").val()}, null, "script");
+                $.get("/populate_item_code", {item_percentage_used: that.val(), markup_op_percentage:$("#assembly_item_markup_operator_percentage").val(), id:$("#assembly_item_item_code_id").val(), labor_cost:$("#assembly_item_labor_cost").val()}, null, "script");
             });
         }
-        $.fn.recalculateTotalBasedOnSalesTaxWithAjax = function() {
-            var that = this;
-            this.blur(function() {
-                $.get("/populate_item_code", {sales_tax: that.val(), item_percentage_used: $("#assembly_item_percentage_used").val(), markup_op_percentage:$("#assembly_item_markup_operator_percentage").val(), id:$("#assembly_item_item_code_id").val(), labor_cost:$("#assembly_item_labor_cost").val()}, null, "script");
-            });
-        }
+//        $.fn.recalculateTotalBasedOnSalesTaxWithAjax = function() {
+//            var that = this;
+//            this.blur(function() {
+//                $.get("/populate_item_code", {sales_tax: that.val(), item_percentage_used: $("#assembly_item_percentage_used").val(), markup_op_percentage:$("#assembly_item_markup_operator_percentage").val(), id:$("#assembly_item_item_code_id").val(), labor_cost:$("#assembly_item_labor_cost").val()}, null, "script");
+//            });
+//        }
         $.fn.recalculateTotalBasedOnMarkupOpPercentageWithAjax = function() {
             var that = this;
             this.blur(function() {
-                $.get("/populate_item_code", {markup_op_percentage:that.val(),sales_tax: $("#assembly_item_material_tax_cost").val(), item_percentage_used: $("#assembly_item_percentage_used").val(), id:$("#assembly_item_item_code_id").val(), labor_cost:$("#assembly_item_labor_cost").val()}, null, "script");
+                $.get("/populate_item_code", {markup_op_percentage:that.val(), item_percentage_used: $("#assembly_item_percentage_used").val(), id:$("#assembly_item_item_code_id").val(), labor_cost:$("#assembly_item_labor_cost").val()}, null, "script");
             });
         }
         $.fn.recalculateTotalBasedOnLaborCostWithAjax = function() {
             var that = this;
             this.blur(function() {
-                $.get("/populate_item_code", {labor_cost:that.val(), markup_op_percentage:$("#assembly_item_markup_operator_percentage").val(),sales_tax: $("#assembly_item_material_tax_cost").val(), item_percentage_used: $("#assembly_item_percentage_used").val(), id:$("#assembly_item_item_code_id").val()}, null, "script");
+                $.get("/populate_item_code", {labor_cost:that.val(), markup_op_percentage:$("#assembly_item_markup_operator_percentage").val(), item_percentage_used: $("#assembly_item_percentage_used").val(), id:$("#assembly_item_item_code_id").val()}, null, "script");
             });
         }
     </script>
@@ -155,7 +155,7 @@
         </tr>
         <tr class="borderThinLine">
           <td>Sales Tax <%= f.text_field :material_tax_percentage, :size=>"3", :readonly=>true%>%</td>
-          <td>$<%= f.text_field :material_tax_cost, :size=>"5" %></td>
+          <td>$<%= f.text_field :material_tax_cost, :size=>"5", :readonly=>true %></td>
         </tr>
         <tr>
           <td>Total Material</td>
@@ -180,7 +180,7 @@
       </table>
       <script type="text/javascript">
           $(document).ready(function(){
-              $("#assembly_item_material_tax_cost").recalculateTotalBasedOnSalesTaxWithAjax();
+//              $("#assembly_item_material_tax_cost").recalculateTotalBasedOnSalesTaxWithAjax();
               $("#assembly_item_markup_operator_percentage").recalculateTotalBasedOnMarkupOpPercentageWithAjax();
           });
       </script>

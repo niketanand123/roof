@@ -1,0 +1,8 @@
+$("#customer_email").val('<%= @company.main_email %>');
+$("#customer_work_phone").val('<%= number_to_phone(@company.main_phone) %>');
+$("#customer_fax").val('<%= number_to_phone(@company.fax_number) %>');
+$("#customer_website").val('<%= @company.website %>');
+$("#customer_street1").val('<%= @company.address %>');
+$("#customer_state").val('<%= @company.state %>');
+$("#customer_city").val('<%= @company.city %>');
+$("#customer_zip").val('<%= @company.zip %>');

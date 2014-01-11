@@ -32,6 +32,16 @@ class CustomersController < ApplicationController
     end
   end
 
+  def populate_company
+    if params[:company_id].present?
+      @company = Company.find(params[:company_id])
+    else
+      @company = nil
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
 
   # GET /customers/1
   # GET /customers/1.json
