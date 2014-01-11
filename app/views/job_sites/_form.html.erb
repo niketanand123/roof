@@ -20,6 +20,13 @@
         $( "#dateCompleted" ).datepicker({ dateFormat: 'mm/dd/yy'});
         $( "#dateTaken" ).datepicker({ dateFormat: 'mm/dd/yy'});
     });
+    jQuery(function($) {
+        $.mask.definitions['~']='[+-]';
+        $('#job_site_phone').mask('(999) 999-9999');
+        $('#job_site_work_phone').mask('(999) 999-9999');
+        $('#job_site_mobile_phone').mask('(999) 999-9999');
+        $('#job_site_fax').mask('(999) 999-9999');
+    });
   </script>
   <% if @job_site.errors.any? %>
     <div id="error_explanation">

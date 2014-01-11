@@ -22,7 +22,7 @@ stateCityZip = @customer.city+", " + @customer.state + ", "+ @customer.zip
 pdf.draw_text stateCityZip, :at => [100, 530], :size => 11
 
 pdf.draw_text "Cell", :at => [20, 500], :size => 12, :style => :bold
-pdf.draw_text @customer.mobile_phone, :at => [100, 500], :size => 11
+pdf.draw_text number_to_phone(@customer.mobile_phone), :at => [100, 500], :size => 11
 
 pdf.draw_text "Email", :at => [20, 480], :size => 12, :style => :bold
 pdf.draw_text @customer.email, :at => [100, 480], :size => 11
@@ -43,7 +43,7 @@ stateCityZip = @job_site.city+", " + @job_site.state + ", "+ @job_site.zip
 pdf.draw_text stateCityZip, :at => [370, 550], :size => 11
 
 pdf.draw_text "Cell", :at => [310, 520], :size => 12, :style => :bold
-pdf.draw_text @job_site.mobile_phone, :at => [370, 520], :size => 11
+pdf.draw_text number_to_phone(@job_site.mobile_phone), :at => [370, 520], :size => 11
 
 pdf.draw_text "We submit specifications and estimates for the following", :at => [40, 420], :size => 12, :style => :bold
 pdf.stroke do

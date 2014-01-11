@@ -6,6 +6,13 @@
                 $.get("/populate_company", {company_id: that.val()}, null, "script");
             });
         }
+        jQuery(function($) {
+            $.mask.definitions['~']='[+-]';
+            $('#customer_home_phone').mask('(999) 999-9999');
+            $('#customer_work_phone').mask('(999) 999-9999');
+            $('#customer_mobile_phone').mask('(999) 999-9999');
+            $('#customer_fax').mask('(999) 999-9999');
+        });
     </script>
   <% if @customer.errors.any? %>
     <div id="error_explanation">

@@ -39,21 +39,6 @@ class JobSite < ActiveRecord::Base
     before_save    :format_date_phone
 
     def format_date_phone
-      #if self.unformatted_appointment_date !=nil && self.unformatted_appointment_date !=""
-      #  self.job_start_date = Date.strptime(self.unformatted_appointment_date, "%m/%d/%Y").to_time()
-      #else
-      #  self.job_start_date = nil
-      #end
-      #if self.unformatted_date_completed !=nil && self.unformatted_date_completed !=""
-      #  self.date_completed = Date.strptime(self.unformatted_date_completed, "%m/%d/%Y").to_time()
-      #else
-      #  self.date_completed = nil
-      #end
-      #if self.unformatted_date_taken !=nil && self.unformatted_date_taken !=""
-      #  self.date_taken = Date.strptime(self.unformatted_date_taken, "%m/%d/%Y").to_time()
-      #else
-      #  self.date_taken = nil
-      #end
       self.phone = self.phone.convert_to_phone
       self.work_phone = self.work_phone.convert_to_phone
       self.mobile_phone = self.mobile_phone.convert_to_phone

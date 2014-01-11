@@ -45,12 +45,12 @@ pdf.draw_text stateCityZip, :at => [x, y], :size => 11
 y=y-15
 pdf.draw_text "Home", :at => [x, y], :size => 11
 x=80
-pdf.draw_text @customer.home_phone, :at => [x, y], :size => 11
+pdf.draw_text number_to_phone(@customer.home_phone), :at => [x, y], :size => 11
 y=y-15
 x=15
 pdf.draw_text "Cell", :at => [x, y], :size => 11
 x=80
-pdf.draw_text @customer.mobile_phone, :at => [x, y], :size => 11
+pdf.draw_text number_to_phone(@customer.mobile_phone), :at => [x, y], :size => 11
 x=15
 y=y-15
 pdf.fill_color "0101DF"

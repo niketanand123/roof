@@ -1,4 +1,10 @@
 <%= form_for(@employee) do |f| %>
+    <script type="text/javascript">
+        jQuery(function($) {
+            $.mask.definitions['~']='[+-]';
+            $('#employee_phone').mask('(999) 999-9999');
+        });
+    </script>
   <% if @employee.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>

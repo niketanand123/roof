@@ -10,7 +10,7 @@ class Customer < ActiveRecord::Base
 
     validates :first_name,  presence: true, length: { maximum: 50 }
     validates :last_name,  presence: true, length: { maximum: 50 }
-    validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+    validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,:allow_blank=> true
     validates :street1,  presence: true, length: { maximum: 255 }
     validates :zip,  presence: true, length: { maximum: 20 }
     validates_format_of :zip, :with =>  /^\d{5}(-\d{4})?$/, :message => "should be 12345 or 12345-1234",:multiline => true

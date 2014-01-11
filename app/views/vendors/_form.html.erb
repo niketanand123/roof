@@ -1,4 +1,11 @@
 <%= form_for(@vendor) do |f| %>
+    <script type="text/javascript">
+        jQuery(function($) {
+            $.mask.definitions['~']='[+-]';
+            $('#vendor_gm_phone').mask('(999) 999-9999');
+            $('#vendor_sales_rep_phone').mask('(999) 999-9999');
+        });
+    </script>
   <% if @vendor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@vendor.errors.count, "error") %> prohibited this vendor from being saved:</h2>

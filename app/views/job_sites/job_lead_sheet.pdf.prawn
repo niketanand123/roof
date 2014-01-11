@@ -1,16 +1,12 @@
 pdf.font "Helvetica"
 
-x=5
-y=750
+x=0
+y=755
 pdf.image "#{Rails.root}/app/assets/images/banner.jpg", :width => 250, :height => 80, :at =>[x, y]
 
-pdf.stroke do
-    y=665
-    pdf.rectangle [5, 665], 530, 140
-end
 pdf.fill_color "8181F7"
 x=350
-y=670
+y=690
 pdf.draw_text "Lead Number", :at => [x, y], :size => 11
 x=420
 year = Time.now.strftime("%Y")
@@ -19,11 +15,14 @@ pdf.draw_text year+"-"+@job_site.id.to_s, :at => [x, y], :size => 11
 pdf.fill_color "000000"
 
 x=15
-y=650
-company_name = Company.find(@customer.company_id).name unless @customer.company_id.nil?
-pdf.draw_text company_name, :at => [x, y], :size => 11
+y=660
+compNameY=y
+unless  @customer.company_id.nil?
+    company_name = Company.find(@customer.company_id).name
+    pdf.draw_text company_name, :at => [x, y], :size => 11
+    y=y-15
+end
 first_last_name = @customer.first_name + " "+ @customer.last_name
-y=y-15
 pdf.draw_text first_last_name, :at => [x, y], :size => 11
 
 pdf.fill_color "0101DF"
@@ -36,21 +35,38 @@ end
 pdf.stroke_color "000000"
 
 x=15
-y=620
+y=y-15
+streetY= y
 pdf.fill_color "000000"
 pdf.draw_text @customer.street1, :at => [x, y], :size => 11
-stateCityZip = @customer.city+", " + @customer.state + ", "+ @customer.zip
+comma = ", "
+if @customer.city.nil? || @customer.city.empty?
+    city = ""
+else
+    city = @customer.city+ comma
+end
+if @customer.state.nil?|| @customer.state.empty?
+    state = ""
+else
+    state = @customer.state+ comma
+end
+stateCityZip = city  + state + @customer.zip
 y=y-15
 pdf.draw_text stateCityZip, :at => [x, y], :size => 11
-y=y-15
-pdf.draw_text "Home", :at => [x, y], :size => 11
-x=80
-pdf.draw_text @customer.home_phone, :at => [x, y], :size => 11
-y=y-15
-x=15
-pdf.draw_text "Cell", :at => [x, y], :size => 11
-x=80
-pdf.draw_text @customer.mobile_phone, :at => [x, y], :size => 11
+
+unless @customer.home_phone.nil? || @customer.home_phone.empty?
+    y=y-15
+    pdf.draw_text "Home", :at => [x, y], :size => 11
+    x=80
+    pdf.draw_text number_to_phone(@customer.home_phone), :at => [x, y], :size => 11
+end
+unless @customer.mobile_phone.nil? || @customer.mobile_phone.empty?
+    y=y-15
+    x=15
+    pdf.draw_text "Cell", :at => [x, y], :size => 11
+    x=80
+    pdf.draw_text @customer.mobile_phone, :at => [x, y], :size => 11
+end
 x=15
 y=y-15
 pdf.fill_color "0101DF"
@@ -63,29 +79,39 @@ pdf.stroke_color "000000"
 
 pdf.fill_color "000000"
 x=370
-y=650
+y=compNameY
 pdf.bounding_box([x,y+8], :width => 200, :height => 30) do
 pdf.text "<u>"+Time.now.strftime("%B %d, %Y")+"</u>", :size => 11, :inline_format => true
 end
 
-y=y-25
+y=y-15
 pdf.draw_text @job_site.street1, :at => [x, y], :size => 11
 y=y-15
-stateCityZip = @job_site.city+", " + @job_site.state + ", "+ @job_site.zip
+if @job_site.city.nil? || @job_site.city.empty?
+    city = ""
+else
+    city = @job_site.city+ comma
+end
+if @job_site.state.nil?|| @job_site.state.empty?
+    state = ""
+else
+    state = @job_site.state+ comma
+end
+stateCityZip = city  + state + @job_site.zip
 pdf.draw_text stateCityZip, :at => [x, y], :size => 11
 
 x=5
-y=500
+y=y-10
 pdf.stroke_color "045FB4"
 pdf.stroke do
     pdf.line_width(6)
     pdf.horizontal_line(x, x+530, :at => y)
 end
 pdf.stroke_color "000000"
-y=y-25
+y=y-15
 pdf.draw_text "REFERRAL INFORMATION:", :at => [x, y], :size => 12, :style => :bold
-x=170
 if @customer.lead_source_id != nil
+    x=170
     lead_source = LeadSource.find(@customer.lead_source_id).source
     pdf.line_width(1)
     pdf.bounding_box([x,y+8], :width => 200, :height => 30) do
@@ -93,10 +119,10 @@ if @customer.lead_source_id != nil
     end
 end
 x=5
-y=y-30
+y=y-15
 pdf.draw_text "Notes:", :at => [x, y], :size => 12, :style => :bold
 
-y=y-20
+y=y-15
 pdf.stroke_color "045FB4"
 pdf.stroke do
     pdf.line_width(6)
