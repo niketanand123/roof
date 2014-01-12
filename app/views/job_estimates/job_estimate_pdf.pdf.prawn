@@ -121,8 +121,8 @@ if (@job_estimate_items.size > 0)
         pdf.text_box(desc, :at => [x+2,y+10], :width => 350, :height => 100, :size => 11,
 :overflow => :shrink_to_fit)
         pdf.draw_text job_estimate_item.qty, :at => [x1, y], :size => 11
-        pdf.draw_text "$"+job_estimate_item.retail_price.to_s, :at => [x2, y], :size => 11
-        pdf.draw_text "$"+job_estimate_item.item_extended.to_s, :at => [x3+10, y], :size => 11
+        pdf.draw_text number_to_currency(job_estimate_item.retail_price), :at => [x2, y], :size => 11
+        pdf.draw_text number_to_currency(job_estimate_item.item_extended), :at => [x3+10, y], :size => 11
         y = y - 30
         total_price = total_price + job_estimate_item.item_extended
     end
@@ -135,5 +135,5 @@ if (@job_estimate_items.size > 0)
     x=x+440
     y = y - 15
     pdf.draw_text "TOTAL:", :at => [x, y], :size => 11, :style=>:bold
-    pdf.draw_text "$"+total_price.to_s, :at => [x+50, y], :size => 11
+    pdf.draw_text number_to_currency(total_price), :at => [x+50, y], :size => 11
 
