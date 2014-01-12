@@ -1,5 +1,5 @@
 class JobEstimatesController < ApplicationController
-  before_action :set_job_estimate, only: [:show, :edit, :update, :destroy, :delete_estimate_item]
+  before_action :set_job_estimate, only: [:show, :edit, :update, :destroy, :delete_estimate_item,:job_estimate_pdf, :job_proposal]
 
   # GET /job_estimates
   # GET /job_estimates.json
@@ -10,12 +10,26 @@ class JobEstimatesController < ApplicationController
   end
 
 
+  def job_estimate_pdf
+    @job_estimate_items = JobEstimateItem.where("job_estimate_id = ?", @job_estimate.id)
+  end
+
+  def job_proposal
+    @job_estimate_items = JobEstimateItem.order("step asc").where("job_estimate_id = ?", @job_estimate.id)
+  end
   def update_estimate_item
     if params[:id].present? && params[:qty].present?
       @item_id = params[:id]
       @item = JobEstimateItem.find(@item_id)
       @extended_price = @item.assembly.total_price * params[:qty].to_f
       @item.update(:qty => params[:qty], :item_extended =>@extended_price)
+
+    end
+    if params[:id].present? && params[:step].present?
+      @item_id = params[:id]
+      @item = JobEstimateItem.find(@item_id)
+      @extended_price = @item.item_extended
+      @item.update(:step => params[:step])
 
     end
     respond_to do |format|
@@ -131,6 +145,8 @@ class JobEstimatesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_job_estimate
     @job_estimate = JobEstimate.find(params[:id])
+    @customer = Customer.find(params[:customer_id])
+    @job_site = JobSite.find(params[:job_site_id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

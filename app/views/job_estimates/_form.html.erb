@@ -1,9 +1,15 @@
 <%= form_for [@customer, @job_site, @job_estimate] do |f| %>
     <script type="text/javascript">
-        $.fn.updateItemExtendedWithAjax = function(item_extended_id, job_estimate_item_id, assembly_price) {
+        $.fn.updateItemExtendedWithAjax = function(item_extended_id, job_estimate_item_id) {
             var that = this;
             this.blur(function() {
                 $.get("/update_estimate_item", {qty: that.val(), id: job_estimate_item_id}, null, "script");
+            });
+        }
+        $.fn.updateItemStepWithAjax = function(job_estimate_item_id, extended_item) {
+            var that = this;
+            this.blur(function() {
+                $.get("/update_estimate_item", {step: that.val(), id: job_estimate_item_id, extended: extended_item}, null, "script");
             });
         }
         $(document).ready(function() {
@@ -51,6 +57,7 @@
     <table width="100%">
       <tr>
         <th align="left"></th>
+        <th align="left">Steps</th>
         <th align="left">Materials</th>
         <th align="left">Units</th>
         <th align="left">Item Price</th>
@@ -60,11 +67,13 @@
       <% @items.each do |job_estimate_item| %>
           <% assembly = Assembly.find(job_estimate_item.master_item_id)
              item_qty_id = "item_qty_"+job_estimate_item.id.to_s
+             item_step_id = "item_step_"+job_estimate_item.id.to_s
              delete_item_id = "delete_item_"+job_estimate_item.id.to_s
              item_extended_id = "item_extended_"+job_estimate_item.id.to_s
           %>
           <tr  class="<%= cycle('oddrow', 'evenrow') %>">
             <td width="10%"><%= link_to "Delete", delete_estimate_item_path(:id=>@job_estimate.id,:job_site_id=>@job_site.id,:estimate_item_id => job_estimate_item.id), :method=>:get %></td>
+            <td width="10%"><%= text_field_tag "step",job_estimate_item.step, :id => item_step_id, :size=>10%></td>
             <td width="10%"><%= assembly.item_description%></td>
             <td width="10%"><%= UnitOfMeasurement.find(assembly.uom_id).unit%></td>
             <td width="10%"><%= number_to_currency(job_estimate_item.retail_price)%></td>
@@ -72,7 +81,8 @@
             <td width="10%"><span id="<%= item_extended_id %>"><%= number_to_currency(job_estimate_item.item_extended) %></span></td>
             <script type="text/javascript">
                 $(document).ready(function(){
-                    $("#<%= item_qty_id %>").updateItemExtendedWithAjax("<%= item_extended_id %>",<%= job_estimate_item.id %>, <%= assembly.total_price %>);
+                    $("#<%= item_qty_id %>").updateItemExtendedWithAjax("<%= item_extended_id %>",<%= job_estimate_item.id %>);
+                    $("#<%= item_step_id %>").updateItemStepWithAjax("<%= job_estimate_item.id %>", "<%= job_estimate_item.item_extended %>");
                 });
             </script>
           </tr>
@@ -113,6 +123,11 @@
         <td>Reason: <%= f.text_field :reason_desc, :size=> 100 %></td>
       </tr>
     </table>
+    <br/>
+    <%= link_to 'Printable Estimate(PDF)',  job_estimate_pdf_path(:id=>@job_estimate.id,:customer_id=>@customer.id,:job_site_id=>@job_site.id, :format=>"pdf") %>
+    &nbsp; &nbsp; <%= link_to 'Printable Proposal(PDF)',  job_proposal_path(:id=>@job_estimate.id,:customer_id=>@customer.id,:job_site_id=>@job_site.id, :format=>"pdf") %>
+    <br/>
+    <br/>
     <div class="actions">
       <% if @job_estimate!= nil && @job_estimate.id != nil%>
           <%= f.submit "Update Item" %>

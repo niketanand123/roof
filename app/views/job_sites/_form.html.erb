@@ -308,8 +308,6 @@
     <br/>
 
     <%= link_to 'Printable Lead Sheet(PDF)',  job_lead_sheet_path(:id=>@job_site.id, :format=>"pdf") %>
-    &nbsp; &nbsp; <%= link_to 'Printable Estimate(PDF)',  job_estimate_pdf_path(:id=>@job_site.id, :format=>"pdf") %>
-    &nbsp; &nbsp; <%= link_to 'Printable Proposal(PDF)',  job_proposal_path(:id=>@job_site.id, :format=>"pdf") %>
     <br/>
     <%= link_to 'Back',  edit_customer_path(:id=>@customer.id) %> &nbsp;
 <% end %>

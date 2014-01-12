@@ -121,8 +121,8 @@ Roof::Application.routes.draw do
   get 'populate_company' => 'customers#populate_company'
 
   get 'job_lead_sheet' => 'job_sites#job_lead_sheet'
-  get 'job_estimate_pdf' => 'job_sites#job_estimate_pdf'
-  get 'job_proposal' => 'job_sites#job_proposal'
+  get 'job_estimate_pdf' => 'job_estimates#job_estimate_pdf'
+  get 'job_proposal' => 'job_estimates#job_proposal'
   get 'delete_estimate_item' => 'job_estimates#delete_estimate_item'
   get 'update_estimate_item' => 'job_estimates#update_estimate_item'
   post 'add_items' => 'job_estimates#add_items'
