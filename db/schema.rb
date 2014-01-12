@@ -245,19 +245,12 @@ ActiveRecord::Schema.define(version: 20140112010904) do
   end
 
   create_table "job_roof_types", force: true do |t|
-    t.integer  "job_id"
-    t.integer  "new_roof_type_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "job_roof_types01", force: true do |t|
     t.integer "job_id",           null: false
     t.integer "new_roof_type_id", null: false
   end
 
-  add_index "job_roof_types01", ["id"], name: "fk_roof_type_idx01", using: :btree
-  add_index "job_roof_types01", ["job_id"], name: "fk_job_site_id_idx01", using: :btree
+  add_index "job_roof_types", ["id"], name: "fk_roof_type_idx01", using: :btree
+  add_index "job_roof_types", ["job_id"], name: "fk_job_site_id_idx01", using: :btree
 
   create_table "job_service_types", force: true do |t|
     t.integer "job_id",          null: false

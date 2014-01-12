@@ -5,10 +5,10 @@ y=755
 pdf.image "#{Rails.root}/app/assets/images/banner.jpg", :width => 250, :height => 80, :at =>[x, y]
 
 pdf.fill_color "8181F7"
-x=350
+x=370
 y=690
 pdf.draw_text "Lead Number", :at => [x, y], :size => 11
-x=420
+x=x+70
 year = Time.now.strftime("%Y")
 pdf.draw_text year+"-"+@job_site.id.to_s, :at => [x, y], :size => 11
 
@@ -69,6 +69,7 @@ unless @customer.mobile_phone.nil? || @customer.mobile_phone.empty?
 end
 x=15
 y=y-15
+cust_info_end_y = y
 pdf.fill_color "0101DF"
 pdf.line_width(1)
 pdf.stroke_color "0101DF"
@@ -101,7 +102,7 @@ stateCityZip = city  + state + @job_site.zip
 pdf.draw_text stateCityZip, :at => [x, y], :size => 11
 
 x=5
-y=y-10
+y=cust_info_end_y-10
 pdf.stroke_color "045FB4"
 pdf.stroke do
     pdf.line_width(6)
