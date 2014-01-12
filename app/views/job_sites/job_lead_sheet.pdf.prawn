@@ -225,7 +225,7 @@ pdf.stroke_color "000000"
 pdf.line_width(1)
 
 x=10
-y=y-380
+y=50
 
 pdf.text_box(@job_site.lead_sheet_note, :at => [x,y], :width => 530, :height => 100, :size => 11,
 :overflow => :shrink_to_fit)
