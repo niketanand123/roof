@@ -35,6 +35,9 @@ class JobSitesController < ApplicationController
     @service_types = ServiceType.all
     @job_service_types = JobServiceType.where("job_id" =>@job_site.id)
     @service_type_ids = @job_service_types.collect{|p| p.service_type_id}
+    @roof_types = RoofType.all
+    @job_roof_types = JobRoofType.where("job_id" =>@job_site.id)
+    @new_roof_type_ids = @job_roof_types.collect{|p| p.new_roof_type_id}
     set_map_marker(@job_site)
     @job_site.phone = @job_site.phone.format_phone
     @job_site.work_phone = @job_site.work_phone.format_phone
@@ -45,6 +48,7 @@ class JobSitesController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @job_site = @customer.job_sites.build
     @service_types = ServiceType.all
+    @roof_types = RoofType.all
     #@job_photo = @job_site.job_photos.build
     @job_site.assets.build
   end
@@ -56,6 +60,11 @@ class JobSitesController < ApplicationController
     @service_types = ServiceType.all
     @job_service_types = JobServiceType.where("job_id" =>@job_site.id)
     @service_type_ids = @job_service_types.collect{|p| p.service_type_id}
+
+    @roof_types = RoofType.all
+    @job_roof_types = JobRoofType.where("job_id" =>@job_site.id)
+    @new_roof_type_ids = @job_roof_types.collect{|p| p.new_roof_type_id}
+
     set_map_marker(@job_site)
     @job_site.assets.build
     @job_site.phone = @job_site.phone.format_phone
@@ -84,10 +93,11 @@ class JobSitesController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @job_site = @customer.job_sites.create(job_site_params)
     update_customer_status
-    format_dates_before_insert_or_update
+    #format_dates_before_insert_or_update
     respond_to do |format|
       if @job_site.save
         job_service_type_save
+        job_roof_type_save
         format.html { redirect_to([@customer], :notice => 'Job site was successfully created.') }
         format.xml  { render :xml => @job_site, :status => :created, :location => [@customer, @job_site] }
       else
@@ -102,11 +112,12 @@ class JobSitesController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @job_site = JobSite.find(params[:id])
 
-    format_dates_before_insert_or_update
+    #format_dates_before_insert_or_update
     update_customer_status
     respond_to do |format|
       if @job_site.update_attributes(job_site_params)
         job_service_type_update
+        job_roof_type_update
         format.html { redirect_to([@customer], :notice => 'Job site was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -156,14 +167,6 @@ class JobSitesController < ApplicationController
       @job_site = JobSite.find(params[:id])
     end
     def job_site_params
-      #params.require(:job_site).permit({:assets_attributes => [{:id =>[]}]},{:assets_attributes => [{:asset => []}]}, :contact_name, :phone, :work_phone, :work_phone_ext, :mobile_phone, :fax, :website, :street1, :street2,
-      #                                 :city, :state, :zip, :direction, :easily_accessible, :cust_vacating_when, :parking_consideration,
-      #                                 :dumpster_loc_note, :side_garage_use, :driveway_dirt_asphalt, :electrical_location,
-      #                                 :water_sanitation_avail, :animals_restrain, :gutter_color_noted, :landscape_concerns,
-      #                                 :work_number_shift, :additional_notes, :job_status_id, :how_many_stories,
-      #                                 :existing_roof_type_id, :new_roof_type_id, :product_type_id, :product_color_id, :sales_rep_id,
-      #                                 :estimate_type_id, :contract_price, :deposit_due, :deposit_method, :job_notes,
-      #                                 :lead_sheet_note, :info_taken_by_id) if params[:job_site]
       params.require(:job_site).permit! if params[:job_site]
     end
 
@@ -226,6 +229,28 @@ class JobSitesController < ApplicationController
       params[:service_types_checkbox].each do |check|
         @job_service_type = JobServiceType.new("job_id" =>@job_site.id, "service_type_id"=>check.to_f)
         @job_service_type.save
+      end
+    end
+  end
+
+  def job_roof_type_save
+    if params[:new_roof_types_checkbox] != nil
+      params[:new_service_types_checkbox].each do |check|
+        roof_type_id_value = check
+        @job_roof_type = JobRoofType.new("job_id" =>@job_site.id, "new_roof_type_id"=>roof_type_id_value)
+        @job_roof_type.save
+      end
+    end
+  end
+  def job_roof_type_update
+    @job_roof_types = JobRoofType.where("job_id" =>@job_site.id)
+    if @job_roof_types != nil
+      @job_roof_types.destroy_all
+    end
+    if params[:new_roof_types_checkbox] != nil
+      params[:new_roof_types_checkbox].each do |check|
+        @job_roof_type = JobRoofType.new("job_id" =>@job_site.id, "new_roof_type_id"=>check.to_f)
+        @job_roof_type.save
       end
     end
   end

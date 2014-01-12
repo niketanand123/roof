@@ -109,7 +109,7 @@ pdf.stroke do
 end
 pdf.stroke_color "000000"
 y=y-15
-pdf.draw_text "REFERRAL INFORMATION:", :at => [x, y], :size => 12, :style => :bold
+pdf.draw_text "REFERRAL INFORMATION:", :at => [x, y], :size => 11, :style => :bold
 if @customer.lead_source_id != nil
     x=170
     lead_source = LeadSource.find(@customer.lead_source_id).source
@@ -120,7 +120,7 @@ if @customer.lead_source_id != nil
 end
 x=5
 y=y-15
-pdf.draw_text "Notes:", :at => [x, y], :size => 12, :style => :bold
+pdf.draw_text "Notes:", :at => [x, y], :size => 11, :style => :bold
 
 y=y-15
 pdf.stroke_color "045FB4"
@@ -131,8 +131,8 @@ end
 pdf.stroke_color "000000"
 pdf.line_width(1)
 
-y=y-25
-pdf.draw_text "BUILDING INFORMATION:", :at => [x, y], :size => 12, :style => :bold
+y=y-15
+pdf.draw_text "BUILDING INFORMATION:", :at => [x, y], :size => 11, :style => :bold
 x=x+150
 pdf.draw_text "Existing Roof Type:", :at => [x, y], :size => 11, :style => :bold
 if(@job_site.existing_roof_type_id != nil)
@@ -151,7 +151,7 @@ x=x+100
     end
 end
 x=155
-y=y-20
+y=y-15
 pdf.draw_text "Approx Age:", :at => [x, y], :size => 11, :style => :bold
 pdf.stroke do
     x=x+70
@@ -159,10 +159,10 @@ pdf.stroke do
 end
 
 x=5
-y=y-30
-pdf.draw_text "Notes:", :at => [x, y], :size => 12, :style => :bold
+y=y-15
+pdf.draw_text "Notes:", :at => [x, y], :size => 11, :style => :bold
 
-y=y-20
+y=y-15
 pdf.stroke_color "045FB4"
 pdf.stroke do
 pdf.line_width(6)
@@ -171,8 +171,8 @@ end
 pdf.stroke_color "000000"
 pdf.line_width(1)
 
-y=y-25
-pdf.draw_text "SERVICE REQUESTED:", :at => [x, y], :size => 12, :style => :bold
+y=y-15
+pdf.draw_text "SERVICE REQUESTED:", :at => [x, y], :size => 11, :style => :bold
 
 job_service_types = JobServiceType.where("job_id" =>@job_site.id)
 if(job_service_types != nil && job_service_types.size > 0)
@@ -191,21 +191,30 @@ if(job_service_types != nil && job_service_types.size > 0)
     end
 end
 x=5
-y=y-25
-pdf.draw_text "NEW ROOF OPTIONS:", :at => [x, y], :size => 12, :style => :bold
-pdf.stroke do
-    x=x+130
-    pdf.rectangle [x, y+12], 120, 15
-    x=x+130
-    pdf.rectangle [x, y+12], 120, 15
-    x=x+130
-    pdf.rectangle [x, y+12], 120, 15
+y=y-15
+pdf.draw_text "NEW ROOF OPTIONS:", :at => [x, y], :size => 11, :style => :bold
+job_roof_types = JobRoofType.where("job_id" =>@job_site.id)
+if(job_roof_types != nil && job_roof_types.size > 0)
+    total_roof_type = ""
+    count = 0
+    job_roof_types.each do |job_roof_type|
+        count = count + 1
+        total_roof_type = total_roof_type + RoofType.find(job_roof_type.new_roof_type_id).roof_type
+        if count != job_roof_types.size
+            total_roof_type = total_roof_type + ", "
+        end
+    end
+    x=x+140
+    pdf.bounding_box([x,y+9], :width => 500, :height => 100) do
+    pdf.text "<i><u>"+total_roof_type+"</u></i>", :size => 11, :inline_format => true
+    end
 end
+
 x=5
-y=y-30
+y=y-15
 pdf.draw_text "Notes:", :at => [x, y], :size => 12, :style => :bold
 
-y=y-20
+y=y-15
 pdf.stroke_color "045FB4"
 pdf.stroke do
 pdf.line_width(6)
@@ -215,19 +224,21 @@ pdf.stroke_color "000000"
 pdf.line_width(1)
 
 x=10
-y=y-150
+y=y-380
 
 pdf.text_box(@job_site.lead_sheet_note, :at => [x,y], :width => 530, :height => 100, :size => 11,
 :overflow => :shrink_to_fit)
 
 pdf.stroke do
     x=2
-    y=30
-    pdf.rectangle [x, y], 180, 50
+    y=20
+    w=30
+    l=180
+    pdf.rectangle [x, y], l, w
 
     x1=x+5
-    y1=y-30
-    pdf.draw_text "Info Taken By:", :at => [x1, y1], :size => 12, :style => :bold
+    y1=y-20
+    pdf.draw_text "Info Taken By:", :at => [x1, y1], :size => 11, :style => :bold
     if(@job_site.info_taken_by_id != nil)
         employee = Employee.find(@job_site.info_taken_by_id)
         first_name = employee.first_name
@@ -239,10 +250,9 @@ pdf.stroke do
     end
 
     x=x+180
-    pdf.rectangle [x, y], 180, 50
+    pdf.rectangle [x, y], l, w
     x1=x+5
-    y1=y-30
-    pdf.draw_text "Assigned To:", :at => [x1, y1], :size => 12, :style => :bold
+    pdf.draw_text "Assigned To:", :at => [x1, y1], :size => 11, :style => :bold
     if(@job_site.sales_rep_id != nil)
         employee = Employee.find(@job_site.sales_rep_id)
         first_name = employee.first_name
@@ -254,10 +264,9 @@ pdf.stroke do
     end
 
     x=x+180
-    pdf.rectangle [x, y], 180, 50
+    pdf.rectangle [x, y], l, w
     x1=x+5
-    y1=y-30
-    pdf.draw_text "Date Taken:", :at => [x1, y1], :size => 12, :style => :bold
+    pdf.draw_text "Date Taken:", :at => [x1, y1], :size => 11, :style => :bold
     if(@job_site.date_taken != nil)
         date_taken = @job_site.date_taken.strftime("%m/%d/%Y")
 

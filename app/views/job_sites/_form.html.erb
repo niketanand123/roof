@@ -214,6 +214,18 @@
         <td width="40%"><%= f.text_area :job_notes, :size=>"50x3" %></td>
       </tr>
     </table>
+    <table width="100%">
+      <tr>
+        <td width="10%">New Roof Types</td>
+        <td>
+          <% if @roof_types != nil %>
+              <% @roof_types.each do |t| %>
+                  <%= check_box_tag  "new_roof_types_checkbox[]",t.id, @new_roof_type_ids !=nil && @new_roof_type_ids.include?(t.id) %> <%= t.roof_type %>  &nbsp;
+              <%end%>
+          <%end%>
+        </td>
+      </tr>
+    </table>
 
     <br>
 

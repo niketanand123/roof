@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140111090604) do
+ActiveRecord::Schema.define(version: 20140112010904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -244,6 +244,21 @@ ActiveRecord::Schema.define(version: 20140111090604) do
     t.integer  "job_site_id"
   end
 
+  create_table "job_roof_types", force: true do |t|
+    t.integer  "job_id"
+    t.integer  "new_roof_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_roof_types01", force: true do |t|
+    t.integer "job_id",           null: false
+    t.integer "new_roof_type_id", null: false
+  end
+
+  add_index "job_roof_types01", ["id"], name: "fk_roof_type_idx01", using: :btree
+  add_index "job_roof_types01", ["job_id"], name: "fk_job_site_id_idx01", using: :btree
+
   create_table "job_service_types", force: true do |t|
     t.integer "job_id",          null: false
     t.integer "service_type_id", null: false
@@ -347,9 +362,9 @@ ActiveRecord::Schema.define(version: 20140111090604) do
   end
 
   create_table "sales_taxes", force: true do |t|
-    t.decimal   "sales_tax"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "sales_tax"
   end
 
   create_table "service_types", force: true do |t|
