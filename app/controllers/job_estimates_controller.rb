@@ -64,6 +64,7 @@ class JobEstimatesController < ApplicationController
     else
       @not_added_job_estimate_items = Assembly.all
     end
+    @job_estimate.total_item_price = calculate_total_item_price (@items)
   end
 
   def delete_estimate_item
@@ -88,6 +89,7 @@ class JobEstimatesController < ApplicationController
       if @job_estimate.save
         total_price = insert_estimate_items(@job_estimate.id)
         @job_estimate.update(:total_item_price =>total_price)
+        @job_estimate.total_item_price = total_price
         format.html { redirect_to edit_customer_job_site_job_estimate_path(:customer_id=>@customer.id,:job_site_id => @job_site.id,:id =>@job_estimate.id), notice: 'Job estimate was successfully created.' }
         format.xml  { render :xml => @job_estimate, :status => :created, :location => [@job_site, @job_estimate] }
       else
@@ -104,6 +106,7 @@ class JobEstimatesController < ApplicationController
     #update_job_estimate_total_price
     total_price = insert_estimate_items(@job_estimate.id)
     @job_estimate.update(:total_item_price =>total_price)
+    @job_estimate.total_item_price = total_price
     respond_to do |format|
         format.html { redirect_to edit_customer_job_site_job_estimate_path(:customer_id=>@customer.id,:job_site_id => @job_site.id,:id =>@job_estimate.id), notice: 'Items are added successfully.' }
     end
@@ -172,10 +175,14 @@ class JobEstimatesController < ApplicationController
   end
   def update_job_estimate_total_price
     @items = JobEstimateItem.where(:job_estimate_id => @job_estimate.id)
-    total_price = 0
-    @items.each do |item|
+    total_price = calculate_total_item_price(@items)
+    @job_estimate.update(:total_item_price=>total_price)
+  end
+  def calculate_total_item_price (items)
+    total_price =0
+    items.each do |item|
       total_price = total_price + item.item_extended
     end
-    @job_estimate.update(:total_item_price=>total_price)
+    return total_price
   end
 end

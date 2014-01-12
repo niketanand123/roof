@@ -115,11 +115,13 @@
     </br>
     <table width="100%">
       <tr>
-        <td width="20%">Total Items: <%= number_to_currency(@job_estimate.total_item_price) %></td>
-        <td width="60%"></td>
+        <td width="10%">Total Items: </td>
+        <td width="15%"><%= number_to_currency(@job_estimate.total_item_price) %></td>
+        <td width="75%"></td>
       </tr>
       <tr>
-        <td>Price Adjustment: $<%= f.text_field :price_adjustment, :size=>20 %></td>
+        <td>Price Adjustment: </td>
+        <td>$<%= f.text_field :price_adjustment, :size=>20 %></td>
         <td>Reason: <%= f.text_field :reason_desc, :size=> 100 %></td>
       </tr>
     </table>
