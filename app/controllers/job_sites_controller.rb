@@ -50,7 +50,7 @@ class JobSitesController < ApplicationController
     @service_types = ServiceType.all
     @roof_types = RoofType.all
     #@job_photo = @job_site.job_photos.build
-    @job_site.assets.build
+    5.times {@job_site.assets.build}
   end
 
   def edit
@@ -66,7 +66,7 @@ class JobSitesController < ApplicationController
     @new_roof_type_ids = @job_roof_types.collect{|p| p.new_roof_type_id}
 
     set_map_marker(@job_site)
-    @job_site.assets.build
+    5.times {@job_site.assets.build}
     @job_site.phone = @job_site.phone.format_phone
     @job_site.work_phone = @job_site.work_phone.format_phone
     @job_site.mobile_phone = @job_site.mobile_phone.format_phone
