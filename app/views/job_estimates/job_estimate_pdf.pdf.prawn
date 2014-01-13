@@ -115,7 +115,7 @@ if (@job_estimate_items.size > 0)
         pdf.horizontal_line(x, x+530, :at => y-2)
     end
     total_price = 0.0
-    y = y - 30
+    y = y - 20
     @job_estimate_items.each do |job_estimate_item|
         desc = Assembly.where(:id=>job_estimate_item.master_item_id).pluck(:item_description).first
         pdf.text_box(desc, :at => [x+2,y+10], :width => 350, :height => 100, :size => 11,
@@ -123,17 +123,16 @@ if (@job_estimate_items.size > 0)
         pdf.draw_text job_estimate_item.qty, :at => [x1, y], :size => 11
         pdf.draw_text number_to_currency(job_estimate_item.retail_price), :at => [x2, y], :size => 11
         pdf.draw_text number_to_currency(job_estimate_item.item_extended), :at => [x3+10, y], :size => 11
-        y = y - 30
+        y = y - 20
         total_price = total_price + job_estimate_item.item_extended
     end
-    y = y - 20
     pdf.stroke do
         pdf.line_width(1)
-        pdf.horizontal_line(x, x+530, :at => y-2)
+        pdf.horizontal_line(x, x+530, :at => y+10)
     end
     end
-    x=x+440
-    y = y - 15
+    x=x+435
+    y = y - 5
     pdf.draw_text "TOTAL:", :at => [x, y], :size => 11, :style=>:bold
     pdf.draw_text number_to_currency(total_price), :at => [x+50, y], :size => 11
 
