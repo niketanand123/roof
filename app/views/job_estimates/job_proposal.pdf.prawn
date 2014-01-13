@@ -118,7 +118,7 @@ if (@job_estimate_items.size > 0)
         pdf.fill_color "04B431"
         pdf.draw_text job_estimate_item.step, :at => [x_axis, y_axis], :size => 11
         pdf.bounding_box([x_axis+20,y_axis+8], :width => 500, :height => 30) do
-            desc =  Assembly.where(:id=>job_estimate_item.master_item_id).pluck(:item_description).first
+            desc =  Assembly.where(:id=>job_estimate_item.master_item_id).pluck(:proposal_description).first
             pdf.text "<b><i><u>"+ desc +"</u></i></b>", :size => 10, :inline_format => true
         end
         y_axis = y_axis - 20
