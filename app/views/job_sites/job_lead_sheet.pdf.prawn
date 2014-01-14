@@ -118,7 +118,7 @@ if @customer.lead_source_id != nil
     lead_source = LeadSource.find(@customer.lead_source_id).source
     pdf.line_width(1)
     pdf.bounding_box([x,y+8], :width => 200, :height => 30) do
-        pdf.text "<i><u>Lead Source "+lead_source+"</u></i>", :size => 11, :inline_format => true
+        pdf.text "<i><u>"+lead_source+"</u></i>", :size => 11, :inline_format => true
     end
 end
 x=5
