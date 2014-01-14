@@ -4,7 +4,7 @@ class JobSite < ActiveRecord::Base
     has_many :assets, :class_name => 'Asset', :dependent => :destroy
     accepts_nested_attributes_for :assets, :allow_destroy => true
 
-    has_many :job_service_types, :class_name => 'JobServiceType'
+    has_many :job_service_types, :class_name => 'JobServiceType', :dependent => :destroy
     has_many :job_estimates, :class_name => 'JobEstimate', :dependent => :destroy
     has_many :job_call_notes, :class_name => 'JobCallNote', :dependent => :destroy
     has_many :job_tasks, :class_name => 'JobTask', :dependent => :destroy

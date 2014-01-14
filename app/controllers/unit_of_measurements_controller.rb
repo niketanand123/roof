@@ -54,10 +54,14 @@ class UnitOfMeasurementsController < ApplicationController
   # DELETE /unit_of_measurements/1
   # DELETE /unit_of_measurements/1.json
   def destroy
-    @unit_of_measurement.destroy
     respond_to do |format|
-      format.html { redirect_to unit_of_measurements_url }
-      format.json { head :no_content }
+      if @unit_of_measurement.destroy
+        format.html { redirect_to unit_of_measurements_url, notice: 'UOM was successfully deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to unit_of_measurements_url, notice: "An Error Occurred! #{@unit_of_measurement.errors[:base].to_s}"}
+        format.json { head :ok }
+      end
     end
   end
 

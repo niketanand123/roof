@@ -22,6 +22,13 @@ class Customer < ActiveRecord::Base
     geocoded_by :set_address
     after_validation :geocode
     before_save    :format_phone
+    before_destroy :without_dependency
+    def without_dependency
+      if self.job_sites.size() > 0
+        self.errors.add :base, "The customer cannot be deleted because it has job sites associated to it"
+      end
+      self.errors.blank?
+    end
 
     def format_phone
       self.home_phone = self.home_phone.convert_to_phone

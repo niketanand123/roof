@@ -103,11 +103,14 @@ class CustomersController < ApplicationController
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
-    @customer.is_active=0
-    @customer.update(customer_params)
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Customer has been deleted successfully.' }
-      format.json { head :no_content }
+      if @customer.job_sites.size() > 0
+        format.html { redirect_to @customer, notice: 'An Error Occurred! Customer cannot be deleted because it has job sites associated to it.' }
+      else
+        @customer.is_active=0
+        @customer.update(customer_params)
+        format.html { redirect_to customers_url, notice: 'Customer has been deleted successfully.' }
+      end
     end
   end
 
