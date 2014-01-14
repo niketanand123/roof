@@ -137,4 +137,17 @@ if (@job_estimate_items.size > 0)
     y = y - 5
     pdf.draw_text "TOTAL:", :at => [x, y], :size => 11, :style=>:bold
     pdf.draw_text number_to_currency(total_price), :at => [x+50, y], :size => 11
+    x=x-55
+    y = y - 15
+    pdf.draw_text "Price Adjustment:", :at => [x, y], :size => 11, :style=>:bold
+    pdf.draw_text number_to_currency(@job_estimate.price_adjustment), :at => [x+105, y], :size => 11
+    pdf.stroke do
+        pdf.line_width(1)
+        pdf.horizontal_line(10, 540, :at => y-5)
+    end
+    y = y - 20
+    x=x+15
+    pdf.draw_text "Contract Price:", :at => [x, y], :size => 11, :style=>:bold
+    pdf.draw_text number_to_currency(@job_estimate.contract_price), :at => [x+90, y], :size => 11
+
 

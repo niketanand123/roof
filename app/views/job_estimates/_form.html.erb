@@ -124,6 +124,10 @@
         <td>$<%= f.text_field :price_adjustment, :size=>20 %></td>
         <td>Reason: <%= f.text_field :reason_desc, :size=> 100 %></td>
       </tr>
+      <tr>
+        <td>Contract Price: </td>
+        <td colspan="2"><%= number_to_currency(@job_estimate.contract_price) %></td>
+      </tr>
     </table>
     <br/>
     <%= link_to 'Printable Estimate(PDF)',  job_estimate_pdf_path(:id=>@job_estimate.id,:customer_id=>@customer.id,:job_site_id=>@job_site.id, :format=>"pdf") %>

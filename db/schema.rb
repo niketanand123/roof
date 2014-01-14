@@ -235,13 +235,14 @@ ActiveRecord::Schema.define(version: 20140112010904) do
 
   create_table "job_estimates", force: true do |t|
     t.string   "name"
-    t.decimal  "total_item_price"
-    t.decimal  "price_adjustment"
+    t.float    "total_item_price"
+    t.float    "price_adjustment"
     t.string   "reason_desc"
     t.integer  "estimate_status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "job_site_id"
+    t.float    "contract_price"
   end
 
   create_table "job_roof_types", force: true do |t|
