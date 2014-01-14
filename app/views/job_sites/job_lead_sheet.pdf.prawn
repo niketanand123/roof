@@ -86,6 +86,8 @@ pdf.text "<u>"+Time.now.strftime("%B %d, %Y")+"</u>", :size => 11, :inline_forma
 end
 
 y=y-15
+pdf.draw_text @job_site.contact_name, :at => [x, y], :size => 11
+y=y-15
 pdf.draw_text @job_site.street1, :at => [x, y], :size => 11
 y=y-15
 if @job_site.city.nil? || @job_site.city.empty?

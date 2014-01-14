@@ -85,6 +85,8 @@ pdf.text "<u>"+Time.now.strftime("%B %d, %Y")+"</u>", :size => 11, :inline_forma
 end
 
 y=y-15
+pdf.draw_text @job_site.contact_name, :at => [x, y], :size => 11
+y=y-15
 pdf.draw_text @job_site.street1, :at => [x, y], :size => 11
 y=y-15
 if @job_site.city.nil? || @job_site.city.empty?
@@ -128,7 +130,7 @@ if (@job_estimate_items.size > 0)
     end
     pdf.stroke do
         pdf.line_width(1)
-        pdf.horizontal_line(x, x+530, :at => y+10)
+        pdf.horizontal_line(x, x+530, :at => y+5)
     end
     end
     x=x+435
