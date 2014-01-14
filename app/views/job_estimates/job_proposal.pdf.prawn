@@ -121,7 +121,7 @@ if (@job_estimate_items.size > 0)
         pdf.draw_text job_estimate_item.step, :at => [x_axis, y_axis], :size => 11
         pdf.bounding_box([x_axis+20,y_axis+8], :width => 500, :height => 30) do
             desc =  Assembly.where(:id=>job_estimate_item.master_item_id).pluck(:proposal_description).first
-            pdf.text "<b><i><u>"+ desc +"</u></i></b>", :size => 10, :inline_format => true
+            pdf.text "<b><i>"+ desc +"</i></b>", :size => 10, :inline_format => true
         end
         y_axis = y_axis - 20
     end
@@ -145,6 +145,8 @@ end
 
 pdf.font_size(9) do
     y_axis = y-30
+    pdf.draw_text "Contract Price: "+number_to_currency_in_words(@job_estimate.contract_price)+" "+number_to_currency(@job_estimate.contract_price), :at => [x, y_axis]
+    y_axis = y_axis-15
     pdf.draw_text "PAYMENT TERMS: (Deposit 1/3rd)", :at => [x, y_axis]
     pdf.stroke do
         pdf.horizontal_line(165, 255, :at => y_axis)
@@ -155,7 +157,7 @@ pdf.font_size(9) do
     end
     pdf.draw_text "(1/3rd) At Dry in/Balance on Completion", :at => [355, y_axis], :style =>:bold
 
-    y_axis = y_axis-25
+    y_axis = y_axis-15
     pdf.draw_text "Accepted by:", :at => [x, y_axis], :style =>:bold
     pdf.stroke do
     pdf.horizontal_line(65, 180, :at => y_axis)

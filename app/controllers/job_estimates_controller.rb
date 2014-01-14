@@ -79,7 +79,7 @@ class JobEstimatesController < ApplicationController
     JobEstimateItem.find(params[:estimate_item_id]).destroy
     @items = JobEstimateItem.where("job_estimate_id = ?", params[:id])
     @not_added_job_estimate_items = Assembly.where("id NOT IN (?)", @items.map(&:master_item_id))
-    update_job_estimate_total_price
+    update_job_estimate_total_price_on_delete
     respond_to do |format|
       format.html { redirect_to edit_customer_job_site_job_estimate_path(:customer_id=>@customer.id, :id=>params[:id],:job_site_id=>@job_site.id), notice: 'Item is removed successfully.' }
     end
@@ -117,8 +117,13 @@ class JobEstimatesController < ApplicationController
     #update_job_estimate_total_price
     total_price = insert_estimate_items(@job_estimate.id)
     total_price = number_with_precision(total_price, :precision => 2)
-    contract_price = total_price.to_f.round
-    price_adjustment = number_with_precision(contract_price.to_f - total_price.to_f, :precision => 2)
+    if @job_estimate.price_adjustment.nil?
+      contract_price = total_price.to_f.round
+      price_adjustment = number_with_precision(contract_price.to_f - total_price.to_f, :precision => 2)
+    else
+      price_adjustment = @job_estimate.price_adjustment
+      contract_price = number_with_precision(total_price.to_f + price_adjustment.to_f, :precision => 2)
+    end
     @job_estimate.total_item_price = total_price
     @job_estimate.contract_price = contract_price
     @job_estimate.price_adjustment = price_adjustment
@@ -140,7 +145,7 @@ class JobEstimatesController < ApplicationController
     update_job_estimate_total_price
     respond_to do |format|
       if @job_estimate.update_attributes(job_estimate_params)
-        format.html { redirect_to edit_customer_job_site_job_estimate_path(:customer_id=>@customer.id,:job_site_id => @job_site.id,:id =>@job_estimate.id), notice: 'Job estimate was successfully updated.' }
+        format.html { redirect_to edit_customer_job_site_path(:customer_id=>@customer.id,:id => @job_site.id), notice: 'Job estimate was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -194,9 +199,22 @@ class JobEstimatesController < ApplicationController
     @items = JobEstimateItem.where(:job_estimate_id => @job_estimate.id)
     total_price = calculate_total_item_price(@items)
     total_price = number_with_precision(total_price, :precision => 2)
-    price_adjustment = number_with_precision(@job_estimate.price_adjustment , :precision => 2)
+    price_adjustment = params[:job_estimate][:price_adjustment]
+    if price_adjustment.nil? || price_adjustment.length ==0
+      price_adjustment = 0
+    end
+    price_adjustment = number_with_precision(price_adjustment.to_f , :precision => 2)
     contract_price = number_with_precision(total_price.to_f + price_adjustment.to_f , :precision => 2)
-    @job_estimate.update(:total_item_price=>total_price, :contract_price=>contract_price, :price_adjustment=>price_adjustment)
+    @job_estimate.update(:total_item_price=>total_price, :contract_price=>contract_price)
+  end
+  def update_job_estimate_total_price_on_delete
+    @items = JobEstimateItem.where(:job_estimate_id => @job_estimate.id)
+    total_price = calculate_total_item_price(@items)
+    total_price = number_with_precision(total_price, :precision => 2)
+    price_adjustment = @job_estimate.price_adjustment
+    price_adjustment = number_with_precision(price_adjustment.to_f , :precision => 2)
+    contract_price = number_with_precision(total_price.to_f + price_adjustment.to_f , :precision => 2)
+    @job_estimate.update(:total_item_price=>total_price, :contract_price=>contract_price)
   end
   def calculate_total_item_price (items)
     total_price =0

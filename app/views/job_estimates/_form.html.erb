@@ -72,7 +72,7 @@
              item_extended_id = "item_extended_"+job_estimate_item.id.to_s
           %>
           <tr  class="<%= cycle('oddrow', 'evenrow') %>">
-            <td width="10%"><%= link_to "Delete", delete_estimate_item_path(:id=>@job_estimate.id,:job_site_id=>@job_site.id,:estimate_item_id => job_estimate_item.id), :method=>:get %></td>
+            <td width="10%"><%= link_to "Delete", delete_estimate_item_path(:customer_id=>@customer.id,:id=>@job_estimate.id,:job_site_id=>@job_site.id,:estimate_item_id => job_estimate_item.id), :method=>:get %></td>
             <td width="10%"><%= text_field_tag "step",job_estimate_item.step, :id => item_step_id, :size=>10%></td>
             <td width="10%"><%= assembly.item_description%></td>
             <td width="10%"><%= UnitOfMeasurement.find(assembly.uom_id).unit%></td>
