@@ -6,6 +6,18 @@
                 $.get("/populate_company", {company_id: that.val()}, null, "script");
             });
         }
+        jQuery(function($)  {
+            $('#customer_lead_source_id').change(function() {
+                if ($('#customer_lead_source_id :selected').text() == 'Letter') {
+                    $('#referral_notes_div').show();
+                    $('#referral_notes_lebel_div').show();
+                } else {
+                    $('#referral_notes_div').hide();
+                    $('#customer_referral_notes').val("");
+                    $('#referral_notes_lebel_div').hide();
+                }
+            }).change();
+        });
         jQuery(function($) {
             $.mask.definitions['~']='[+-]';
             $('#customer_home_phone').mask('(999) 999-9999');
@@ -86,11 +98,6 @@
         <td width="10%">website</td><td width="22%" colspan="4"><%= f.text_field :website, :size => "100"%></td>
       </tr>
     </table>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#customer_company_id").populateCompanyValuesWithAjax();
-        });
-    </script>
     <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">
       <span style="background-color:#336699; ">
         <%=image_tag("tab-ldark.gif", :height=>"14", :width => "10")%>
@@ -108,22 +115,35 @@
           <%= f.select(:type, options_for_select(CustomerType.all.map{|t| [t.type, t.id]}, @customer.type),:include_blank => "Choose Customer Type") %>
         </td>
         <td width="1%"></td>
-        <td width="15%">Lead Source</td>
+        <td width="15%">Sales Person</td>
         <td width="35%">
-          <%= f.select(:lead_source_id, options_for_select(LeadSource.all.map{|l| [l.source, l.id]}, @customer.lead_source_id), :include_blank => "Choose Source") %>
+          <%= f.select(:sales_person_id, options_for_select(Employee.all.map{|s| [s.first_name+' '+s.last_name, s.id]}, @customer.sales_person_id), :include_blank => "Choose Sales Person") %>
+
         </td>
       </tr>
       <tr>
-        <td>Sales Person</td>
+        <td>Lead Source</td>
         <td>
-          <%= f.select(:sales_person_id, options_for_select(Employee.all.map{|s| [s.first_name+' '+s.last_name, s.id]}, @customer.sales_person_id), :include_blank => "Choose Sales Person") %>
+          <%= f.select(:lead_source_id, options_for_select(LeadSource.all.map{|l| [l.source, l.id]}, @customer.lead_source_id), :include_blank => "Choose Source") %>
         </td>
         <td></td>
-        <td></td>
-        <td></td>
+        <td><div id="referral_notes_lebel_div">Referral Notes</div></td>
+        <td><div id="referral_notes_div"><%= f.text_area :referral_notes, :size => "30x3" %></div></td>
       </tr>
-
     </table>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            if ($('#customer_lead_source_id :selected').text() == 'Letter') {
+                $('#referral_notes_div').show();
+                $('#referral_notes_lebel_div').show();
+            } else {
+                $('#referral_notes_div').hide();
+                $('#customer_referral_notes').val("");
+                $('#referral_notes_lebel_div').hide();
+            }
+            $("#customer_company_id").populateCompanyValuesWithAjax();
+        });
+    </script>
     <br>
     <table width="750px">
       <tr>

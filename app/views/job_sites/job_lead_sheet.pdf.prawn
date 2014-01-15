@@ -114,7 +114,7 @@ pdf.stroke_color "000000"
 y=y-15
 pdf.draw_text "REFERRAL INFORMATION:", :at => [x, y], :size => 11, :style => :bold
 if @customer.lead_source_id != nil
-    x=170
+    x=155
     lead_source = LeadSource.find(@customer.lead_source_id).source
     pdf.line_width(1)
     pdf.bounding_box([x,y+8], :width => 200, :height => 30) do
@@ -124,7 +124,13 @@ end
 x=5
 y=y-15
 pdf.draw_text "Notes:", :at => [x, y], :size => 11, :style => :bold
-
+if lead_source != nil && lead_source == "Letter"
+    x=50
+    pdf.bounding_box([x,y+8], :width => 500, :height => 30) do
+    pdf.text "<i>"+@customer.referral_notes+"</i>", :size => 11, :inline_format => true
+    end
+end
+x=5
 y=y-15
 pdf.stroke_color "045FB4"
 pdf.stroke do
@@ -158,13 +164,18 @@ y=y-15
 pdf.draw_text "Approx Age:", :at => [x, y], :size => 11, :style => :bold
 pdf.stroke do
     x=x+70
+    pdf.draw_text @job_site.approx_age, :at => [x, y], :size => 11
     pdf.horizontal_line(x, x+70, :at => y-3)
 end
 
 x=5
 y=y-15
 pdf.draw_text "Notes:", :at => [x, y], :size => 11, :style => :bold
-
+x=50
+pdf.bounding_box([x,y+8], :width => 500, :height => 30) do
+    pdf.text "<i>"+@job_site.job_notes+"</i>", :size => 11, :inline_format => true
+end
+x=5
 y=y-15
 pdf.stroke_color "045FB4"
 pdf.stroke do
@@ -216,7 +227,11 @@ end
 x=5
 y=y-15
 pdf.draw_text "Notes:", :at => [x, y], :size => 12, :style => :bold
-
+x=50
+pdf.bounding_box([x,y+8], :width => 500, :height => 30) do
+pdf.text "<i>"+@job_site.lead_sheet_note+"</i>", :size => 11, :inline_format => true
+end
+x=5
 y=y-15
 pdf.stroke_color "045FB4"
 pdf.stroke do

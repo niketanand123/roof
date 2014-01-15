@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20140112010904) do
     t.decimal  "longitude",                   precision: 11, scale: 8
     t.integer  "is_active",       limit: 2,                            default: 1
     t.string   "status",          limit: 50,                           default: "Lead"
+    t.string   "referral_notes",  limit: 300
   end
 
   add_index "customer", ["company_id"], name: "fk_cust_company_idx", using: :btree
@@ -298,6 +299,7 @@ ActiveRecord::Schema.define(version: 20140112010904) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_closed",                                                  default: false
+    t.string   "approx_age",            limit: 100
   end
 
   add_index "job_site", ["customer_id"], name: "fk_job_customer_idx", using: :btree
