@@ -14,9 +14,9 @@
              proposal_desc_id = "proposal_desc_"+job_estimate_item.id.to_s
           %>
           <tr  class="<%= cycle('oddrow', 'evenrow') %>">
-            <td width="10%"><%= job_estimate_item.step %></td>
-            <td width="10%"><%= text_field_tag proposal_desc_id,Assembly.where(:id=>job_estimate_item.master_item_id).pluck(:proposal_description).first, :id => proposal_desc_id, :size=>100 %></td>
-                      </tr>
+            <td><%= job_estimate_item.step %></td>
+            <td><%= text_area_tag proposal_desc_id,Assembly.where(:id=>job_estimate_item.master_item_id).pluck(:proposal_description).first, :id => proposal_desc_id, :size=>"100x3" %></td>
+          </tr>
       <% end %>
     </table>
     <input id="customer_id" name="customer_id" type="hidden" value="<%= @customer.id %>">
