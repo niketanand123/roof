@@ -15,7 +15,7 @@
           %>
           <tr  class="<%= cycle('oddrow', 'evenrow') %>">
             <td width="10%"><%= job_estimate_item.step %></td>
-            <td width="10%"><%= text_field_tag proposal_desc_id,job_estimate_item.proposal_desc, :id => proposal_desc_id, :size=>100 %></td>
+            <td width="10%"><%= text_field_tag proposal_desc_id,Assembly.where(:id=>job_estimate_item.master_item_id).pluck(:proposal_description).first, :id => proposal_desc_id, :size=>100 %></td>
                       </tr>
       <% end %>
     </table>
