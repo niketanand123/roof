@@ -17,7 +17,29 @@ class JobEstimatesController < ApplicationController
 
   def job_proposal
     @job_estimate_items = JobEstimateItem.order("step asc").where("job_estimate_id = ?", @job_estimate.id)
+    @job_estimate_items.each do |item|
+      proposal_id = "proposal_desc_"+item.id.to_s
+      if params[:"#{proposal_id}"].nil?
+        item.proposal_desc = Assembly.where(:id=>item.master_item_id).pluck(:proposal_description).first
+      else
+        item.proposal_desc = params[:"#{proposal_id}"] unless params[:"#{proposal_id}"].nil?
+      end
+    end
+    respond_to do |format|
+      format.pdf
+    end
   end
+  def update_proposal_verbiage
+    estimate_id = params[:id]
+    @customer = Customer.find(params[:customer_id])
+    @job_site = JobSite.find(params[:job_site_id])
+    @job_estimate = JobEstimate.find(estimate_id)
+    @items = JobEstimateItem.order("step asc").where("job_estimate_id = ?", estimate_id)
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def update_estimate_item
     if params[:id].present? && params[:qty].present?
       @item_id = params[:id]
@@ -140,6 +162,7 @@ class JobEstimatesController < ApplicationController
     if(params[:commit] == "Add Item")
       return add_items
     end
+
     @job_site = JobSite.find(params[:job_site_id])
     @customer = Customer.find(@job_site.customer_id)
     update_job_estimate_total_price

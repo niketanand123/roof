@@ -12,11 +12,38 @@
                 $.get("/update_estimate_item", {step: that.val(), id: job_estimate_item_id, extended: extended_item}, null, "script");
             });
         }
+        function confirmation(question, cancel_url, yes_url, parameters) {
+            var defer = $.Deferred();
+            $('<div></div>')
+                    .html(question)
+                    .dialog({
+                        autoOpen: true,
+                        modal: true,
+                        title: 'Confirmation',
+                        buttons: {
+                            "Yes": function () {
+                                window.location.href = yes_url+parameters;
+                            },
+                            "No": function () {
+                                window.location.href = cancel_url+parameters;
+                            }
+                        }
+                    });
+            return defer.promise();
+        };
+        function proposal_onclick(cancel_url, yes_url, parameters){
+            var question = "Would you like to change verbiage?";
+            confirmation(question, cancel_url, yes_url, parameters).then(function (answer) {
+                var ansbool = Boolean.parse(answer.toString());
+                if(ansbool){
+                    alert("this is obviously " + ansbool);//TRUE
+                } else {
+                    alert("and then there is " + ansbool);//FALSE
+                }
+            });
+        }
         $(document).ready(function() {
             $('.nav-toggle').click(function(){
-//                $("#showItemId").bind('submit', function (event) {
-//                    event.preventDefault();
-//                });
                 //get collapse content selector
                 var collapse_content_selector = $(this).attr('href');
 
@@ -32,7 +59,6 @@
                     }
                 });
             });
-
         });
     </script>
     <% if @job_estimate.errors.any? %>
@@ -131,7 +157,7 @@
     </table>
     <br/>
     <%= link_to 'Printable Estimate(PDF)',  job_estimate_pdf_path(:id=>@job_estimate.id,:customer_id=>@customer.id,:job_site_id=>@job_site.id, :format=>"pdf") %>
-    &nbsp; &nbsp; <%= link_to 'Printable Proposal(PDF)',  job_proposal_path(:id=>@job_estimate.id,:customer_id=>@customer.id,:job_site_id=>@job_site.id, :format=>"pdf") %>
+    <button id="proposal_confirm" type="button" onclick="proposal_onclick('/job_proposal.pdf','/update_proposal_verbiage','?customer_id=<%= @customer.id %>&amp;id=<%= @job_estimate.id %>&amp;job_site_id=<%= @job_site.id %>')">Printable Proposal(PDF)</button>
     <br/>
     <br/>
     <div class="actions">

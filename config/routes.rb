@@ -122,7 +122,8 @@ Roof::Application.routes.draw do
 
   get 'job_lead_sheet' => 'job_sites#job_lead_sheet'
   get 'job_estimate_pdf' => 'job_estimates#job_estimate_pdf'
-  get 'job_proposal' => 'job_estimates#job_proposal'
+  match 'job_proposal', to: 'job_estimates#job_proposal', via: [:get, :post, :patch]
+  get 'update_proposal_verbiage' => 'job_estimates#update_proposal_verbiage'
   get 'delete_estimate_item' => 'job_estimates#delete_estimate_item'
   get 'update_estimate_item' => 'job_estimates#update_estimate_item'
   post 'add_items' => 'job_estimates#add_items'
