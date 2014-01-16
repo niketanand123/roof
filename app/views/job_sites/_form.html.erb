@@ -242,13 +242,8 @@
     <div style="background:#ffffff; line-height: 2px; width: 100%;padding-bottom: 10px;">
       <%=image_tag("dkbluespc.gif", :height=>"2", :width => "100%")%>
     </div>
-    <%= f.fields_for :assets do |asset_fields|%>
-        <p>
-          <% if asset_fields.object.new_record? %>
-              <%= asset_fields.file_field :asset %>
-          <% end %>
-        </p>
-    <% end %>
+    <input id="job_site_assets_asset" multiple="multiple" name="job_site[assets_attributes][][asset]" type="file" />
+    <button type="submit">Upload Photos</button>
     <div style="float: left;position:relative;">
         <%= f.fields_for :assets do |asset| %>
             <% unless asset.object.new_record? %>
