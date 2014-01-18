@@ -1,4 +1,5 @@
 class UnitOfMeasurementsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_unit_of_measurement, only: [:show, :edit, :update, :destroy]
 
   # GET /unit_of_measurements

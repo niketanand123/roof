@@ -1,4 +1,5 @@
 class JobEstimatesController < ApplicationController
+  load_and_authorize_resource
   include ActionView::Helpers::NumberHelper
   before_action :set_job_estimate, only: [:show, :edit, :update, :destroy, :delete_estimate_item,:job_estimate_pdf, :job_proposal]
 

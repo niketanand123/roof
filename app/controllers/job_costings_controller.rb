@@ -1,4 +1,5 @@
 class JobCostingsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_job_costing, only: [:show, :edit, :update, :destroy]
 
   # GET /job_costings

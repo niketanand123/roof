@@ -1,4 +1,5 @@
 class JobCallNotesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_job_call_note, only: [:show, :edit, :update, :destroy]
 
   # GET /job_call_notes

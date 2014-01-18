@@ -1,4 +1,5 @@
 class JobSitesController < ApplicationController
+  load_and_authorize_resource
   #before_action :set_job_site, only: [:show, :edit, :update, :destroy]
   def index
     basedOn = params[:basedOn]

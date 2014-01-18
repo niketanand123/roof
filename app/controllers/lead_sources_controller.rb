@@ -1,4 +1,5 @@
 class LeadSourcesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_lead_source, only: [:show, :edit, :update, :destroy]
 
   # GET /lead_sources

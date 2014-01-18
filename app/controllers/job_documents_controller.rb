@@ -1,4 +1,5 @@
 class JobDocumentsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_job_document, only: [:show, :edit, :update, :destroy]
 
   # GET /job_documents

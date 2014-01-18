@@ -56,85 +56,100 @@
 <table width="100%">
   <tr style="background-color: #2f6fab; text-align: center; font-weight:bold ">
     <td width="15%" style="font-weight: bold"><span style="color: white">Date: <%= Time.now.strftime("%m/%d/%Y")%></span></td>
-    <td width="70%"><%=image_tag("banner.png", :height=>"50", :width => "450")%></td>
-    <td width="15%"><a href="#"><span style="color: white">Help</span></a></td>
+    <td width="50%"><%=image_tag("banner.png", :height=>"50", :width => "450")%></td>
+    <td width="25%"><span style="color: white"><% if !current_user.nil? && !current_user.email.nil?  %><%= current_user.email %><% end %></span></td>
+    <td width="10%"><a href="#"><span style="color: white">Help</span></a></td>
   </tr>
 </table>
 
-<div style="color: white;font-weight: bold">
-<ul class="sf-menu" id="example" style="width: 100%">
-  <li><a href="/"><span style="color: white;font-weight: bold">Home</span></a></li>
-  <li class="current"><a href="#"><span style="color: white;font-weight: bold">Administration</span></a>
-    <ul>
-      <li><a href="/companies">Company Details</a></li>
-      <li><a href="/employees">Employee</a></li>
-      <li><a href="#">Setting</a></li>
-    </ul>
-  </li>
-  <li class="current"><a href="#"><span style="color: white;font-weight: bold">Search</span></a>
-    <ul>
-      <li><a href="/customers_search">Customer Search</a></li>
-      <li><a href="/job_sites">Job Search</a></li>
-    </ul>
-  </li>
-  <li><a href="/task_viewer"><span style="color: white;font-weight: bold">Task Viewer</span></a></li>
-  <li class="current"><a href="#"><span style="color: white;font-weight: bold">Production</span></a>
-    <ul>
-      <li><a href="#">Jobs</a></li>
-      <li><a href="#">WIP</a></li>
-      <li><a href="#">PO</a></li>
-      <li><a href="#">WO</a></li>
-      <li><a href="#">Invoice</a></li>
-      <li><a href="#">Inspections</a></li>
-    </ul>
-  </li>
-  <li class="current"><a href="#"><span style="color: white;font-weight: bold">Reports</span></a>
-    <ul>
-      <li><a href="#">Sales Rep</a></li>
-      <li><a href="#">Sales Zip</a></li>
-      <li><a href="#">Sales Terr</a></li>
-      <li><a href="#">Sales Color</a></li>
-      <li><a href="#">Sales Cat.</a></li>
-    </ul>
-  </li>
-  <li><a href="/vendors"><span style="color: white;font-weight: bold">Vendors</span></a></li>
-  <li class="current"><a href="#"><span style="color: white;font-weight: bold">Admin</span></a>
-    <ul>
-      <li><a href="/assemblies">Assemblies</a></li>
-      <li><a href="/item_codes">Items</a></li>
-      <li><a href="/product_colors">Colors</a></li>
-      <li><a href="/unit_of_measurements">Unit Measure</a></li>
-      <li><a href="/job_statuses">Status</a></li>
-      <li><a href="/customer_types">Customer Types</a></li>
-      <li><a href="/contact_types">Contact Types</a></li>
-      <li><a href="/service_types">Service Types</a></li>
-      <li><a href="/roof_types">Roof Types</a></li>
-      <li><a href="/product_types">Product Types</a></li>
-      <li><a href="/estimate_types">Estimate Types</a></li>
-      <li><a href="/job_estimate_statuses">Estimate Statuses</a></li>
-      <li><a href="/task_types">Task Types</a></li>
-      <% @sales_taxes = SalesTax.all
-         if @sales_taxes.any?
-           @is_new = false
-           @sales_tax = @sales_taxes.first
-         else
-           @is_new = true
-         end
-      %>
-      <li><a href="<%if @is_new %>/sales_taxes/new<%else%>/sales_taxes/<%= @sales_tax.id unless @sales_tax.nil? %>/edit<%end%>">Sales Tax</a></li>
-      <li><a href="/lead_sources">Lead Sources</a></li>
-      <li><a href="#">Category</a></li>
-      <li><a href="#">Pitch</a></li>
-      <li><a href="#">Division</a></li>
-      <li><a href="#">Territory</a></li>
-      <li><a href="#">Compensation</a></li>
-    </ul>
-  </li>
-  <li><a href="#"><span style="color: white;font-weight: bold">Log Out</span></a></li>
 
-</ul>
-</div>
+
+  <% if user_signed_in? %>
+
+      <div style="color: white;font-weight: bold">
+        <ul class="sf-menu" id="example" style="width: 100%">
+          <li><a href="/"><span style="color: white;font-weight: bold">Home</span></a></li>
+          <% if current_user.role?("superadmin") %>
+          <li class="current"><a href="#"><span style="color: white;font-weight: bold">Administration</span></a>
+            <ul>
+              <li><a href="/companies">Company Details</a></li>
+              <li><a href="/employees">Employee</a></li>
+              <li><a href="#">Setting</a></li>
+            </ul>
+          </li>
+          <%end %>
+          <li class="current"><a href="#"><span style="color: white;font-weight: bold">Search</span></a>
+            <ul>
+              <li><a href="/customers_search">Customer Search</a></li>
+              <li><a href="/job_sites">Job Search</a></li>
+            </ul>
+          </li>
+          <li><a href="/task_viewer"><span style="color: white;font-weight: bold">Task Viewer</span></a></li>
+          <li class="current"><a href="#"><span style="color: white;font-weight: bold">Production</span></a>
+            <ul>
+              <li><a href="#">Jobs</a></li>
+              <li><a href="#">WIP</a></li>
+              <li><a href="#">PO</a></li>
+              <li><a href="#">WO</a></li>
+              <li><a href="#">Invoice</a></li>
+              <li><a href="#">Inspections</a></li>
+            </ul>
+          </li>
+          <li class="current"><a href="#"><span style="color: white;font-weight: bold">Reports</span></a>
+            <ul>
+              <li><a href="#">Sales Rep</a></li>
+              <li><a href="#">Sales Zip</a></li>
+              <li><a href="#">Sales Terr</a></li>
+              <li><a href="#">Sales Color</a></li>
+              <li><a href="#">Sales Cat.</a></li>
+            </ul>
+          </li>
+          <li><a href="/vendors"><span style="color: white;font-weight: bold">Vendors</span></a></li>
+          <% if current_user.role?("admin") %>
+          <li class="current"><a href="#"><span style="color: white;font-weight: bold">Admin</span></a>
+            <ul>
+              <li><a href="/assemblies">Assemblies</a></li>
+              <li><a href="/item_codes">Items</a></li>
+              <li><a href="/product_colors">Colors</a></li>
+              <li><a href="/unit_of_measurements">Unit Measure</a></li>
+              <li><a href="/job_statuses">Status</a></li>
+              <li><a href="/customer_types">Customer Types</a></li>
+              <li><a href="/contact_types">Contact Types</a></li>
+              <li><a href="/service_types">Service Types</a></li>
+              <li><a href="/roof_types">Roof Types</a></li>
+              <li><a href="/product_types">Product Types</a></li>
+              <li><a href="/estimate_types">Estimate Types</a></li>
+              <li><a href="/job_estimate_statuses">Estimate Statuses</a></li>
+              <li><a href="/task_types">Task Types</a></li>
+              <% @sales_taxes = SalesTax.all
+                 if @sales_taxes.any?
+                   @is_new = false
+                   @sales_tax = @sales_taxes.first
+                 else
+                   @is_new = true
+                 end
+              %>
+              <li><a href="<%if @is_new %>/sales_taxes/new<%else%>/sales_taxes/<%= @sales_tax.id unless @sales_tax.nil? %>/edit<%end%>">Sales Tax</a></li>
+              <li><a href="/lead_sources">Lead Sources</a></li>
+              <li><a href="#">Category</a></li>
+              <li><a href="#">Pitch</a></li>
+              <li><a href="#">Division</a></li>
+              <li><a href="#">Territory</a></li>
+              <li><a href="#">Compensation</a></li>
+            </ul>
+          </li>
+          <%end %>
+          <li><a href="/user/edit"><span style="color: white;font-weight: bold">My info</span></a></li>
+          <li><a data-method="delete" href="/user/sign_out" rel="nofollow"><span style="color: white;font-weight: bold">Sign out</span></a></li>
+
+        </ul>
+      </div>
+
+  <% else %>
+      <%= link_to "sign in", new_user_session_path %>
+  <% end %>
 <p id="notice" style="font-weight: bold; font-size: 12; color: blue"><%= notice %></p>
+<p style="font-weight: bold; font-size: 18; color: red"><%= alert %></p>
 <%= yield %>
 </body>
 </html>
