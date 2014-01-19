@@ -1,22 +1,42 @@
-<h1>Listing users</h1>
+<h1>Listing Employees</h1>
 
-<table>
+<table style="width:1000px">
+  <thead>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th align="left">First name</th>
+    <th align="left">Last name</th>
+    <th align="left">Address</th>
+    <th align="left">City</th>
+    <th align="left">State</th>
+    <th align="left">Zip</th>
+    <th align="left">Phone</th>
+    <th align="left">Is active</th>
+    <th align="left">Role</th>
+    <th align="left"></th>
+    <th align="left"></th>
   </tr>
+  </thead>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.email %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+  <tbody>
+  <% @users.each do |user| %>
+      <tr class="<%= cycle('oddrow', 'evenrow') %>">
+        <td><%= link_to user.first_name , edit_user_path(user) %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.address %></td>
+        <td><%= user.city %></td>
+        <td><%= user.state %></td>
+        <td><%= user.zip %></td>
+        <td><%= number_to_phone(user.phone) %></td>
+        <td><%= user.is_active %></td>
+        <td><%user.roles.each do |role| %><%= role.description.to_s.camelize+" " %><%end %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
 </table>
 
-<br />
+<br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New Employee', new_user_path %>
+

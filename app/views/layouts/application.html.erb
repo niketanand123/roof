@@ -62,8 +62,6 @@
   </tr>
 </table>
 
-
-
   <% if user_signed_in? %>
 
       <div style="color: white;font-weight: bold">
@@ -73,7 +71,7 @@
           <li class="current"><a href="#"><span style="color: white;font-weight: bold">Administration</span></a>
             <ul>
               <li><a href="/companies">Company Details</a></li>
-              <li><a href="/employees">Employee</a></li>
+              <li><a href="/users">Employee</a></li>
               <li><a href="#">Setting</a></li>
             </ul>
           </li>
@@ -139,7 +137,7 @@
             </ul>
           </li>
           <%end %>
-          <li><a href="/user/edit"><span style="color: white;font-weight: bold">My info</span></a></li>
+          <% unless current_user.nil? %><li><a href="/users/<%= current_user.id %>/edit"><span style="color: white;font-weight: bold">My info</span></a></li><%end %>
           <li><a data-method="delete" href="/user/sign_out" rel="nofollow"><span style="color: white;font-weight: bold">Sign out</span></a></li>
 
         </ul>

@@ -180,7 +180,7 @@
         <td><%= f.select(:product_color_id, options_for_select(ProductColor.all.map{|t| [t.product_color, t.id]}, @job_site.product_color_id),:include_blank => "Choose Product Color") %></td>
         <td></td>
         <td>Sales Rep</td>
-        <td><%= f.select(:sales_rep_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.sales_rep_id),:include_blank => "Choose Sales Rep") %></td>
+        <td><%= f.select(:sales_rep_id, options_for_select(User.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.sales_rep_id),:include_blank => "Choose Sales Rep") %></td>
         <td></td>
         <td>Estimate Type</td>
         <td><%= f.select(:estimate_type_id, options_for_select(EstimateType.all.map{|t| [t.estimate_type, t.id]}, @job_site.estimate_type_id),:include_blank => "Choose Estimate Type") %></td>
@@ -199,7 +199,7 @@
         <td><%= f.text_field :unformatted_date_completed, :id => 'dateCompleted' %></td>
         <td></td>
         <td>Info Taken By</td>
-        <td><%= f.select(:info_taken_by_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.info_taken_by_id),:include_blank => "Choose Info Taken By") %></td>
+        <td><%= f.select(:info_taken_by_id, options_for_select(User.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.info_taken_by_id),:include_blank => "Choose Info Taken By") %></td>
       </tr>
       <tr>
         <td>Date Taken</td>

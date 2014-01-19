@@ -1,6 +1,6 @@
 class JobCallNote < ActiveRecord::Base
   belongs_to :job_site, :class_name => 'JobSite', :foreign_key => :job_site_id
-  belongs_to :employee, :class_name => 'Employee', :foreign_key => :employee_id
+  belongs_to :user, :class_name => 'User', :foreign_key => :user_id
 
   before_save    :format_date
   attr_accessor  :unformatted_call_date

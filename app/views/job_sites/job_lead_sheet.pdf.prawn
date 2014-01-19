@@ -258,7 +258,7 @@ pdf.stroke do
     y1=y-20
     pdf.draw_text "Info Taken By:", :at => [x1, y1], :size => 11, :style => :bold
     if(@job_site.info_taken_by_id != nil)
-        employee = Employee.find(@job_site.info_taken_by_id)
+        employee = User.find(@job_site.info_taken_by_id)
         first_name = employee.first_name
         last_name = employee.last_name
         info_taken_by = first_name +" "+last_name
@@ -272,7 +272,7 @@ pdf.stroke do
     x1=x+5
     pdf.draw_text "Assigned To:", :at => [x1, y1], :size => 11, :style => :bold
     if(@job_site.sales_rep_id != nil)
-        employee = Employee.find(@job_site.sales_rep_id)
+        employee = User.find(@job_site.sales_rep_id)
         first_name = employee.first_name
         last_name = employee.last_name
         assign_to = first_name +" "+last_name

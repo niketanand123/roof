@@ -117,7 +117,7 @@
         <td width="1%"></td>
         <td width="15%">Sales Person</td>
         <td width="35%">
-          <%= f.select(:sales_person_id, options_for_select(Employee.all.map{|s| [s.first_name+' '+s.last_name, s.id]}, @customer.sales_person_id), :include_blank => "Choose Sales Person") %>
+          <%= f.select(:sales_person_id, options_for_select(User.all.map{|s| [s.first_name+' '+s.last_name, s.id]}, @customer.sales_person_id), :include_blank => "Choose Sales Person") %>
 
         </td>
       </tr>

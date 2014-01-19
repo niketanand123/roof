@@ -16,11 +16,18 @@ class Ability
       return
     end
     if user.role? :admin
-      cannot :manage, [Company, Employee, User, Role]
+      cannot :manage, [Company, Role]
+      can :edit, User, :id =>user.id
+      can :update, User, :id =>user.id
+      can :read, User, :id =>user.id
       return
     end
     if user.role? :normal
-      cannot :manage, [Company, Employee, ItemCode, ProductColor, ContactType, CustomerType, EstimateType, JobStatus, LeadSource, ProductType, Role, User, RoofType, SalesTax, ServiceType, TaskType, UnitOfMeasurement, Vendor]
+      cannot :manage, [Company, ItemCode, ProductColor, ContactType, CustomerType, EstimateType, JobStatus, LeadSource, ProductType, Role, RoofType, SalesTax, ServiceType, TaskType, UnitOfMeasurement, Vendor]
+
+      can :edit, User, :id =>user.id
+      can :update, User, :id =>user.id
+      can :read, User, :id =>user.id
     end
   end
 end

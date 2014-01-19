@@ -29,14 +29,14 @@
         <td><%= f.text_field :unformatted_target_date, :id => 'targetDate' %></td>
         <td></td>
         <td>Entered By</td>
-        <td><%= f.select(:entered_by_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_task.entered_by_id),:include_blank => "Choose Entered By") %></td>
+        <td><%= f.select(:entered_by_id, options_for_select(User.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_task.entered_by_id),:include_blank => "Choose Entered By") %></td>
       </tr>
       <tr>
         <td>Date Completed</td>
         <td><%= f.text_field :unformatted_date_completed, :id => 'dateCompleted' %></td>
         <td></td>
         <td>Completed By</td>
-        <td><%= f.select(:completed_by_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_task.completed_by_id),:include_blank => "Choose Completed By") %></td>
+        <td><%= f.select(:completed_by_id, options_for_select(User.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_task.completed_by_id),:include_blank => "Choose Completed By") %></td>
       </tr>
     </table>
 

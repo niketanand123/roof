@@ -14,11 +14,11 @@ class JobSite < ActiveRecord::Base
     belongs_to :customer, :class_name => 'Customer', :foreign_key => :customer_id
     belongs_to :estimate_type, :class_name => 'EstimateType', :foreign_key => :estimate_type_id
     belongs_to :roof_type, :class_name => 'RoofType', :foreign_key => :existing_roof_type_id
-    belongs_to :employee, :class_name => 'Employee', :foreign_key => :info_taken_by_id
+    belongs_to :user, :class_name => 'User', :foreign_key => :info_taken_by_id
     belongs_to :roof_type, :class_name => 'RoofType', :foreign_key => :new_roof_type_id
     belongs_to :product_color, :class_name => 'ProductColor', :foreign_key => :product_color_id
     belongs_to :product_type, :class_name => 'ProductType', :foreign_key => :product_type_id
-    belongs_to :employee, :class_name => 'Employee', :foreign_key => :sales_rep_id
+    belongs_to :user, :class_name => 'User', :foreign_key => :sales_rep_id
 
     validates_presence_of :contact_name
     validates :street1,  presence: true, length: { maximum: 100 }

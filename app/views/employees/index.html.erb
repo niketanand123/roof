@@ -1,4 +1,4 @@
-<h1>Listing employees</h1>
+<h1>Listing Employees</h1>
 
 <table style="width:1000px">
   <thead>
@@ -20,7 +20,7 @@
   <tbody>
     <% @employees.each do |employee| %>
       <tr class="<%= cycle('oddrow', 'evenrow') %>">
-        <td><%= employee.first_name %></td>
+        <td><%= link_to employee.first_name , edit_employee_path(employee) %></td>
         <td><%= employee.last_name %></td>
         <td><%= employee.address %></td>
         <td><%= employee.city %></td>
