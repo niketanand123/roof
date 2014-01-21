@@ -1,5 +1,5 @@
 class AssemblyItemsController < ApplicationController
-  load_and_authorize_resource
+  #load_and_authorize_resource
   include ActionView::Helpers::NumberHelper
   before_action :set_assembly_item, only: [:show, :edit, :update, :destroy]
 

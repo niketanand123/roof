@@ -23,7 +23,8 @@ class Ability
       return
     end
     if user.role? :normal
-      cannot :manage, [Company, ItemCode, ProductColor, ContactType, CustomerType, EstimateType, JobStatus, LeadSource, ProductType, Role, RoofType, SalesTax, ServiceType, TaskType, UnitOfMeasurement, Vendor]
+      cannot :edit, [Company, ItemCode, ProductColor, ContactType, CustomerType, EstimateType, JobStatus, LeadSource, ProductType, Role, RoofType, SalesTax, ServiceType, TaskType, UnitOfMeasurement, Vendor]
+      cannot :update, [Company, ItemCode, ProductColor, ContactType, CustomerType, EstimateType, JobStatus, LeadSource, ProductType, Role, RoofType, SalesTax, ServiceType, TaskType, UnitOfMeasurement, Vendor]
 
       can :edit, User, :id =>user.id
       can :update, User, :id =>user.id

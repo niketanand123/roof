@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  strip_attributes
   has_many :user_roles, :foreign_key => 'user_id', :class_name => 'UserRole'
   has_many :roles, :through => :user_roles
   has_many :customers, :class_name => 'Customer'

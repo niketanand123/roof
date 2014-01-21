@@ -1,5 +1,5 @@
 class JobEstimateStatusesController < ApplicationController
-  load_and_authorize_resource
+  #load_and_authorize_resource
   before_action :set_job_estimate_status, only: [:show, :edit, :update, :destroy]
 
   # GET /job_estimate_statuses

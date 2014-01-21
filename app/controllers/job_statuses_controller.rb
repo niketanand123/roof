@@ -1,5 +1,5 @@
 class JobStatusesController < ApplicationController
-  load_and_authorize_resource
+  #load_and_authorize_resource
   before_action :set_job_status, only: [:show, :edit, :update, :destroy]
 
   # GET /job_statuses

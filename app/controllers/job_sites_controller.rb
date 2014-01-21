@@ -1,5 +1,5 @@
 class JobSitesController < ApplicationController
-  load_and_authorize_resource
+  #load_and_authorize_resource except: [:create, :index, :edit]
   #before_action :set_job_site, only: [:show, :edit, :update, :destroy]
   def index
     @job_sites = nil

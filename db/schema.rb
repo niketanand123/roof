@@ -164,12 +164,14 @@ ActiveRecord::Schema.define(version: 20140116155658) do
   create_table "job_call_notes", force: true do |t|
     t.integer  "job_site_id"
     t.string   "call_notes"
-    t.integer  "employee_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "call_time",   limit: 10
     t.date     "call_date"
   end
+
+  add_index "job_call_notes", ["user_id"], name: "fki_user_call_note", using: :btree
 
   create_table "job_change_orders", force: true do |t|
     t.integer  "job_site_id"
@@ -331,6 +333,9 @@ ActiveRecord::Schema.define(version: 20140116155658) do
     t.datetime "updated_at"
   end
 
+  add_index "job_tasks", ["completed_by_id"], name: "fki_comleted_user_id", using: :btree
+  add_index "job_tasks", ["entered_by_id"], name: "fki_entered_user_id", using: :btree
+
   create_table "lead_source", force: true do |t|
     t.string   "source",     limit: 50
     t.datetime "created_at"
@@ -410,18 +415,26 @@ ActiveRecord::Schema.define(version: 20140116155658) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                              default: "", null: false
+    t.string   "encrypted_password",                 default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name",             limit: 50
+    t.string   "last_name",              limit: 50
+    t.string   "address",                limit: 200
+    t.string   "state",                  limit: 50
+    t.string   "city",                   limit: 100
+    t.string   "zip",                    limit: 20
+    t.string   "phone",                  limit: 20
+    t.boolean  "is_active"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -446,5 +459,7 @@ ActiveRecord::Schema.define(version: 20140116155658) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "vendors", ["sales_rep_id"], name: "fki_sales_user_id", using: :btree
 
 end

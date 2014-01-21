@@ -19,6 +19,7 @@ gem 'paperclip'
 gem 'currency-in-words'
 gem 'devise'
 gem 'cancan'
+gem "strip_attributes"
 #gem 'protected_attributes'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
