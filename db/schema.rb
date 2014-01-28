@@ -265,8 +265,8 @@ ActiveRecord::Schema.define(version: 20140116155658) do
   add_index "job_service_types", ["service_type_id"], name: "fk_serv_type_idx", using: :btree
 
   create_table "job_site", force: true do |t|
-    t.integer  "customer_id",                                                                null: false
-    t.string   "contact_name",          limit: 100,                                          null: false
+    t.integer  "customer_id",                                                                 null: false
+    t.string   "contact_name",          limit: 100,                                           null: false
     t.string   "phone",                 limit: 15
     t.string   "work_phone",            limit: 15
     t.string   "work_phone_ext",        limit: 10
@@ -278,9 +278,9 @@ ActiveRecord::Schema.define(version: 20140116155658) do
     t.string   "city",                  limit: 50
     t.string   "state",                 limit: 50
     t.string   "zip",                   limit: 20
-    t.integer  "is_active",             limit: 2,                            default: 1
-    t.decimal  "latitude",                          precision: 10, scale: 8
-    t.decimal  "longitude",                         precision: 11, scale: 8
+    t.integer  "is_active",             limit: 2,                             default: 1
+    t.decimal  "latitude",                           precision: 10, scale: 8
+    t.decimal  "longitude",                          precision: 11, scale: 8
     t.date     "job_start_date"
     t.integer  "job_status_id"
     t.string   "how_many_stories"
@@ -294,13 +294,13 @@ ActiveRecord::Schema.define(version: 20140116155658) do
     t.string   "deposit_due"
     t.string   "deposit_method"
     t.date     "date_completed"
-    t.string   "job_notes"
-    t.string   "lead_sheet_note"
+    t.string   "job_notes",             limit: 1000
+    t.string   "lead_sheet_note",       limit: 1000
     t.integer  "info_taken_by_id"
     t.date     "date_taken"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_closed",                                                  default: false
+    t.boolean  "is_closed",                                                   default: false
     t.string   "approx_age",            limit: 100
   end
 
