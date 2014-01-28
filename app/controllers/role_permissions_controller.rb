@@ -100,6 +100,4 @@ class RolePermissionsController < ApplicationController
     end
   end
 
-
-  private :prepare
 end
