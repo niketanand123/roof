@@ -1,8 +1,10 @@
 <%= form_for(@user) do |f| %>
     <script type="text/javascript">
         jQuery(function($) {
+            alert('niket111');
             $.mask.definitions['~']='[+-]';
             $('#user_phone').mask('(999) 999-9999');
+            alert('niket222');
         });
     </script>
   <% if @user.errors.any? %>
