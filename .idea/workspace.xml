@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3a563950-0d41-4014-8b45-0552a93eed0b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="roof.iws" />
@@ -50,10 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="97" selection-start="458" selection-end="458" vertical-scroll-proportion="0.45266274" vertical-offset="0" max-vertical-offset="2703">
+            <state line="5" column="51" selection-start="172" selection-end="172" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="2737">
               <folding />
             </state>
           </provider>
@@ -68,10 +67,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="application.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="18" selection-start="598" selection-end="598" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="493">
+            <state line="13" column="22" selection-start="621" selection-end="621" vertical-scroll-proportion="0.32360741" vertical-offset="99" max-vertical-offset="476">
               <folding />
             </state>
           </provider>
@@ -152,8 +151,8 @@
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/jquery.xmaskedinput-1.3.1.min_.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/jquery.maskedinput.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
       </list>
     </option>
   </component>
@@ -999,7 +998,15 @@
       <created>1390996256205</created>
       <updated>1390996256205</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="http mask">
+      <created>1390998192998</created>
+      <updated>1390998192998</updated>
+    </task>
+    <task id="LOCAL-00118" summary="removed allpages">
+      <created>1390999030376</created>
+      <updated>1390999030376</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1081,8 +1088,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="proposal pdf update" />
-    <MESSAGE value="proposal pdf update&#10;" />
     <MESSAGE value="upload multiple photos" />
     <MESSAGE value="auth implementation" />
     <MESSAGE value="auth implementation&#10;" />
@@ -1106,7 +1111,9 @@
     <MESSAGE value="added xmask js" />
     <MESSAGE value="moved xmasked to vendor js" />
     <MESSAGE value="moved xmasked to vendor js&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="moved xmasked to vendor js&#10;" />
+    <MESSAGE value="http mask" />
+    <MESSAGE value="removed allpages" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed allpages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1383,16 +1390,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="18" selection-start="598" selection-end="598" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="493">
+        <state line="5" column="51" selection-start="172" selection-end="172" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="2737">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="97" selection-start="458" selection-end="458" vertical-scroll-proportion="0.45266274" vertical-offset="0" max-vertical-offset="2703">
+        <state line="13" column="22" selection-start="621" selection-end="621" vertical-scroll-proportion="0.32360741" vertical-offset="99" max-vertical-offset="476">
           <folding />
         </state>
       </provider>
