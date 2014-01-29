@@ -1,0 +1,1430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3a563950-0d41-4014-8b45-0552a93eed0b" name="Default" comment="">
+      <change type="MOVED" beforePath="C:\kingroof\roof\app\assets\javascripts\jquery.xmaskedinput-1.3.1.min_.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/xmaskedinput-1.3.1.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+    </list>
+    <ignored path="roof.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/roof@db_migrate.coverage" NAME="db:migrate Coverage Results" MODIFIED="1388249378448" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="roof" />
+    <SUITE FILE_PATH="coverage/roof@Development__roof.coverage" NAME="Development: roof Coverage Results" MODIFIED="1390964686626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="roof" />
+    <SUITE FILE_PATH="coverage/roof@routes.coverage" NAME="routes Coverage Results" MODIFIED="1388071226889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="roof" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="C:\kingroof\patch" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="roof" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="67" selection-start="1250" selection-end="1250" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="952">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="48" column="0" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.0" vertical-offset="494" max-vertical-offset="1122">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="xmaskedinput-1.3.1.min.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/xmaskedinput-1.3.1.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="3336" selection-start="3525" selection-end="3539" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="0" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="1377">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/users/_form.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="11" selection-start="203" selection-end="203" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="1734">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="444" selection-end="444" vertical-scroll-proportion="-3.4230769" vertical-offset="98" max-vertical-offset="2686">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="customers_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/customers_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="22" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="1841" max-vertical-offset="2618">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/customers/edit.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="0" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="425">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="3" selection-start="895" selection-end="895" vertical-scroll-proportion="1.0235602" vertical-offset="0" max-vertical-offset="493">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="job_sites_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/job_sites_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="54" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="1292" max-vertical-offset="4250">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="GeneratorOptions">
+    <option name="FORCE" value="true" />
+    <option name="ENVIRONMENT" value="development" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/app/controllers/vendors_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/employees/edit.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/employees/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/employees/new.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/employee.rb" />
+        <option value="$PROJECT_DIR$/app/views/employees/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/users/edit.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/customer.rb" />
+        <option value="$PROJECT_DIR$/app/models/job_call_note.rb" />
+        <option value="$PROJECT_DIR$/app/models/job_task.rb" />
+        <option value="$PROJECT_DIR$/app/models/vendor.rb" />
+        <option value="$PROJECT_DIR$/app/views/customers/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/job_call_notes/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/job_call_notes/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/vendors/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/job_sites/job_lead_sheet.pdf.prawn" />
+        <option value="$PROJECT_DIR$/app/views/job_tasks/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/job_tasks/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/job_tasks/index_all.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/users/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/job_call_notes/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/job_sites/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/job_sites_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/ability.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/assembly_items_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/customers_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/job_call_notes_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/job_change_orders_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/job_contacts_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/job_costings_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/job_documents_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/job_estimate_items_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/job_estimate_statuses_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/job_statuses_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/job_tasks_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/job_site.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/assemblies_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/job_estimates_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/assembly_items/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/assembly_items/populate_item_code.js.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/role_permissions_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/users/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/jquery.xmaskedinput-1.3.1.min_.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="roof" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="RailsProjectView" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="debugger.present.asked" value="true" />
+    <property name="FullScreen" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../patch/1.patch" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\kingroof\roof\public\javascripts" />
+      <recent name="C:\kingroof\roof\app\views\devise\registrations" />
+      <recent name="C:\kingroof\roof\app\views\users" />
+      <recent name="C:\kingroof\roof\app\views\roles" />
+      <recent name="C:\kingroof\roof\app\views\application" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\kingroof\roof\public\assets" />
+      <recent name="C:\kingroof\roof\config\initializers" />
+      <recent name="C:\kingroof\roof\app\views\job_sites" />
+      <recent name="C:\kingroof\roof\app\views\job_estimates" />
+      <recent name="C:\kingroof\roof\lib" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Rails.Development: roof">
+    <configuration default="false" name="db:migrate" type="RakeRunConfigurationType" factoryName="Rake" temporary="true">
+      <module name="roof" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="db:migrate" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TRACE" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_DRYRUN" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
+      <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="routes" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
+      <module name="roof" />
+      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$/config" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$MODULE_DIR$/config/routes.rb" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
+    <configuration default="true" type="RakeRunConfigurationType" factoryName="Rake">
+      <module name="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TRACE" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_DRYRUN" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="RailsRunConfigurationType" factoryName="Rails">
+      <predefined_log_file id="RUBY_RAILS_SERVER" enabled="true" />
+      <module name="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="127.0.0.1" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="Default" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="development" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="RSpecRunConfigurationType" factoryName="RSpec">
+      <predefined_log_file id="RUBY_RSPEC" enabled="true" />
+      <module name="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="RubyRunConfigurationType" factoryName="Ruby">
+      <module name="" />
+      <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RUBY_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="" />
+      <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest">
+      <predefined_log_file id="RUBY_TESTUNIT" enabled="true" />
+      <module name="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
+      <method />
+    </configuration>
+    <list size="7">
+      <item index="0" class="java.lang.String" itemvalue="Rails.Production: roof" />
+      <item index="1" class="java.lang.String" itemvalue="Rails.Development: roof" />
+      <item index="2" class="java.lang.String" itemvalue="Rake.test: roof" />
+      <item index="3" class="java.lang.String" itemvalue="Rake.spec: roof" />
+      <item index="4" class="java.lang.String" itemvalue="Rake.routes" />
+      <item index="5" class="java.lang.String" itemvalue="Rake.db:migrate" />
+      <item index="6" class="java.lang.String" itemvalue="Ruby.routes" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Ruby.routes" />
+        <item index="1" class="java.lang.String" itemvalue="Rake.db:migrate" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3a563950-0d41-4014-8b45-0552a93eed0b" name="Default" comment="" />
+      <created>1388068594486</created>
+      <updated>1388068594486</updated>
+    </task>
+    <task id="LOCAL-00001" summary="idea files&#10;">
+      <created>1388068994241</created>
+      <updated>1388068994241</updated>
+    </task>
+    <task id="LOCAL-00002" summary="unit of measurement">
+      <created>1388072027788</created>
+      <updated>1388072027788</updated>
+    </task>
+    <task id="LOCAL-00003" summary="unit of measurement&#10;">
+      <created>1388072057134</created>
+      <updated>1388072057134</updated>
+    </task>
+    <task id="LOCAL-00004" summary="pager to website, menu layout changes">
+      <created>1388126301483</created>
+      <updated>1388126301483</updated>
+    </task>
+    <task id="LOCAL-00005" summary="implement showing customer status">
+      <created>1388262682305</created>
+      <updated>1388262682305</updated>
+    </task>
+    <task id="LOCAL-00006" summary="reverted gem to debugger">
+      <created>1388263293043</created>
+      <updated>1388263293043</updated>
+    </task>
+    <task id="LOCAL-00007" summary="implemented Assembly and Assembly Items">
+      <created>1388497017814</created>
+      <updated>1388497017814</updated>
+    </task>
+    <task id="LOCAL-00008" summary="changed job estimates to use assembly">
+      <created>1388498172253</created>
+      <updated>1388498172253</updated>
+    </task>
+    <task id="LOCAL-00009" summary="validate assembly name and desc">
+      <created>1388499374348</created>
+      <updated>1388499374348</updated>
+    </task>
+    <task id="LOCAL-00010" summary="show edit assembly after create">
+      <created>1388499807033</created>
+      <updated>1388499807033</updated>
+    </task>
+    <task id="LOCAL-00011" summary="setting google map to satellite view">
+      <created>1388501392118</created>
+      <updated>1388501392118</updated>
+    </task>
+    <task id="LOCAL-00012" summary="job site linked with company drop down">
+      <created>1388505168038</created>
+      <updated>1388505168038</updated>
+    </task>
+    <task id="LOCAL-00013" summary="customer linked with company drop down, remove company from job&#10;">
+      <created>1388507707994</created>
+      <updated>1388507707994</updated>
+    </task>
+    <task id="LOCAL-00014" summary="customer linked with company drop down, remove company from job&#10;">
+      <created>1388507717107</created>
+      <updated>1388507717107</updated>
+    </task>
+    <task id="LOCAL-00015" summary="align customer info in job site">
+      <created>1388508179309</created>
+      <updated>1388508179309</updated>
+    </task>
+    <task id="LOCAL-00016" summary="admin menu update">
+      <created>1388508292485</created>
+      <updated>1388508292485</updated>
+    </task>
+    <task id="LOCAL-00017" summary="modified job site">
+      <created>1388508930282</created>
+      <updated>1388508930282</updated>
+    </task>
+    <task id="LOCAL-00018" summary="modified marked operator calculation">
+      <created>1388510693026</created>
+      <updated>1388510693026</updated>
+    </task>
+    <task id="LOCAL-00019" summary="implemented vendor">
+      <created>1388530891503</created>
+      <updated>1388530891503</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fixed extended material cost in assembly screen">
+      <created>1388537928659</created>
+      <updated>1388537928659</updated>
+    </task>
+    <task id="LOCAL-00021" summary="item code by order">
+      <created>1388546133734</created>
+      <updated>1388546133734</updated>
+    </task>
+    <task id="LOCAL-00022" summary="implemented pdf lead sheet">
+      <created>1388678663027</created>
+      <updated>1388678663027</updated>
+    </task>
+    <task id="LOCAL-00023" summary="added lead_sheet note in pdf">
+      <created>1388679843190</created>
+      <updated>1388679843190</updated>
+    </task>
+    <task id="LOCAL-00024" summary="image url setting">
+      <created>1388682585417</created>
+      <updated>1388682585417</updated>
+    </task>
+    <task id="LOCAL-00025" summary="image url setting&#10;">
+      <created>1388684275942</created>
+      <updated>1388684275942</updated>
+    </task>
+    <task id="LOCAL-00026" summary="image url setting&#10;">
+      <created>1388684465963</created>
+      <updated>1388684465963</updated>
+    </task>
+    <task id="LOCAL-00027" summary="image url setting&#10;">
+      <created>1388684824894</created>
+      <updated>1388684824894</updated>
+    </task>
+    <task id="LOCAL-00028" summary="image url setting&#10;">
+      <created>1388691143468</created>
+      <updated>1388691143468</updated>
+    </task>
+    <task id="LOCAL-00029" summary="image url setting&#10;">
+      <created>1388691700160</created>
+      <updated>1388691700160</updated>
+    </task>
+    <task id="LOCAL-00030" summary="image url setting&#10;">
+      <created>1388692329529</created>
+      <updated>1388692329529</updated>
+    </task>
+    <task id="LOCAL-00031" summary="image url setting&#10;">
+      <created>1388706637272</created>
+      <updated>1388706637272</updated>
+    </task>
+    <task id="LOCAL-00032" summary="image url setting&#10;">
+      <created>1388706818697</created>
+      <updated>1388706818697</updated>
+    </task>
+    <task id="LOCAL-00033" summary="image url setting&#10;">
+      <created>1388707079987</created>
+      <updated>1388707079987</updated>
+    </task>
+    <task id="LOCAL-00034" summary="using prawn for pdf">
+      <created>1388711479241</created>
+      <updated>1388711479241</updated>
+    </task>
+    <task id="LOCAL-00035" summary="using prawn for pdf&#10;">
+      <created>1388711495997</created>
+      <updated>1388711495997</updated>
+    </task>
+    <task id="LOCAL-00036" summary="using prawn for pdf&#10;">
+      <created>1388729204673</created>
+      <updated>1388729204673</updated>
+    </task>
+    <task id="LOCAL-00037" summary="removed assign_to">
+      <created>1388729834803</created>
+      <updated>1388729834803</updated>
+    </task>
+    <task id="LOCAL-00038" summary="align field in lead_sheet">
+      <created>1388730355249</created>
+      <updated>1388730355249</updated>
+    </task>
+    <task id="LOCAL-00039" summary="added fields in company table, format assembly_item screen">
+      <created>1388801155580</created>
+      <updated>1388801155580</updated>
+    </task>
+    <task id="LOCAL-00040" summary="revered formatting assembly item">
+      <created>1388802291123</created>
+      <updated>1388802291123</updated>
+    </task>
+    <task id="LOCAL-00041" summary="updated schema">
+      <created>1388802899592</created>
+      <updated>1388802899592</updated>
+    </task>
+    <task id="LOCAL-00042" summary="updated schema&#10;">
+      <created>1388803129835</created>
+      <updated>1388803129835</updated>
+    </task>
+    <task id="LOCAL-00043" summary="fixed assembly build date">
+      <created>1388805045070</created>
+      <updated>1388805045070</updated>
+    </task>
+    <task id="LOCAL-00044" summary="fixed assembly build date&#10;">
+      <created>1388805054554</created>
+      <updated>1388805054554</updated>
+    </task>
+    <task id="LOCAL-00045" summary="fixed job estimates based on assembly">
+      <created>1388820199470</created>
+      <updated>1388820199470</updated>
+    </task>
+    <task id="LOCAL-00046" summary="fixed job estimates based on assembly&#10;">
+      <created>1388820852339</created>
+      <updated>1388820852339</updated>
+    </task>
+    <task id="LOCAL-00047" summary="fixed job estimates based on assembly&#10;">
+      <created>1388821194418</created>
+      <updated>1388821194418</updated>
+    </task>
+    <task id="LOCAL-00048" summary="changed item_extended to decimal">
+      <created>1388821844293</created>
+      <updated>1388821844293</updated>
+    </task>
+    <task id="LOCAL-00049" summary="providing link of master item in list job estimate page">
+      <created>1388822061132</created>
+      <updated>1388822061132</updated>
+    </task>
+    <task id="LOCAL-00050" summary="job_estimate pdf">
+      <created>1388830993520</created>
+      <updated>1388830993520</updated>
+    </task>
+    <task id="LOCAL-00051" summary="job_estimate pdf&#10;">
+      <created>1388831199797</created>
+      <updated>1388831199797</updated>
+    </task>
+    <task id="LOCAL-00052" summary="proposal pdf&#10;">
+      <created>1388855613930</created>
+      <updated>1388855613930</updated>
+    </task>
+    <task id="LOCAL-00053" summary="fixed search functionality">
+      <created>1388865756890</created>
+      <updated>1388865756890</updated>
+    </task>
+    <task id="LOCAL-00054" summary="fixed search functionality&#10;">
+      <created>1388874869510</created>
+      <updated>1388874869511</updated>
+    </task>
+    <task id="LOCAL-00055" summary="fixed search functionality&#10;">
+      <created>1388877355202</created>
+      <updated>1388877355202</updated>
+    </task>
+    <task id="LOCAL-00056" summary="set default check in search radio">
+      <created>1388879026835</created>
+      <updated>1388879026835</updated>
+    </task>
+    <task id="LOCAL-00057" summary="removed sales menu tab">
+      <created>1388887511445</created>
+      <updated>1388887511445</updated>
+    </task>
+    <task id="LOCAL-00058" summary="ordered list">
+      <created>1388941333588</created>
+      <updated>1388941333589</updated>
+    </task>
+    <task id="LOCAL-00059" summary="job photo implementation">
+      <created>1388952628355</created>
+      <updated>1388952628355</updated>
+    </task>
+    <task id="LOCAL-00060" summary="search case insensitive">
+      <created>1388975310698</created>
+      <updated>1388975310698</updated>
+    </task>
+    <task id="LOCAL-00061" summary="new lead sheet pdf">
+      <created>1388997196522</created>
+      <updated>1388997196522</updated>
+    </task>
+    <task id="LOCAL-00062" summary="new estimate pdf&#10;">
+      <created>1389001420301</created>
+      <updated>1389001420301</updated>
+    </task>
+    <task id="LOCAL-00063" summary="new estimate pdf&#10;">
+      <created>1389002463465</created>
+      <updated>1389002463465</updated>
+    </task>
+    <task id="LOCAL-00064" summary="fixed delete job site">
+      <created>1389022830187</created>
+      <updated>1389022830187</updated>
+    </task>
+    <task id="LOCAL-00065" summary="added validation for form inputs&#10;">
+      <created>1389086818205</created>
+      <updated>1389086818205</updated>
+    </task>
+    <task id="LOCAL-00066" summary="phone format and validation">
+      <created>1389095386418</created>
+      <updated>1389095386418</updated>
+    </task>
+    <task id="LOCAL-00067" summary="input validation and job estimate implementation">
+      <created>1389423825501</created>
+      <updated>1389423825501</updated>
+    </task>
+    <task id="LOCAL-00068" summary="schema update">
+      <created>1389425671847</created>
+      <updated>1389425671847</updated>
+    </task>
+    <task id="LOCAL-00069" summary="vendor">
+      <created>1389426138474</created>
+      <updated>1389426138474</updated>
+    </task>
+    <task id="LOCAL-00070" summary="assemblies link">
+      <created>1389426317237</created>
+      <updated>1389426317237</updated>
+    </task>
+    <task id="LOCAL-00071" summary="fixed nil check">
+      <created>1389426809748</created>
+      <updated>1389426809748</updated>
+    </task>
+    <task id="LOCAL-00072" summary="change update estimate to remain in edit mode">
+      <created>1389427397606</created>
+      <updated>1389427397606</updated>
+    </task>
+    <task id="LOCAL-00073" summary="asc assembly in estimate">
+      <created>1389428128200</created>
+      <updated>1389428128200</updated>
+    </task>
+    <task id="LOCAL-00074" summary="sales tax added and fixed issues">
+      <created>1389434134621</created>
+      <updated>1389434134621</updated>
+    </task>
+    <task id="LOCAL-00075" summary="fixed issue&#10;">
+      <created>1389460608413</created>
+      <updated>1389460608413</updated>
+    </task>
+    <task id="LOCAL-00076" summary="fixed 100-100 issue&#10;">
+      <created>1389462523909</created>
+      <updated>1389462523909</updated>
+    </task>
+    <task id="LOCAL-00077" summary="patch">
+      <created>1389465791181</created>
+      <updated>1389465791181</updated>
+    </task>
+    <task id="LOCAL-00078" summary="email not mandatory, mask phone fields">
+      <created>1389472493401</created>
+      <updated>1389472493401</updated>
+    </task>
+    <task id="LOCAL-00079" summary="fixed issues as per rob mail">
+      <created>1389476519285</created>
+      <updated>1389476519285</updated>
+    </task>
+    <task id="LOCAL-00080" summary="fixed issues as per rob mail&#10;">
+      <created>1389481096499</created>
+      <updated>1389481096499</updated>
+    </task>
+    <task id="LOCAL-00081" summary="lead_sheet pdf and added new job roof types">
+      <created>1389491529196</created>
+      <updated>1389491529196</updated>
+    </task>
+    <task id="LOCAL-00082" summary="lead_sheet pdf and added new job roof types&#10;">
+      <created>1389492100047</created>
+      <updated>1389492100047</updated>
+    </task>
+    <task id="LOCAL-00083" summary="lead_sheet pdf and added new job roof types&#10;">
+      <created>1389492300196</created>
+      <updated>1389492300196</updated>
+    </task>
+    <task id="LOCAL-00084" summary="estimate and initial proposal pdf&#10;">
+      <created>1389499525283</created>
+      <updated>1389499525283</updated>
+    </task>
+    <task id="LOCAL-00085" summary="estimate and proposal pdf&#10;">
+      <created>1389551786098</created>
+      <updated>1389551786098</updated>
+    </task>
+    <task id="LOCAL-00086" summary="estimate and proposal pdf&#10;">
+      <created>1389552140658</created>
+      <updated>1389552140658</updated>
+    </task>
+    <task id="LOCAL-00087" summary="proposal desc fixed">
+      <created>1389590534627</created>
+      <updated>1389590534627</updated>
+    </task>
+    <task id="LOCAL-00088" summary="estimate pdf fixed">
+      <created>1389591429084</created>
+      <updated>1389591429084</updated>
+    </task>
+    <task id="LOCAL-00089" summary="upload multiple photos">
+      <created>1389592666969</created>
+      <updated>1389592666969</updated>
+    </task>
+    <task id="LOCAL-00090" summary="foreign constraint delete handling">
+      <created>1389681260407</created>
+      <updated>1389681260407</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Added contact name in pdfs">
+      <created>1389681979570</created>
+      <updated>1389681979571</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Added price adjustment in estimate&#10;">
+      <created>1389687699683</created>
+      <updated>1389687699683</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Added price adjustment in estimate&#10;">
+      <created>1389692955916</created>
+      <updated>1389692955916</updated>
+    </task>
+    <task id="LOCAL-00094" summary="lead source is removed from pdf">
+      <created>1389693329258</created>
+      <updated>1389693329258</updated>
+    </task>
+    <task id="LOCAL-00095" summary="lead sheet pdf updates&#10;">
+      <created>1389771953264</created>
+      <updated>1389771953264</updated>
+    </task>
+    <task id="LOCAL-00096" summary="proposal pdf update">
+      <created>1389839489740</created>
+      <updated>1389839489741</updated>
+    </task>
+    <task id="LOCAL-00097" summary="proposal pdf update&#10;">
+      <created>1389839762725</created>
+      <updated>1389839762725</updated>
+    </task>
+    <task id="LOCAL-00098" summary="proposal pdf update&#10;">
+      <created>1389840065836</created>
+      <updated>1389840065836</updated>
+    </task>
+    <task id="LOCAL-00099" summary="upload multiple photos">
+      <created>1389852919131</created>
+      <updated>1389852919131</updated>
+    </task>
+    <task id="LOCAL-00100" summary="auth implementation">
+      <created>1390038039591</created>
+      <updated>1390038039591</updated>
+    </task>
+    <task id="LOCAL-00101" summary="auth implementation&#10;">
+      <created>1390038096988</created>
+      <updated>1390038096988</updated>
+    </task>
+    <task id="LOCAL-00102" summary="merging employee to user&#10;">
+      <created>1390118482754</created>
+      <updated>1390118482754</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Show login user in job edit and modified the authorization; added job notes and lead sheet notes history&#10;">
+      <created>1390277399954</created>
+      <updated>1390277399954</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Operator calculation &lt;1 &gt;0">
+      <created>1390914075908</created>
+      <updated>1390914075908</updated>
+    </task>
+    <task id="LOCAL-00105" summary="removed not need code from role_permission_controller">
+      <created>1390918735198</created>
+      <updated>1390918735198</updated>
+    </task>
+    <task id="LOCAL-00106" summary="added before_filter in application_controller">
+      <created>1390920099564</created>
+      <updated>1390920099564</updated>
+    </task>
+    <task id="LOCAL-00107" summary="alert debug">
+      <created>1390920588257</created>
+      <updated>1390920588257</updated>
+    </task>
+    <task id="LOCAL-00108" summary="phone mask js">
+      <created>1390921509774</created>
+      <updated>1390921509774</updated>
+    </task>
+    <task id="LOCAL-00109" summary="mask js in public&#10;">
+      <created>1390921771915</created>
+      <updated>1390921771915</updated>
+    </task>
+    <task id="LOCAL-00110" summary="reverted changes related to js">
+      <created>1390924101519</created>
+      <updated>1390924101519</updated>
+    </task>
+    <task id="LOCAL-00111" summary="null check in phone - user">
+      <created>1390925607012</created>
+      <updated>1390925607012</updated>
+    </task>
+    <task id="LOCAL-00112" summary="added gem 'rails_12factor">
+      <created>1390963818004</created>
+      <updated>1390963818005</updated>
+    </task>
+    <task id="LOCAL-00113" summary="renamed masked js file to come at the end">
+      <created>1390993035438</created>
+      <updated>1390993035438</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36932707" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19344774" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28638497" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30672926" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4225352" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286385" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286385" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23111783" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16744915" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31924883" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19344774" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42589703" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31825274" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32707354" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286385" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286385" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14199395" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16744915" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+    <MESSAGE value="Added price adjustment in estimate&#10;" />
+    <MESSAGE value="lead source is removed from pdf" />
+    <MESSAGE value="lead sheet pdf updates&#10;" />
+    <MESSAGE value="proposal pdf update" />
+    <MESSAGE value="proposal pdf update&#10;" />
+    <MESSAGE value="upload multiple photos" />
+    <MESSAGE value="auth implementation" />
+    <MESSAGE value="auth implementation&#10;" />
+    <MESSAGE value="merging employee to user&#10;" />
+    <MESSAGE value="Show login user in job edit and modified the authorization; added job notes and lead sheet notes history&#10;" />
+    <MESSAGE value="Operator calculation &lt;1 &gt;0" />
+    <MESSAGE value="removed not need code from role_permission_controller" />
+    <MESSAGE value="added before_filter in application_controller" />
+    <MESSAGE value="alert debug" />
+    <MESSAGE value="phone mask js" />
+    <MESSAGE value="mask js in public&#10;" />
+    <MESSAGE value="reverted changes related to js" />
+    <MESSAGE value="null check in phone - user" />
+    <MESSAGE value="added gem 'rails_12factor" />
+    <MESSAGE value="renamed masked js file to come at the end" />
+    <MESSAGE value="Merge branch 'master' of heroku.com:lit-fjord-1976&#10;&#10;Conflicts:&#10;&#9;app/assets/javascripts/jquery.xmaskedinput-1.3.1.min_.js&#10;&#9;app/views/layouts/application.html.erb&#10;" />
+    <MESSAGE value="Merge branch 'master' of heroku.com:lit-fjord-1976&#10;&#10;" />
+    <MESSAGE value="renamed masked js" />
+    <MESSAGE value="renamed mask js" />
+    <MESSAGE value="renamed mask" />
+    <option name="LAST_COMMIT_MESSAGE" value="renamed mask" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="106" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="24" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="476">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/job_sites_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="54" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="1292" max-vertical-offset="4250">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/initializers/devise.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="144" selection-end="144" vertical-scroll-proportion="-8.717949" vertical-offset="3094" max-vertical-offset="4420" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="26" selection-start="426" selection-end="426" vertical-scroll-proportion="-7.5384617" vertical-offset="59" max-vertical-offset="816" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/edit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="20" selection-start="20" selection-end="20" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="187" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="497" selection-end="689" vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="391" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/job_call_note.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="257" selection-end="257" vertical-scroll-proportion="0.20807454" vertical-offset="35" max-vertical-offset="357" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby193/lib/ruby/gems/1.9.1/gems/activerecord-4.0.2/lib/active_record/attribute_assignment.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="787" selection-end="787" vertical-scroll-proportion="0.0" vertical-offset="182" max-vertical-offset="3519" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby193/lib/ruby/gems/1.9.1/gems/activemodel-4.0.2/lib/active_model/forbidden_attributes_protection.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="614" selection-end="614" vertical-scroll-proportion="0.3402985" vertical-offset="226" max-vertical-offset="561" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/job_call_notes/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="107" selection-start="747" selection-end="826" vertical-scroll-proportion="0.0" vertical-offset="197" max-vertical-offset="697" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/job_sites/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="235" column="88" selection-start="11055" selection-end="11055" vertical-scroll-proportion="0.0" vertical-offset="3773" max-vertical-offset="5525" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-4.0.2/lib/action_controller/metal/strong_parameters.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="271" column="0" selection-start="10008" selection-end="10008" vertical-scroll-proportion="0.0" vertical-offset="4480" max-vertical-offset="9027" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby193/lib/ruby/gems/1.9.1/gems/cancan-1.6.10/lib/cancan/controller_additions.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="356" column="0" selection-start="14937" selection-end="14937" vertical-scroll-proportion="0.0" vertical-offset="5929" max-vertical-offset="6851" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby193/lib/ruby/gems/1.9.1/gems/cancan-1.6.10/lib/cancan/controller_resource.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="0" selection-start="1792" selection-end="1792" vertical-scroll-proportion="0.701897" vertical-offset="421" max-vertical-offset="4539" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby193/lib/ruby/gems/1.9.1/gems/cancan-1.6.10/lib/cancan/ability.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="0" selection-start="2166" selection-end="2166" vertical-scroll-proportion="0.31538463" vertical-offset="1016" max-vertical-offset="5389" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/ability.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="20" selection-start="821" selection-end="821" vertical-scroll-proportion="0.0" vertical-offset="206" max-vertical-offset="680" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/employees_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="20" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1479" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/job_call_notes_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="8" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1972" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/job_change_orders_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="5" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1615" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/job_contacts_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="10" selection-start="93" selection-end="93" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1666" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/job_costings_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="12" selection-start="95" selection-end="95" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1377" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/job_documents_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="10" selection-start="94" selection-end="94" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1649" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/job_estimate_items_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="14" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1904" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/job_estimate_statuses_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="15" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1377" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/job_statuses_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="13" selection-start="65" selection-end="66" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/job_tasks_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="13" selection-start="93" selection-end="93" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2091" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/job_site.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="71" selection-start="2788" selection-end="2788" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="1309" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/job_estimates_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="234" column="56" selection-start="10441" selection-end="10441" vertical-scroll-proportion="0.0" vertical-offset="3780" max-vertical-offset="4403" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/assembly_items_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="156" column="58" selection-start="5408" selection-end="5408" vertical-scroll-proportion="0.0" vertical-offset="2927" max-vertical-offset="3434">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/assembly_items/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="173" column="96" selection-start="8681" selection-end="8695" vertical-scroll-proportion="-12.384615" vertical-offset="2619" max-vertical-offset="3434" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database_backup/heroku_dump_structure_3rdJan2014.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="4" selection-start="3" selection-end="4" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12716" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database_backup/heroku_dump_12Jan2014.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="646" column="80" selection-start="28640" selection-end="28645" vertical-scroll-proportion="0.3318182" vertical-offset="10836" max-vertical-offset="19414" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/assembly_items/populate_item_code.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="14" selection-start="2021" selection-end="2021" vertical-scroll-proportion="-6.9615383" vertical-offset="550" max-vertical-offset="1139" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="28" selection-start="906" selection-end="906" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8007">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/role_permissions_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="0" selection-start="2423" selection-end="2423" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1853" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/roles_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="971" max-vertical-offset="1462" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/companies_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1462" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/assemblies_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="18" selection-start="99" selection-end="99" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1836" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/customer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="5" selection-start="864" selection-end="864" vertical-scroll-proportion="0.0" vertical-offset="97" max-vertical-offset="578" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Ruby193/lib/ruby/gems/1.9.1/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="101" selection-end="101" vertical-scroll-proportion="0.17171717" vertical-offset="0" max-vertical-offset="425" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="0" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0" vertical-offset="361" max-vertical-offset="1377">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/job_sites_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="54" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="1292" max-vertical-offset="4250">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/customers/edit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/customers_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="22" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="1841" max-vertical-offset="2618">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="67" selection-start="1250" selection-end="1250" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="952">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="11" selection-start="203" selection-end="203" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="1734">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="444" selection-end="444" vertical-scroll-proportion="-3.4230769" vertical-offset="98" max-vertical-offset="2686">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="0" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.0" vertical-offset="494" max-vertical-offset="1122">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/xmaskedinput-1.3.1.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="3336" selection-start="3525" selection-end="3539" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="3" selection-start="895" selection-end="895" vertical-scroll-proportion="1.0235602" vertical-offset="0" max-vertical-offset="493">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+
