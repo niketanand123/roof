@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require allPages
 //= require jquery-ui
 //= require_tree .
 //= require underscore
