@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a563950-0d41-4014-8b45-0552a93eed0b" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\kingroof\roof\app\assets\javascripts\xmaskedinput-1.3.1.min.js" afterPath="$PROJECT_DIR$/vendor/assets/javascripts/xmaskedinput-1.3.1.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="roof.iws" />
@@ -68,10 +67,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="application.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="566" selection-end="566" vertical-scroll-proportion="-6.0384617" vertical-offset="98" max-vertical-offset="2686">
+            <state line="4" column="71" selection-start="133" selection-end="133" vertical-scroll-proportion="0.21451104" vertical-offset="0" max-vertical-offset="2686">
               <folding />
             </state>
           </provider>
@@ -95,10 +94,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="18" selection-start="802" selection-end="802" vertical-scroll-proportion="1.002809" vertical-offset="0" max-vertical-offset="493">
+            <state line="21" column="18" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -179,10 +178,10 @@
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/users/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/jquery.xmaskedinput-1.3.1.min_.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
       </list>
     </option>
   </component>
@@ -1020,7 +1019,11 @@
       <created>1390995511500</created>
       <updated>1390995511500</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="moved xmasked to vendor js">
+      <created>1390996009290</created>
+      <updated>1390996009290</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1102,7 +1105,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="lead source is removed from pdf" />
     <MESSAGE value="lead sheet pdf updates&#10;" />
     <MESSAGE value="proposal pdf update" />
     <MESSAGE value="proposal pdf update&#10;" />
@@ -1127,7 +1129,8 @@
     <MESSAGE value="renamed mask js" />
     <MESSAGE value="renamed mask" />
     <MESSAGE value="added xmask js" />
-    <option name="LAST_COMMIT_MESSAGE" value="added xmask js" />
+    <MESSAGE value="moved xmasked to vendor js" />
+    <option name="LAST_COMMIT_MESSAGE" value="moved xmasked to vendor js" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1402,19 +1405,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="566" selection-end="566" vertical-scroll-proportion="-6.0384617" vertical-offset="98" max-vertical-offset="2686">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="18" selection-start="802" selection-end="802" vertical-scroll-proportion="1.002809" vertical-offset="0" max-vertical-offset="493">
+        <state line="21" column="18" selection-start="802" selection-end="802" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="71" selection-start="133" selection-end="133" vertical-scroll-proportion="0.21451104" vertical-offset="0" max-vertical-offset="2686">
+          <folding />
         </state>
       </provider>
     </entry>
