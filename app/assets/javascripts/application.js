@@ -13,12 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require allPages
-//= require jquery-ui
 //= require_tree .
 //= require underscore
 //= require gmaps/google
+//= require jquery-ui
 //= require menu
-//= require xmaskedinput-1.3.1.min
 jQuery.ajaxSetup({
     'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
 });
