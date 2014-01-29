@@ -17,6 +17,6 @@
 //= require underscore
 //= require gmaps/google
 //= require menu
-jQuery.ajaxSetup({
-    'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
-});
+//jQuery.ajaxSetup({
+//    'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
+//});
