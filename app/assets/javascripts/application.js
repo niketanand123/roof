@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require allPages
 //= require_tree .
 //= require underscore
 //= require gmaps/google
