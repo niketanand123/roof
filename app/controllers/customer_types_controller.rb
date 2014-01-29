@@ -1,4 +1,5 @@
 class CustomerTypesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_customer_type, only: [:show, :edit, :update, :destroy]
 
   # GET /customer_types

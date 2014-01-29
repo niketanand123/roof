@@ -1,5 +1,5 @@
 class Vendor < ActiveRecord::Base
-  belongs_to :employee, :class_name => 'Employee', :foreign_key => :sales_rep_id
+  belongs_to :user, :class_name => 'User', :foreign_key => :sales_rep_id
   validates_presence_of :name
   validates_presence_of :address1
   validates_presence_of :zip1

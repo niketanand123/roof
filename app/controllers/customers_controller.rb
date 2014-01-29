@@ -1,12 +1,14 @@
 class CustomersController < ApplicationController
+  #load_and_authorize_resource
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customers
   # GET /customers.json
   def index
-    #@customers = Customer.search(params[:basedOn],params[:searchText])
+    @customers = nil
     basedOn = params[:basedOn]
     @searchText = params[:searchText]
+
     if @searchText != nil
       search_condition = "%" + @searchText + "%"
       if basedOn == "Last Name"

@@ -1,4 +1,5 @@
 class JobCallNotesController < ApplicationController
+  #load_and_authorize_resource except: [:create]
   before_action :set_job_call_note, only: [:show, :edit, :update, :destroy]
 
   # GET /job_call_notes
@@ -90,7 +91,7 @@ class JobCallNotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_call_note_params
-      params.require(:job_call_note).permit(:job_site_id, :unformatted_call_date,:call_time, :call_notes, :employee_id) if params[:job_call_note]
+      params.require(:job_call_note).permit(:job_site_id, :unformatted_call_date,:call_time, :call_notes, :user_id) if params[:job_call_note]
     end
   def format_dates
     if(@job_call_note.call_date !=nil)

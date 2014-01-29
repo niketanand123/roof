@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112010904) do
+ActiveRecord::Schema.define(version: 20140116155658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -164,12 +164,14 @@ ActiveRecord::Schema.define(version: 20140112010904) do
   create_table "job_call_notes", force: true do |t|
     t.integer  "job_site_id"
     t.string   "call_notes"
-    t.integer  "employee_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "call_time",   limit: 10
     t.date     "call_date"
   end
+
+  add_index "job_call_notes", ["user_id"], name: "fki_user_call_note", using: :btree
 
   create_table "job_change_orders", force: true do |t|
     t.integer  "job_site_id"
@@ -263,8 +265,8 @@ ActiveRecord::Schema.define(version: 20140112010904) do
   add_index "job_service_types", ["service_type_id"], name: "fk_serv_type_idx", using: :btree
 
   create_table "job_site", force: true do |t|
-    t.integer  "customer_id",                                                                null: false
-    t.string   "contact_name",          limit: 100,                                          null: false
+    t.integer  "customer_id",                                                                 null: false
+    t.string   "contact_name",          limit: 100,                                           null: false
     t.string   "phone",                 limit: 15
     t.string   "work_phone",            limit: 15
     t.string   "work_phone_ext",        limit: 10
@@ -276,9 +278,9 @@ ActiveRecord::Schema.define(version: 20140112010904) do
     t.string   "city",                  limit: 50
     t.string   "state",                 limit: 50
     t.string   "zip",                   limit: 20
-    t.integer  "is_active",             limit: 2,                            default: 1
-    t.decimal  "latitude",                          precision: 10, scale: 8
-    t.decimal  "longitude",                         precision: 11, scale: 8
+    t.integer  "is_active",             limit: 2,                             default: 1
+    t.decimal  "latitude",                           precision: 10, scale: 8
+    t.decimal  "longitude",                          precision: 11, scale: 8
     t.date     "job_start_date"
     t.integer  "job_status_id"
     t.string   "how_many_stories"
@@ -292,13 +294,13 @@ ActiveRecord::Schema.define(version: 20140112010904) do
     t.string   "deposit_due"
     t.string   "deposit_method"
     t.date     "date_completed"
-    t.string   "job_notes"
-    t.string   "lead_sheet_note"
+    t.string   "job_notes",             limit: 1000
+    t.string   "lead_sheet_note",       limit: 1000
     t.integer  "info_taken_by_id"
     t.date     "date_taken"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_closed",                                                  default: false
+    t.boolean  "is_closed",                                                   default: false
     t.string   "approx_age",            limit: 100
   end
 
@@ -331,6 +333,9 @@ ActiveRecord::Schema.define(version: 20140112010904) do
     t.datetime "updated_at"
   end
 
+  add_index "job_tasks", ["completed_by_id"], name: "fki_comleted_user_id", using: :btree
+  add_index "job_tasks", ["entered_by_id"], name: "fki_entered_user_id", using: :btree
+
   create_table "lead_source", force: true do |t|
     t.string   "source",     limit: 50
     t.datetime "created_at"
@@ -347,6 +352,27 @@ ActiveRecord::Schema.define(version: 20140112010904) do
 
   create_table "product_types", force: true do |t|
     t.string   "product_type", limit: 100
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "role_permissions", force: true do |t|
+    t.integer  "role_id"
+    t.string   "regulator"
+    t.string   "conduct"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "role_roles", force: true do |t|
+    t.integer  "role_id"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", force: true do |t|
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -381,6 +407,39 @@ ActiveRecord::Schema.define(version: 20140112010904) do
     t.datetime "updated_at"
   end
 
+  create_table "user_roles", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "email",                              default: "", null: false
+    t.string   "encrypted_password",                 default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "first_name",             limit: 50
+    t.string   "last_name",              limit: 50
+    t.string   "address",                limit: 200
+    t.string   "state",                  limit: 50
+    t.string   "city",                   limit: 100
+    t.string   "zip",                    limit: 20
+    t.string   "phone",                  limit: 20
+    t.boolean  "is_active"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
   create_table "vendors", force: true do |t|
     t.string   "name"
     t.string   "address1"
@@ -400,5 +459,7 @@ ActiveRecord::Schema.define(version: 20140112010904) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "vendors", ["sales_rep_id"], name: "fki_sales_user_id", using: :btree
 
 end

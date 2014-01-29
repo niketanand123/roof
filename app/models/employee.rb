@@ -4,6 +4,7 @@ class Employee < ActiveRecord::Base
     has_many :job_tasks_entered_by, :class_name => 'JobTask', foreign_key: :entered_by_id
     has_many :job_tasks_completed_by, :class_name => 'JobTask', foreign_key: :completed_by_id
     has_many :vendors, :class_name => 'Vendor', foreign_key: :sales_rep_id
+    has_one :user, :class_name => 'User', foreign_key: :user_id, :dependent => :destroy
     before_destroy :without_dependency
 
     validates :first_name,  presence: true, length: { maximum: 50 }

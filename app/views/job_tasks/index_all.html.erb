@@ -35,9 +35,9 @@
         <td><%= TaskType.where(:id=>job_task.task_type_id).pluck(:task_type).first %></td>
         <td><%= job_task.task_note %></td>
         <td><%if job_task.target_date !=nil %><%= job_task.target_date.strftime('%m/%d/%Y')%><%end%></td>
-        <td><%= Employee.where(:id=>job_task.entered_by_id).pluck(:first_name).first %> <%= Employee.where(:id=>job_task.entered_by_id).pluck(:last_name).first %></td>
+        <td><%= User.where(:id=>job_task.entered_by_id).pluck(:first_name).first %> <%= User.where(:id=>job_task.entered_by_id).pluck(:last_name).first %></td>
         <td><%if job_task.date_completed !=nil %><%= job_task.date_completed.strftime('%m/%d/%Y')%><%end%></td>
-        <td><%= Employee.where(:id=>job_task.completed_by_id).pluck(:first_name).first %> <%= Employee.where(:id=>job_task.completed_by_id).pluck(:last_name).first %></td>
+        <td><%= User.where(:id=>job_task.completed_by_id).pluck(:first_name).first %> <%= User.where(:id=>job_task.completed_by_id).pluck(:last_name).first %></td>
         <td><%= link_to 'Edit', edit_customer_job_site_job_task_path(:customer_id=>job_task.job_site.customer.id, :id=>job_task.id,:job_site_id=>job_task.job_site_id) %></td>
         <td><%= link_to 'Delete',customer_job_site_job_task_path(:id=>job_task.id, :customer_id=>job_task.job_site.customer.id, :job_site_id=>job_task.job_site_id), method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
       </tr>

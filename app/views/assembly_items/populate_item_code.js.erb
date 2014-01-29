@@ -46,9 +46,14 @@ $("#assembly_item_total_cost").val('<%= @total_cost %>');
     else
       @markup_opt_percent = 0.6
 end%>
+<% if @markup_opt_percent.to_f >= 1 || @markup_opt_percent.to_f < 0%>
+    $("#operator_error").html('Not valid Operator');
+<% else %>
+    $("#operator_error").html('');
+<% end %>
 $("#assembly_item_markup_operator_percentage").val('<%= @markup_opt_percent %>');
-<% if @markup_opt_percent.to_f > 0 && @markup_opt_percent.to_f != 100.to_f
-    @total_price = number_with_precision(@total_cost.to_f / (100-@markup_opt_percent.to_f), :precision => 2) || 0
+<% if @markup_opt_percent.to_f < 1 && @markup_opt_percent.to_f > 0
+    @total_price = number_with_precision(@total_cost.to_f / (1-@markup_opt_percent.to_f), :precision => 2) || 0
    else
     @total_price = @total_cost
  end%>

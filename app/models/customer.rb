@@ -2,7 +2,7 @@ class Customer < ActiveRecord::Base
     self.table_name = 'customer'
 
     self.inheritance_column = :ruby_type
-    belongs_to :employee, :class_name => 'Employee', :foreign_key => :sales_person_id    
+    belongs_to :user, :class_name => 'User', :foreign_key => :sales_person_id
     belongs_to :company, :class_name => 'Company', :foreign_key => :company_id
     belongs_to :lead_source, :class_name => 'LeadSource', :foreign_key => :lead_source_id
     belongs_to :customer_type, :class_name => 'CustomerType', :foreign_key => :type    

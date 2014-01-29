@@ -14,11 +14,11 @@ class JobSite < ActiveRecord::Base
     belongs_to :customer, :class_name => 'Customer', :foreign_key => :customer_id
     belongs_to :estimate_type, :class_name => 'EstimateType', :foreign_key => :estimate_type_id
     belongs_to :roof_type, :class_name => 'RoofType', :foreign_key => :existing_roof_type_id
-    belongs_to :employee, :class_name => 'Employee', :foreign_key => :info_taken_by_id
+    belongs_to :user, :class_name => 'User', :foreign_key => :info_taken_by_id
     belongs_to :roof_type, :class_name => 'RoofType', :foreign_key => :new_roof_type_id
     belongs_to :product_color, :class_name => 'ProductColor', :foreign_key => :product_color_id
     belongs_to :product_type, :class_name => 'ProductType', :foreign_key => :product_type_id
-    belongs_to :employee, :class_name => 'Employee', :foreign_key => :sales_rep_id
+    belongs_to :user, :class_name => 'User', :foreign_key => :sales_rep_id
 
     validates_presence_of :contact_name
     validates :street1,  presence: true, length: { maximum: 100 }
@@ -34,9 +34,18 @@ class JobSite < ActiveRecord::Base
     def set_address
       address = "#{street1}, #{street2}, #{city}, #{state}, US"
     end
-    attr_accessor  :unformatted_appointment_date, :unformatted_date_completed, :unformatted_date_taken
+    attr_accessor  :unformatted_appointment_date, :unformatted_date_completed, :unformatted_date_taken, :lead_sheet_note_current, :job_notes_current
 
-    before_save    :format_date_phone
+    before_save    :format_date_phone, :set_lead_sheet_and_notes
+
+    def set_lead_sheet_and_notes
+      if !self.lead_sheet_note_current.nil? && !self.lead_sheet_note_current.empty?
+        self.lead_sheet_note = User.find(self.info_taken_by_id).first_name+" "+ User.find(self.info_taken_by_id).last_name+" : "+Time.now.strftime("%m/%d/%Y %H:%M:%S")+"\n"+ self.lead_sheet_note_current+"\n"+self.lead_sheet_note
+      end
+      if !self.job_notes_current.nil? && !self.job_notes_current.empty?
+        self.job_notes = User.find(self.info_taken_by_id).first_name+" "+ User.find(self.info_taken_by_id).last_name+" : "+Time.now.strftime("%m/%d/%Y %H:%M:%S")+"\n"+ self.job_notes_current+"\n"+self.job_notes
+      end
+    end
 
     def format_date_phone
       if self.unformatted_appointment_date !=nil && self.unformatted_appointment_date !=""
@@ -52,7 +61,7 @@ class JobSite < ActiveRecord::Base
       if self.unformatted_date_taken !=nil && self.unformatted_date_taken !=""
         self.date_taken = Date.strptime(self.unformatted_date_taken, "%m/%d/%Y").to_time()
       else
-        self.date_taken = nil
+        self.date_taken = Time.now.strftime("%m/%d/%Y")
       end
       self.phone = self.phone.convert_to_phone
       self.work_phone = self.work_phone.convert_to_phone

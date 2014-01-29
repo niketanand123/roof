@@ -1,4 +1,5 @@
 class SalesTaxesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_sales_tax, only: [:show, :edit, :update, :destroy]
 
   # GET /sales_taxes

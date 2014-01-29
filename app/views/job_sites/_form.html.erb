@@ -180,7 +180,7 @@
         <td><%= f.select(:product_color_id, options_for_select(ProductColor.all.map{|t| [t.product_color, t.id]}, @job_site.product_color_id),:include_blank => "Choose Product Color") %></td>
         <td></td>
         <td>Sales Rep</td>
-        <td><%= f.select(:sales_rep_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.sales_rep_id),:include_blank => "Choose Sales Rep") %></td>
+        <td><%= f.select(:sales_rep_id, options_for_select(User.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.sales_rep_id),:include_blank => "Choose Sales Rep") %></td>
         <td></td>
         <td>Estimate Type</td>
         <td><%= f.select(:estimate_type_id, options_for_select(EstimateType.all.map{|t| [t.estimate_type, t.id]}, @job_site.estimate_type_id),:include_blank => "Choose Estimate Type") %></td>
@@ -199,22 +199,17 @@
         <td><%= f.text_field :unformatted_date_completed, :id => 'dateCompleted' %></td>
         <td></td>
         <td>Info Taken By</td>
-        <td><%= f.select(:info_taken_by_id, options_for_select(Employee.all.map{|t| [t.first_name+' '+t.last_name, t.id]}, @job_site.info_taken_by_id),:include_blank => "Choose Info Taken By") %></td>
+        <td><%= User.find(current_user.id).first_name+" "+ User.find(current_user.id).last_name %><%= f.hidden_field :info_taken_by_id, :value=>current_user.id %></td>
       </tr>
       <tr>
         <td>Date Taken</td>
-        <td><%= f.text_field :unformatted_date_taken, :id => 'dateTaken'%></td>
+        <td><%if @job_site.unformatted_date_taken.nil? %><%=Time.now.strftime("%m/%d/%Y")  %><%= f.hidden_field :unformatted_date_taken, :value => Time.now.strftime("%m/%d/%Y")%>
+          <%else %>
+            <%= @job_site.unformatted_date_taken %>
+          <%end %></td>
         <td></td>
         <td>Approx Age</td>
         <td colspan="7"><%= f.text_field :approx_age %></td>
-      </tr>
-    </table>
-    <table width="100%" border="0">
-      <tr>
-        <td width="11%">Lead Sheet Note</td>
-        <td width="40%"><%= f.text_area :lead_sheet_note, :size=>"50x3"%></td>
-        <td width="11%">Job Notes</td>
-        <td width="40%"><%= f.text_area :job_notes, :size=>"50x3" %></td>
       </tr>
     </table>
     <table width="100%">
@@ -229,7 +224,20 @@
         </td>
       </tr>
     </table>
-
+    <table width="100%" border="0">
+      <tr>
+        <td width="11%">Lead Sheet Note</td>
+        <td width="40%"><%= f.text_area :lead_sheet_note_current, :size=>"65x3"%></td>
+        <td width="11%">Job Notes</td>
+        <td width="40%"><%= f.text_area :job_notes_current, :size=>"65x3" %></td>
+      </tr>
+      <tr>
+        <td width="11%">Lead Sheet Note History</td>
+        <td width="40%"><%= f.text_area :lead_sheet_note, :size=>"65x5", :readonly=>true%></td>
+        <td width="11%">Job Notes History</td>
+        <td width="40%"><%= f.text_area :job_notes, :size=>"65x5", :readonly=>true %></td>
+      </tr>
+    </table>
     <br>
 
     <div BGCOLOR="#336699" HEIGHT="13" style="width: 850px;">

@@ -1,7 +1,7 @@
 class JobTask < ActiveRecord::Base
   belongs_to :job_site, :class_name => 'JobSite', :foreign_key => :job_site_id
-  belongs_to :employee, :class_name => 'Employee', :foreign_key => :entered_by_id
-  belongs_to :employee, :class_name => 'Employee', :foreign_key => :created_by_id
+  belongs_to :user, :class_name => 'User', :foreign_key => :entered_by_id
+  belongs_to :user, :class_name => 'User', :foreign_key => :created_by_id
   belongs_to :task_type, :class_name => 'TaskType', :foreign_key => :task_type_id
 
   before_save    :format_date

@@ -1,4 +1,5 @@
 class EstimateTypesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_estimate_type, only: [:show, :edit, :update, :destroy]
 
   # GET /estimate_types

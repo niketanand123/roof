@@ -1,4 +1,5 @@
 class TaskTypesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_task_type, only: [:show, :edit, :update, :destroy]
 
   # GET /task_types

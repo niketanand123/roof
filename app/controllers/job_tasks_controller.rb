@@ -1,4 +1,5 @@
 class JobTasksController < ApplicationController
+  #load_and_authorize_resource
   before_action :set_job_task, only: [:show, :edit, :update, :destroy]
 
   # GET /job_tasks
