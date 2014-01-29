@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   before_save    :format_phone
 
   def format_phone
-    self.phone = self.phone.convert_to_phone
+    self.phone = self.phone.convert_to_phone unless self.phone.nil?
   end
   def without_dependency
     if self.job_tasks_entered_by.size() > 0 || self.job_tasks_completed_by.size() > 0
